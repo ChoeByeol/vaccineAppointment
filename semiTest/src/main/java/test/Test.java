@@ -9,5 +9,6 @@ public class Test {
 		System.out.println("류찬휘");
 		System.out.println("김인태");
 		System.out.println("김민진");
+		System.out.println("김재인");
 	}
 }
