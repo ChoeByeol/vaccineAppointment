@@ -1,4 +1,4 @@
-package project1.beans;
+package kh8semi1.beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import project1.beans.JdbcUtils;
+import kh8semi1.beans.JdbcUtils;
 
 public class VaccineDao {
 	
@@ -14,7 +14,7 @@ public class VaccineDao {
 	public List<VaccineDto> list() throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "select * from vaccine"; 
+		String sql = "select * from vaccine";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 

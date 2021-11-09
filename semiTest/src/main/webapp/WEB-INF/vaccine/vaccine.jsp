@@ -1,22 +1,13 @@
-<%@page import="project1.beans.VaccineDto"%>
-<%@page import="project1.beans.VaccineDao"%>
+<%@page import="kh8semi1.beans.VaccineDto"%>
+<%@page import="kh8semi1.beans.VaccineDao"%>
 <%@page import="java.util.List"%>
-<%@page import="project1.beans.MemberDto"%>
-<%@page import="project1.beans.MemberDao"%>
+<%@page import="kh8semi1.beans.MemberDto"%>
+<%@page import="kh8semi1.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 
-<%-- 입력 : 현재 로그인한 회원ID - String memberId --%>
 <%
-String memberId = (String) session.getAttribute("ses");
-%>
-
-<%-- 처리 : 회원정보(MemberDto) --%>
-<%
-MemberDao memberDao = new MemberDao();
-MemberDto memberDto = memberDao.get(memberId);
- 
 //백신 정보 이력을 조회
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();

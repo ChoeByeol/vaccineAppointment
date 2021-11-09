@@ -1,8 +1,8 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
-<%@page import="project1.beans.VaccineDto"%>
-<%@page import="project1.beans.VaccineDao"%>
+<%@page import="kh8semi1.beans.VaccineDto"%>
+<%@page import="kh8semi1.beans.VaccineDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       
@@ -14,12 +14,9 @@
 
 <%-- 처리 --%>
 <%
-// String memberId = (String)session.getAttribute("ses"); 
-VaccineDao vaccineDao = new VaccineDao(); 
+VaccineDao vaccineDao = new VaccineDao();
 VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 %>
-
-
 
 
 <%-- 출력 --%>
