@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+	<!-- 
+		DBCP를 수행할 수 있는 자원(도구) 등록
+		- driverClassName : DBMS에 연결하기 위한 드라이버 클래스 경로
+		- url : DBMS에 연결하기 위한 경로 
+		- maxTotal : 총 연결(Connection)의 수
+		- minIdle : 유휴 연결(Connection) 최소 개수
+		- maxIdle : 유휴 연결(Connection) 최대 개수
+		- maxWaitMillis : 연결이 모두 사용중일 경우의 대기 시간
+	-->
+<Context>
+	
+	<!-- DBCP를 수행할 수 있는 자원(도구) 등록 -->
+	<Resource 
+				name="jdbc/oracle"
+				type="javax.sql.DataSource"
+				auth="Container"
+				
+				driverClassName="oracle.jdbc.OracleDriver"
+				url="jdbc:oracle:thin:@localhost:1521:xe"
+				username="semi"
+				password="semi"
+				
+				maxTotal="20"
+				minIdle="0"
+				maxIdle="5"
+				maxWaitMillis="3000"/>
+				
+	
+</Context>
