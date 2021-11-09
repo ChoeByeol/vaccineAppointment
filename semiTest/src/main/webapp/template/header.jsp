@@ -54,7 +54,7 @@ String root = request.getContextPath();
 		<header>
 			<div class="flex-container">
 				<div class="logo-wrapper">
-					<img src="<%=request.getContextPath()%>/resource/image/질병관리청.png">
+					<img src="<%=request.getContextPath()%>/resource/image/질병관리청2.png">
 				</div>
 				<div class="title-wrapper">
 					<h4>예방접종 사전예약 시스템</h4>

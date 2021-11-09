@@ -8,7 +8,6 @@ boolean login = ses != null;
 String grade = (String) session.getAttribute("grade");
 boolean admin = grade != null && grade.equals("관리자");
 %>
-
 <jsp:include page="/template/header.jsp"></jsp:include>
     
 <!-- 임시   -->
