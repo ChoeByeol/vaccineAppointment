@@ -14,7 +14,7 @@ public class VaccineDao {
 	public List<VaccineDto> list() throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "select * from vaccine";
+		String sql = "select * from vaccine"; 
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 

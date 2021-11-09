@@ -8,7 +8,7 @@ public class VaccineDto {
 	private String vaccineValue;
 	private String vaccineCompany;
 	private String vaccineAge;
-	private String vaccineComposition;
+	private String vaccineComposition; 
 	private String vaccineInterval;
 	private String vaccineMethod;
 	private String vaccineKeep;

@@ -15,7 +15,7 @@
 <%-- 처리 --%>
 <%
 // String memberId = (String)session.getAttribute("ses"); 
-VaccineDao vaccineDao = new VaccineDao();
+VaccineDao vaccineDao = new VaccineDao(); 
 VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 %>
 

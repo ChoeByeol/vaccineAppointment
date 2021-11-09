@@ -16,7 +16,7 @@ String memberId = (String) session.getAttribute("ses");
 <%
 MemberDao memberDao = new MemberDao();
 MemberDto memberDto = memberDao.get(memberId);
-
+ 
 //백신 정보 이력을 조회
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
