@@ -73,7 +73,7 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 							<td><%=vaccineDto.getVaccineMethod()%></td>
 						</tr>							
 						<tr>
-							<th>보관</th>
+							<th>보관 </th>
 							<td><%=vaccineDto.getVaccineKeep()%></td>
 						</tr>							
 						<tr>
