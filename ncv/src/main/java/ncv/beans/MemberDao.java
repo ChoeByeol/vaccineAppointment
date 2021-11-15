@@ -11,6 +11,28 @@ import ncv.beans.JdbcUtils;
 
 public class MemberDao {
 
+	// [1] 회원가입 메소드
+	public void join(MemberDto memberDto) throws Exception {
+		Connection con = JdbcUtils.connect();
+
+		String sql = "insert into member(member_id, member_pw, member_name, "
+				+ "member_rrn, member_gender, member_phone, member_address, member_join) "
+				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate)";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberDto.getMemberId());
+		ps.setString(2, memberDto.getMemberPw());
+		ps.setString(3, memberDto.getMemberName());
+		ps.setString(4, memberDto.getMemberRrn());
+		ps.setString(5, memberDto.getMemberGender());
+		ps.setString(6, memberDto.getMemberPhone());
+		ps.setString(7, memberDto.getMemberAddress());
+
+		ps.execute();
+
+		con.close();
+	}
+
 	// 관리자가 회원을 탈퇴시키는 기능
 	public boolean quit(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
@@ -106,7 +128,7 @@ public class MemberDao {
 
 		return list;
 	}
-	
+
 	public List<MemberDto> searchByRownum(String column, String keyword, int begin, int end) throws Exception {
 		Connection con = JdbcUtils.connect();
 
@@ -139,19 +161,18 @@ public class MemberDao {
 
 		return list;
 	}
-	
-	
-	//조회
-	public List<MemberDto> select() throws Exception{
+
+	// 조회
+	public List<MemberDto> select() throws Exception {
 		Connection con = JdbcUtils.connect();
-		
+
 		String sql = "select * from member";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
-		
-		//rs의 내용을 List에 복사
+
+		// rs의 내용을 List에 복사
 		List<MemberDto> list = new ArrayList<>();
-		while(rs.next()) {
+		while (rs.next()) {
 			MemberDto memberDto = new MemberDto();
 			memberDto.setMemberId(rs.getString("member_id"));
 			memberDto.setMemberPw(rs.getString("member_pw"));
@@ -162,27 +183,27 @@ public class MemberDao {
 			memberDto.setMemberPhone(rs.getString("member_phone"));
 			memberDto.setMemberJoin(rs.getDate("member_join"));
 			memberDto.setMemberRole(rs.getString("member_role"));
-			
+
 			list.add(memberDto);
 		}
-		
+
 		con.close();
-		
+
 		return list;
 	}
-	
+
 //	검색분류와 검색어를 입력받아 회원 검색
-	public List<MemberDto> select(String column, String keyword) throws Exception{
+	public List<MemberDto> select(String column, String keyword) throws Exception {
 		Connection con = JdbcUtils.connect();
-		
+
 		String sql = "select * from member where instr(#1, ?) > 0 order by #1 asc";
 		sql = sql.replace("#1", column);
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<MemberDto> list = new ArrayList<>();
-		while(rs.next()) {
+		while (rs.next()) {
 			MemberDto memberDto = new MemberDto();
 			memberDto.setMemberId(rs.getString("member_id"));
 			memberDto.setMemberPw(rs.getString("member_pw"));
@@ -193,26 +214,26 @@ public class MemberDao {
 			memberDto.setMemberPhone(rs.getString("member_phone"));
 			memberDto.setMemberJoin(rs.getDate("member_join"));
 			memberDto.setMemberRole(rs.getString("member_role"));
-			
+
 			list.add(memberDto);
 		}
-				
+
 		con.close();
-		
+
 		return list;
 	}
-	
+
 //	단일 조회
 	public MemberDto select(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
-		
+
 		String sql = "select * from member where member_id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberId);
 		ResultSet rs = ps.executeQuery();
-		
+
 		MemberDto memberDto;
-		if(rs.next()) {
+		if (rs.next()) {
 			memberDto = new MemberDto();
 			memberDto.setMemberId(rs.getString("member_id"));
 			memberDto.setMemberPw(rs.getString("member_pw"));
@@ -223,13 +244,12 @@ public class MemberDao {
 			memberDto.setMemberPhone(rs.getString("member_phone"));
 			memberDto.setMemberJoin(rs.getDate("member_join"));
 			memberDto.setMemberRole(rs.getString("member_role"));
-		}
-		else {
+		} else {
 			memberDto = null;
 		}
-		
+
 		con.close();
-		
+
 		return memberDto;
 	}
 }
