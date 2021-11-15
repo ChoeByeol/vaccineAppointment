@@ -6,29 +6,29 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import ncv.beans.JdbcUtils;
+
 public class MemberDao {
-	
-public static final String USERNAME = "semi", PASSWORD = "semi";
 	
 	//[1] 회원가입 메소드
 	public void join(MemberDto memberDto) throws Exception {
+		
 		Connection con = JdbcUtils.connect();
 		
 		String sql = "insert into member("
-								+ "memberId, memberPw, memberPw2, "
-								+ "memberName, memberRrn, member_phone"
-								+ "memberAddress"
-							+ ") "
-							+ "values(?, ?, ?, ?, ?, ?,?)";
+				+ "member_id, member_pw, member_name, "
+				+ "member_rrn, member_gender, "
+				+ "member_phone, member_address, member_join) "
+				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberId());
 		ps.setString(2, memberDto.getMemberPw());
-		ps.setString(3, memberDto.getMemberPw2());
-		ps.setString(4, memberDto.getMemberName());
-		ps.setString(5, memberDto.getMemberRrn());
-		ps.setString(6, memberDto.getMemberPhone());
-		ps.setString(7, memberDto.getMemberAddress());
+		ps.setString(3, memberDto.getMemberName());
+		ps.setString(4, memberDto.getMemberRrn());
+		ps.setString(5, memberDto.getMemberGender());
+		ps.setString(6, memberDto.getMemberAddress());
+		ps.setString(7, memberDto.getMemberPhone());
 		
 		ps.execute();
 		

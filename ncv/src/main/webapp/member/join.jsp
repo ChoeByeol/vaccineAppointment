@@ -16,32 +16,32 @@
  	</div>
  	<div class="row">
  		<label>비밀번호</label>
- 		<input type="password" name="member_Pw" required class="form-input">
+ 		<input type="password" name="memberPw" required class="form-input">
  	</div>
   	<div class="row">
  		<label>비밀번호 재확인</label>
- 		<input type="password" name="member_Pw" required class="form-input">
+ 		<input type="password" name="memberPw2" required class="form-input">
  	</div>
  	 <div class="row">
- 		<label></label>
- 		<input type="text" name="member_Nick" required class="form-input">
+ 		<label>이름</label>
+ 		<input type="text" name="memberName" required class="form-input">
  	</div>
  	 <div class="row">
- 		<label class="form-block">생년월일</label>
- 		<input type="date" name="member_Birth" required class="form-input">
+ 		<label class="form-block">주민등록번호</label>
+ 		<input type="number" name="memberRrn" required class="form-input">
  	</div>
  	 <div class="row">
- 		<label>이메일</label>
- 		<input type="email" name="member_email" required class="form-input">
+ 		<label class="form-block">성별</label>
+ 		<input type="text" name="memberGender" required class="form-input">
  	</div>
 	<div class="row">
  		<label>전화번호</label>
- 		<input type="tel" name="member_phone" required class="form-input">
+ 		<input type="tel" name="memberPhone" required class="form-input">
  	</div>
-	<div class="row">
- 		<label>프로필 이미지</label>
-		<input type="file" name="attach" accept="image/*" class="form-input"> 	
-	</div>
+ 	 <div class="row">
+ 		<label>주소</label>
+ 		<input type="text" name="memberAddress" required class="form-input">
+ 	</div>
 	<div class="row">
 		<input type="submit" value="가입" class="form-btn">
 	</div>

@@ -1,7 +1,6 @@
 package ncv.servlet.member;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,23 +18,13 @@ public class memberJoinServlet extends HttpServlet{
 		try {
 			req.setCharacterEncoding("UTF-8");
 			MemberDto memberDto = new MemberDto();
-			memberDto.setMemberId(req.getParameter("member_id"));
-			memberDto.setMemberPw(req.getParameter("member_Pw"));
-			memberDto.setMemberPw2(req.getParameter("member_Pw2"));
-			memberDto.setMemberName(req.getParameter("member_Nick"));
+			memberDto.setMemberId(req.getParameter("memberId"));
+			memberDto.setMemberPw(req.getParameter("memberPw"));
+			memberDto.setMemberName(req.getParameter("memberName"));
 			memberDto.setMemberRrn(req.getParameter("memberRrn"));
-			memberDto.setMember_email(req.getParameter("member_email"));
-			memberDto.setMember_phone(req.getParameter("member_phone"));
-			ps.setString(1, memberDto.getMemberId());
-			ps.setString(2, memberDto.getMemberPw());
-			ps.setString(3, memberDto.getMemberPw2());
-			ps.setString(4, memberDto.getMemberName());
-			ps.setString(5, memberDto.getMemberRrn());
-			ps.setString(6, memberDto.getMemberPhone());
-			ps.setString(7, memberDto.getMemberAddress());
-			
-			조
-			System.out.println(memberDto);
+			memberDto.setMemberGender(req.getParameter("memberGender"));
+			memberDto.setMemberPhone(req.getParameter("memberPhone"));
+			memberDto.setMemberAddress(req.getParameter("memberAddress"));
 			
 			//처리 : MemberDao
 			MemberDao memberDao = new MemberDao();
@@ -46,7 +35,7 @@ public class memberJoinServlet extends HttpServlet{
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			resp.sendError(500);//사용자에게 500번 상태값을 전송(500은 internal server error)
+			resp.sendError(500);
 		}
 	}
 

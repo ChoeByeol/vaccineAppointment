@@ -6,7 +6,6 @@ public class MemberDto {
 
     private String memberId;
     private String memberPw;
-    private String memberPw2;
     private String memberName;
     private String memberRrn;
     private String memberGender;
