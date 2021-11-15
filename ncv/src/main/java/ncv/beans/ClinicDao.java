@@ -53,7 +53,7 @@ public class ClinicDao {
     public List<ClinicDto> list() throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "select * from clinic order by clinic_no desc";
+        String sql = "select * from clinic order by clinic_no asc";
         
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();

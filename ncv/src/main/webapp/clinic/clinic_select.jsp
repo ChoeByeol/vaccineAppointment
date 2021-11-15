@@ -40,6 +40,7 @@
             <td><%=clinicDto.getClinicDetailAddress()%></td>
         </tr>
     </tbody>
+</table>
 
 <a href="edit.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 수정</a>
 <a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 삭제</a>
