@@ -91,4 +91,32 @@ public class ClinicDao {
         
         return result > 0;
     }
+    
+    //병원 상세조회 기능
+    public ClinicDto select(int clinicNo) throws Exception{
+    	Connection con = JdbcUtils.connect();
+    	
+    	String sql = "select * from clinic where clinic_no = ?";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setInt(1, clinicNo);
+    	ResultSet rs = ps.executeQuery();
+    	
+    	ClinicDto clinicDto = new ClinicDto();
+    	
+    	if(rs.next()) {
+            clinicDto.setClinicNo(rs.getInt("clinic_no"));
+            clinicDto.setClinicName(rs.getString("clinic_name"));
+            clinicDto.setClinicTel(rs.getString("clinic_tel"));
+            clinicDto.setClinicTime(rs.getString("clinic_time"));
+            clinicDto.setClinicPostcode(rs.getString("clinic_postcode"));
+            clinicDto.setClinicAddress(rs.getString("clinic_address"));
+            clinicDto.setClinicDetailAddress(rs.getString("clinic_detailAddress"));
+    	}
+    	else {
+    		clinicDto = null;
+    	}
+    	con.close();
+    	
+    	return clinicDto;
+    }
 }
