@@ -15,7 +15,8 @@ VaccineDao vaccineDao = new VaccineDao();
 VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 %>
 
-<!--<jsp:include page="/template/header.jsp"></jsp:include>-->
+<%-- <jsp:include page="/template/header.jsp"></jsp:include> --%>
+
 
 <form action="vaccineEdit.txt" method="post">
 <input type="hidden" name="vaccineNo" value="<%=vaccineDto.getVaccineNo()%>">
@@ -95,4 +96,4 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 	<h4><font color="red">입력하신 정보가 일치하지 않습니다</font></h4>
 <%} %>
 
-<!--<jsp:include page="/template/footer.jsp"></jsp:include>-->
+<%-- <jsp:include page="/template/footer.jsp"></jsp:include> --%>

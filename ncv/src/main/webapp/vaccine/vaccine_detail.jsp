@@ -27,7 +27,7 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 	});
 </script>
 
-<!--<jsp:include page="/template/header.jsp"></jsp:include>-->
+<%-- <jsp:include page="/template/header.jsp"></jsp:include> --%>
 
 <style>
 .flex-container>.reply-write-wrapper {
@@ -107,4 +107,6 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 	</div>
 </div>
 
-<!--<jsp:include page="/template/footer.jsp"></jsp:include>-->
+
+<%-- <jsp:include page="/template/footer.jsp"></jsp:include> --%>
+
