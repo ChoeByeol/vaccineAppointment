@@ -30,7 +30,7 @@ public class ClinicEditServlet extends HttpServlet{
             boolean success = clinicDao.edit(clinicDto);
 
             if(success) {
-                resp.sendRedirect("병원상세조회페이지");
+                resp.sendRedirect("select.jsp?clinicNo="+clinicDto.getClinicNo());
             }
             else {
                 resp.sendRedirect("에러페이지");
