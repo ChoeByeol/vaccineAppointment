@@ -52,4 +52,11 @@ public class ClinicDto {
 	public void setClinicDetailAddress(String clinicDetailAddress) {
 		this.clinicDetailAddress = clinicDetailAddress;
 	}
+	@Override
+	public String toString() {
+		return "ClinicDto [clinicNo=" + clinicNo + ", clinicName=" + clinicName + ", clinicTel=" + clinicTel
+				+ ", clinicTime=" + clinicTime + ", clinicPostcode=" + clinicPostcode + ", clinicAddress="
+				+ clinicAddress + ", clinicDetailAddress=" + clinicDetailAddress + "]";
+	}
+	
 }
