@@ -11,7 +11,7 @@ List<VaccineDto> vaccineList = vaccineDao.list();
 %>
 
 <%-- 출력 --%>
-<jsp:include page="/template/header.jsp"></jsp:include>
+<!--<jsp:include page="/template/header.jsp"></jsp:include>-->
 
 <style>
 .float-container>.float-item-left:nth-child(1) {
@@ -189,4 +189,4 @@ tbody {
 	</div>
 </div>
 
-<jsp:include page="/template/footer.jsp"></jsp:include>
+<!--<jsp:include page="/template/footer.jsp"></jsp:include>-->
