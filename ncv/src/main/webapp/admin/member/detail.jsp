@@ -6,7 +6,7 @@
 <%
 	String memberId = request.getParameter("memberId");
 	MemberDao memberDao = new MemberDao();
-	MemberDto memberDto = memberDao.select(memberId);
+	MemberDto memberDto = memberDao.get(memberId);
 %>
 
 

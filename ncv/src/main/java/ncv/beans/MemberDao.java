@@ -224,7 +224,7 @@ public class MemberDao {
 	}
 
 //	단일 조회
-	public MemberDto select(String memberId) throws Exception {
+	public MemberDto get(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
 
 		String sql = "select * from member where member_id = ?";
