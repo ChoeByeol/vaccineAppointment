@@ -140,6 +140,7 @@ public class MemberDao {
 		return list;
 	}
 	
+	
 	//조회
 	public List<MemberDto> select() throws Exception{
 		Connection con = JdbcUtils.connect();

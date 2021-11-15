@@ -31,13 +31,14 @@
 	<tbody align="center">
 			<tr>			
 				<td><%=memberDto.getMemberId()%></td>
+				<td><%=memberDto.getMemberPw()%></td>
 				<td><%=memberDto.getMemberName()%></td>
 				<td><%=memberDto.getMemberRrn()%></td>
 				<td><%=memberDto.getMemberGender()%></td>
 				<td><%=memberDto.getMemberAddress()%></td>
 				<td><%=memberDto.getMemberPhone()%></td>
 				<td><%=memberDto.getMemberJoin()%></td>
-				<td><%=memberDto.getMemberRole()%></td>		
+				<td><%=memberDto.getMemberRole()%></td>
 			</tr>
 	</tbody>
 </table>

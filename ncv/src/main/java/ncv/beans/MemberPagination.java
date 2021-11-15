@@ -193,4 +193,6 @@ public class MemberPagination {
 				+ ", startBlock=" + startBlock + ", finishBlock=" + finishBlock + ", lastBlock=" + lastBlock + "]";
 	}
 	
+	
 }
+

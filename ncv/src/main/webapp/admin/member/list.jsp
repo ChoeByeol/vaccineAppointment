@@ -17,7 +17,7 @@
 
 <%=memPgn.toString() %>
 
-<%-- <jsp:include page="/template/header.jsp"></jsp:include>     --%>
+<%-- <jsp:include page="/template/header.jsp"></jsp:include> --%>
 
 <h2><%=title%></h2>
 
@@ -40,7 +40,7 @@
 				<td><%=memberDto.getMemberId()%></td>
 				<td><%=memberDto.getMemberName()%></td>
 				<td><%=memberDto.getMemberGender()%></td>
-				<td><%=memberDto.getMemberRole()%></td>		
+				<td><%=memberDto.getMemberRole()%></td>
 				<td>
 					<a href="detail.jsp?memberId=<%=memberDto.getMemberId()%>">상세</a>
 					<a href="edit.jsp?memberId=<%=memberDto.getMemberId()%>">수정</a>

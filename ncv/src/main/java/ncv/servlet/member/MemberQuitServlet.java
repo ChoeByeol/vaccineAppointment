@@ -39,4 +39,5 @@ public class MemberQuitServlet extends HttpServlet{
 			resp.sendError(500);
 		}
 	}
+	
 }

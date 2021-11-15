@@ -27,4 +27,5 @@ public class AdminMemberQuitServlet extends HttpServlet{
 			resp.sendError(500);
 		}
 	}
+	
 }
