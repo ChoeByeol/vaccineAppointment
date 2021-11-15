@@ -33,6 +33,8 @@ public class memberJoinServlet extends HttpServlet{
 			ps.setString(5, memberDto.getMemberRrn());
 			ps.setString(6, memberDto.getMemberPhone());
 			ps.setString(7, memberDto.getMemberAddress());
+			
+			조인
 			System.out.println(memberDto);
 			
 			//처리 : MemberDao
