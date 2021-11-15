@@ -4,7 +4,7 @@ public class ClinicDto {
 	
 	private int clinicNo;
 	private String clinicName;
-	private String clinicTell;
+	private String clinicTel;
 	private String clinicTime;
 	private String clinicPostcode;
 	private String clinicAddress;
@@ -22,11 +22,11 @@ public class ClinicDto {
 	public void setClinicName(String clinicName) {
 		this.clinicName = clinicName;
 	}
-	public String getClinicTell() {
-		return clinicTell;
+	public String getClinicTel() {
+		return clinicTel;
 	}
-	public void setClinicTell(String clinicTell) {
-		this.clinicTell = clinicTell;
+	public void setClinicTel(String clinicTel) {
+		this.clinicTel = clinicTel;
 	}
 	public String getClinicTime() {
 		return clinicTime;
@@ -52,4 +52,11 @@ public class ClinicDto {
 	public void setClinicDetailAddress(String clinicDetailAddress) {
 		this.clinicDetailAddress = clinicDetailAddress;
 	}
+	@Override
+	public String toString() {
+		return "ClinicDto [clinicNo=" + clinicNo + ", clinicName=" + clinicName + ", clinicTel=" + clinicTel
+				+ ", clinicTime=" + clinicTime + ", clinicPostcode=" + clinicPostcode + ", clinicAddress="
+				+ clinicAddress + ", clinicDetailAddress=" + clinicDetailAddress + "]";
+	}
+	
 }
