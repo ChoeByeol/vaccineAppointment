@@ -25,6 +25,8 @@ public class memberJoinServlet extends HttpServlet{
 			memberDto.setMemberGender(req.getParameter("memberGender"));
 			memberDto.setMemberPhone(req.getParameter("memberPhone"));
 			memberDto.setMemberAddress(req.getParameter("memberAddress"));
+			memberDto.setMemberPostcode(req.getParameter("memberPostcode"));
+			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
 			
 			//처리 : MemberDao
 			MemberDao memberDao = new MemberDao();

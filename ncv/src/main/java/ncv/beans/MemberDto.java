@@ -13,11 +13,25 @@ public class MemberDto {
     private String memberPhone;
     private Date memberJoin;
     private String memberRole;
+    private String memberDetailAddress;
+    private String memberPostcode;
 
     public MemberDto() {
         super();
     }
-    public String getMemberId() {
+    public String getMemberDetailAddress() {
+		return memberDetailAddress;
+	}
+	public void setMemberDetailAddress(String memberDetailAddress) {
+		this.memberDetailAddress = memberDetailAddress;
+	}
+	public String getMemberPostcode() {
+		return memberPostcode;
+	}
+	public void setMemberPostcode(String memberPostcode) {
+		this.memberPostcode = memberPostcode;
+	}
+	public String getMemberId() {
         return memberId;
     }
     public void setMemberId(String memberId) {
