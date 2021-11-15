@@ -12,8 +12,13 @@
 	ClinicDto clinicDto = clinicDao.select(clinicNo);
 %>
 
-<form actio="edit.text" method="post">
+<form action="edit.txt" method="post">
 	<table border = "0">
+		<tr>
+			<td>
+				<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
+			</td>
+		</tr>
 		<tr>
 			<th>병원 이름</th>
 			<td>
