@@ -31,7 +31,7 @@ public class ClinicDao {
     public boolean edit(ClinicDto clinicDto) throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "update clinic clinic_name = ?, clinic_tel = ?, clinic_Time = ?, clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ? where clinic_no = ?";
+        String sql = "update clinic set clinic_name = ?, clinic_tel = ?, clinic_Time = ?, clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ? where clinic_no = ?";
         
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, clinicDto.getClinicName());
