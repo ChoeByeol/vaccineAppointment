@@ -71,5 +71,5 @@ public class MemberDto {
 	public void setMemberRole(String memberRole) {
 		this.memberRole = memberRole;
 	}
-	
+	 
 }
