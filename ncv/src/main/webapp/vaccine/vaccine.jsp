@@ -10,7 +10,6 @@ VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
 %>
 
-<%-- 출력 --%>
 <!--<jsp:include page="/template/header.jsp"></jsp:include>-->
 
 <style>

@@ -27,9 +27,8 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 	});
 </script>
 
-
-
 <!--<jsp:include page="/template/header.jsp"></jsp:include>-->
+
 <style>
 .flex-container>.reply-write-wrapper {
 	width: 80%;

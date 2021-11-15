@@ -9,7 +9,6 @@
 
 <!--<jsp:include page="/template/header.jsp"></jsp:include>-->
 
-
 <form action= "vaccineWrite.txt" method="post">
 
 <input type="hidden" name="vaccineNo" value="<%=vaccineNo%>">
