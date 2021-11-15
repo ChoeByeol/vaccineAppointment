@@ -17,7 +17,6 @@ public class ClinicInsertServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//입력
-			req.setCharacterEncoding("UTF-8");
 			ClinicDto clinicDto = new ClinicDto();
 			clinicDto.setClinicName(req.getParameter("clinicName"));
 			clinicDto.setClinicTel(req.getParameter("clinicTel"));
