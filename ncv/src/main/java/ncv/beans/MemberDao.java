@@ -224,7 +224,7 @@ public class MemberDao {
 	}
 
 //	단일 조회
-	public MemberDto select(String memberId) throws Exception {
+	public MemberDto get(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
 
 		String sql = "select * from member where member_id = ?";
@@ -252,4 +252,40 @@ public class MemberDao {
 
 		return memberDto;
 	}
+	
+	  public boolean edit(MemberDto memberDto) throws Exception{
+	      Connection con = JdbcUtils.connect();
+
+	      String sql = "update member set "
+	                + "member_address = ?,"
+	                + "member_phone = ? "
+	              + "where "
+	                + "member_id = ? and member_pw = ?";
+	      PreparedStatement ps = con.prepareStatement(sql);
+	      ps.setString(1, memberDto.getMemberAddress());
+	      ps.setString(2, memberDto.getMemberPhone());
+	      ps.setString(3, memberDto.getMemberId());
+	      ps.setString(4, memberDto.getMemberPw());
+	      int result = ps.executeUpdate();
+
+	      con.close();
+
+	      return result > 0;
+	  }
+
+	//  비밀번호 변경 메소드
+	  public boolean editPassword(String memberId, String memberPw, String changePw) throws Exception {
+	      Connection con = JdbcUtils.connect();
+
+	      String sql = "update member set member_pw = ? where member_id = ? and member_pw = ?";
+	      PreparedStatement ps = con.prepareStatement(sql);
+	      ps.setString(1, changePw);//바꿀비밀번호
+	      ps.setString(2, memberId);//현재아이디
+	      ps.setString(3, memberPw);//현재비밀번호
+	      int result = ps.executeUpdate();
+
+	      con.close();
+
+	      return result > 0;
+	  }
 }

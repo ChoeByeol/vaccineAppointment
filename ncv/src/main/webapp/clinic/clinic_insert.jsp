@@ -38,6 +38,13 @@
                     //$("input[name=postcode]").val(data.zonecode);
                     document.querySelector("input[name=clinicAddress]").value = addr;
                     //$("input[name=address]").val(addr);
+                    
+                    //시도
+                    document.querySelector("input[name=clinicSido]").value = data.sido;
+                    //시군구
+                    document.querySelector("input[name=clinicSigungu]").value = data.sigungu;
+                    //읍면동
+                    document.querySelector("input[name=clinicBname]").value = data.bname;
 
                     // 커서를 상세주소 필드로 이동한다.
                     document.querySelector("input[name=clinicDetailAddress]").focus();
@@ -61,6 +68,11 @@
     <input type="text" name="clinicAddress" placeholder="주소">
     <br>
 	<input type="text" name="clinicDetailAddress" placeholder="상세주소">
+	<br>
+	<!-- 히든으로 타입바꿔서 넣어야함 플레이스홀더도 지우고 -->
+	<input type="text" name="clinicSido" placeholder="광역시도">
+	<input type="text" name="clinicSigungu" placeholder="시군구">
+	<input type="text" name="clinicBname" placeholder="읍면동">
 	<br>
 	<input type="submit" value="병원 등록">
 </form>
