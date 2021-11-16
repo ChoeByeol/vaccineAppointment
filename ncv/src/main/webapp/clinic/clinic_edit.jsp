@@ -68,22 +68,26 @@
 %>
 
 <form action="edit.txt" method="post">
-				<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
-				병원 이름 : <input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>">
-				<br><br>
-				병원 연락처 : <input type="text" name="clinicTel" required value="<%=clinicDto.getClinicTel()%>">
-				<br><br>
-				진료시간 : <input type="text" name="clinicTime" required value="<%=clinicDto.getClinicTime()%>">
-				<br><br>
-				우편번호 : <input type="text" name="clinicPostcode" required value="<%=clinicDto.getClinicPostcode()%>">
-				<button type="button" class="find-address-btn">주소 검색</button>
-				<br><br>
-				병원 주소 : <input type="text" name="clinicAddress" required value="<%=clinicDto.getClinicAddress()%>">
-				<br><br>
-				상세주소 : <input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>">
-				<br><br>
-				<input type="submit" value="수정">
-				<input type="hidden" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
-				<input type="hidden" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
-				<input type="hidden" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">		
+		<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
+		병원 이름 : <input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>">
+		<br><br>
+		병원 연락처 : <input type="text" name="clinicTel" required value="<%=clinicDto.getClinicTel()%>">
+		<br><br>
+		진료시간 : <input type="text" name="clinicTime" required value="<%=clinicDto.getClinicTime()%>">
+		<br><br>
+		우편번호 : <input type="text" name="clinicPostcode" required value="<%=clinicDto.getClinicPostcode()%>">
+		<button type="button" class="find-address-btn">주소 검색</button>
+		<br><br>
+		병원 주소 : <input type="text" name="clinicAddress" required value="<%=clinicDto.getClinicAddress()%>">
+		<br><br>
+		상세주소 : <input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>">
+		<br><br>
+		<input type="submit" value="수정">
+		<input type="hidden" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
+		<input type="hidden" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
+		<input type="hidden" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">		
 </form>
+
+<%if(request.getParameter("error") != null){ %>
+	<h4 class="error">정보 수정 오류!</h4>
+<%} %>

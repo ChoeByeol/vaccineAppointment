@@ -33,7 +33,7 @@ public class ClinicEditServlet extends HttpServlet{
                 resp.sendRedirect("clinic_select.jsp?clinicNo="+clinicDto.getClinicNo());
             }
             else {
-                resp.sendRedirect("에러페이지");
+                resp.sendRedirect("clinic_edit.jsp?error");
             }
         }
         catch (Exception e) {
