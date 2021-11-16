@@ -16,7 +16,7 @@
 %>
 
 <%-- 출력 --%>
-<%-- <jsp:include page="/template/header.jsp"></jsp:include> --%>
+<jsp:include page="/template/header.jsp"></jsp:include>
 
 <h2>회원 정보 수정</h2>
 
@@ -65,4 +65,4 @@
 <h4><font color="red">비밀번호가 일치하지 않습니다</font></h4>
 <%} %>
 
-<%-- <jsp:include page="/template/footer.jsp"></jsp:include> --%>
+<jsp:include page="/template/footer.jsp"></jsp:include>

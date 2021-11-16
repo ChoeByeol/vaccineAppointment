@@ -10,7 +10,7 @@
 %>
 
 
-<%-- <jsp:include page="/template/header.jsp"></jsp:include>   --%>
+<jsp:include page="/template/header.jsp"></jsp:include>  
 
 <h2>회원 상세 정보</h2>
 
@@ -44,4 +44,4 @@
 </table>
 
 
-<%-- <jsp:include page="/template/footer.jsp"></jsp:include>     --%>
+<jsp:include page="/template/footer.jsp"></jsp:include>    
