@@ -1,3 +1,5 @@
+<%@page import="ncv.beans.ClinicDto"%>
+<%@page import="ncv.beans.ClinicDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -50,34 +52,48 @@
                     }
                     //읍면동
                     document.querySelector("input[name=clinicBname]").value = data.bname;
-               
-                    
+
                     // 커서를 상세주소 필드로 이동한다.
                     document.querySelector("input[name=clinicDetailAddress]").focus();
                     //$("input[name=detailAddress]").focus();
+
                 }
             }).open();
         };
     });
 </script>
 
-<form action="clinicInsert.txt" method="post">
-	<input type="text" name="clinicName" placeholder="병원 이름">
-	<br>
-	<input type="text" name="clinicTel" placeholder="병원 전화번호">
-	<br>
-	<textarea name="clinicTime" placeholder="병원 운영시간" rows="10" cols="60"></textarea>
-	<br>
-    <input type="text" name="clinicPostcode" placeholder="우편번호">
-    <button type="button" class="find-address-btn">주소 찾기</button><br>
-    <input type="text" name="clinicAddress" placeholder="주소">
-    <br>
-	<input type="text" name="clinicDetailAddress" placeholder="상세주소">
-	<br>
-	<!-- 히든으로 타입바꿔서 넣어야함 플레이스홀더도 지우고 -->
-	<input type="text" name="clinicSido" placeholder="광역시도">
-	<input type="text" name="clinicSigungu" placeholder="시군구">
-	<input type="text" name="clinicBname" placeholder="읍면동">
-	<br>
-	<input type="submit" value="병원 등록">
+<%--입력--%>
+<% int clinicNo = Integer.parseInt(request.getParameter("clinicNo"));%>
+
+<%--처리--%>
+<%
+	ClinicDao clinicDao = new ClinicDao();
+	ClinicDto clinicDto = clinicDao.select(clinicNo);
+%>
+
+<form action="edit.txt" method="post">
+		<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
+		병원 이름 : <input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>">
+		<br><br>
+		병원 연락처 : <input type="text" name="clinicTel" required value="<%=clinicDto.getClinicTel()%>">
+		<br><br>
+		진료시간 : <input type="text" name="clinicTime" required value="<%=clinicDto.getClinicTime()%>">
+		<br><br>
+		우편번호 : <input type="text" name="clinicPostcode" required value="<%=clinicDto.getClinicPostcode()%>">
+		<button type="button" class="find-address-btn">주소 검색</button>
+		<br><br>
+		병원 주소 : <input type="text" name="clinicAddress" required value="<%=clinicDto.getClinicAddress()%>">
+		<br><br>
+		상세주소 : <input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>">
+		<br><br>
+		<input type="submit" value="수정">
+		<!-- 아래 히든으로 바꿔줘야함  -->
+		<input type="text" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
+		<input type="text" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
+		<input type="text" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">		
 </form>
+
+<%if(request.getParameter("error") != null){ %>
+	<h4 class="error">정보 수정 오류!</h4>
+<%} %>
