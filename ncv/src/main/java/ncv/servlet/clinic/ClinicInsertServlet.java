@@ -33,7 +33,7 @@ public class ClinicInsertServlet extends HttpServlet {
 			clinicDao.insert(clinicDto);
 			
 			//리다이렉트
-			resp.sendRedirect("clinic_insert.jsp");
+			resp.sendRedirect("clinic_select.jsp?clinicNo="+clinicDto.getClinicNo());
 
 			
 		} catch (Exception e) {
