@@ -34,7 +34,10 @@ public class ClinicDao {
     public boolean edit(ClinicDto clinicDto) throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "update clinic set clinic_name = ?, clinic_tel = ?, clinic_Time = ?, clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ? where clinic_no = ?";
+        String sql = "update clinic set "
+        		+ "clinic_name = ?, clinic_tel = ?, clinic_Time = ?, "
+        		+ "clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ?, "
+        		+ "clinic_sido = ?, clinic_sigungu = ?, clinic_bname = ? where clinic_no = ?";
         
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, clinicDto.getClinicName());
@@ -43,7 +46,10 @@ public class ClinicDao {
         ps.setString(4, clinicDto.getClinicPostcode());
         ps.setString(5, clinicDto.getClinicAddress());
         ps.setString(6, clinicDto.getClinicDetailAddress());
-        ps.setInt(7, clinicDto.getClinicNo());
+        ps.setString(7, clinicDto.getClinicSido());
+        ps.setString(8, clinicDto.getClinicSigungu());
+        ps.setString(9, clinicDto.getClinicBname());
+        ps.setInt(10, clinicDto.getClinicNo());
         
         int result = ps.executeUpdate();
         
@@ -72,6 +78,9 @@ public class ClinicDao {
             clinicDto.setClinicPostcode(rs.getString("clinic_postcode"));
             clinicDto.setClinicAddress(rs.getString("clinic_address"));
             clinicDto.setClinicDetailAddress(rs.getString("clinic_detailAddress"));
+            clinicDto.setClinicSido(rs.getString("clinic_sido"));
+            clinicDto.setClinicSigungu(rs.getString("clinic_sigungu"));
+            clinicDto.setClinicBname(rs.getString("clinic_bname"));
             
             list.add(clinicDto);
         }
@@ -114,6 +123,9 @@ public class ClinicDao {
             clinicDto.setClinicPostcode(rs.getString("clinic_postcode"));
             clinicDto.setClinicAddress(rs.getString("clinic_address"));
             clinicDto.setClinicDetailAddress(rs.getString("clinic_detailAddress"));
+            clinicDto.setClinicSido(rs.getString("clinic_sido"));
+            clinicDto.setClinicSigungu(rs.getString("clinic_sigungu"));
+            clinicDto.setClinicBname(rs.getString("clinic_bname"));
     	}
     	else {
     		clinicDto = null;

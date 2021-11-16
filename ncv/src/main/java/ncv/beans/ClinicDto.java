@@ -12,6 +12,7 @@ public class ClinicDto {
 	private String clinicSido;
 	private String clinicSigungu;
 	private String clinicBname;
+	
 	public int getClinicNo() {
 		return clinicNo;
 	}
