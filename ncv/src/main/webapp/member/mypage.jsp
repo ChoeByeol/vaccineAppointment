@@ -1,4 +1,4 @@
-<%@page import="home.beans.TotalHistoryDto"%>
+<%@page import="ncv.beans.TotalHistoryDto"%>
 <%@page import="home.beans.TotalHistoryDao"%>
 <%@page import="java.text.Format"%>
 <%@page import="java.text.DecimalFormat"%>

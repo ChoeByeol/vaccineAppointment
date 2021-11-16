@@ -25,6 +25,7 @@ public class memberLoginServlet extends HttpServlet {
 			MemberDao memberDao = new MemberDao();
 			MemberDto memberDto = memberDao.get(memberId);
 			
+			
 			//회원이 있는데 비밀번호까지 같다면 로그인이 성공한 것으로 간주하고 싶다
 			boolean isLogin = memberDto != null && memberPw.equals(memberDto.getMemberPw());
 			
@@ -32,9 +33,8 @@ public class memberLoginServlet extends HttpServlet {
 			if(isLogin) {
 			
 				req.getSession().setAttribute("ses",memberId);
-
+				req.getSession().setAttribute("grade", memberDto.getMemberRole());
 				resp.sendRedirect(req.getContextPath()+"/index.jsp");
-
 			}
 			else {
 				//login.jsp 로 이동하면서 ?error 파라미터를 붙여서 오류임을 표시

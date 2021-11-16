@@ -4,8 +4,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
  <jsp:include page="/template/header.jsp"></jsp:include>
  <script>
-	 
     $(function(){
+        $("input[name=memberRrn]").blur(function(){
+            var genderCode = $("input[name=memberRrn]").val().substring(6,7);
+            if(genderCode == "1" || genderCode =="3"){
+                $("input[name=memberGender]").val("남");
+            }
+            else if(genderCode == "2" || genderCode =="4"){
+                $("input[name=memberGender]").val("여");
+            }
+        });
+    	
         $(".find-address-btn").click(function(){
             findAddress();
         });
@@ -66,22 +75,21 @@
  	</div>
  	 <div class="row">
  		<label class="form-block">주민등록번호</label>
- 		<input type="text" name="memberRrn" placeholder="- 제외하고 입력해주세요"required class="form-input" maxlength="13"  size="13" onkeypress="goJump('memberFrontRrn', 6, 'memberBackRrn')">
+        <input type="text" name="memberRrn" class="form-input" placeholder="-제외" maxlength="13">
  	</div>
+ 	<%--성별 --%>
  	 <div class="row">
- 		<label class="form-block">성별</label>
- 		<input type="radio" name="memberGender" value="0" checked > 남
-		<input type="radio" name="memberGender" value= "1" > 여
+ 		<input type="hidden" name="memberGender">
  	</div>
 	<div class="row">
  		<label>전화번호</label>
- 		<input type="text" name="memberPhone" placeholder="-도 적어주세요"required class="form-input" maxlength="13">
+ 		<input type="tel" name="memberPhone" placeholder="-제외"required class="form-input" maxlength="11">
  	</div>
  	 <div class="row">
  		<label>우편번호</label>
  		<input type="text" name="memberPostcode" placeholder="우편번호" required class="form-input">
  	</div>
- 	<button type="button" class="find-address-btn">주소 찾기</button><br>
+ 	<button type="button" class="find-address-btn form-btn">주소 찾기</button><br>
   	 <div class="row">
  		<label>주소</label>
  		<input type="text" name="memberAddress" placeholder="주소"required class="form-input">
