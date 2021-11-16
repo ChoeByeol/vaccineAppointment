@@ -6,7 +6,7 @@
 
 <%-- 입력 : memberId (session) --%>
 <%
-	String memberId = (String)session.getAttribute("ses");
+	String memberId = request.getParameter("memberId");
 %>
 
 <%-- 처리 --%>
@@ -25,9 +25,18 @@
 	<table border="0">
 		<tbody>
 			<tr>
+				<td>
+					<input type="hidden" name="memberId" required value="<%=memberDto.getMemberId()%>">
+					<input type= "hidden" name= "memberRrn" required value= "<%=memberDto.getMemberRrn()%>">
+					<input type= "hidden" name= "memberGender" required value= "<%=memberDto.getMemberGender()%>">
+					<input type= "hidden" name= "memberName" required value= "<%=memberDto.getMemberName()%>">			
+				</td>
+			</tr>
+				
+			<tr>
 				<th>비밀번호</th>
 				<td>
-					<input type="password" name="memberPw" required>
+					<input type="password" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
 				</td>
 			</tr>
 			<tr>
