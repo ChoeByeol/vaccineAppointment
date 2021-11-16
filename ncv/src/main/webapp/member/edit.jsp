@@ -29,7 +29,9 @@
 					<input type="hidden" name="memberId" required value="<%=memberDto.getMemberId()%>">
 					<input type= "hidden" name= "memberRrn" required value= "<%=memberDto.getMemberRrn()%>">
 					<input type= "hidden" name= "memberGender" required value= "<%=memberDto.getMemberGender()%>">
-					<input type= "hidden" name= "memberName" required value= "<%=memberDto.getMemberName()%>">			
+					<input type= "hidden" name= "memberName" required value= "<%=memberDto.getMemberName()%>">
+					<input type="hidden" name="memberJoin" required value="<%=memberDto.getMemberJoin()%>">
+					<input type="hidden" name="memberRole" required value="<%=memberDto.getMemberRole()%>">		
 				</td>
 			</tr>
 				
