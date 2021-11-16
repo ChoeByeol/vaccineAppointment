@@ -8,13 +8,31 @@ import java.util.List;
 
 public class ClinicDao {
     
+	//시퀀스 생성 기능 (insert 후 병원 상세 정보 조회를 위함)
+	public int getSequence() throws Exception{
+		Connection con = JdbcUtils.connect();
+		
+		String sql = "select clinic_seq.nextval from dual";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		int seq = rs.getInt("nextval");
+		
+		con.close();
+		
+		return seq;
+	}
+	
     //병원 등록 기능
     public void insert(ClinicDto clinicDto) throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "insert into clinic values(clinic_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into clinic values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, clinicDto.getClinicNo());
         ps.setString(1, clinicDto.getClinicName());
         ps.setString(2, clinicDto.getClinicTel());
         ps.setString(3, clinicDto.getClinicTime());

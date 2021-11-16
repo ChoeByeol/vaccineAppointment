@@ -30,10 +30,12 @@ public class ClinicInsertServlet extends HttpServlet {
 			
 			//처리
 			ClinicDao clinicDao = new ClinicDao();
+			int clinicNo = clinicDao.getSequence();
+			clinicDto.setClinicNo(clinicNo);
 			clinicDao.insert(clinicDto);
 			
 			//리다이렉트
-			resp.sendRedirect("list.jsp");
+			resp.sendRedirect("select.jsp?clinicNo="+clinicNo);
 
 			
 		} catch (Exception e) {
