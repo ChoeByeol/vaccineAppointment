@@ -122,4 +122,40 @@ public class ClinicDao {
     	
     	return clinicDto;
     }
+    
+    //시도 목록 조회 기능 (필요할거 같아서 만들어놈)
+    public List<String> sidoList() throws Exception{
+    	Connection con = JdbcUtils.connect();
+    	String sql = "select clinic_sido from clinic group by clinic_sido order by clinic_sido";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ResultSet rs = ps.executeQuery();
+    	
+    	List<String> list = new ArrayList<>();
+    	while(rs.next()) {
+    		list.add(rs.getString(1));
+    	}
+    	
+    	con.close();
+    	
+    	return list;
+    }
+    
+    
+    //시군구 목록 조회하는 기능 (필요할거 같아서 만들어놈)
+    public List<String> sigunguList(String clinicSido) throws Exception{
+    	Connection con = JdbcUtils.connect();
+    	String sql = "select clinic_sigungu from clinic where clinic_sido=? group by clinic_sigungu order by clinic_sigungu asc";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setString(1, clinicSido);
+    	ResultSet rs = ps.executeQuery();
+    	
+    	List<String> list = new ArrayList<>();
+    	while(rs.next()) {
+    		list.add(rs.getString(1));
+    	}
+    	
+    	con.close();
+    	
+    	return list;
+    }
 }
