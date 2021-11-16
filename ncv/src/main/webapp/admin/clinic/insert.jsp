@@ -41,8 +41,13 @@
                     
                     //시도
                     document.querySelector("input[name=clinicSido]").value = data.sido;
-                    //시군구
-                    document.querySelector("input[name=clinicSigungu]").value = data.sigungu;
+                    //시군구 (세종시는 sigungu에 null이 들어가서 따로 처리)
+                    if(document.querySelector("input[name=clinicSido]").value == "세종특별자치시"){
+                    	document.querySelector("input[name=clinicSigungu]").value = "세종시";
+                    }
+                    else{
+	                    document.querySelector("input[name=clinicSigungu]").value = data.sigungu;
+                    }
                     //읍면동
                     document.querySelector("input[name=clinicBname]").value = data.bname;
 

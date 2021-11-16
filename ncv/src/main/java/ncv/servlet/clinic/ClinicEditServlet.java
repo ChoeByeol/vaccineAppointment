@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ncv.beans.ClinicDao;
 import ncv.beans.ClinicDto;
 
-@WebServlet(urlPatterns = "/clinic/edit.txt")
+@WebServlet(urlPatterns = "/admin/clinic/edit.txt")
 public class ClinicEditServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,6 +25,9 @@ public class ClinicEditServlet extends HttpServlet{
             clinicDto.setClinicPostcode(req.getParameter("clinicPostcode"));
             clinicDto.setClinicAddress(req.getParameter("clinicAddress"));
             clinicDto.setClinicDetailAddress(req.getParameter("clinicDetailAddress"));
+            clinicDto.setClinicSido(req.getParameter("clinicSido"));
+            clinicDto.setClinicSigungu(req.getParameter("clinicSigungu"));
+            clinicDto.setClinicBname(req.getParameter("clinicBname"));
 
             ClinicDao clinicDao = new ClinicDao();
             boolean success = clinicDao.edit(clinicDto);

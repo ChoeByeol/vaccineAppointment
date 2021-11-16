@@ -43,8 +43,13 @@
                     
                     //시도
                     document.querySelector("input[name=clinicSido]").value = data.sido;
-                    //시군구
-                    document.querySelector("input[name=clinicSigungu]").value = data.sigungu;
+                    //시군구 (세종시는 sigungu에 null이 들어가서 따로 처리)
+                    if(document.querySelector("input[name=clinicSido]").value == "세종특별자치시"){
+                    	document.querySelector("input[name=clinicSigungu]").value = "세종시";
+                    }
+                    else{
+	                    document.querySelector("input[name=clinicSigungu]").value = data.sigungu;
+                    }
                     //읍면동
                     document.querySelector("input[name=clinicBname]").value = data.bname;
 
@@ -83,9 +88,10 @@
 		상세주소 : <input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>">
 		<br><br>
 		<input type="submit" value="수정">
-		<input type="hidden" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
-		<input type="hidden" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
-		<input type="hidden" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">		
+		<!-- 아래 히든으로 바꿔줘야함  -->
+		<input type="text" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
+		<input type="text" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
+		<input type="text" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">		
 </form>
 
 <%if(request.getParameter("error") != null){ %>
