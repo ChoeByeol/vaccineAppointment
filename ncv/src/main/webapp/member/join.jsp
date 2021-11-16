@@ -4,6 +4,52 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
  <jsp:include page="/template/header.jsp"></jsp:include>
  <script>
+ <!--
+ // 주민등록입력시 생년월일 자동입력
+ function inputbirth(str) {
+  var temp1,temp2,temp3;
+  temp1=document.form.memberFrontRrn.value.substring(0,2);
+  temp2=document.form.memberFrontRrn.value.substring(2,4);
+  temp3=document.form.memberFrontRrn.value.substring(4,6);
+  document.form.byy.value=str+temp1;
+  document.form.bmm.value=temp2;
+  document.form.bdd.value=temp3;
+ }
+ 
+ // 주민등록입력시 성별 자동입력
+ function inputgen() {
+  var temp1;
+  temp1=document.form.memberGender.value.substring(0,1);
+  if (temp1 == "1" || temp1 == "3"||temp1 == "5" || temp1 == "7"||temp1 == "9"){
+   document.form.memberGender[0].checked = true;
+  }
+  else{
+   document.form.memberGender[1].checked = true;
+  }
+  goJump('memberGender', 7, 'byy')
+ }
+
+ function goJump(fname, len, goname)
+ {
+  isNumber(fname);
+  if (document.all[fname].value.length == len) document.all[goname].focus();
+ }
+
+ function isNumber( str ) {
+  var temp = document.all[str].value;
+  if( temp.length > 0 ){
+   for(var i=0; i<temp.length; i++) {
+    if(temp.charAt(i)<'0' || temp.charAt(i)>'9'){
+     alert("숫자만 입력이 가능합니다.")
+      document.all[str].value ="";
+      document.all[str].focus();
+      break;
+    }
+   }
+  }
+  return;
+ }
+	 
     $(function(){
         $(".find-address-btn").click(function(){
             findAddress();
@@ -44,7 +90,7 @@
     });
 </script>
  
- <form action="join.kh" method="post">
+ <form action="join.kh" name="form" method="post">
  
  <div class="container-400 container-center">
  
@@ -65,15 +111,18 @@
  	</div>
  	 <div class="row">
  		<label class="form-block">주민등록번호</label>
- 		<input type="text" name="memberRrn" placeholder="-도 적어주세요"required class="form-input">
+ 		<input type="text" name="memberFrontRrn" placeholder="주민번호 앞자리"required class="form-input" maxlength="6"  size="6" onkeypress="goJump('memberFrontRrn', 6, 'memberBackRrn')">
+ 		<br><br>
+ 		<input type="password" name="memberBackRrn" placeholder="주민번호 뒷자리" required class="form-input" size="7" maxlength="7" onkeypress="inputgen()">
  	</div>
  	 <div class="row">
  		<label class="form-block">성별</label>
- 		<input type="text" name="memberGender" placeholder="성별"required class="form-input">
+ 		<input type="radio" name="memberGender" value="0" checked > 남
+		<input type="radio" name="memberGender" value= "1" > 여
  	</div>
 	<div class="row">
  		<label>전화번호</label>
- 		<input type="text" name="memberPhone" placeholder="-도 적어주세요"required class="form-input">
+ 		<input type="text" name="memberPhone" placeholder="-도 적어주세요"required class="form-input" maxlength="13">
  	</div>
  	 <div class="row">
  		<label>우편번호</label>

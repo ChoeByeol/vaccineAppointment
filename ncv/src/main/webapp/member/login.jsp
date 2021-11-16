@@ -11,11 +11,11 @@
  	</div>
  	 <div class="row">
  		<h1>아이디</h1>
- 		<input type="text" name="member_id" required class="form-input" autocomplete="off">
+ 		<input type="text" name="memberId" required class="form-input" autocomplete="off">
  	</div>
  	<div class="row">
  		<h1>비밀번호</h1>
- 		<input type="password" name="member_Pw" required class="form-input">
+ 		<input type="password" name="memberPw" required class="form-input">
  </div>
   	<div class="row right">
  		<input type="submit" value="로그인" required class="form-btn form-incline">

@@ -21,12 +21,13 @@ public class memberJoinServlet extends HttpServlet{
 			memberDto.setMemberId(req.getParameter("memberId"));
 			memberDto.setMemberPw(req.getParameter("memberPw"));
 			memberDto.setMemberName(req.getParameter("memberName"));
-			memberDto.setMemberRrn(req.getParameter("memberRrn"));
+			memberDto.setMemberFrontRrn(req.getParameter("memberFrontRrn"));
 			memberDto.setMemberGender(req.getParameter("memberGender"));
 			memberDto.setMemberPhone(req.getParameter("memberPhone"));
-			memberDto.setMemberAddress(req.getParameter("memberAddress"));
 			memberDto.setMemberPostcode(req.getParameter("memberPostcode"));
+			memberDto.setMemberAddress(req.getParameter("memberAddress"));
 			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
+			memberDto.setMemberBackRrn(req.getParameter("memberBackRrn"));
 			
 			//처리 : MemberDao
 			MemberDao memberDao = new MemberDao();

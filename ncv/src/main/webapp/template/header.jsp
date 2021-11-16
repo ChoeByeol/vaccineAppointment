@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%
-    //로그인 상태인지 아닌지 판정하는 코드
-    //로그인 상태라는 것은 세션에 존재하는 ses라는 데이터가 null이 아니라는 것이다.
-    //jsp에서는 session이라는 내장객체가 존재하기 때문에 바로 접근이 가능하다
     String ses = (String)session.getAttribute("ses");
     boolean login = ses != null;
     

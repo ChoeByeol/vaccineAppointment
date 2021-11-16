@@ -20,7 +20,6 @@ public class memberLoginServlet extends HttpServlet {
 			req.setCharacterEncoding("UTF-8");
 			String memberId = req.getParameter("memberId");
 			String memberPw = req.getParameter("memberPw");
-			String memberPw2 = req.getParameter("memberPw2");
 			
 			//처리
 			MemberDao memberDao = new MemberDao();
@@ -31,18 +30,10 @@ public class memberLoginServlet extends HttpServlet {
 			
 			//출력
 			if(isLogin) {
-				
-				//세션 = 서버에서 사용자 정보를 관리하기 위한 단골수첩과 같은 저장소(Map형태)
-				//세션(단골수첩)에 사용자가 로그인 했음을 key=value 형태로 저장하면 이후에 확인이 가능
-				//저장형태는 String, Object
-				//서블릿에서는 req.getSession() 이라는 명령으로 접근이 가능			
-				//여기서는 가장 중요한 회원정보인 회원아이디를 ses라는 이름으로 저장
+			
 				req.getSession().setAttribute("ses",memberId);
-				req.getSession().setAttribute("grade", memberDto.getMember_grade());
-				
-//				resp.sendRedirect("../index.jsp");//상대
-				resp.sendRedirect(req.getContextPath()+"/index.jsp");	//절대
-//				resp.sendRedirect("/home/index.jsp");	//절대
+
+				resp.sendRedirect(req.getContextPath()+"/index.jsp");
 
 			}
 			else {
