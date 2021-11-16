@@ -41,6 +41,8 @@
         </tr>
     </tbody>
 </table>
-
+<a href="reservation_list.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">백신 예약 내역 보기</a>
+<a href="shot_list.jsp?cliniNo=<%=clinicDto.getClinicNo()%>">백신 접종 내역 보기</a>
+<br><br>
 <a href="edit.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 수정</a>
 <a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 삭제</a>
