@@ -111,9 +111,7 @@
  	</div>
  	 <div class="row">
  		<label class="form-block">주민등록번호</label>
- 		<input type="text" name="memberFrontRrn" placeholder="주민번호 앞자리"required class="form-input" maxlength="6"  size="6" onkeypress="goJump('memberFrontRrn', 6, 'memberBackRrn')">
- 		<br><br>
- 		<input type="password" name="memberBackRrn" placeholder="주민번호 뒷자리" required class="form-input" size="7" maxlength="7" onkeypress="inputgen()">
+ 		<input type="text" name="memberRrn" placeholder="주민번호 앞자리"required class="form-input" maxlength="6"  size="6" onkeypress="goJump('memberFrontRrn', 6, 'memberBackRrn')">
  	</div>
  	 <div class="row">
  		<label class="form-block">성별</label>

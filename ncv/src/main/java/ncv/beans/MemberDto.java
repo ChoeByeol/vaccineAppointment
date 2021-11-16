@@ -7,7 +7,7 @@ public class MemberDto {
     private String memberId;
     private String memberPw;
     private String memberName;
-    private String memberFrontRrn;
+    private String memberRrn;
     private String memberGender;
     private String memberAddress;
     private String memberPhone;
@@ -15,19 +15,13 @@ public class MemberDto {
     private String memberRole;
     private String memberDetailAddress;
     private String memberPostcode;
-    private String memberBackRrn;
 
-    public String getMemberFrontRrn() {
-		return memberFrontRrn;
+
+	public String getMemberRrn() {
+		return memberRrn;
 	}
-	public void setMemberFrontRrn(String memberFrontRrn) {
-		this.memberFrontRrn = memberFrontRrn;
-	}
-	public String getMemberBackRrn() {
-		return memberBackRrn;
-	}
-	public void setMemberBackRrn(String memberBackRrn) {
-		this.memberBackRrn = memberBackRrn;
+	public void setMemberRrn(String memberRrn) {
+		this.memberRrn = memberRrn;
 	}
 	public MemberDto() {
         super();

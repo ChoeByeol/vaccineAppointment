@@ -17,27 +17,27 @@ public class MemberDao {
 		
 		String sql = "insert into member("
 				+ "member_id, member_pw, member_name, "
-				+ "member_frontRrn, member_gender, "
+				+ "member_Rrn, member_gender, "
 				+ "member_address, member_phone, member_join,"
-				+ "member_DetailAddress, member_postcode,"
-				+ "member_backRrn) "
+				+ "member_DetailAddress, member_postcode"
+				+ ") "
 				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate,?,?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberId());
 		ps.setString(2, memberDto.getMemberPw());
 		ps.setString(3, memberDto.getMemberName());
-		ps.setString(4, memberDto.getMemberFrontRrn());
+		ps.setString(4, memberDto.getMemberRrn());
 		ps.setString(5, memberDto.getMemberGender());
 		ps.setString(6, memberDto.getMemberAddress());
 		ps.setString(7, memberDto.getMemberPhone());
 		ps.setString(8, memberDto.getMemberDetailAddress());	
 		ps.setString(9, memberDto.getMemberPostcode());
-		ps.setString(10, memberDto.getMemberBackRrn());
 		ps.execute();
 		
 		con.close();
 	}
+	
 //	회원상세 기능	
 	public MemberDto get(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
@@ -56,8 +56,7 @@ public class MemberDao {
 			memberDto.setMemberId(rs.getString("member_id"));
 			memberDto.setMemberPw(rs.getString("member_pw"));
 			memberDto.setMemberName(rs.getString("member_name"));
-			memberDto.setMemberFrontRrn(rs.getString("member_frontRrn"));
-			memberDto.setMemberBackRrn(rs.getString("member_backRrn"));
+			memberDto.setMemberRrn(rs.getString("member_rrn"));
 			memberDto.setMemberGender(rs.getString("member_gender"));
 			memberDto.setMemberPhone(rs.getString("member_phone"));
 			memberDto.setMemberPostcode(rs.getString("member_postcode"));
