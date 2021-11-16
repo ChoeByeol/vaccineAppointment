@@ -21,7 +21,7 @@ public class ClinicDeleteServlet extends HttpServlet{
 			boolean success = clinicDao.delete(clinicNo);
 			
 			if(success) {
-				resp.sendRedirect("list.txt");
+				resp.sendRedirect("list.jsp");
 			}
 			else {
 				resp.sendError(404);
