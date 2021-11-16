@@ -24,14 +24,21 @@
 	
 	<table border="0">
 		<tbody>
+		<tr>
+                <th>이름</th>
+                <td>
+                <input type="hidden" name="memberName" value="<%=memberDto.getMemberName()%>">
+                <%=memberDto.getMemberName()%>
+                </td>
+            </tr>
+            
 			<tr>
-				<td>
-					<input type="hidden" name="memberId" required value="<%=memberDto.getMemberId()%>">
-					<input type= "hidden" name= "memberRrn" required value= "<%=memberDto.getMemberRrn()%>">
-					<input type= "hidden" name= "memberGender" required value= "<%=memberDto.getMemberGender()%>">
-					<input type= "hidden" name= "memberName" required value= "<%=memberDto.getMemberName()%>">			
-				</td>
-			</tr>
+                <th>아이디</th>
+                <td>
+                <input type="hidden" name="memberId" value="<%=memberDto.getMemberId()%>">
+                <%=memberDto.getMemberId()%>
+                </td>
+            </tr>
 				
 			<tr>
 				<th>비밀번호</th>
@@ -39,6 +46,23 @@
 					<input type="password" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
 				</td>
 			</tr>
+			
+			 <tr>
+                <th>주민등록번호</th>
+                <td>
+                <input type="hidden" name="memberRrn" value="<%=memberDto.getMemberRrn()%>">
+                <%=memberDto.getMemberRrn()%>
+                </td>
+            </tr>
+            
+			<tr>
+                <th>성별</th>
+                <td>
+                <input type="hidden" name="memberGender" value="<%=memberDto.getMemberGender()%>">
+                <%=memberDto.getMemberGender()%>
+                </td>
+            </tr>
+			
 			<tr>
 				<th>주소</th>
 				<td>
