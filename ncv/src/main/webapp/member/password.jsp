@@ -11,11 +11,11 @@
 	</div>
 	<div class="row center">
 			<label>현재 비밀번호</label>
-			<input type="password" name="member_Pw" required class="form-input">
+			<input type="password" name="memberPw" required class="form-input">
 	</div>
 	<div class="row center">
 		<label>변경 비밀번호</label>
-		<input type="password" name="change_Pw" required class="form-input">
+		<input type="password" name="changePw" required class="form-input">
 	</div>
 	<div class="row">
 		<input type="submit" value="변경" class="form-btn">

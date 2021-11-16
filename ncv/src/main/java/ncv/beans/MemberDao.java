@@ -21,7 +21,7 @@ public class MemberDao {
 				+ "member_address, member_phone, member_join,"
 				+ "member_DetailAddress, member_postcode"
 				+ ") "
-				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate,?,?,?)";
+				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberId());
@@ -63,6 +63,7 @@ public class MemberDao {
 			memberDto.setMemberAddress(rs.getString("member_address"));
 			memberDto.setMemberDetailAddress(rs.getString("member_detailaddress"));
 			memberDto.setMemberJoin(rs.getDate("member_join"));
+			memberDto.setMemberRole(rs.getString("member_role"));
 		}
 		else {
 			memberDto = null;
@@ -71,5 +72,20 @@ public class MemberDao {
 		con.close();
 		
 		return memberDto;
+	}
+//  비밀번호 변경 메소드
+	public boolean editPassword(String memberId, String memberPw, String changePw) throws Exception {
+		Connection con = JdbcUtils.connect();
+
+		String sql = "update member set member_pw = ? where member_id = ? and member_pw = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, changePw);// 바꿀비밀번호
+		ps.setString(2, memberId);// 현재아이디
+		ps.setString(3, memberPw);// 현재비밀번호
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
 	}
 }
