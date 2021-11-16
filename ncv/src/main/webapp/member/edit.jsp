@@ -21,46 +21,68 @@
 <h2>회원 정보 수정</h2>
 
 <form action="edit.txt" method="post">
-	
-	<table border="0">
-		<tbody>
-			<tr>
-				<td>
-					<input type="hidden" name="memberId" required value="<%=memberDto.getMemberId()%>">
-					<input type= "hidden" name= "memberRrn" required value= "<%=memberDto.getMemberRrn()%>">
-					<input type= "hidden" name= "memberGender" required value= "<%=memberDto.getMemberGender()%>">
-					<input type= "hidden" name= "memberName" required value= "<%=memberDto.getMemberName()%>">
-					<input type="hidden" name="memberJoin" required value="<%=memberDto.getMemberJoin()%>">
-					<input type="hidden" name="memberRole" required value="<%=memberDto.getMemberRole()%>">		
-				</td>
-			</tr>
-				
-			<tr>
-				<th>비밀번호</th>
-				<td>
-					<input type="password" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
-				</td>
-			</tr>
-			<tr>
-				<th>주소</th>
-				<td>
-					<input type="text" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
-				</td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td>
-					<input type= "tel" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
-					</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="right">
-					<input type="submit" value="수정">
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	
+    
+    <table border="0">
+        <tbody>
+        <tr>
+                <th>이름</th>
+                <td>
+                <input type="hidden" name="memberName" value="<%=memberDto.getMemberName()%>">
+                <%=memberDto.getMemberName()%>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>아이디</th>
+                <td>
+                <input type="hidden" name="memberId" value="<%=memberDto.getMemberId()%>">
+                <%=memberDto.getMemberId()%>
+                </td>
+            </tr>
+                
+            <tr>
+                <th>비밀번호</th>
+                <td>
+                    <input type="password" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
+                </td>
+            </tr>
+            
+             <tr>
+                <th>주민등록번호</th>
+                <td>
+                <input type="hidden" name="memberRrn" value="<%=memberDto.getMemberRrn()%>">
+                <%=memberDto.getMemberRrn()%>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>성별</th>
+                <td>
+                <input type="hidden" name="memberGender" value="<%=memberDto.getMemberGender()%>">
+                <%=memberDto.getMemberGender()%>
+                </td>
+            </tr>
+            
+            <tr>
+                <th>주소</th>
+                <td>
+                    <input type="text" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
+                </td>
+            </tr>
+            <tr>
+                <th>전화번호</th>
+                <td>
+                    <input type= "tel" name= "memberPhone"    required value="<%=memberDto.getMemberPhone()%>">
+                    </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="submit" value="수정">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
 </form>
 
 <%if(request.getParameter("error") != null){%>
