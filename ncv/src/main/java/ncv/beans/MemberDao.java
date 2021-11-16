@@ -252,40 +252,61 @@ public class MemberDao {
 
 		return memberDto;
 	}
-	
-	  public boolean edit(MemberDto memberDto) throws Exception{
-	      Connection con = JdbcUtils.connect();
 
-	      String sql = "update member set "
-	                + "member_address = ?,"
-	                + "member_phone = ? "
-	              + "where "
-	                + "member_id = ? and member_pw = ?";
-	      PreparedStatement ps = con.prepareStatement(sql);
-	      ps.setString(1, memberDto.getMemberAddress());
-	      ps.setString(2, memberDto.getMemberPhone());
-	      ps.setString(3, memberDto.getMemberId());
-	      ps.setString(4, memberDto.getMemberPw());
-	      int result = ps.executeUpdate();
+//  개인정보 변경 기능
+	public boolean edit(MemberDto memberDto) throws Exception {
+		Connection con = JdbcUtils.connect();
 
-	      con.close();
+		String sql = "update member set " 
+							+ "member_address = ?," 
+							+ "member_phone = ? " 
+					+ "where "
+							+ "member_id = ? and member_pw = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberDto.getMemberAddress());
+		ps.setString(2, memberDto.getMemberPhone());
+		ps.setString(3, memberDto.getMemberId());
+		ps.setString(4, memberDto.getMemberPw());
+		int result = ps.executeUpdate();
 
-	      return result > 0;
-	  }
+		con.close();
 
-	//  비밀번호 변경 메소드
-	  public boolean editPassword(String memberId, String memberPw, String changePw) throws Exception {
-	      Connection con = JdbcUtils.connect();
+		return result > 0;
+	}
 
-	      String sql = "update member set member_pw = ? where member_id = ? and member_pw = ?";
-	      PreparedStatement ps = con.prepareStatement(sql);
-	      ps.setString(1, changePw);//바꿀비밀번호
-	      ps.setString(2, memberId);//현재아이디
-	      ps.setString(3, memberPw);//현재비밀번호
-	      int result = ps.executeUpdate();
+	// 비밀번호 변경 메소드
+	public boolean editPassword(String memberId, String memberPw, String changePw) throws Exception {
+		Connection con = JdbcUtils.connect();
 
-	      con.close();
+		String sql = "update member set member_pw = ? where member_id = ? and member_pw = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, changePw);// 바꿀비밀번호
+		ps.setString(2, memberId);// 현재아이디
+		ps.setString(3, memberPw);// 현재비밀번호
+		int result = ps.executeUpdate();
 
-	      return result > 0;
-	  }
+		con.close();
+
+		return result > 0;
+	}
+
+//관리자용 수정 기능
+	public boolean editByAdmin(MemberDto memberDto) throws Exception {
+		Connection con = JdbcUtils.connect();
+
+		String sql = "update member " + "set " + "member_name=?, " 
+						+ "member_Address=?, " + "member_Phone=?, "
+						+ "member_Role=? " + "where member_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberDto.getMemberName());
+		ps.setString(2, memberDto.getMemberAddress());
+		ps.setString(3, memberDto.getMemberPhone());
+		ps.setString(4, memberDto.getMemberRole());
+		ps.setString(5, memberDto.getMemberId());
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+	}
 }
