@@ -1,7 +1,6 @@
 package ncv.servlet.member;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import ncv.beans.MemberDao;
 import ncv.beans.MemberDto;
 
+
 @WebServlet(urlPatterns = "/member/join.txt")
-public class MemberJoinServlet extends HttpServlet{
+public class memberJoinServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			
+			req.setCharacterEncoding("UTF-8");
 			MemberDto memberDto = new MemberDto();
 			memberDto.setMemberId(req.getParameter("memberId"));
 			memberDto.setMemberPw(req.getParameter("memberPw"));
@@ -25,6 +25,8 @@ public class MemberJoinServlet extends HttpServlet{
 			memberDto.setMemberGender(req.getParameter("memberGender"));
 			memberDto.setMemberPhone(req.getParameter("memberPhone"));
 			memberDto.setMemberAddress(req.getParameter("memberAddress"));
+			memberDto.setMemberPostcode(req.getParameter("memberPostcode"));
+			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
 			
 			//처리 : MemberDao
 			MemberDao memberDao = new MemberDao();

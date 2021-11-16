@@ -1,0 +1,4 @@
+/* 테스트용 테두리 */
+div, main, header, footer, nav, section, article, aside, p, span, label {
+    border:1px dotted gray;
+}
