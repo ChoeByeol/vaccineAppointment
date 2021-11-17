@@ -56,6 +56,10 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 		<div class="row center">
 			<table class="table table-border table-hover">
 				<tr>
+					<th>예약번호</th>
+					<td><%=reservationVo.getResNo()%></td>
+				</tr>
+				<tr>
 					<th width="30%">이름</th>
 					<td><%=reservationVo.getResName()%></td>
 				</tr>
@@ -68,16 +72,12 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 					<td><%=reservationVo.getResPhone()%></td>
 				</tr>
 				<tr>
-					<th>예약번호</th>
-					<td><%=reservationVo.getResNo()%></td>
-				</tr>
-				<tr>
 					<th>백신명</th>
 					<td><%=reservationVo.getVaccineName()%></td>
 				</tr>
 				<tr>
 					<th>접종차수</th>
-					<td><%=reservationVo.getShotNo()%></td>
+					<td><%=reservationVo.getShotNo()%>차</td>
 				</tr>
 				<tr>
 					<th>예약병원</th>

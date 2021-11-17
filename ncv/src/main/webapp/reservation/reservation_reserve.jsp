@@ -1,3 +1,5 @@
+<%@page import="ncv.beans.ReservationDao"%>
+<%@page import="ncv.beans.ReservationDto"%>
 <%@page import="ncv.beans.VaccineDto"%>
 <%@page import="ncv.beans.VaccineDao"%>
 <%@page import="java.util.List"%>
@@ -14,6 +16,11 @@ List<ClinicDto> list  = clinicDao.list();
 <%
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
+%>
+
+<%
+ReservationDao reservationDao = new ReservationDao();
+List<ReservationDto> reservationList = reservationDao.list();
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -102,10 +109,10 @@ tbody {
 			
 	<div class="row">
 				<label>접종차수</label>
-				<select name="shotNo">
-					<option value="1">1차</option>
-					<option value="2">2차</option>
-				</select>
+				<input type="hidden" name="shotNo">
+				<%for(ReservationDto reservationDto : reservationList){ %>
+				<span><%=reservationDto.getShotNo()%></span>
+				<%} %>
 			</div>					
 
 	<div class="row">
