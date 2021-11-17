@@ -9,7 +9,7 @@
 <%
 	String member_id = (String)session.getAttribute("ses");
 %>
-
+    
 <%-- 처리 : 회원정보(MemberDto) --%>
 <%
 	MemberDao memberDao = new MemberDao();
@@ -19,8 +19,7 @@
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
  
- <h2> 회원 상세 정보</h2>
- 
+ <h2> 회원 상세 정보</h2> 
 
 <table border = "1" width="300">
 	<tbody>

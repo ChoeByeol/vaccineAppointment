@@ -281,24 +281,29 @@ public class MemberDao {
 		return list;
 	}
 	
-	  public boolean edit(MemberDto memberDto) throws Exception{
-	      Connection con = JdbcUtils.connect();
+//  개인정보 변경 기능
+	public boolean edit(MemberDto memberDto) throws Exception {
+		Connection con = JdbcUtils.connect();
 
-	      String sql = "update member set "
-	                + "member_address = ?,"
-	                + "member_phone = ? "
-	              + "where "
-	                + "member_id = ? and member_pw = ?";
-	      PreparedStatement ps = con.prepareStatement(sql);
-	      ps.setString(1, memberDto.getMemberAddress());
-	      ps.setString(2, memberDto.getMemberPhone());
-	      ps.setString(3, memberDto.getMemberId());
-	      ps.setString(4, memberDto.getMemberPw());
-	      int result = ps.executeUpdate();
+		String sql = "update member set " 
+						+ "member_Postcode=?,"
+						+ "member_Address=?, " 
+						+ "member_DetailAddress=?,"
+						+ "member_phone = ? " 
+					+ "where "
+							+ "member_id = ? and member_pw = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberDto.getMemberPostcode());
+		ps.setString(2, memberDto.getMemberAddress());
+		ps.setString(3, memberDto.getMemberDetailAddress());
+		ps.setString(4, memberDto.getMemberPhone());
+		ps.setString(5, memberDto.getMemberId());
+		ps.setString(6, memberDto.getMemberPw());
+		int result = ps.executeUpdate();
 
-	      con.close();
+		con.close();
 
-	      return result > 0;
-	  }
+		return result > 0;
+	}
 	  
 }
