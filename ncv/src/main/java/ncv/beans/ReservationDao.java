@@ -38,18 +38,18 @@ public class ReservationDao {
 			ps.setString(6, reservationDto.getResDate());
 			ps.setString(7, reservationDto.getResTime());
 			ps.setString(8, reservationDto.getResName());
-			ps.setString(9, reservationDto.getResRrn());
+			ps.setString(9, reservationDto.getResRrn());    
 			ps.setString(10, reservationDto.getResPhone());
 			ps.execute();
 
 			con.close();
 		}	
-	
+	  
 		// 예약 취소 기능
 		public boolean cancel(int resNo) throws Exception{
 			Connection con = JdbcUtils.connect();
 
-			String sql = "delete reservation where vaccine_no = ?";
+			String sql = "delete reservation where res_no = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, resNo);
 			int result = ps.executeUpdate();
@@ -79,7 +79,7 @@ public class ReservationDao {
 				reservationDto.setResDate(rs.getString("res_date"));
 				reservationDto.setResTime(rs.getString("res_time"));
 				reservationDto.setResName(rs.getString("res_name"));
-				reservationDto.setResRrn(rs.getString("res_rnn"));
+				reservationDto.setResRrn(rs.getString("res_rrn"));
 				reservationDto.setResPhone(rs.getString("res_phone"));
 				
 				reservationList.add(reservationDto);
@@ -90,10 +90,44 @@ public class ReservationDao {
 			return reservationList;
 		}
 		
+		
+		
 		//예약 상세보기 기능
-		public ReservationDto get(int resNo) throws Exception {
+		public ReservationVo get(int resNo) throws Exception {
 			Connection con = JdbcUtils.connect();
+			String sql = "select a.res_no, b.vaccine_name, c.clinic_name, a.shot_no, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no where res_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, resNo);
+			ResultSet rs = ps.executeQuery();
 
+			ReservationVo reservationVo;
+			if(rs.next()) {
+				reservationVo = new ReservationVo();
+
+				reservationVo.setResNo(rs.getInt("res_no"));
+				reservationVo.setClinicName(rs.getString("clinic_name"));
+				reservationVo.setVaccineName(rs.getString("vaccine_name"));
+				reservationVo.setShotNo(rs.getInt("shot_no"));
+				reservationVo.setResDate(rs.getString("res_date"));
+				reservationVo.setResTime(rs.getString("res_time"));
+				reservationVo.setResName(rs.getString("res_name"));
+				reservationVo.setResRrn(rs.getString("res_rrn"));
+				reservationVo.setResPhone(rs.getString("res_phone"));
+
+			}
+			else {
+				reservationVo = null;
+			}
+
+			con.close();
+
+			return reservationVo;
+		}
+		
+		
+		//예약 변경 상세보기 기능
+		public ReservationDto editGet(int resNo) throws Exception {
+			Connection con = JdbcUtils.connect();
 			String sql = "select * from reservation where res_no = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, resNo);
@@ -104,15 +138,9 @@ public class ReservationDao {
 				reservationDto = new ReservationDto();
 
 				reservationDto.setResNo(rs.getInt("res_no"));
-				reservationDto.setMemberId(rs.getString("member_id"));;
 				reservationDto.setClinicNo(rs.getInt("clinic_no"));
-				reservationDto.setVaccineNo(rs.getInt("vaccine_no"));
-				reservationDto.setShotNo(rs.getInt("shot_no"));
 				reservationDto.setResDate(rs.getString("res_date"));
 				reservationDto.setResTime(rs.getString("res_time"));
-				reservationDto.setResName(rs.getString("res_name"));
-				reservationDto.setResRrn(rs.getString("res_rnn"));
-				reservationDto.setResPhone(rs.getString("res_phone"));
 
 			}
 			else {
@@ -124,4 +152,21 @@ public class ReservationDao {
 			return reservationDto;
 		}
 		
+		
+		//예약 변경 기능
+		public boolean  edit(ReservationDto reservationDto) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "update reservation set clinic_no = ?, res_date =  ?, res_time = ? where res_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, reservationDto.getClinicNo());
+			ps.setString(2, reservationDto.getResDate());
+			ps.setString(3, reservationDto.getResTime());
+			int result = ps.executeUpdate();
+
+			con.close();
+
+			return result > 0;		
+		}			
+				
 }
