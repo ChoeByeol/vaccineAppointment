@@ -28,7 +28,6 @@ public class AdminMemberEditServlet extends HttpServlet{
 			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
 			memberDto.setMemberRole(req.getParameter("memberRole"));
 			
-			
 			//처리
 			MemberDao memberDao = new MemberDao();
 			boolean success = memberDao.editByAdmin(memberDto);

@@ -3,17 +3,15 @@
     
 <jsp:include page="/template/header.jsp"></jsp:include>
 <style>
-
 	.flex-container > .form-input {
 		width:75%;
 	}
 	.flex-container > .form-btn {
 		width:25%;
 	}
-
 </style>
 
- <form action="quit.kh" method="post">
+ <form action="quit.txt" method="post">
 
 <div class="container-400 container-center">
 	<div class="row center">

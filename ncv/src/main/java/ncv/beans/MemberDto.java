@@ -18,7 +18,14 @@ public class MemberDto {
     private String memberDetailAddress;
     private String memberPostcode;
 
-    public MemberDto() {
+
+	public String getMemberRrn() {
+		return memberRrn;
+	}
+	public void setMemberRrn(String memberRrn) {
+		this.memberRrn = memberRrn;
+	}
+	public MemberDto() {
         super();
     }
     public String getMemberDetailAddress() {
@@ -45,23 +52,11 @@ public class MemberDto {
     public void setMemberPw(String memberPw) {
         this.memberPw = memberPw;
     }
-    public String getMemberPw2() {
-        return memberPw;
-    }
-    public void setMemberPw2(String memberPw) {
-        this.memberPw = memberPw;
-    }
     public String getMemberName() {
         return memberName;
     }
     public void setMemberName(String memberName) {
         this.memberName = memberName;
-    }
-    public String getMemberRrn() {
-        return memberRrn;
-    }
-    public void setMemberRrn(String memberRrn) {
-        this.memberRrn = memberRrn;
     }
     public String getMemberGender() {
         return memberGender;
