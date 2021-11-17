@@ -18,7 +18,7 @@ public class MemberDao {
 				+ "member_id, member_pw, member_name, "
 				+ "member_rrn, member_gender, "
 				+ "member_address, member_phone, member_join,"
-				+ "member_detailAddress, member_postcode) "
+				+ "member_detailaddress, member_postcode) "
 				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate,?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -242,8 +242,10 @@ public class MemberDao {
 			memberDto.setMemberName(rs.getString("member_name"));
 			memberDto.setMemberRrn(rs.getString("member_rrn"));
 			memberDto.setMemberGender(rs.getString("member_gender"));
-			memberDto.setMemberAddress(rs.getString("member_address"));
 			memberDto.setMemberPhone(rs.getString("member_phone"));
+			memberDto.setMemberPostcode(rs.getString("member_postcode"));
+			memberDto.setMemberAddress(rs.getString("member_address"));
+			memberDto.setMemberDetailAddress(rs.getString("member_detailaddress"));
 			memberDto.setMemberJoin(rs.getDate("member_join"));
 			memberDto.setMemberRole(rs.getString("member_role"));
 		} else {
@@ -260,9 +262,9 @@ public class MemberDao {
 		Connection con = JdbcUtils.connect();
 
 		String sql = "update member set " 
-						+ "member_Postcpde=?,"
-						+ "member_Address=?, " 
-						+ "member_DetailAddress=?,"
+						+ "member_postcode=?, "
+						+ "member_address=?, " 
+						+ "member_detailaddress=?, "
 						+ "member_phone = ? " 
 					+ "where "
 							+ "member_id = ? and member_pw = ?";
@@ -301,13 +303,13 @@ public class MemberDao {
 	public boolean editByAdmin(MemberDto memberDto) throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "update member " + "set "
+		String sql = "update member set "
 						+ "member_name=?, "
-						+ "member_Postcpde=?,"
-						+ "member_Address=?, " 
-						+ "member_DetailAddress=?,"
-						+ "member_Phone=?, "
-						+ "member_Role=? " 
+						+ "member_postcode=?,"
+						+ "member_address=?, " 
+						+ "member_detailAddress=?,"
+						+ "member_phone=?, "
+						+ "member_role=? " 
 					+ "where member_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberName());
