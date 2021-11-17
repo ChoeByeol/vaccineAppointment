@@ -306,10 +306,10 @@ public class MemberDao {
 		String sql = "update member set "
 						+ "member_name=?, "
 						+ "member_postcode=?,"
-						+ "member_address=?, " 
-						+ "member_detailAddress=?,"
+						+ "member_address=?, "
+						+ "member_detailaddress=?,"
 						+ "member_phone=?, "
-						+ "member_role=? " 
+						+ "member_role=? "
 					+ "where member_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberName());
@@ -325,4 +325,6 @@ public class MemberDao {
 
 		return result > 0;
 	}
+	
+	
 }

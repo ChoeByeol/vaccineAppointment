@@ -9,12 +9,12 @@ public class MemberDto {
     private String memberName;
     private String memberRrn;
     private String memberGender;
+    private String memberPostcode;
     private String memberAddress;
+    private String memberDetailAddress;
     private String memberPhone;
     private Date memberJoin;
     private String memberRole;
-    private String memberDetailAddress;
-    private String memberPostcode;
 
     public MemberDto() {
         super();
