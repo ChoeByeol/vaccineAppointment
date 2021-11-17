@@ -21,24 +21,34 @@
 	div {
 	display: inline-block;
 	}
-	img{
-	width:110px;
-	height:31px;
-	margin: 10px, 7px, 0px, 0px;
+	.logo-wrapper {
+	width: 120px;
+	height: 40px;
+	}
+	
+	.logo-wrapper>img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.title-wrapper {
+		flex-grow: 1;
+		display: block;
+		margin: auto;
+		padding-left: 15px;
+		color: #57585a;
 	}
     </style>
 </head>
 <body>
     <main>
-        <div class="wrapper">
+        <div class="flex-container">
             <header>
-                <div class="logo">
+                <div class="logo-wrapper">
                     <img src="<%=request.getContextPath()%>/resource/image/logo.png">
                 </div>
                 <div class="title-wrpper">
-                    <span>
-                        "코로나바이러스감염증-19"|인플루엔자(INFLU)
-                    </span>
+                    <p>코로나바이러스감염증-19|인플루엔자(INFLU)</p>
                     <p>예방접종 사전예약 시스템</p>
                 </div>
             </header>
