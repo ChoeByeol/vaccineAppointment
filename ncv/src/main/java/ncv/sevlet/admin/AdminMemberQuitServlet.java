@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.MemberDao;
 
-@WebServlet(urlPatterns = "/member/quit.txt")
+@WebServlet(urlPatterns = "/admin/member/quit.txt")
 public class AdminMemberQuitServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -3,24 +3,22 @@
     
 <jsp:include page="/template/header.jsp"></jsp:include>
 <style>
-
 	.flex-container > .form-input {
 		width:75%;
 	}
 	.flex-container > .form-btn {
 		width:25%;
 	}
-
 </style>
 
- <form action="quit.kh" method="post">
+ <form action="quit.txt" method="post">
 
 <div class="container-400 container-center">
 	<div class="row center">
 		<h2>비밀번호 확인</h2>
 	</div>
 	<div class="row flex-container">
-		<input type="password" name="member_Pw" required class="form-input">
+		<input type="password" name="memberPw" required class="form-input">
 		 <input type="submit" value="회원탈퇴" class="form-btn">
 	</div>
 	

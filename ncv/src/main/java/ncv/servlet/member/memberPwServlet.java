@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ncv.beans.MemberDao;
 import ncv.beans.MemberDto;
 
-@WebServlet(urlPatterns = "/member/password.kh")
+@WebServlet(urlPatterns = "/member/password.txt")
 public class memberPwServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -11,7 +11,7 @@ import ncv.beans.MemberDao;
 import ncv.beans.MemberDto;
 
 
-@WebServlet(urlPatterns = "/member/join.kh")
+@WebServlet(urlPatterns = "/member/join.txt")
 public class memberJoinServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -3,7 +3,7 @@
     
 <jsp:include page="/template/header.jsp"></jsp:include>
 
- <form action="password.kh" method="post">
+ <form action="password.txt" method="post">
 
 <div class="container-400 container-center">
 	<div class="row center">

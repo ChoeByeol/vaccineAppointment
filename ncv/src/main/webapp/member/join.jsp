@@ -143,7 +143,7 @@
                 return true;
             }
             else{
-                notice.textContent = "전화번호는 - 없이 11자리로 작성하세요";
+                notice.textContent = "핸드폰 번호는 - 없이 11자리로 작성하세요";
                 return false;
             }
         }
@@ -169,7 +169,7 @@
     </script>
 </head>
 
-	 <form action="join.kh" name="form" method="post" onsubmit="return formCheck();">
+	 <form action="join.txt" name="form" method="post" onsubmit="return formCheck();">
 		 <div class="container-400 container-center">	 
 		 	<div class="row center">
 		 		<h1>회원가입</h1>
@@ -204,7 +204,7 @@
 		 		<input type="hidden" name="memberGender">
 		 	</div>
 			<div class="row">
-		 		<label>전화번호</label>
+		 		<label>핸드폰 번호</label>
 		 		<input type="tel" name="memberPhone" placeholder="-제외"required class="form-input" maxlength="11" onblur="phoneCheck();">
 		 		<div class="notice"></div>
 		 	</div>
