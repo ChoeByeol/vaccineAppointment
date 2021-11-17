@@ -24,13 +24,18 @@ public class ClinicInsertServlet extends HttpServlet {
 			clinicDto.setClinicPostcode(req.getParameter("clinicPostcode"));
 			clinicDto.setClinicAddress(req.getParameter("clinicAddress"));
 			clinicDto.setClinicDetailAddress(req.getParameter("clinicDetailAddress"));
+			clinicDto.setClinicSido(req.getParameter("clinicSido"));
+			clinicDto.setClinicSigungu(req.getParameter("clinicSigungu"));
+			clinicDto.setClinicBname(req.getParameter("clinicBname"));
 			
 			//처리
 			ClinicDao clinicDao = new ClinicDao();
+			int clinicNo = clinicDao.getSequence();
+			clinicDto.setClinicNo(clinicNo);
 			clinicDao.insert(clinicDto);
 			
 			//리다이렉트
-			resp.sendRedirect("clinic_insert.jsp");
+			resp.sendRedirect("select.jsp?clinicNo="+clinicNo);
 
 			
 		} catch (Exception e) {

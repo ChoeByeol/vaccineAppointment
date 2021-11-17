@@ -20,8 +20,8 @@ List<ClinicDto> list  = clinicDao.list();
 	<tbody>
 		<%for(ClinicDto clinicDto : list){ %>
 		<tr>
-			<td><%=clinicDto.getClinicNo() %></td>
-			<td><a href="clinic_select.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a></td>
+			<td><%=clinicDto.getClinicNo()%></td>
+			<td><a href="select.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a></td>
 			<td><%=clinicDto.getClinicTel() %></td>
 			<td><%="("+clinicDto.getClinicPostcode()+") "+clinicDto.getClinicAddress()+","+clinicDto.getClinicDetailAddress()%></td>
 		<tr>

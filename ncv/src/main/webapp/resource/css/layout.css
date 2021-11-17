@@ -10,9 +10,12 @@
 }
 
 /* 레이아웃 배치 */
+
 html {
     font-size: 16px;
-    font-family: nanumgothic;
+}
+* {
+	font-family: nanumgothic;
 }
 main {
     width:1000px;

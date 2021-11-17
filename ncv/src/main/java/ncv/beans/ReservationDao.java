@@ -124,4 +124,35 @@ public class ReservationDao {
 			return reservationDto;
 		}
 		
+		//예약 조회 기능
+		public List<ReservationDto> listbyClinic(int clinicNo) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select * from reservation where clinic_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, clinicNo);
+			ResultSet rs = ps.executeQuery();
+
+			List<ReservationDto> reservationList = new ArrayList<>();
+			while(rs.next()) {
+				ReservationDto reservationDto = new ReservationDto();
+
+				reservationDto.setResNo(rs.getInt("res_no"));
+				reservationDto.setMemberId(rs.getString("member_id"));;
+				reservationDto.setClinicNo(rs.getInt("clinic_no"));
+				reservationDto.setVaccineNo(rs.getInt("vaccine_no"));
+				reservationDto.setShotNo(rs.getInt("shot_no"));
+				reservationDto.setResDate(rs.getString("res_date"));
+				reservationDto.setResTime(rs.getString("res_time"));
+				reservationDto.setResName(rs.getString("res_name"));
+				reservationDto.setResRrn(rs.getString("res_rnn"));
+				reservationDto.setResPhone(rs.getString("res_phone"));
+				
+				reservationList.add(reservationDto);
+			}
+
+			con.close();
+
+			return reservationList;
+		}
 }
