@@ -5,13 +5,13 @@
     = 단점 : 용량 증가로인한 깜빡임, 로딩 증가 현상이 발생
 */
 @font-face {
-    font-family: nanumgothic;
-    src: url("../font/NanumGothic.ttf");
+    font-family: NotoSans;
+    src: url("../font/NotoSansKR-Regular.otf");
 }
 
 /* 레이아웃 배치 */
 *{
-	font-family: nanumgothic;
+	font-family: NotoSans;
 }
 html {
     font-size: 16px;
