@@ -9,7 +9,9 @@ public class ClinicDto {
 	private String clinicPostcode;
 	private String clinicAddress;
 	private String clinicDetailAddress;
-	
+	private String clinicSido;
+	private String clinicSigungu;
+	private String clinicBname;
 	public int getClinicNo() {
 		return clinicNo;
 	}
@@ -52,11 +54,25 @@ public class ClinicDto {
 	public void setClinicDetailAddress(String clinicDetailAddress) {
 		this.clinicDetailAddress = clinicDetailAddress;
 	}
-	@Override
-	public String toString() {
-		return "ClinicDto [clinicNo=" + clinicNo + ", clinicName=" + clinicName + ", clinicTel=" + clinicTel
-				+ ", clinicTime=" + clinicTime + ", clinicPostcode=" + clinicPostcode + ", clinicAddress="
-				+ clinicAddress + ", clinicDetailAddress=" + clinicDetailAddress + "]";
+	public String getClinicSido() {
+		return clinicSido;
 	}
-	
+	public void setClinicSido(String clinicSido) {
+		this.clinicSido = clinicSido;
+	}
+	public String getClinicSigungu() {
+		return clinicSigungu;
+	}
+	public void setClinicSigungu(String clinicSigungu) {
+		this.clinicSigungu = clinicSigungu;
+	}
+	public String getClinicBname() {
+		return clinicBname;
+	}
+	public void setClinicBname(String clinicBname) {
+		this.clinicBname = clinicBname;
+	}
+	public ClinicDto() {
+		super();
+	}
 }

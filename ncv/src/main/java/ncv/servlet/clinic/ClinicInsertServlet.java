@@ -24,6 +24,9 @@ public class ClinicInsertServlet extends HttpServlet {
 			clinicDto.setClinicPostcode(req.getParameter("clinicPostcode"));
 			clinicDto.setClinicAddress(req.getParameter("clinicAddress"));
 			clinicDto.setClinicDetailAddress(req.getParameter("clinicDetailAddress"));
+			clinicDto.setClinicSido(req.getParameter("clinicSido"));
+			clinicDto.setClinicSigungu(req.getParameter("clinicSigungu"));
+			clinicDto.setClinicBname(req.getParameter("clinicBname"));
 			
 			//처리
 			ClinicDao clinicDao = new ClinicDao();

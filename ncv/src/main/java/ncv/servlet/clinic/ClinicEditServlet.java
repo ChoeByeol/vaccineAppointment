@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ncv.beans.ClinicDao;
 import ncv.beans.ClinicDto;
 
-@WebServlet(urlPatterns = "/clinic/clinicEdit.txt")
+@WebServlet(urlPatterns = "/clinic/edit.txt")
 public class ClinicEditServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class ClinicEditServlet extends HttpServlet{
             boolean success = clinicDao.edit(clinicDto);
 
             if(success) {
-                resp.sendRedirect("select.jsp?clinicNo="+clinicDto.getClinicNo());
+                resp.sendRedirect("clinic_select.jsp?clinicNo="+clinicDto.getClinicNo());
             }
             else {
                 resp.sendRedirect("에러페이지");

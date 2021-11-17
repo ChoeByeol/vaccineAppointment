@@ -10,17 +10,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.MemberDao;
 
-@WebServlet(urlPatterns = "/admin/member/quit.txt")
+@WebServlet(urlPatterns = "/member/quit.txt")
 public class AdminMemberQuitServlet extends HttpServlet{
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String memberId = req.getParameter("memberId");
+			//입력 : 회원아이디(session) + 비밀번호
+			String memberId = (String)req.getSession().getAttribute("sessionKey");
+			String memberPw = req.getParameter("memberPw");
 			
+			//처리 : 회원삭제 + 로그아웃
 			MemberDao memberDao = new MemberDao();
-			memberDao.quit(memberId);
+			boolean success = memberDao.quit(memberId, memberPw);
+
 			
-			resp.sendRedirect("list.jsp");
+			if(success) {
+				req.getSession().removeAttribute("sessionKey");
+				req.getSession().removeAttribute("grade");
+				
+				resp.sendRedirect("quit_success.jsp");
+			}
+			else {
+				resp.sendRedirect("check.jsp?error");
+			}			
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -12,7 +12,7 @@ public class ClinicDao {
     public void insert(ClinicDto clinicDto) throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "insert into clinic values(clinic_seq.nextval, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into clinic values(clinic_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, clinicDto.getClinicName());
@@ -21,6 +21,9 @@ public class ClinicDao {
         ps.setString(4, clinicDto.getClinicPostcode());
         ps.setString(5, clinicDto.getClinicAddress());
         ps.setString(6, clinicDto.getClinicDetailAddress());
+        ps.setString(7, clinicDto.getClinicSido());
+        ps.setString(8, clinicDto.getClinicSigungu());
+        ps.setString(9, clinicDto.getClinicBname());
         
         ps.execute();
         
@@ -31,7 +34,7 @@ public class ClinicDao {
     public boolean edit(ClinicDto clinicDto) throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "update clinic clinic_name = ?, clinic_tel = ?, clinic_Time = ?, clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ? where clinic_no = ?";
+        String sql = "update clinic set clinic_name = ?, clinic_tel = ?, clinic_Time = ?, clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ? where clinic_no = ?";
         
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, clinicDto.getClinicName());
