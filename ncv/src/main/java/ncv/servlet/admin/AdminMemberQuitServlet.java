@@ -1,4 +1,4 @@
-package ncv.sevlet.admin;
+package ncv.servlet.admin;
 
 import java.io.IOException;
 
