@@ -99,7 +99,7 @@ tbody {
 					<td><%=reservationDto.getResTime()%></td>
 					<td>
 						<a href="reservation_detail.jsp?resNo=<%=reservationDto.getResNo()%>" class="a-link-btn">상세</a>
-						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="a-link-btn">수정</a>
+						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="a-link-btn">변경</a>
 						<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="a-link-btn" id="confirm-link">예약취소</a>
 					</td>
 				</tr>

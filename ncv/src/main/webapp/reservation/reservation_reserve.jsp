@@ -70,6 +70,8 @@ tbody {
 			<div class="row center">
 				<h1>예약하기</h1>
 			</div>
+			
+			
 		<div class="row">
 				<label>예약자 아이디	</label>
 				<input type="text" name="memberId">
@@ -148,4 +150,4 @@ tbody {
 	</form>
 	
 
-<jsp:include page="/template/header.jsp"></jsp:include> 
+<jsp:include page="/template/footer.jsp"></jsp:include>

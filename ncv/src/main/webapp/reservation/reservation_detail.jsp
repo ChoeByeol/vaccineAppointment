@@ -85,7 +85,7 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 				</tr>
 				<tr>
 					<th>예약일</th>
-					<td><%=reservationVo.getResDate()%></td>
+					<td><%=reservationVo.getResDateDay()%></td>
 				</tr>
 				<tr>
 					<th>예약시간</th>
@@ -98,7 +98,7 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 
 		<div class="row right">
 						<a href="reservation_list.jsp" class="link-btn">목록보기</a>
-						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="link-btn">수정</a>
+						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="link-btn">변경</a>
 						<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="confirm-link">예약취소</a>
 		</div>
 

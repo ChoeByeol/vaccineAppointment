@@ -64,6 +64,10 @@ public class ReservationVo {
 	public void setResDate(String resDate) {
 		this.resDate = resDate;
 	}
+	
+	public String getResDateDay() {
+		return resDate.substring(0, 10);
+	}	
 
 	public String getResTime() {
 		return resTime;
