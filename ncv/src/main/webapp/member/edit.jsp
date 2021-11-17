@@ -41,6 +41,7 @@
             }).open();
         };
     
+    
 </script>
 
 <%-- 입력 : memberId (session) --%>
@@ -103,11 +104,12 @@
             </tr>
             
 			<tr>
-				<th>우편번호</th>
-				<td>
-					<input type="text" name="memberAddress" required value="<%=memberDto.getMemberPostcode()%>">
-				</td>
-			</tr>
+                <th>우편번호</th>
+                <td>
+                    <input type="text" name="memberPostcode" required value="<%=memberDto.getMemberPostcode()%>">
+                    <button type="button" class="find-address-btn">주소 찾기</button><br>
+                </td>
+            </tr>
 			
 			<tr>
 				<th>주소</th>
@@ -119,7 +121,7 @@
 			<tr>
 				<th>상세주소</th>
 				<td>
-					<input type="text" name="memberAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
+					<input type="text" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
 				</td>
 			</tr>
 			
