@@ -1,6 +1,8 @@
 package ncv.beans;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class MemberDto {
 
@@ -91,5 +93,38 @@ public class MemberDto {
     public void setMemberRole(String memberRole) {
         this.memberRole = memberRole;
     }
+    //만 나이 계산
+    public int getAge() {
+    	this.memberRrn = memberRrn;
+    	//오늘 날짜
+    	LocalDate now = LocalDate.now();
 
+    	//7번째 자리가 3이상이면 2000년대생 (1800년대는 안함)
+    	boolean isOver2000 = memberRrn.charAt(6)-'0' >= 3;
+    	String birth;
+    	if(isOver2000) {
+    		birth = "20" + memberRrn.substring(0,6);
+    	}
+    	else {
+    		birth = "19" + memberRrn.substring(0,6);
+    	}
+
+    //문자열을 날짜로 바꿔줌
+    LocalDate newDate = LocalDate.parse(birth, DateTimeFormatter.BASIC_ISO_DATE);
+
+    // 만나이 계산
+    // 1. 연도만 뽑아서 계산
+    int age = now.getYear() - newDate.getYear();
+
+    // 2. 월과 일 계산
+    // 생일이 안지났으면 -1
+    // 생일의 년도를 오늘의 년도로 바꿔서 계산
+    // true면 지난거 false면 안지난거
+        boolean isOverBirth = now.isAfter(newDate.plusYears(age));
+        if (!isOverBirth) {
+            age--;
+        }
+
+        return age;
+    	}
 }
