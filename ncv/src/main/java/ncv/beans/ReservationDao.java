@@ -138,9 +138,15 @@ public class ReservationDao {
 				reservationDto = new ReservationDto();
 
 				reservationDto.setResNo(rs.getInt("res_no"));
+				reservationDto.setMemberId(rs.getString("member_id"));;
 				reservationDto.setClinicNo(rs.getInt("clinic_no"));
+				reservationDto.setVaccineNo(rs.getInt("vaccine_no"));
+				reservationDto.setShotNo(rs.getInt("shot_no"));
 				reservationDto.setResDate(rs.getString("res_date"));
 				reservationDto.setResTime(rs.getString("res_time"));
+				reservationDto.setResName(rs.getString("res_name"));
+				reservationDto.setResRrn(rs.getString("res_rrn"));
+				reservationDto.setResPhone(rs.getString("res_phone"));
 
 			}
 			else {
@@ -157,11 +163,18 @@ public class ReservationDao {
 		public boolean  edit(ReservationDto reservationDto) throws Exception {
 			Connection con = JdbcUtils.connect();
 
-			String sql = "update reservation set clinic_no = ?, res_date =  ?, res_time = ? where res_no = ?";
+			String sql = "update reservation set member_id = ?, clinic_no = ?, vaccine_no = ?, shot_no = ?, res_date =  ?, res_time = ?, res_name = ? , res_rrn = ?, res_phone = ? where res_no = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, reservationDto.getClinicNo());
-			ps.setString(2, reservationDto.getResDate());
-			ps.setString(3, reservationDto.getResTime());
+			ps.setString(1, reservationDto.getMemberId());
+			ps.setInt(2, reservationDto.getClinicNo());
+			ps.setInt(3, reservationDto.getVaccineNo());
+			ps.setInt(4, reservationDto.getShotNo());
+			ps.setString(5, reservationDto.getResDate());
+			ps.setString(6, reservationDto.getResTime());
+			ps.setString(7, reservationDto.getResName());
+			ps.setString(8, reservationDto.getResRrn());    
+			ps.setString(9, reservationDto.getResPhone());
+			ps.setInt(10, reservationDto.getResNo());
 			int result = ps.executeUpdate();
 
 			con.close();

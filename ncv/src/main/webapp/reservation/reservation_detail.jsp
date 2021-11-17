@@ -1,3 +1,4 @@
+<%@page import="ncv.beans.ReservationDto"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.ReservationDao"%>
 <%@page import="java.util.List"%>
@@ -12,6 +13,8 @@
 int resNo = Integer.parseInt(request.getParameter("resNo"));
 ReservationDao reservationDao = new ReservationDao();
 ReservationVo reservationVo = reservationDao.get(resNo);
+
+ReservationDto reservationDto = reservationDao.editGet(resNo);
 %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -94,9 +97,9 @@ ReservationVo reservationVo = reservationDao.get(resNo);
 
 
 		<div class="row right">
-			<a href="#" class="link-btn">목록보기</a>
-			<a href="#" class="link-btn">수정</a> 
-			<a href="#" class="link-btn" id="confirm-link">예약 취소</a>
+						<a href="reservation_list.jsp" class="link-btn">목록보기</a>
+						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="link-btn">수정</a>
+						<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="confirm-link">예약취소</a>
 		</div>
 
 	</div>

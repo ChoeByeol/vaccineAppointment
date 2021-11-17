@@ -13,7 +13,7 @@ import ncv.beans.ReservationDao;
 @WebServlet(urlPatterns = "/reservation/cancel.txt")
 public class ReservationCancelServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 
 			int resNo = Integer.parseInt(req.getParameter("resNo"));
@@ -22,7 +22,7 @@ public class ReservationCancelServlet extends HttpServlet {
 			boolean success = reservationDao.cancel(resNo);
 
 			if (success) {
-				resp.sendRedirect(req.getContextPath());	
+				resp.sendRedirect("reservation_list.jsp");	
 			} else {
 				resp.sendError(404);
 			}

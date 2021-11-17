@@ -20,6 +20,12 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 
 <form action="edit.txt" method="post">
 <input type="hidden" name="resNo" value="<%=reservationDto.getResNo()%>">
+<input type="hidden" name="memberId" value="<%=reservationDto.getMemberId()%>">
+<input type="hidden" name="resName" value="<%=reservationDto.getResName()%>">
+<input type="hidden" name="resRrn" value="<%=reservationDto.getResRrn()%>">
+<input type="hidden" name="resPhone" value="<%=reservationDto.getResPhone()%>">
+<input type="hidden" name="vaccineNo" value="<%=reservationDto.getVaccineNo()%>">
+<input type="hidden" name="shotNo" value="<%=reservationDto.getShotNo()%>">
 
 <div class="container-400 container-center">
 	<div class="row center">
