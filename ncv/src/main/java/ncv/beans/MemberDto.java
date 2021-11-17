@@ -24,7 +24,7 @@ public class MemberDto {
 	}
 	public void setMemberDetailAddress(String memberDetailAddress) {
 		this.memberDetailAddress = memberDetailAddress;
-	}
+	} 
 	public String getMemberPostcode() {
 		return memberPostcode;
 	}
