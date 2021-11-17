@@ -2,9 +2,24 @@
     pageEncoding="UTF-8"%>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<<<<<<< HEAD
  <jsp:include page="/template/header.jsp"></jsp:include>
  <script>
     $(function(){
+=======
+ <script>
+    $(function(){
+        $("input[name=memberRrn]").blur(function(){
+            var genderCode = $("input[name=memberRrn]").val().substring(6,7);
+            if(genderCode == "1" || genderCode =="3"){
+                $("input[name=memberGender]").val("남");
+            }
+            else if(genderCode == "2" || genderCode =="4"){
+                $("input[name=memberGender]").val("여");
+            }
+        });
+    	
+>>>>>>> refs/remotes/origin/jane
         $(".find-address-btn").click(function(){
             findAddress();
         });
@@ -44,7 +59,7 @@
     });
 </script>
  
- <form action="join.kh" method="post">
+ <form action="join.kh" name="form" method="post">
  
  <div class="container-400 container-center">
  
@@ -65,21 +80,38 @@
  	</div>
  	 <div class="row">
  		<label class="form-block">주민등록번호</label>
+<<<<<<< HEAD
  		<input type="text" name="memberRrn" placeholder="-도 적어주세요"required class="form-input">
+=======
+        <input type="text" name="memberRrn" class="form-input" placeholder="-제외" maxlength="13">
+>>>>>>> refs/remotes/origin/jane
  	</div>
+ 	<%--성별 --%>
  	 <div class="row">
+<<<<<<< HEAD
  		<label class="form-block">성별</label>
  		<input type="text" name="memberGender" placeholder="성별"required class="form-input">
+=======
+ 		<input type="hidden" name="memberGender">
+>>>>>>> refs/remotes/origin/jane
  	</div>
 	<div class="row">
  		<label>전화번호</label>
+<<<<<<< HEAD
  		<input type="text" name="memberPhone" placeholder="-도 적어주세요"required class="form-input">
+=======
+ 		<input type="tel" name="memberPhone" placeholder="-제외"required class="form-input" maxlength="11">
+>>>>>>> refs/remotes/origin/jane
  	</div>
  	 <div class="row">
  		<label>우편번호</label>
  		<input type="text" name="memberPostcode" placeholder="우편번호" required class="form-input">
  	</div>
+<<<<<<< HEAD
  	<button type="button" class="find-address-btn">주소 찾기</button><br>
+=======
+ 	<button type="button" class="find-address-btn form-btn">주소 찾기</button><br>
+>>>>>>> refs/remotes/origin/jane
   	 <div class="row">
  		<label>주소</label>
  		<input type="text" name="memberAddress" placeholder="주소"required class="form-input">
@@ -93,5 +125,9 @@
 	</div>
 </div>
 </form>
+<<<<<<< HEAD
  
  <jsp:include page="/template/footer.jsp"></jsp:include>
+=======
+ 
+>>>>>>> refs/remotes/origin/jane

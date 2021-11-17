@@ -9,7 +9,6 @@ import java.util.List;
 import ncv.beans.JdbcUtils;
 
 public class MemberDao {
-	
 	//[1] 회원가입 메소드
 	public void join(MemberDto memberDto) throws Exception {
 		
@@ -19,7 +18,7 @@ public class MemberDao {
 				+ "member_id, member_pw, member_name, "
 				+ "member_rrn, member_gender, "
 				+ "member_address, member_phone, member_join,"
-				+ "member_DetailAddress, member_postcode) "
+				+ "member_detailAddress, member_postcode) "
 				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate,?,?)";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -36,7 +35,6 @@ public class MemberDao {
 		
 		con.close();
 	}
-
 	// 관리자가 회원을 탈퇴시키는 기능
 	public boolean quit(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
@@ -262,23 +260,27 @@ public class MemberDao {
 		Connection con = JdbcUtils.connect();
 
 		String sql = "update member set " 
-							+ "member_address = ?," 
-							+ "member_phone = ? " 
+						+ "member_Postcpde=?,"
+						+ "member_Address=?, " 
+						+ "member_DetailAddress=?,"
+						+ "member_phone = ? " 
 					+ "where "
 							+ "member_id = ? and member_pw = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, memberDto.getMemberAddress());
-		ps.setString(2, memberDto.getMemberPhone());
-		ps.setString(3, memberDto.getMemberId());
-		ps.setString(4, memberDto.getMemberPw());
+		ps.setString(1, memberDto.getMemberPostcode());
+		ps.setString(2, memberDto.getMemberAddress());
+		ps.setString(3, memberDto.getMemberDetailAddress());
+		ps.setString(4, memberDto.getMemberPhone());
+		ps.setString(5, memberDto.getMemberId());
+		ps.setString(6, memberDto.getMemberPw());
 		int result = ps.executeUpdate();
 
 		con.close();
 
 		return result > 0;
 	}
-
-	// 비밀번호 변경 메소드
+	
+//비밀번호 변경 메소드
 	public boolean editPassword(String memberId, String memberPw, String changePw) throws Exception {
 		Connection con = JdbcUtils.connect();
 
@@ -294,19 +296,27 @@ public class MemberDao {
 		return result > 0;
 	}
 
+
 //관리자용 수정 기능
 	public boolean editByAdmin(MemberDto memberDto) throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "update member " + "set " + "member_name=?, " 
-						+ "member_Address=?, " + "member_Phone=?, "
-						+ "member_Role=? " + "where member_id=?";
+		String sql = "update member " + "set "
+						+ "member_name=?, "
+						+ "member_Postcpde=?,"
+						+ "member_Address=?, " 
+						+ "member_DetailAddress=?,"
+						+ "member_Phone=?, "
+						+ "member_Role=? " 
+					+ "where member_id=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberName());
-		ps.setString(2, memberDto.getMemberAddress());
-		ps.setString(3, memberDto.getMemberPhone());
-		ps.setString(4, memberDto.getMemberRole());
-		ps.setString(5, memberDto.getMemberId());
+		ps.setString(2, memberDto.getMemberPostcode());
+		ps.setString(3, memberDto.getMemberAddress());
+		ps.setString(4, memberDto.getMemberDetailAddress());
+		ps.setString(5, memberDto.getMemberPhone());
+		ps.setString(6, memberDto.getMemberRole());
+		ps.setString(7, memberDto.getMemberId());
 		int result = ps.executeUpdate();
 
 		con.close();

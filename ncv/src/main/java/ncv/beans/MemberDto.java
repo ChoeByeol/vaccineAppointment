@@ -92,5 +92,4 @@ public class MemberDto {
         this.memberRole = memberRole;
     }
 
-
 }

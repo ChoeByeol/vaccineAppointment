@@ -18,14 +18,16 @@ public class AdminMemberEditServlet extends HttpServlet{
 			//입력 : MemberDto()
 			
 			MemberDto memberDto = new MemberDto();
-			
+			memberDto.setMemberId(req.getParameter("memberId"));
 			memberDto.setMemberName(req.getParameter("memberName"));
 			memberDto.setMemberRrn(req.getParameter("memberRrn"));
 			memberDto.setMemberGender(req.getParameter("memberGender"));
-			memberDto.setMemberAddress(req.getParameter("memberAddress"));
 			memberDto.setMemberPhone(req.getParameter("memberPhone"));
+			memberDto.setMemberPostcode(req.getParameter("memberPostcode"));
+			memberDto.setMemberAddress(req.getParameter("memberAddress"));
+			memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
 			memberDto.setMemberRole(req.getParameter("memberRole"));
-			memberDto.setMemberId(req.getParameter("memberId"));
+			
 			
 			//처리
 			MemberDao memberDao = new MemberDao();
