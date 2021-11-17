@@ -80,7 +80,6 @@
         function pwCheck(){
             var regex = /^[A-Za-z0-9!@#$\s_-]{8,16}$/;
             var input = document.querySelector("input[name=memberPw]");
-            //var notice = document.querySelector("input[name=memberPw] + .notice");
             var notice = input.nextElementSibling;
 
             if(regex.test(input.value)){
@@ -123,7 +122,6 @@
         function rrnCheck(){
             var regex = /^[0-9]{6}[0-9]{7}$/;
             var input = document.querySelector("input[name=memberRrn]");
-            //var notice = document.querySelector("input[name=memberEmail] + .notice");
             var notice = input.nextElementSibling;
 
             if(input.value.length == 0 || regex.test(input.value)){
@@ -138,7 +136,6 @@
         function phoneCheck(){
             var regex = /^01[016789][1-9][0-9]{3}[0-9]{4}$/;
             var input = document.querySelector("input[name=memberPhone]");
-            //var notice = document.querySelector("input[name=memberPhone] + .notice");
             var notice = input.nextElementSibling;
 
             if(input.value.length == 0 || regex.test(input.value)){
