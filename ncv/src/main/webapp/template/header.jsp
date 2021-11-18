@@ -100,7 +100,7 @@
         <li><a href="<%=request.getContextPath()%>/qna/list.jsp" >1:1 문의</a></li>
     	<%if(admin){ %>
         <%} else { %>
-        <li><a href="<%=request.getContextPath()%>/reservation/reservation_reserve.jsp">예약하기</a></li>
+        <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li>
         <%} %>        
         <li class="flex-right">
         	<a href="#" >회원메뉴</a>

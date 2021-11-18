@@ -8,6 +8,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
+<%
+	String memberId = (String) session.getAttribute("ses");
+%>
+
+
 <%
 ClinicDao clinicDao = new ClinicDao();
 List<ClinicDto> list  = clinicDao.list();
@@ -18,10 +24,11 @@ VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
 %>
 
-<%
-ReservationDao reservationDao = new ReservationDao();
-List<ReservationDto> reservationList = reservationDao.list();
-%>
+
+<%--
+	ReservationDao reservationDao = new ReservationDao();
+	List<ReservationDto> reservationList = reservationDao.list();
+--%>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -62,28 +69,15 @@ tbody {
 }
 </style>
 
-
-
-
-
-
 	<form action="reserve.txt" method="post">
-<!-- 	<input type="hidden" name="memberId"> -->
-
-
-<input type="hidden" name="resNo">
+<input type="hidden" name="memberId" value="<%=memberId%>">
+		
 		<div class="container-400 container-center">
 		
-			<div class="row center">
-				<h1>예약하기</h1>
-			</div>
-			
-			
-		<div class="row">
-				<label>예약자 아이디	</label>
-				<input type="text" name="memberId">
-			</div>		
-			
+	<div class="row center">
+		<h1>예약하기</h1>
+	</div>
+					
 	<div class="row">
 				<label>예약자 이름</label>
 				<input type="text" name="resName">
@@ -109,10 +103,7 @@ tbody {
 			
 	<div class="row">
 				<label>접종차수</label>
-				<input type="hidden" name="shotNo">
-				<%for(ReservationDto reservationDto : reservationList){ %>
-				<span><%=reservationDto.getShotNo()%></span>
-				<%} %>
+				<input type="text" name="shotNo">
 			</div>					
 
 	<div class="row">
