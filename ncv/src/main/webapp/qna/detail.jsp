@@ -14,11 +14,15 @@
 
 <%
 	String memberId = (String)session.getAttribute("ses");
+	String grade = (String) session.getAttribute("grade");
+	
 	QnaDao qnaDao = new QnaDao();
 	QnaDto qnaDto = qnaDao.get(qnaNo);
 	
 	//본인 글인지 아닌지 판정
 	boolean writer = memberId.equals(qnaDto.getQnaWriter());
+	//관리자 판정
+	boolean admin = grade != null && grade.equals("관리자");
 %>
 
 <%
@@ -56,7 +60,12 @@
 			 -->
 				<tr height="200" valign="top">
 					<td colspan="4"><pre><%=qnaDto.getQnaContent()%></pre></td>
+				</tr>		
+				<%if(qnaDto.getQnaAnswer() != null){%>
+				<tr height="200" valign="top">
+					<td colspan="4"><pre><%=qnaDto.getQnaAnswer()%></pre></td>
 				</tr>
+				<%} %>	
 			</tbody>
 			<tr><td colspan="4"><hr><td></tr>
 			<tfoot>
@@ -69,6 +78,10 @@
 						<a href="edit.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정</a>
 						<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
 						<%}%>
+						<%if(admin){ %>
+						<a href="../admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">답변달기</a>
+						<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
+						<%} %>
 					</td>
 			</tfoot>
 		</table>
