@@ -315,18 +315,18 @@ textarea.vertical {
 }
 .slide-menu li > a {/*(6) */
     display: block;
-    width:120px;
+    width : 120px;
     text-align: center;
     text-decoration: none;
-    color:black;
+    color:white;
     padding:0.75rem;
 }
 /*(7)*/
 .slide-menu , .slide-menu ul{
-    background-color: #EEEEEE;
+    background-color:rgb(26,44,48);
 }
 .slide-menu li:hover > a {
-    background-color:#CCCCCC;
+    background-color:rgb 26,44,48;
     color:black;
 }
 

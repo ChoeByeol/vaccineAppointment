@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%
-String ses = (String) session.getAttribute("ses");
-boolean login = ses != null;
-
-String grade = (String) session.getAttribute("grade");
-boolean admin = grade != null && grade.equals("관리자");
+	String ses = (String) session.getAttribute("ses");
+	boolean login = ses != null;
+	
+	String grade = (String) session.getAttribute("grade");
+	boolean admin = grade != null && grade.equals("관리자");
 %>
 <%
-String root = request.getContextPath();
+	String root = request.getContextPath();
 %>  
     
 <!DOCTYPE html>
@@ -22,6 +23,7 @@ String root = request.getContextPath();
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/commons.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/layout.css">
     <style>
+
     .logo-wrapper {
     width: 120px;
     height: 40px;
@@ -61,7 +63,7 @@ String root = request.getContextPath();
         padding-left: 15px;
         color: #57585a;
     }
-    
+
     .footer-logo-wrapper{
     	width:160px;
     	height:48px;
@@ -78,11 +80,55 @@ String root = request.getContextPath();
         <header>
 			<div class="flex-container">
 				<div class="logo-wrapper">
+				<a href="http://localhost:8080/ncv/index.jsp">
 					<img src="<%=request.getContextPath()%>/resource/image/logo.png">
+				</a>
 				</div>
 				<div class="title-wrapper">
-					<p>코로나바이러스감염증-19 | 인플루엔자(INFLU)</p>
+					<p>코로나바이러스감염증-19</p>
 					<p>예방접종 사전예약 시스템</p>
 				</div>	
 			</div>
 		</header>
+			<!-- 메뉴 영역 -->
+			
+  <nav>
+    <ul class="slide-menu">
+    	<%if(login){ %>
+    	<li><a href="<%=request.getContextPath()%>/index.jsp">MAIN</a></li>
+        <li><a href="#">공지사항</a></li>
+        <li><a href="#" >1:1 문의</a></li>
+    	<%if(admin){ %>
+        <%} else { %>
+        <li><a href="#">예약하기</a></li>
+        <%} %>        
+        <li class="flex-right">
+        	<a href="#" >회원메뉴</a>
+            <ul>
+            	<%if(admin){ %>
+            	<li><a href="<%=request.getContextPath()%>/admin/home.jsp">관리메뉴</a></li>
+            	<%} else { %>
+                <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보보기</a></li>
+                <li><a href="#">예약조회</a></li>
+                <li><a href="#">접종내역확인</a></li>
+                <li><a href="#">내질문확인</a></li>
+                <%} %>
+                <li><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
+  			</ul>
+		</li>
+		<%}else{%>
+			<li><a href="<%=request.getContextPath()%>/index.jsp">홈으로</a></li>
+			<li><a href="#">공지사항</a></li>
+			<li class="flex-right">
+				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a>
+				<ul>
+					<li><a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a></li>
+				</ul>
+			</li>
+			<%} %>
+		</ul>
+   </nav>
+<section>
+		
+		   
+

@@ -10,7 +10,7 @@
                 <div class="row">
                     <img src="<%=request.getContextPath()%>/resource/image/index.png" width="100%">
                 </div>
-            </div>
+            </div>  
             
     <jsp:include page="/template/footer.jsp"></jsp:include>
  

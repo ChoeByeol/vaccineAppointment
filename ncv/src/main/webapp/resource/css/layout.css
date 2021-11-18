@@ -8,6 +8,10 @@
     font-family: NotoSans;
     src: url("../font/NotoSansKR-Regular.otf");
 }
+@font-face{
+	font-family: NotoSansL;
+	src: url("../font/NotoSansKR-Light.otf");
+}
 
 @font-face{
 	font-family: Apple;
@@ -17,7 +21,7 @@
 /* 레이아웃 배치 */
 
 *{
-	font-family: NotoSans;
+	font-family: NotoSansL;
 }
 
 html {
