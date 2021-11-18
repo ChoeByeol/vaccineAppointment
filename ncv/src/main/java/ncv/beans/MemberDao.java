@@ -332,4 +332,28 @@ public class MemberDao {
 
 		return result > 0;
 	}
+	
+	 //아이디 찾기 메소드
+	   public String findId(String memberName, String memberRrn) throws Exception{
+	      Connection con = JdbcUtils.connect();
+	      
+	      String sql = "SELECT member_id FROM member "
+	            + "WHERE member_name=? and member_rrn=?";
+	      PreparedStatement ps = con.prepareStatement(sql);
+	      ps.setString(1, memberName);
+	      ps.setString(2, memberRrn);
+	      ResultSet rs = ps.executeQuery();
+	      
+	      String memberId;
+	      if(rs.next()) {
+	    	  memberId = rs.getString(1);
+	      }
+	      else {
+	    	  memberId = null;
+	      }
+	      
+	      con.close();
+	      
+	      return memberId;
+	   }
 }
