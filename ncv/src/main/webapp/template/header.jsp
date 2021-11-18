@@ -97,7 +97,7 @@
     	<%if(login){ %>
     	<li><a href="<%=request.getContextPath()%>/index.jsp">MAIN</a></li>
         <li><a href="#">공지사항</a></li>
-        <li><a href="#" >1:1 문의</a></li>
+        <li><a href="<%=request.getContextPath()%>/qna/list.jsp" >1:1 문의</a></li>
     	<%if(admin){ %>
         <%} else { %>
         <li><a href="#">예약하기</a></li>

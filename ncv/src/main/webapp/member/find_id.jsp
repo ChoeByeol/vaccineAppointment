@@ -6,13 +6,13 @@
             <tr>
                <th>이름</th>
                <td>
-                  <input type="text" name="member_name" required>
+                  <input type="text" name="memberName" required>
                </td>
             </tr>
             <tr>
                <th>주민등록번호</th>
                <td>
-                  <input type="text" name="member_rrn" required>
+                  <input type="text" name="memberRrn" required>
                </td>
             </tr>
          </tbody>
