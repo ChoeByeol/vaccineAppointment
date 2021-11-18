@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-public class Pagination {
+public class NoticePagination {
 	//필수 데이터
 	private int p;
 	private int count;
@@ -15,7 +15,7 @@ public class Pagination {
 	private String keyword;
 	
 	//생성자를 이용하여 필수 데이터를 설정하도록 구현
-	public Pagination(HttpServletRequest req) {
+	public NoticePagination(HttpServletRequest req) {
 		try {
 			this.p = Integer.parseInt(req.getParameter("p"));
 			if(this.p <= 0) throw new Exception();
@@ -35,7 +35,7 @@ public class Pagination {
 	private List<NoticeDto> list;
 	public void calculate() throws Exception {
 
-		NoticeDao2 noticeDao = new NoticeDao2();
+		NoticeDao noticeDao = new NoticeDao();
 		if(isSearch()) {
 			this.count = noticeDao.count(column,keyword);
 		}

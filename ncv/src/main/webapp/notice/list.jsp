@@ -1,15 +1,14 @@
-<%@page import="ncv.beans.Pagination"%>
+<%@page import="ncv.beans.NoticePagination"%>
 <%@page import="ncv.beans.NoticeDto"%>
 <%@page import="java.util.List"%>
-<%@page import="ncv.beans.NoticeDao2"%>
+<%@page import="ncv.beans.NoticeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
+NoticePagination pagination = new NoticePagination(request);
 
-	Pagination pagination = new Pagination(request);
-
-	pagination.calculate(); 
+	pagination.calculate();
 %>
 
 <%=pagination.toString()%>
