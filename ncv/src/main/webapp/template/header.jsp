@@ -29,31 +29,47 @@ String root = request.getContextPath();
     height: 80px;
     margin: 0 auto;
     }
+    
     div {
     display: inline-block;
     }
+    
     .logo-wrapper {
     width: 120px;
     height: 40px;
+    margin:0px 5px 0px 0px;
     }
 
     .logo-wrapper>img {
         width: 100%;
         height: 100%;
     }
-
+    
     .title-wrapper {
-        flex-grow: 1;
-        display: block;
-        margin: auto;
-        padding-left: 15px;
-        color: #57585a;
+	flex-grow: 1;
+	display: block;
+	margin: auto;
+	padding-left: 15px;
+	}
+	
+    .title-wrapper > p{
+    	color: rgb(80,80,80);
+    	font-family:'Apple';
+    }
+    
+    .nuri-wrapper{
+    	width:120px;
+    	height:43px;
+    }
+    
+    .nuri-wrapper>img{
+    	width:100%;
+    	height:100%;
     }
     </style>
 </head>
 <body>
     <main>
-        
         <header>
 			<div class="flex-container">
 				<div class="logo-wrapper">
@@ -64,23 +80,4 @@ String root = request.getContextPath();
 					<p>예방접종 사전예약 시스템</p>
 				</div>	
 			</div>
-		</header>   
-			<!-- 메뉴 영역 -->
-		<nav>
-	<ul class="slide-menu">
-		<li><a href="#">MAIN</a></li>
-		<li><a href="#"></a></li>
-		<li class="flex-right"><a href="#">회원메뉴</a>
-			<ul>
-				<li><a href="#">내정보보기</a></li>
-				<li><a href="#">예약하기</a></li>
-				<li><a href="#">예약조회</a></li>
-				<li><a href="#">접종내역보기</a></li>
-				<li><a href="#">로그아웃</a></li>
-				<li><a href="#">회원가입</a></li>
-				
-			</ul></li>
-			<li class="flex-right"><a href="#">관리메뉴</a></li>
-		</ul>
-	</nav>
-</main>
+		</header>
