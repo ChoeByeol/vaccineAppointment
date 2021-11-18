@@ -188,4 +188,62 @@ public class ClinicDao {
     	
     	return list;
     }
+    
+    //읍면동 조회
+    public List<String> bnameList(String clinicSido, String clinicSigungu) throws Exception{
+    	Connection con = JdbcUtils.connect();
+    	String sql = "select clinic_bname from clinic "
+    			+ "where clinic_sido=? and clinic_sigungu=? "
+    			+ "group by clinic_bname "
+    			+ "order by clinic_bname asc";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setString(1, clinicSido);
+    	ps.setString(2, clinicSigungu);
+    	ResultSet rs = ps.executeQuery();
+    	
+    	List<String> list = new ArrayList<>();
+    	while(rs.next()) {
+    		list.add(rs.getString(1));
+    	}
+    	
+    	con.close();
+    	
+    	return list;
+    }
+    
+    //시도, 시군구, 읍면동받아서 조회
+    public List<ClinicDto> searchByAddress(String clinicSido, String clinicSigungu, String clinicBname) throws Exception{
+    	Connection con = JdbcUtils.connect();
+    	String sql = "select * from clinic "
+    			+ "where instr(clinic_sido, ?)=1 "
+    			+ "and instr(clinic_sigungu, ?)=1 "
+    			+ "and instr(clinic_bname, ?)=1 "
+    			+ "order by clinic_name asc";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setString(1, clinicSido);
+    	ps.setString(2, clinicSigungu);
+    	ps.setString(3, clinicBname);
+    	ResultSet rs = ps.executeQuery();
+    	
+        List<ClinicDto> list = new ArrayList<>();
+        while(rs.next()) {
+            ClinicDto clinicDto = new ClinicDto();
+            
+            clinicDto.setClinicNo(rs.getInt("clinic_no"));
+            clinicDto.setClinicName(rs.getString("clinic_name"));
+            clinicDto.setClinicTel(rs.getString("clinic_tel"));
+            clinicDto.setClinicTime(rs.getString("clinic_time"));
+            clinicDto.setClinicPostcode(rs.getString("clinic_postcode"));
+            clinicDto.setClinicAddress(rs.getString("clinic_address"));
+            clinicDto.setClinicDetailAddress(rs.getString("clinic_detailAddress"));
+            clinicDto.setClinicSido(rs.getString("clinic_sido"));
+            clinicDto.setClinicSigungu(rs.getString("clinic_sigungu"));
+            clinicDto.setClinicBname(rs.getString("clinic_bname"));
+            
+            list.add(clinicDto);
+        }
+        con.close();
+        
+        return list;
+    }
 }
