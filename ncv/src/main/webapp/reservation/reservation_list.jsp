@@ -1,5 +1,5 @@
 
-<%@page import="ncv.beans.ReservationDto"%>
+<%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.ReservationDao"%>
 <%@page import="java.util.List"%>
 
@@ -8,8 +8,9 @@
 
 <%
 ReservationDao reservationDao = new ReservationDao();
-List<ReservationDto> reservationList  = reservationDao.list();
-%>	
+List<ReservationVo> reservationList  = reservationDao.list2();
+%>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 	$(function() {
@@ -18,7 +19,6 @@ List<ReservationDto> reservationList  = reservationDao.list();
 		});
 	});
 </script>
-
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -85,22 +85,22 @@ tbody {
 				</tr>
 			</thead>
 			<tbody align="center">
-				<%for(ReservationDto reservationDto : reservationList){ %>
+				<%for(ReservationVo reservationVo : reservationList){ %>
 				<tr>
-					<td><%=reservationDto.getResNo()%></td>
-					<td><%=reservationDto.getMemberId()%></td>
-					<td><%=reservationDto.getResName()%></td>
-					<td><%=reservationDto.getResRrn()%></td>
-					<td><%=reservationDto.getResPhone()%></td>
-					<td><%=reservationDto.getVaccineNo()%></td>
-					<td><%=reservationDto.getShotNo()%></td>
-					<td><%=reservationDto.getClinicNo()%></td>
-					<td><%=reservationDto.getResDateDay()%></td>
-					<td><%=reservationDto.getResTime()%></td>
+					<td><%=reservationVo.getResNo()%></td>
+					<td><%=reservationVo.getMemberId()%></td>
+					<td><%=reservationVo.getResName()%></td>
+					<td><%=reservationVo.getResRrn()%></td>
+					<td><%=reservationVo.getResPhone()%></td>
+					<td><%=reservationVo.getVaccineName()%></td>
+					<td><%=reservationVo.getShotNo()%>차</td>
+					<td><%=reservationVo.getClinicName()%></td>
+					<td><%=reservationVo.getResDateDay()%></td>
+					<td><%=reservationVo.getResTime()%></td>
 					<td>
-						<a href="reservation_detail.jsp?resNo=<%=reservationDto.getResNo()%>" class="a-link-btn">상세</a>
-						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="a-link-btn">수정</a>
-						<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="a-link-btn" id="confirm-link">예약취소</a>
+						<a href="reservation_detail.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">상세</a>
+						<a href="reservation_edit.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">변경</a>
+						<a href="cancel.txt?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn" id="confirm-link">예약취소</a>
 					</td>
 				</tr>
 				<%} %>
