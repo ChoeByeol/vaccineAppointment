@@ -28,8 +28,8 @@ public class Pagination {
 	}
 	
 	//계산 메소드
-	private int pageSize = 10;
-	private int blockSize = 10;
+	private int pageSize = 20;
+	private int blockSize = 20;
 	private int begin, end;
 	private int startBlock, finishBlock, lastBlock;
 	private List<NoticeDto> list;
