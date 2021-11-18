@@ -16,10 +16,10 @@ public class ClinicDeleteServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			int clinicNo = Integer.parseInt(req.getParameter("clinicNo"));
-			
+
 			ClinicDao clinicDao = new ClinicDao();
 			boolean success = clinicDao.delete(clinicNo);
-			
+
 			if(success) {
 				resp.sendRedirect("list.jsp");
 			}
