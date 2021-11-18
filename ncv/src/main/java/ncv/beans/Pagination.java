@@ -10,7 +10,7 @@ public class Pagination {
 	private int p;
 	private int count;
 	
-	//선택 데이터
+
 	private String column;
 	private String keyword;
 	
@@ -27,14 +27,14 @@ public class Pagination {
 		this.keyword = req.getParameter("keyword");
 	}
 	
-	//계산 메소드
+
 	private int pageSize = 20;
 	private int blockSize = 20;
 	private int begin, end;
 	private int startBlock, finishBlock, lastBlock;
 	private List<NoticeDto> list;
 	public void calculate() throws Exception {
-		//count 계산
+
 		NoticeDao2 noticeDao = new NoticeDao2();
 		if(isSearch()) {
 			this.count = noticeDao.count(column,keyword);
@@ -57,7 +57,7 @@ public class Pagination {
 			this.list = noticeDao.searchByRownum(column, keyword, begin, end);
 		}
 		else {
-			//this.list = boardDao.listByRownum(begin, end);//일반
+
 			this.list = noticeDao.listByTreeSort(begin, end);//계층형
 		}
 	}
