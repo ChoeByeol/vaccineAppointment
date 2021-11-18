@@ -19,7 +19,7 @@ public class MemberDao {
 				+ "member_id, member_pw, member_name, "
 				+ "member_Rrn, member_gender, "
 				+ "member_address, member_phone, member_join,"
-				+ "member_DetailAddress, member_postcode"
+				+ "member_detailaddress, member_postcode"
 				+ ") "
 				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
 		
