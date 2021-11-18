@@ -8,16 +8,16 @@ import java.util.List;
 
 public class QnaFileDao {
 	//파일 정보 저장 기능
-	public void insert(QnaFileDto boardFileDto) throws Exception {
+	public void insert(QnaFileDto qnaFileDto) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
 		String sql = "insert into qna_file values(qna_file_seq.nextval, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, boardFileDto.getQnaNo());
-		ps.setString(2, boardFileDto.getQnaFileUploadName());
-		ps.setString(3, boardFileDto.getQnaFileSaveName());
-		ps.setLong(4, boardFileDto.getQnaFileSize());
-		ps.setString(5, boardFileDto.getQnaFileType());
+		ps.setInt(1, qnaFileDto.getQnaNo());
+		ps.setString(2, qnaFileDto.getQnaFileUploadName());
+		ps.setString(3, qnaFileDto.getQnaFileSaveName());
+		ps.setLong(4, qnaFileDto.getQnaFileSize());
+		ps.setString(5, qnaFileDto.getQnaFileType());
 		ps.execute();
 		
 		con.close();
@@ -27,7 +27,7 @@ public class QnaFileDao {
 	public QnaFileDto get(int qnaFileNo) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
-		String sql = "select * from board_file where board_file_no = ?";
+		String sql = "select * from qna_file where qna_file_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qnaFileNo);
 		ResultSet rs = ps.executeQuery();
