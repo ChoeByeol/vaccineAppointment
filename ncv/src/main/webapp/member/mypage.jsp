@@ -51,6 +51,9 @@
 				<a href="edit.jsp" class="link-btn-block">개인정보 변경</a>
 			</div>
 			<div class="row center">
+				<a href="<%=request.getContextPath()%>/qna/list.jsp?memberId=<%=memberDto.getMemberId()%>" class="link-btn-block">1:1 문의</a>
+			</div>
+			<div class="row center">
 				<a href="check.jsp" class="link-btn-block">회원 탈퇴</a>
 			</div>
 			
