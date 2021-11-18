@@ -49,7 +49,13 @@
 	                    document.querySelector("input[name=clinicSigungu]").value = data.sigungu;
                     }
                     //읍면동
-                    document.querySelector("input[name=clinicBname]").value = data.bname;
+                    if(data.bname1 == ""){
+	                    document.querySelector("input[name=clinicBname]").value = data.bname;
+                    }
+                    else{
+                    	document.querySelector("input[name=clinicBname]").value = data.bname1;
+                    }
+                    
 
                     // 커서를 상세주소 필드로 이동한다.
                     document.querySelector("input[name=clinicDetailAddress]").focus();
