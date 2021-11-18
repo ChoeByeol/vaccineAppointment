@@ -16,8 +16,8 @@ import ncv.beans.NoticeDto;
 
 //게시판 수정, 삭제 기능에 대한 본인확인 필터
 @WebFilter(urlPatterns = {
-		"/board/edit.jsp", "/board/edit.kh",
-		"/board/delete.kh"
+		"/notice/edit.jsp", "/notice/edit.jsp",
+		"/notice/delete.jsp"
 })
 public class NoticeFilter implements Filter{
 	@Override
