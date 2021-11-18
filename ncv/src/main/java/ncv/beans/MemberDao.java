@@ -305,30 +305,31 @@ public class MemberDao {
 
 		return result > 0;
 	}
-	//관리자용 수정 기능
-		public boolean editByAdmin(MemberDto memberDto) throws Exception {
-			Connection con = JdbcUtils.connect();
 
-			String sql = "update member " + "set "
-							+ "member_name=?, "
-							+ "member_Postcpde=?,"
-							+ "member_Address=?, " 
-							+ "member_DetailAddress=?,"
-							+ "member_Phone=?, "
-							+ "member_Role=? " 
-						+ "where member_id=?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, memberDto.getMemberName());
-			ps.setString(2, memberDto.getMemberPostcode());
-			ps.setString(3, memberDto.getMemberAddress());
-			ps.setString(4, memberDto.getMemberDetailAddress());
-			ps.setString(5, memberDto.getMemberPhone());
-			ps.setString(6, memberDto.getMemberRole());
-			ps.setString(7, memberDto.getMemberId());
-			int result = ps.executeUpdate();
+//관리자용 수정 기능
+	public boolean editByAdmin(MemberDto memberDto) throws Exception {
+		Connection con = JdbcUtils.connect();
 
-			con.close();
+		String sql = "update member set "
+						+ "member_name=?, "
+						+ "member_postcode=?,"
+						+ "member_address=?, "
+						+ "member_detailaddress=?,"
+						+ "member_phone=?, "
+						+ "member_role=? "
+					+ "where member_id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, memberDto.getMemberName());
+		ps.setString(2, memberDto.getMemberPostcode());
+		ps.setString(3, memberDto.getMemberAddress());
+		ps.setString(4, memberDto.getMemberDetailAddress());
+		ps.setString(5, memberDto.getMemberPhone());
+		ps.setString(6, memberDto.getMemberRole());
+		ps.setString(7, memberDto.getMemberId());
+		int result = ps.executeUpdate();
 
-			return result > 0;
-		}
+		con.close();
+
+		return result > 0;
+	}
 }

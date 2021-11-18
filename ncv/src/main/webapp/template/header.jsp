@@ -30,7 +30,7 @@
     margin:0px 5px 0px 0px;
     }
 
-    .logo-wrapper>img {
+    .logo-wrapper>a>img {
         width: 100%;
         height: 100%;
     }
