@@ -8,11 +8,20 @@
     font-family: NotoSans;
     src: url("../font/NotoSansKR-Regular.otf");
 }
+@font-face{
+	font-family: NotoSansL;
+	src: url("../font/NotoSansKR-Light.otf");
+}
+
+@font-face{
+	font-family: Apple;
+	src: url("../font/AppleSDGothicNeoB.ttf");
+}
 
 /* 레이아웃 배치 */
 
 *{
-	font-family: NotoSans;
+	font-family: NotoSansL;
 }
 
 html {
@@ -24,8 +33,11 @@ main {
     margin:2rem auto;
 }
 main > header {
-    padding:1rem;
-    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 80px;
+    margin: 0 auto;
 }
 main > nav {
 /* 	메뉴는 슬라이드 될 경우 화면을 넘어가기 때문에 overflow시 숨기지 않는다 */
