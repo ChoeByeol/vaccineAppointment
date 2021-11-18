@@ -18,11 +18,18 @@ public class MemberEditServlet extends HttpServlet{
             //입력 : MemberDto
             MemberDto memberDto = new MemberDto();
 
-            memberDto.setMemberAddress(req.getParameter("memberAddress"));
-            memberDto.setMemberPhone(req.getParameter("memberPhone"));
             memberDto.setMemberId(req.getParameter("memberId"));
             memberDto.setMemberPw(req.getParameter("memberPw"));
-
+            memberDto.setMemberName(req.getParameter("memberName"));
+            memberDto.setMemberRrn(req.getParameter("memberRrn"));
+            memberDto.setMemberGender(req.getParameter("memberGender"));
+            memberDto.setMemberPhone(req.getParameter("memberPhone"));
+            memberDto.setMemberPostcode(req.getParameter("memberPostcode"));
+            memberDto.setMemberAddress(req.getParameter("memberAddress"));
+            memberDto.setMemberDetailAddress(req.getParameter("memberDetailAddress"));
+                      
+            
+            
             //처리
             MemberDao memberDao = new MemberDao();
             boolean success = memberDao.edit(memberDto);

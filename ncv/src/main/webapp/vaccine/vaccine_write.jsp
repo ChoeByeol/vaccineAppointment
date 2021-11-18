@@ -3,16 +3,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	String vaccineNo = request.getParameter("vaccineNo");
-%>
 
-<%-- <jsp:include page="/template/header.jsp"></jsp:include> --%>
+<jsp:include page="/template/header.jsp"></jsp:include>
 
 
 <form action= "vaccineWrite.txt" method="post">
 
-<input type="hidden" name="vaccineNo" value="<%=vaccineNo%>">
+<input type="hidden" name="vaccineNo">
 
 <div class="container-400 container-center">
 	<div class="row center">
@@ -89,5 +86,5 @@
 	<h4><font color="red">입력하신 정보가 일치하지 않습니다</font></h4>
 <%} %>
 
-<%-- <jsp:include page="/template/footer.jsp"></jsp:include> --%>
+<jsp:include page="/template/footer.jsp"></jsp:include>
 

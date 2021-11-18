@@ -8,13 +8,31 @@ import java.util.List;
 
 public class ClinicDao {
     
+	//시퀀스 생성 기능 (insert 후 병원 상세 정보 조회를 위함)
+	public int getSequence() throws Exception{
+		Connection con = JdbcUtils.connect();
+		
+		String sql = "select clinic_seq.nextval from dual";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		int seq = rs.getInt("nextval");
+		
+		con.close();
+		
+		return seq;
+	}
+	
     //병원 등록 기능
     public void insert(ClinicDto clinicDto) throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "insert into clinic values(clinic_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into clinic values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, clinicDto.getClinicNo());
         ps.setString(1, clinicDto.getClinicName());
         ps.setString(2, clinicDto.getClinicTel());
         ps.setString(3, clinicDto.getClinicTime());
@@ -34,7 +52,10 @@ public class ClinicDao {
     public boolean edit(ClinicDto clinicDto) throws Exception{
         Connection con = JdbcUtils.connect();
         
-        String sql = "update clinic set clinic_name = ?, clinic_tel = ?, clinic_Time = ?, clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ? where clinic_no = ?";
+        String sql = "update clinic set "
+        		+ "clinic_name = ?, clinic_tel = ?, clinic_Time = ?, "
+        		+ "clinic_postcode = ?, clinic_address = ?, clinic_detailaddress = ?, "
+        		+ "clinic_sido = ?, clinic_sigungu = ?, clinic_bname = ? where clinic_no = ?";
         
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, clinicDto.getClinicName());
@@ -43,7 +64,10 @@ public class ClinicDao {
         ps.setString(4, clinicDto.getClinicPostcode());
         ps.setString(5, clinicDto.getClinicAddress());
         ps.setString(6, clinicDto.getClinicDetailAddress());
-        ps.setInt(7, clinicDto.getClinicNo());
+        ps.setString(7, clinicDto.getClinicSido());
+        ps.setString(8, clinicDto.getClinicSigungu());
+        ps.setString(9, clinicDto.getClinicBname());
+        ps.setInt(10, clinicDto.getClinicNo());
         
         int result = ps.executeUpdate();
         
@@ -72,6 +96,9 @@ public class ClinicDao {
             clinicDto.setClinicPostcode(rs.getString("clinic_postcode"));
             clinicDto.setClinicAddress(rs.getString("clinic_address"));
             clinicDto.setClinicDetailAddress(rs.getString("clinic_detailAddress"));
+            clinicDto.setClinicSido(rs.getString("clinic_sido"));
+            clinicDto.setClinicSigungu(rs.getString("clinic_sigungu"));
+            clinicDto.setClinicBname(rs.getString("clinic_bname"));
             
             list.add(clinicDto);
         }
@@ -114,6 +141,9 @@ public class ClinicDao {
             clinicDto.setClinicPostcode(rs.getString("clinic_postcode"));
             clinicDto.setClinicAddress(rs.getString("clinic_address"));
             clinicDto.setClinicDetailAddress(rs.getString("clinic_detailAddress"));
+            clinicDto.setClinicSido(rs.getString("clinic_sido"));
+            clinicDto.setClinicSigungu(rs.getString("clinic_sigungu"));
+            clinicDto.setClinicBname(rs.getString("clinic_bname"));
     	}
     	else {
     		clinicDto = null;
@@ -121,5 +151,41 @@ public class ClinicDao {
     	con.close();
     	
     	return clinicDto;
+    }
+    
+    //시도 목록 조회 기능 (필요할거 같아서 만들어놈)
+    public List<String> sidoList() throws Exception{
+    	Connection con = JdbcUtils.connect();
+    	String sql = "select clinic_sido from clinic group by clinic_sido order by clinic_sido";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ResultSet rs = ps.executeQuery();
+    	
+    	List<String> list = new ArrayList<>();
+    	while(rs.next()) {
+    		list.add(rs.getString(1));
+    	}
+    	
+    	con.close();
+    	
+    	return list;
+    }
+    
+    
+    //시군구 목록 조회하는 기능 (필요할거 같아서 만들어놈)
+    public List<String> sigunguList(String clinicSido) throws Exception{
+    	Connection con = JdbcUtils.connect();
+    	String sql = "select clinic_sigungu from clinic where clinic_sido=? group by clinic_sigungu order by clinic_sigungu asc";
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	ps.setString(1, clinicSido);
+    	ResultSet rs = ps.executeQuery();
+    	
+    	List<String> list = new ArrayList<>();
+    	while(rs.next()) {
+    		list.add(rs.getString(1));
+    	}
+    	
+    	con.close();
+    	
+    	return list;
     }
 }

@@ -10,7 +10,7 @@
 %>
 
 
-<%-- <jsp:include page="/template/header.jsp"></jsp:include>   --%>
+<jsp:include page="/template/header.jsp"></jsp:include>  
 
 <h2>회원 상세 정보</h2>
 
@@ -26,6 +26,7 @@
 			<th>전화번호</th>
 			<th>가입일</th>
 			<th>등급</th>
+			<th>나이</th>
 		</tr>
 	</thead>
 	<tbody align="center">
@@ -39,9 +40,10 @@
 				<td><%=memberDto.getMemberPhone()%></td>
 				<td><%=memberDto.getMemberJoin()%></td>
 				<td><%=memberDto.getMemberRole()%></td>
+				<td><%=memberDto.getAge()%></td>
 			</tr>
 	</tbody>
 </table>
 
 
-<%-- <jsp:include page="/template/footer.jsp"></jsp:include>     --%>
+<jsp:include page="/template/footer.jsp"></jsp:include>    
