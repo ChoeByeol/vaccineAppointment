@@ -24,8 +24,11 @@ main {
     margin:2rem auto;
 }
 main > header {
-    padding:1rem;
-    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 80px;
+    margin: 0 auto;
 }
 main > nav {
 /* 	메뉴는 슬라이드 될 경우 화면을 넘어가기 때문에 overflow시 숨기지 않는다 */
