@@ -315,7 +315,7 @@ textarea.vertical {
 }
 .slide-menu li > a {/*(6) */
     display: block;
-    width:120px;
+    width : 120px;
     text-align: center;
     text-decoration: none;
     color:black;
