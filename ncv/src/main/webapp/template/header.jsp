@@ -100,7 +100,7 @@
         <li><a href="#" >1:1 문의</a></li>
     	<%if(admin){ %>
         <%} else { %>
-        <li><a href="#">예약하기</a></li>
+        <li><a href="<%=request.getContextPath()%>/reservation/reservation_reserve.jsp">예약하기</a></li>
         <%} %>        
         <li class="flex-right">
         	<a href="#" >회원메뉴</a>
@@ -109,8 +109,8 @@
             	<li><a href="<%=request.getContextPath()%>/admin/home.jsp">관리메뉴</a></li>
             	<%} else { %>
                 <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보보기</a></li>
-                <li><a href="#">예약조회</a></li>
-                <li><a href="#">접종내역확인</a></li>
+                <li><a href="<%=request.getContextPath()%>/reservation/reservation_detail.jsp">예약조회</a></li>
+                <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">접종내역확인</a></li>
                 <li><a href="#">내질문확인</a></li>
                 <%} %>
                 <li><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
