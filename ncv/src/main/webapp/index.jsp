@@ -3,7 +3,7 @@
     
     <jsp:include page="/template/header.jsp"></jsp:include>
 
-            <div class="container-600 container-center">
+            <div class="container-1000 container-center">
                 <div class="row center">
                     <h1>예방접종 사전예약 시스템</h1>
                 </div>

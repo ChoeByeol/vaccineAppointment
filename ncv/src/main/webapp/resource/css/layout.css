@@ -9,6 +9,11 @@
     src: url("../font/NotoSansKR-Regular.otf");
 }
 
+@font-face{
+	font-family: Apple;
+	src: url("../font/AppleSDGothicNeoB.ttf");
+}
+
 /* 레이아웃 배치 */
 
 *{

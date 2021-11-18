@@ -25,19 +25,34 @@ String root = request.getContextPath();
     .logo-wrapper {
     width: 120px;
     height: 40px;
+    margin:0px 5px 0px 0px;
     }
 
     .logo-wrapper>img {
         width: 100%;
         height: 100%;
     }
-
+    
     .title-wrapper {
-        flex-grow: 1;
-        display: block;
-        margin: auto;
-        padding-left: 15px;
-        color: #57585a;
+	flex-grow: 1;
+	display: block;
+	margin: auto;
+	padding-left: 15px;
+	}
+	
+    .title-wrapper > p{
+    	color: rgb(80,80,80);
+    	font-family:'Apple';
+    }
+    
+    .nuri-wrapper{
+    	width:120px;
+    	height:43px;
+    }
+    
+    .nuri-wrapper>img{
+    	width:100%;
+    	height:100%;
     }
     
     .footer-title{
@@ -60,7 +75,6 @@ String root = request.getContextPath();
 </head>
 <body>
     <main>
-        
         <header>
 			<div class="flex-container">
 				<div class="logo-wrapper">
@@ -71,4 +85,4 @@ String root = request.getContextPath();
 					<p>예방접종 사전예약 시스템</p>
 				</div>	
 			</div>
-		</header>   
+		</header>
