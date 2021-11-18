@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns = {"*.jsp", "*.txt"})//jsp, Servlet전체
+@WebFilter(urlPatterns = {
+		"*.jsp", "*.txt" //jsp, Servlet전체
+})
 public class EncodingFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

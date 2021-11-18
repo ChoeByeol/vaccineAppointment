@@ -12,7 +12,7 @@ import ncv.beans.MemberDao;
 import ncv.beans.MemberDto;
 
 @WebServlet(urlPatterns = "/member/password.txt")
-public class memberPwServlet extends HttpServlet{
+public class MemberPwServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {

@@ -60,7 +60,7 @@
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<h2>관리자용 회원 정보 수정</h2>
+<h2>회원 정보 수정</h2>
 
 <form action="edit.txt" method="post">
     
@@ -139,13 +139,7 @@
 					<input type="submit" value="수정">
 				</td>
 			</tr>
-			
-			<tr>
-				<td colspan= "2" align= "right">
-					<a href="<%=request.getContextPath()%>/admin/member/quit.txt?memberId=<%=memberDto.getMemberId() %>" >회원 탈퇴</a>
-				</td>
-			</tr>
-			
+
 			
 		</tbody>
 	</table>
@@ -153,7 +147,7 @@
 </form>
 
 <%if(request.getParameter("error") != null){%>
-<h4><font color="red">비밀번호가 일치하지 않습니다</font></h4>
+<h4 class="error">비밀번호가 일치하지 않습니다.</h4>
 <%} %>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
