@@ -356,4 +356,29 @@ public class MemberDao {
 	      
 	      return memberId;
 	   }
+	 
+	   //비밀번호 찾기 메소드
+	   public String findPw(String memberId, String memberName, String memberRrn) throws Exception{
+	      Connection con = JdbcUtils.connect();
+	      
+	      String sql = "SELECT member_id FROM member "
+	            + "WHERE member_id = ? and member_name=? and member_rrn=?";
+	      PreparedStatement ps = con.prepareStatement(sql);
+	      ps.setString(1, memberId);
+	      ps.setString(2, memberName);
+	      ps.setString(3, memberRrn);
+	      ResultSet rs = ps.executeQuery();
+	      
+	      String memberPw;
+	      if(rs.next()) {
+	    	  memberPw = rs.getString(1);
+	      }
+	      else {
+	    	  memberPw = null;
+	      }
+	      
+	      con.close();
+	      
+	      return memberPw;
+	   }
 }
