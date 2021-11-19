@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
     
  <jsp:include page="/template/header.jsp"></jsp:include>
+ <style>
+ .link-btn{
+ 	font-family:NotoSans;
+ }
+ </style>
  
  <form action="<%=request.getContextPath()%>/member/login.txt" method="post">
   
@@ -16,10 +21,13 @@
  	<div class="row">
  		<h1>비밀번호</h1>
  		<input type="password" name="memberPw" required class="form-input">
- </div>
+ 	</div>
   	<div class="row right">
  		<input type="submit" value="로그인" required class="form-btn form-incline">
- </div>
+ 	</div>
+ 	<div class="row center">
+ 		<a href="<%=request.getContextPath()%>/member/find_id.jsp" class="link-btn">아이디 찾기</a>|<a href="<%=request.getContextPath()%>/member/find_pw.jsp" class="link-btn">비밀번호 찾기</a>|<a href="<%=request.getContextPath()%>/member/join.jsp"class="link-btn">회원가입</a>
+ 	</div>
   
 	<%if(request.getParameter("error") != null){ %>
 	<div class="row center"> 
