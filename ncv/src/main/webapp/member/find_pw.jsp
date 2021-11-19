@@ -38,3 +38,9 @@
    <h4 class="error">존재하지 않는 회원입니다.</h4>
    <%}%>
    
+   <%String memberPw = request.getParameter("memberPw");%>
+   
+   <%if(memberPw != null){ %>
+   <h4>임시비밀번호 : <%=memberPw%></h4>
+   <%}%>
+   

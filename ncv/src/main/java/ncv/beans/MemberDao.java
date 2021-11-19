@@ -384,6 +384,7 @@ public class MemberDao {
 	   //아이디 비밀번호 주민번호 입력하면 임시비밀번호로 업데이트
 	   public boolean randomPassword(String memberId, String memberName, String memberRrn) throws Exception {
 		   
+		   //10자리 임시비밀번호 생성 (나중에 클래스로 빼주기)
 		   char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 				   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
 				   'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
@@ -402,6 +403,7 @@ public class MemberDao {
 		   String rpw = sb.toString();
 		   //System.out.println("생성된 임시비밀번호" + rpw);
 
+		   //생성된 임시비밀번호로 변경
 		   Connection con = JdbcUtils.connect();
 	
 		   String sql = "update member "

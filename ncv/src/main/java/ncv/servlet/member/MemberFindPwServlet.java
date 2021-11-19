@@ -25,8 +25,11 @@ public class MemberFindPwServlet extends HttpServlet{
          String memberPw = memberDao.findPw(memberId, memberName, memberRrn);
          
          //출력
-         if(memberPw == null && !randomPw) {
-            resp.sendRedirect("find_pw.jsp?error");
+         if(randomPw) {
+        	 resp.sendRedirect("find_pw.jsp?memberPw=" + memberPw);
+         }
+         else {
+        	 resp.sendRedirect("find_pw.jsp?error");
          }
       }
       catch(Exception e) {
