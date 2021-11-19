@@ -1,12 +1,12 @@
 package ncv.beans;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import ncv.beans.JdbcUtils;
 
 public class MemberDao {
 	
@@ -380,5 +380,49 @@ public class MemberDao {
 	      con.close();
 	      
 	      return memberPw;
+	   }
+	   
+	   //아이디 비밀번호 주민번호 입력하면 임시비밀번호로 업데이트
+	   public boolean randomPassword(String memberId, String memberName, String memberRrn) throws Exception {
+		   
+		   char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
+				   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
+				   'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
+				   'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 
+				   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
+				   'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+				   'y', 'z', }; 
+		   StringBuffer sb = new StringBuffer(); 
+		   SecureRandom sr = new SecureRandom(); 
+		   sr.setSeed(new Date().getTime()); 
+		   int idx = 0; 
+		   int len = charSet.length; 
+		   for (int i=0; i<10; i++) {
+			   // idx = (int) (len * Math.random()); 
+			   idx = sr.nextInt(len); // 강력한 난수를 발생시키기 위해 SecureRandom을 사용한다. 
+			   sb.append(charSet[idx]); 
+		   }
+	   		
+		   String rpw = sb.toString();
+		   System.out.println(rpw);
+
+		   Connection con = JdbcUtils.connect();
+	
+		   String sql = "update member "
+		   		+ "set member_pw=? "
+		   		+ "where member_id=? "
+		   		+ "and member_name=? "
+		   		+ "and member_rrn=?";
+		   PreparedStatement ps = con.prepareStatement(sql);
+		   ps.setString(1, "FAJSaQFp");
+		   ps.setString(2, memberId);
+		   ps.setString(3, memberName);
+		   ps.setString(4, memberRrn);
+		   int result = ps.executeUpdate();
+		   System.out.println(result);
+		   
+		   con.close();
+		   
+		   return result > 0 ;
 	   }
 }

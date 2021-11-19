@@ -6,7 +6,7 @@
         	<tr>
                <th>아이디</th>
                <td>
-                  <input type="text" name="memberID" required>
+                  <input type="text" name="memberId" required>
                </td>
             </tr>
             <tr>
