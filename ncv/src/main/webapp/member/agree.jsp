@@ -136,7 +136,7 @@
 				<input type="checkbox" oninput="allAgree();" class="check-all" required>
 					위의 가입 약관에  전체동의합니다
 				<div class="notice"></div>
-
+ 
 				
 				<div class="row">
 				<input type="submit" value="약관 동의">							
