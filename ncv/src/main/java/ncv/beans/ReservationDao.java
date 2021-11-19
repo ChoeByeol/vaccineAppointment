@@ -246,27 +246,27 @@ public class ReservationDao {
 		}
 		
 		//예약 상태 확인 기능
-				public ReservationDto Check(String memberId) throws Exception {
-					Connection con = JdbcUtils.connect();
-					String sql = "select member_id from reservation where member_id = ?";
-					PreparedStatement ps = con.prepareStatement(sql);
-					ps.setString(1, memberId);
-					ResultSet rs = ps.executeQuery();
+		public ReservationDto Check(String memberId) throws Exception {
+			Connection con = JdbcUtils.connect();
+			String sql = "select member_id from reservation where member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			ResultSet rs = ps.executeQuery();
 
-					ReservationDto reservationDto;
-					if(rs.next()) {
-						reservationDto = new ReservationDto();
-						reservationDto.setMemberId(rs.getString("member_id"));;
-					}
-					else {
-						
-						reservationDto = null;
-						
-					}
+			ReservationDto reservationDto;
+			if(rs.next()) {
+				reservationDto = new ReservationDto();
+				reservationDto.setMemberId(rs.getString("member_id"));;
+			}
+			else {
+				
+				reservationDto = null;
+				
+			}
 
-					con.close();
-					return reservationDto;
-					
-				}		
+			con.close();
+			return reservationDto;
+			
+		}		
 		
 }

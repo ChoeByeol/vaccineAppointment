@@ -109,7 +109,7 @@
             	<%} else { %>
                 <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보보기</a></li>
                 <li><a href="<%=request.getContextPath()%>/reservation/reservation_detail.jsp">예약조회</a></li>
-                <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">접종내역확인</a></li>
+                <li><a href="<%=request.getContextPath()%>/member/shot.jsp">접종내역확인</a></li>
                 <%} %>
                 <li><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
   			</ul>
