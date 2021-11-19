@@ -9,9 +9,6 @@ public class NoticeDto {
 	private String noticeContent;
 	private Date noticeTime;
 	private int noticeHit;
-	private int noticeSuperNo;
-	private int noticeDepth;
-	private int noticeGroupNo;
 	public NoticeDto() {
 		super();
 	}
@@ -51,23 +48,4 @@ public class NoticeDto {
 	public void setNoticeHit(int noticeHit) {
 		this.noticeHit = noticeHit;
 	}
-	public int getNoticeSuperNo() {
-		return noticeSuperNo;
-	}
-	public void setNoticeSuperNo(int noticeSuperNo) {
-		this.noticeSuperNo = noticeSuperNo;
-	}
-	public int getNoticeGroupNo() {
-		return noticeGroupNo;
-	}
-	public void setNoticeGroupNo(int noticeGroupNo) {
-		this.noticeGroupNo = noticeGroupNo;
-	}
-	public int getNoticeDepth() {
-		return noticeDepth;
-	}
-	public void setNoticeDepth(int noticeDepth) {
-		this.noticeDepth = noticeDepth;
-	}
-	
 }
