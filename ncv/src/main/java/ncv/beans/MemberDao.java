@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MemberDao {
@@ -361,7 +360,7 @@ public class MemberDao {
 	   public String findPw(String memberId, String memberName, String memberRrn) throws Exception{
 	      Connection con = JdbcUtils.connect();
 	      
-	      String sql = "SELECT member_id FROM member "
+	      String sql = "SELECT member_pw FROM member "
 	            + "WHERE member_id = ? and member_name=? and member_rrn=?";
 	      PreparedStatement ps = con.prepareStatement(sql);
 	      ps.setString(1, memberId);
@@ -393,18 +392,15 @@ public class MemberDao {
 				   'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
 				   'y', 'z', }; 
 		   StringBuffer sb = new StringBuffer(); 
-		   SecureRandom sr = new SecureRandom(); 
-		   sr.setSeed(new Date().getTime()); 
 		   int idx = 0; 
 		   int len = charSet.length; 
 		   for (int i=0; i<10; i++) {
-			   // idx = (int) (len * Math.random()); 
-			   idx = sr.nextInt(len); // 강력한 난수를 발생시키기 위해 SecureRandom을 사용한다. 
+			   idx = (int) (len * Math.random()); 
 			   sb.append(charSet[idx]); 
 		   }
 	   		
 		   String rpw = sb.toString();
-		   System.out.println(rpw);
+		   //System.out.println("생성된 임시비밀번호" + rpw);
 
 		   Connection con = JdbcUtils.connect();
 	
@@ -414,12 +410,11 @@ public class MemberDao {
 		   		+ "and member_name=? "
 		   		+ "and member_rrn=?";
 		   PreparedStatement ps = con.prepareStatement(sql);
-		   ps.setString(1, "FAJSaQFp");
+		   ps.setString(1, rpw);
 		   ps.setString(2, memberId);
 		   ps.setString(3, memberName);
 		   ps.setString(4, memberRrn);
 		   int result = ps.executeUpdate();
-		   System.out.println(result);
 		   
 		   con.close();
 		   
