@@ -11,13 +11,7 @@ public class ReservationDto {
 	private String resName;
 	private String resRrn;
 	private String resPhone;
-	
 
-	
-	@Override
-	public String toString() {
-		return "ReservationDto [resNo=" + resNo + ", memberId=" + memberId + ", resShot=" + resShot + "]";
-	}
 	public ReservationDto() {
 		super();
 	}

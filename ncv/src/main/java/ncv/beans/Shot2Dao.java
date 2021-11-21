@@ -42,7 +42,7 @@ public class Shot2Dao {
 	public List<Shot2Vo> list() throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "select a.shot_no, b.res_no, b.member_id, c.clinic_name, b.res_name, b.res_rrn, b.res_phone, d.vaccine_name, a. shot_date, a.shot_count from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no";
+		String sql = "select a.shot_no, a.resOk_no, b.member_id, c.clinic_name, b.res_name, b.res_rrn, b.res_phone, d.vaccine_name, a. shot_date, a.shot_count from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 
@@ -73,7 +73,7 @@ public class Shot2Dao {
 	//접종 완료 상세 보기 기능 - 회원 ( 조인o )
 	public Shot2Vo get(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
-		String sql = "select a.shot_no, b.res_no, b.member_id, c.clinic_name, b.res_name, b.res_rrn, b.res_phone, d.vaccine_name, a. shot_date, a.shot_count from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no where member_id= ? ";
+		String sql = "select a.shot_no, a.resOk_no, b.member_id, c.clinic_name, b.res_name, b.res_rrn, b.res_phone, d.vaccine_name, a. shot_date, a.shot_count from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no where member_id= ? ";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberId);
 		ResultSet rs = ps.executeQuery();
@@ -105,7 +105,7 @@ public class Shot2Dao {
 //접종 완료 상세 보기 기능 - 관리자 ( 조인o )
 public Shot2Vo get(int shotNo) throws Exception {
 	Connection con = JdbcUtils.connect();
-	String sql = "select a.shot_no, b.res_no, b.member_id, c.clinic_name, b.res_name, b.res_rrn, b.res_phone, d.vaccine_name, a. shot_date, a.shot_count from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no where a.shot_no = ? ";
+	String sql = "select a.shot_no, a.resOk_no, b.member_id, c.clinic_name, b.res_name, b.res_rrn, b.res_phone, d.vaccine_name, a. shot_date, a.shot_count from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no where a.shot_no = ? ";
 	PreparedStatement ps = con.prepareStatement(sql);
 	ps.setInt(1, shotNo);
 	ResultSet rs = ps.executeQuery();

@@ -6,7 +6,6 @@ public class Shot2Dto {
 	private String shotDate;
 	private int shotCount;
 
-	
 	public int getShotNo() {
 		return shotNo;
 	}
@@ -22,16 +21,14 @@ public class Shot2Dto {
 	public String getShotDate() {
 		return shotDate;
 	}
+	public String getShotDateDay() {
+		return shotDate.substring(0, 10);
+	}	
 	public void setShotDate(String shotDate) {
 		this.shotDate = shotDate;
 	}
 	public int getShotCount() {
 		return shotCount;
-	}
-	@Override
-	public String toString() {
-		return "Shot2Dto [shotNo=" + shotNo + ", resOkNo=" + resOkNo + ", shotDate=" + shotDate + ", shotCount="
-				+ shotCount + "]";
 	}
 	public void setShotCount(int shotCount) {
 		this.shotCount = shotCount;

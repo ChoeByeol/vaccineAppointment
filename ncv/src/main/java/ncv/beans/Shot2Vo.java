@@ -6,14 +6,6 @@ public class Shot2Vo {
 	private String ClinicName;
 	private String memberId;
 	private String memberName;
-	
-
-	@Override
-	public String toString() {
-		return "Shot2Vo [shotNo=" + shotNo + ", resOkNo=" + resOkNo + ", memberId=" + memberId + ", shotCount=" + shotCount
-				+ "]";
-	}
-
 	private String resRrn;
 	private String resPhone;
 	private String vaccineName;
@@ -76,7 +68,7 @@ public class Shot2Vo {
 		return resPhone;
 	}
 
-	public void setResPhone(String memberPhone) {
+	public void setResPhone(String resPhone) {
 		this.resPhone = resPhone;
 	}
 
@@ -91,6 +83,10 @@ public class Shot2Vo {
 	public String getShotDate() {
 		return shotDate;
 	}
+	
+	public String getShotDateDay() {
+		return shotDate.substring(0, 10);
+	}	
 
 	public void setShotDate(String shotDate) {
 		this.shotDate = shotDate;

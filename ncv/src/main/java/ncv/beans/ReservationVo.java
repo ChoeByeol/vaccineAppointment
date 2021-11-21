@@ -2,13 +2,6 @@ package ncv.beans;
 
 public class ReservationVo {
 
-	@Override
-	public String toString() {
-		return "ReservationVo [resNo=" + resNo + ", memberId=" + memberId + ", clinicName=" + clinicName
-				+ ", vaccineName=" + vaccineName + ", resShot=" + resShot + ", resDate=" + resDate + ", resTime="
-				+ resTime + ", resName=" + resName + ", resRrn=" + resRrn + ", resPhone=" + resPhone + "]";
-	}
-
 	private int resNo;
 	private String memberId;
 	private String clinicName;
