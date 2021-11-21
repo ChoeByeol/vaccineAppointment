@@ -1,3 +1,5 @@
+<%@page import="ncv.beans.Shot2Dao"%>
+<%@page import="ncv.beans.Shot2Vo"%>
 <%@page import="ncv.beans.ReservationDao"%>
 <%@page import="ncv.beans.ReservationDto"%>
 <%@page import="ncv.beans.VaccineDto"%>
@@ -14,6 +16,7 @@
 %>
 
 
+
 <%
 ClinicDao clinicDao = new ClinicDao();
 List<ClinicDto> list  = clinicDao.list();
@@ -24,12 +27,22 @@ VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
 %>
 
-
 <%--
+<%
 	ReservationDao reservationDao = new ReservationDao();
 	List<ReservationDto> reservationList = reservationDao.list();
---%>
+%>
 
+<%
+	Shot2Dao shotDao = new Shot2Dao();
+	List<Shot2Vo> List = shotDao.list();
+%>
+
+
+
+<%=reservationList.toString() %>
+<%=List.toString() %>
+--%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <style>
@@ -103,7 +116,7 @@ tbody {
 			
 	<div class="row">
 				<label>접종차수</label>
-				<input type="text" name="shotNo">
+				<input type="text" name="resShot">
 			</div>					
 
 	<div class="row">
@@ -138,12 +151,12 @@ tbody {
 				</select>
 			</div>
 			
-			<div>
+
 	<div class="row right">
-					<input type="submit" value="예약">
-					<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'">
+					<input type="submit" value="예약" class="link-btn" >
+					<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
 				</div>
-			</div>
+
 		</div>
 	</form>
 	

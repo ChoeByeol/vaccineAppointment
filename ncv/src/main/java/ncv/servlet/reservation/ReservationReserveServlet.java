@@ -24,7 +24,7 @@ public class ReservationReserveServlet extends HttpServlet {
 			reservationDto.setMemberId(req.getParameter("memberId"));
 			reservationDto.setClinicNo(Integer.parseInt(req.getParameter("clinicNo")));
 			reservationDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
-			reservationDto.setShotNo(Integer.parseInt(req.getParameter("shotNo")));
+			reservationDto.setResShot(Integer.parseInt(req.getParameter("resShot")));
 			reservationDto.setResDate(req.getParameter("resDate"));
 			reservationDto.setResTime(req.getParameter("resTime"));
 			reservationDto.setResName(req.getParameter("resName"));
@@ -34,7 +34,7 @@ public class ReservationReserveServlet extends HttpServlet {
 			ReservationDao reservationDao = new ReservationDao();		
 			int resNo = reservationDao.getSequence();
 			reservationDto.setResNo(resNo);
-			reservationDao.reserve(reservationDto);
+ 
 			
 			resp.sendRedirect("reservation_detail.jsp?resNo="+resNo);
 

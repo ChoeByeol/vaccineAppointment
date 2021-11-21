@@ -5,13 +5,19 @@ public class ReservationDto {
 	private String memberId;
 	private int vaccineNo;
 	private int clinicNo;
-	private int shotNo;
+	private int resShot;
 	private String resDate;
 	private String resTime;
 	private String resName;
 	private String resRrn;
 	private String resPhone;
 	
+
+	
+	@Override
+	public String toString() {
+		return "ReservationDto [resNo=" + resNo + ", memberId=" + memberId + ", resShot=" + resShot + "]";
+	}
 	public ReservationDto() {
 		super();
 	}
@@ -39,11 +45,11 @@ public class ReservationDto {
 	public void setClinicNo(int clinicNo) {
 		this.clinicNo = clinicNo;
 	}
-	public int getShotNo() {
-		return shotNo;
+	public int getResShot() {
+		return resShot;
 	}
-	public void setShotNo(int shotNo) {
-		this.shotNo = shotNo;
+	public void setResShot(int resShot) {
+		this.resShot = resShot;
 	}
 	public String getResDate() {
 		return resDate;

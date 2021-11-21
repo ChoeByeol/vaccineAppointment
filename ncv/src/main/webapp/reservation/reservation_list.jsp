@@ -1,4 +1,6 @@
 
+<%@page import="ncv.beans.Shot2Vo"%>
+<%@page import="ncv.beans.Shot2Dao"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.ReservationDao"%>
 <%@page import="java.util.List"%>
@@ -12,13 +14,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-	$(function() {
-		$("#confirm-link").click(function() {
-			return confirm("정말 취소하시겠습니까?");
-		});
-	});
-</script>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -49,6 +44,7 @@ td {
 	vertical-align: middle;
 	word-wrap: break-word;
     word-break: keep-all;
+    font-size: 11px;
 }
 tbody {
 	border-bottom: 1px solid black;
@@ -71,37 +67,35 @@ tbody {
 		<table class="table table-border table-hover">
 			<thead>
 				<tr>
-					<th>예약번호</th>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>주민등록번호</th>
-					<th>전화번호</th>
-					<th>백신명</th>
-					<th>접종차수</th>
-					<th>예약병원</th>
-					<th>예약일</th>
-					<th>예약시간</th>
-					<th>비고</th>
+					<td>예약번호</td>
+					<td>아이디</td>
+					<td>이름</td>
+					<td>주민등록번호</td>
+					<td>전화번호</td>
+					<td>백신명</td>
+					<td>접종차수</td>
+					<td>예약병원</td>
+					<td>예약일</td>
+					<td>예약시간</td>
+					<td>접종상태</td>
 				</tr>
 			</thead>
 			<tbody align="center">
-				<%for(ReservationVo reservationVo : reservationList){ %>
-				<tr>
-					<td><%=reservationVo.getResNo()%></td>
+			
+				<% for (ReservationVo reservationVo : reservationList) { %>
+				<tr>		
+					<td><a href="reservation_detail.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn"><%=reservationVo.getResNo()%></a></td>
 					<td><%=reservationVo.getMemberId()%></td>
 					<td><%=reservationVo.getResName()%></td>
 					<td><%=reservationVo.getResRrn()%></td>
 					<td><%=reservationVo.getResPhone()%></td>
 					<td><%=reservationVo.getVaccineName()%></td>
-					<td><%=reservationVo.getShotNo()%>차</td>
+					<td><%=reservationVo.getResShot()%>차</td>
 					<td><%=reservationVo.getClinicName()%></td>
 					<td><%=reservationVo.getResDateDay()%></td>
 					<td><%=reservationVo.getResTime()%></td>
-					<td>
-						<a href="reservation_detail.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">상세</a>
-						<a href="reservation_edit.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">변경</a>
-						<a href="cancel.txt?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn" id="confirm-link">예약취소</a>
-					</td>
+					<td><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">접종완료하러가기</a></td>
+
 				</tr>
 				<%} %>
 			</tbody>
