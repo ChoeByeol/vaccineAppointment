@@ -1,3 +1,4 @@
+<%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.Shot2Dao"%>
 <%@page import="ncv.beans.Shot2Vo"%>
 <%@page import="ncv.beans.ReservationDao"%>
@@ -30,7 +31,7 @@ List<VaccineDto> vaccineList = vaccineDao.list();
 
 <%
 			ReservationDao reservationDao = new ReservationDao();
-			List<ReservationDto> resCheckList = reservationDao.resCheckList(memberId);
+			List<ReservationVo> myResList = reservationDao.myResList(memberId);
 			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
 
 			int vacNo = 0;
@@ -38,7 +39,7 @@ List<VaccineDto> vaccineList = vaccineDao.list();
 				vacNo= reservationDto.getVaccineNo();
 			}
 
-			boolean check = memberId != null && resCheckList.size() == 0; // 미접종
+			boolean check = memberId != null && myResList.size() == 0; // 미접종
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -133,12 +134,15 @@ tbody {
 			<% } %>	
 		</div>		
 			
+		</div>
+		<div class="container-400 container-center">	
+			
 	<% if (check) { %>
 	<div class="row">
 		<label>접종차수</label>
 		<input type="hidden" name="resShot" value="1">
 		<label>1차</label>
-		</div>			
+	</div>			
 	<%} else{ %>			
 		<div class="row">
 			<label>접종차수</label>

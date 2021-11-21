@@ -121,7 +121,7 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 				</table>
 				
 				<div class="row right">
-					<input type="submit" value="완료" id="complete-link" class="link-btn">
+					<input type="submit" value="접종완료하기" id="complete-link" class="link-btn">
 					<input type="button" value="메인으로가기" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
 				</div>
 				
@@ -130,7 +130,7 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 
 			<div class="row right">
 			<a href="reservation_list.jsp" class="link-btn">목록보기</a>
-			<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="cancel-link">예약취소</a>
+			<a href="<%=request.getContextPath()%>/reservation/cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="cancel-link">예약취소</a>
 		</div>
 </div>
 

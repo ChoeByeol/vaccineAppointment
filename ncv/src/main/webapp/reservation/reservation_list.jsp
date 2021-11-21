@@ -91,7 +91,7 @@ tbody {
 					<td><%=reservationVo.getClinicName()%></td>
 					<td><%=reservationVo.getResDateDay()%></td>
 					<td><%=reservationVo.getResTime()%></td>
-					<td><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">접종완료하러가기</a></td>
+					<td><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">접종상세내역</a></td>
 
 				</tr>
 				<%} %>

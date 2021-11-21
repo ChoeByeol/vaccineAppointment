@@ -31,7 +31,7 @@ public class ShotCompleteServlet extends HttpServlet {
 			shotDto.setShotNo(shotNo);
 			shotDao.shotComplete(shotDto);
 			
-			resp.sendRedirect("shot_detail.jsp?shotNo="+shotNo);
+			resp.sendRedirect("shot_list.jsp");
 
 		} catch (Exception e) {
 			e.printStackTrace();

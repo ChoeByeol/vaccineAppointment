@@ -22,7 +22,7 @@ public class Shot2Dto {
 		return shotDate;
 	}
 	public String getShotDateDay() {
-		return shotDate.substring(0, 10);
+		return shotDate.substring(0, 16);
 	}	
 	public void setShotDate(String shotDate) {
 		this.shotDate = shotDate;

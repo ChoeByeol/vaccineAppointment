@@ -121,7 +121,37 @@ public class ReservationDao {
 			return reservationList;
 		}		
 		
-		
+		//나의 예약 리스트 조회 기능 ( 조인o )
+		public List<ReservationVo> myResList(String memberId) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select a.res_no, a.member_id, b.vaccine_name, c.clinic_name, a.res_shot, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no  inner join member d on a.member_id = d.member_id where d.member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			ResultSet rs = ps.executeQuery();
+
+			List<ReservationVo> myResList = new ArrayList<>();
+			while(rs.next()) {
+				ReservationVo reservationVo = new ReservationVo();
+
+				reservationVo.setResNo(rs.getInt("res_no"));
+				reservationVo.setMemberId(rs.getString("member_id"));
+				reservationVo.setClinicName(rs.getString("clinic_name"));
+				reservationVo.setVaccineName(rs.getString("vaccine_name"));
+				reservationVo.setResShot(rs.getInt("res_shot"));
+				reservationVo.setResDate(rs.getString("res_date"));
+				reservationVo.setResTime(rs.getString("res_time"));
+				reservationVo.setResName(rs.getString("res_name"));
+				reservationVo.setResRrn(rs.getString("res_rrn"));
+				reservationVo.setResPhone(rs.getString("res_phone"));
+				
+				myResList.add(reservationVo);
+			}
+
+			con.close();
+
+			return myResList;
+		}				
 		
 		//예약 상세보기 기능 ( 조인o )
 		public ReservationVo get(int resNo) throws Exception {
@@ -270,24 +300,24 @@ public class ReservationDao {
 		}		
 		
 		//예약하기 체크용 예약내역 확인 기능
-		public List<ReservationDto> resCheckList(String memberId) throws Exception {
-			Connection con = JdbcUtils.connect();
-
-			String sql = "select member_id from reservation where member_id = ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, memberId);
-			ResultSet rs = ps.executeQuery();
-
-			List<ReservationDto> resCheckList = new ArrayList<>();
-			while(rs.next()) {
-				ReservationDto reservationDto = new ReservationDto();
-			
-				resCheckList.add(reservationDto);
-			}
-
-			con.close();
-
-			return resCheckList;
-		}		
+//		public List<ReservationDto> resCheckList(String memberId) throws Exception {
+//			Connection con = JdbcUtils.connect();
+//
+//			String sql = "select member_id from reservation where member_id = ?";
+//			PreparedStatement ps = con.prepareStatement(sql);
+//			ps.setString(1, memberId);
+//			ResultSet rs = ps.executeQuery();
+//
+//			List<ReservationDto> resCheckList = new ArrayList<>();
+//			while(rs.next()) {
+//				ReservationDto reservationDto = new ReservationDto();
+//			
+//				resCheckList.add(reservationDto);
+//			}
+//
+//			con.close();
+//
+//			return resCheckList;
+//		}		
 		
 }

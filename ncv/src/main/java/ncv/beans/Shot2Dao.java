@@ -69,6 +69,37 @@ public class Shot2Dao {
 		return list;
 	}	
 	
+	//나의 접종 완료 리스트 조회 기능 ( 조인o )
+		public List<Shot2Vo> myShotList(String memberId) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select a.shot_no, a.resOk_no, b.member_id, c.clinic_name, b.res_name, b.res_rrn, b.res_phone, d.vaccine_name, a. shot_date, a.shot_count from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no where member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			ResultSet rs = ps.executeQuery();
+
+			List<Shot2Vo> myShotList = new ArrayList<>();
+			while (rs.next()) {
+				Shot2Vo shotVo = new Shot2Vo();
+
+				shotVo.setShotNo(rs.getInt("shot_no"));
+				shotVo.setResOkNo(rs.getInt("resOk_no"));
+				shotVo.setMemberId(rs.getString("member_id"));
+				shotVo.setMemberName(rs.getString("res_name"));
+				shotVo.setResRrn(rs.getString("res_rrn"));
+				shotVo.setResPhone(rs.getString("res_phone"));
+				shotVo.setVaccineName(rs.getString("vaccine_name"));
+				shotVo.setClinicName(rs.getString("clinic_name"));
+				shotVo.setShotDate(rs.getString("shot_date"));
+				shotVo.setShotCount(rs.getInt("shot_count"));
+				
+				myShotList.add(shotVo);
+			}
+
+			con.close();
+
+			return myShotList;
+		}
 	
 	//접종 완료 상세 보기 기능 - 회원 ( 조인o )
 	public Shot2Vo get(String memberId) throws Exception {
@@ -134,24 +165,24 @@ public Shot2Vo get(int shotNo) throws Exception {
 }	
 
 	//예약하기 체크용 접종내역 확인 기능
-	public List<Shot2Vo> checkList(String memberId) throws Exception {
-		Connection con = JdbcUtils.connect();
-
-		String sql = "select b.member_id from shot a inner join reservation b on a.resOk_no = b.res_no where member_id = ? ";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, memberId);
-		ResultSet rs = ps.executeQuery();
-
-		List<Shot2Vo> checkList = new ArrayList<>();
-		while (rs.next()) {
-			Shot2Vo shotVo = new Shot2Vo();
-			
-			checkList.add(shotVo);
-		}
-
-		con.close();
-
-		return checkList;
-	}		
+//	public List<Shot2Vo> checkList(String memberId) throws Exception {
+//		Connection con = JdbcUtils.connect();
+//
+//		String sql = "select b.member_id from shot a inner join reservation b on a.resOk_no = b.res_no where member_id = ? ";
+//		PreparedStatement ps = con.prepareStatement(sql);
+//		ps.setString(1, memberId);
+//		ResultSet rs = ps.executeQuery();
+//
+//		List<Shot2Vo> checkList = new ArrayList<>();
+//		while (rs.next()) {
+//			Shot2Vo shotVo = new Shot2Vo();
+//			
+//			checkList.add(shotVo);
+//		}
+//
+//		con.close();
+//
+//		return checkList;
+//	}		
 	
 }
