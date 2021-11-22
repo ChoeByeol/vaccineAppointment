@@ -10,40 +10,58 @@
 %>
 
 
-<jsp:include page="/template/header.jsp"></jsp:include>  
-
-<h2>회원 상세 정보</h2>
-
-<table width="1100">
-	<thead>
-		<tr>
-			<th>아이디</th>
-			<th>비밀번호</th>
-			<th>이름</th>
-			<th>주민등록번호</th>
-			<th>성별</th>
-			<th>주소</th>
-			<th>전화번호</th>
-			<th>가입일</th>
-			<th>등급</th>
-			<th>나이</th>
-		</tr>
-	</thead>
-	<tbody align="center">
-			<tr>			
-				<td><%=memberDto.getMemberId()%></td>
-				<td><%=memberDto.getMemberPw()%></td>
-				<td><%=memberDto.getMemberName()%></td>
-				<td><%=memberDto.getMemberRrn()%></td>
-				<td><%=memberDto.getMemberGender()%></td>
-				<td><%=memberDto.getMemberAddress()%></td>
-				<td><%=memberDto.getMemberPhone()%></td>
-				<td><%=memberDto.getMemberJoin()%></td>
-				<td><%=memberDto.getMemberRole()%></td>
-				<td><%=memberDto.getAge()%></td>
-			</tr>
-	</tbody>
-</table>
-
+<jsp:include page="/template/header.jsp"></jsp:include>
+<div class="container-900 container-center">
+	<div class="row center">
+		<h2>회원 상세 정보</h2>
+	</div>
+	<br>
+	<div class="row">
+		<table class="table table-stripe">
+			<tbody>
+				<tr>
+					<th>아이디</th>
+					<td><%=memberDto.getMemberId()%></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><%=memberDto.getMemberPw()%></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><%=memberDto.getMemberName()%></td>
+				</tr>
+				<tr>
+					<th>주민등록번호</th>
+					<td><%=memberDto.getMemberRrn()%></td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td><%=memberDto.getMemberGender()%></td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td><%=memberDto.getMemberAddress()%></td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td><%=memberDto.getMemberPhone()%></td>
+				</tr>
+				<tr>
+					<th>가입일</th>
+					<td><%=memberDto.getMemberJoin()%></td>
+				</tr>
+				<tr>
+					<th>등급</th>
+					<td><%=memberDto.getMemberRole()%></td>
+				</tr>
+				<tr>
+					<th>나이</th>
+					<td><%=memberDto.getAge()%></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>    
