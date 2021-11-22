@@ -120,7 +120,7 @@
 					<br>
 					</div>
 					<input type="checkbox" oninput="check();" class="ck3"required>
-					위의 가입 약관에 동의합니다
+					위의 가입 약관에 동의합니다  
 				</div>
 				
 				<div class="row">
@@ -128,9 +128,9 @@
 					<div id="cate4" style="display:none">
 						<textarea name="textarea" cols="69" rows="5" readonly>개인정보 제3자 제공동의 어쩌구</textarea>	
 						<br>
-					</div>
+					</div>  
 						<input type="checkbox" oninput="check();" class="ck4"required>
-						위의 가입 약관에 동의합니다
+						위의 가입 약관에 동의합니다  
 				</div>
 				
 				<input type="checkbox" oninput="allAgree();" class="check-all" required>
