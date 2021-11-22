@@ -356,7 +356,7 @@ public class MemberDao {
 	      return memberId;
 	   }
 	 
-	   //비밀번호 찾기 메소드
+	   //비밀번호 찾기 메소드(안씀)
 	   public String findPw(String memberId, String memberName, String memberRrn) throws Exception{
 	      Connection con = JdbcUtils.connect();
 	      
@@ -397,7 +397,6 @@ public class MemberDao {
 		   ps.setString(3, memberName);
 		   ps.setString(4, memberRrn);
 		   int result = ps.executeUpdate();
-		   System.out.println(result);
 		  
 		   con.close();
 		   

@@ -18,7 +18,7 @@ public class MemberFindPwServlet extends HttpServlet{
       try {
          //입력 : 아이디, 이름, 주민등록번호
     	 
-    	 String tmpPw = TemporaryPassword.create(); //임시비밀번호
+    	 String tmpPw = TemporaryPassword.create(); //임시비밀번호 생성
     	 System.out.println("임시비밀번호 = " + tmpPw);
     	 String encryptPw = SHA256.encrypt(tmpPw); //임시비밀번호 암호화
     	 System.out.println("암호화된 임시비밀번호 = " + encryptPw);
@@ -29,7 +29,8 @@ public class MemberFindPwServlet extends HttpServlet{
          //처리
          MemberDao memberDao = new MemberDao();
          boolean success = memberDao.editPassword(encryptPw, memberId, memberName, memberRrn);
-         String memberPw = memberDao.findPw(memberId, memberName, memberRrn);
+         System.out.println("성공(true)? 실패(false)? : " + success);
+         //String memberPw = memberDao.findPw(memberId, memberName, memberRrn);
          
          //출력
          if(success) {
