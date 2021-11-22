@@ -15,7 +15,6 @@
             $("label").css("font-size","1.5rem");
             $(".msg").css("font-size","1.5rem");
             $(".notice").css("color","red");
-            $(".row").css("border","1px dotted black");
             
 			$("#id").blur(function(){
 				idCheck();
