@@ -9,19 +9,6 @@
         .notice {
             color:red;
         }
-        .address-input{
-        	width:392.95px;
-    		font-size: 20px;
-    		padding:10px;
-    		margin-top:10px;
-			margin-bottom:15px;
-    		border:1px solid rgb(0, 0, 0);
-        }
-        .address-input:focus{
-			border:none;
-    		outline:2px solid rgb(0, 55, 100);
-    		border-radius: 2px;
-		}
     </style>
 	 <script>	 
 	 	//주민등록번호 성별 추출
@@ -222,7 +209,7 @@
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
-		 		<label class="label-text">우편번호</label>
+		 		<label class="label-text">우편번호</label><br>
 		 		<input type="text" name="memberPostcode" placeholder="우편번호"  readonly class="address-input">
 		 		<button type="button" class="find-address-btn form-btn form-inline">주소 찾기</button>
 		 		<div class="notice"></div>

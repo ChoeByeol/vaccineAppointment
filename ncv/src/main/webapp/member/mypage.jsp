@@ -18,59 +18,35 @@
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 <style>
-	.float-container > .float-item-left:nth-child(1) {
-		width:25%;	
-		padding:0.5rem;
-	}
-	.float-container > .float-item-left:nth-child(2) {
-		width:75%;
-		padding:0.5rem;
-	}
-	
 	.link-btn {
 		width:100%;
+	}
+	.flex-item{
+		width:450px;
+	}
+	.quit-btn{
+		border:none;
+		padding:0.5rem;
+		text-decoration:none;
+		color:gray;
+		font-family:NotoSans;
+		font-size:12px;
+	}
+	.quit-btn:hover{
+		color:red;
 	}
 </style>
 
 <div class="container-900 container-center">
 	
-	<div class="row float-container">	
-		<!-- 1단 -->
-		<div class="float-item-left">
-			
-			<!-- 아이디 -->
-			<div class="row center">
-				<h2><%=memberDto.getMemberId()%></h2>
-			</div>
-			
-			<!-- 메뉴들 -->
-			<div class="row center">
-				<a href="password.jsp" class="link-btn-block">비밀번호 변경</a>
-			</div>
-			<div class="row center">
-				<a href="edit.jsp" class="link-btn-block">개인정보 변경</a>
-			</div>
-			<div class="row center">
-				<a href="<%=request.getContextPath()%>/qna/list.jsp?memberId=<%=memberDto.getMemberId()%>" class="link-btn-block">1:1 문의</a>
-			</div>
-			<div class="row center">
-				<a href="check.jsp" class="link-btn-block">회원 탈퇴</a>
-			</div>
-			
-		</div>
-		
-		<!-- 2단 -->
-		<div class="float-item-left">
-		
+	<div class="row flex-container">
+			<!-- 1단 -->
 			<!-- 회원 정보 -->
-			<div class="row">
-				<h2>회원 상세 정보</h2>
-			</div>
-			<div class="row">
+			<div class="row flex-item">
 				<table class="table table-stripe">
 					<tbody>
 						<tr>
-							<th width="25%">아이디</th>
+							<th width="50%">아이디</th>
 							<td><%=memberDto.getMemberId()%></td>
 						</tr>
 						<tr>
@@ -100,8 +76,26 @@
 					</tbody>
 				</table>
 			</div>
+
+		<!-- 2단 -->
+			<!-- 메뉴들 -->
+			<div class="flex-item center">
+				<h2><%=memberDto.getMemberId()%></h2>
+				<br>
+					<div class="link-btn">
+						<a href="password.jsp" class="link-btn">비밀번호 변경</a>
+					</div>
+					<div class="link-btn">
+						<a href="edit.jsp" class="link-btn">개인정보 변경</a>
+					</div>
+					<div class="link-btn">
+						<a href="<%=request.getContextPath()%>/qna/list.jsp?memberId=<%=memberDto.getMemberId()%>" class="link-btn">1:1 문의</a>
+					</div>
+			</div>
 		</div>
 	</div>
-</div>
 
+<div class="quit-btn right">
+	<a class="quit-btn" href="check.jsp">회원 탈퇴</a>
+</div>
  <jsp:include page="/template/footer.jsp"></jsp:include>

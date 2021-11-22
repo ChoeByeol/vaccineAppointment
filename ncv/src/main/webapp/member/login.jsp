@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
     
  <jsp:include page="/template/header.jsp"></jsp:include>
- <style>
- .link-btn{
- 	font-family:NotoSans;
- }
- </style>
  
  <form action="<%=request.getContextPath()%>/member/login.txt" method="post">
   

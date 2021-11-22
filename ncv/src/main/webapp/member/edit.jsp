@@ -27,6 +27,15 @@
 			width: 100%;
 			border-bottom:1px solid gold;
 		}
+		.edit-text{
+			margin-top:10px;
+			margin-bottom:15px;
+    		line-height:50px;
+    		height:50px;
+		}
+		.label-text{
+			font-family:Apple;
+		}
     </style>
 	 <script>	 
 	    $(function(){        
@@ -93,38 +102,29 @@
 		<div class="row">
 		 		<label class="label-text">아이디</label>
 		 		<input type="hidden" class="form-input" name="memberId" value="<%=memberDto.getMemberId()%>">
-                <%=memberDto.getMemberId()%>
+                <p class="edit-text"><%=memberDto.getMemberId()%></p>
 		 </div>
 		 <div class="row">
-		 		<label class="label-text">비밀번호</label>
-		 		<input type="password" class="form-input" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
+		 		<label class="label-text">이름</label>
+		 		<input type="hidden" name="memberName" value="<%=memberDto.getMemberName()%>">
+                <p class="edit-text"><%=memberDto.getMemberName()%></p>
 		 </div>
 		 <div class="row">
-		 		<label class="label-text">주민등록번호</label>
-		 		<input type="hidden" name="memberRrn" value="<%=memberDto.getMemberRrn()%>">
-                <%=memberDto.getMemberRrn()%>
+		 		<label class="label-text">전화번호</label>
+		 		<input type= "tel" class="form-input" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
 		 </div>
 		 <div class="row">
-		 		<label class="label-text">성별</label>
-		 		<input type="hidden" name="memberGender" value="<%=memberDto.getMemberGender()%>">
-                <%=memberDto.getMemberGender()%>
-		 </div>
-		 <div class="row">
-		 		<label class="label-text">우편번호</label>
+		 		<label class="label-text">우편번호</label><br>
 		 		<input type="text" name="memberPostcode" value="<%=memberDto.getMemberPostcode()%>" readonly class="address-input">
 		 		<button type="button" class="find-address-btn form-btn form-inline">주소 찾기</button>
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">주소</label>
-		 		<input type="text" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
+		 		<input type="text" class="form-input" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">상세주소</label>
-		 		<input type="text" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
-		 </div>
-		 <div class="row">
-		 		<label class="label-text">전화번호</label>
-		 		<input type= "tel" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
+		 		<input type="text" class="form-input" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
 		 </div>
 		 <div class="row">
 				<input type="submit" value="수정" class="form-btn">
