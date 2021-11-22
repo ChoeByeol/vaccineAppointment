@@ -5,9 +5,11 @@ public class ShotDto {
 	private int shotNo;
 	private String memberId;
 	private int resNo;
-	private String shotStCom;
-	private String shotEndCom;
-	private String shotMemberNo;
+	private int clinicNo;
+	private int vaccineNo;
+	private String shotOne;
+	private String shotTwo;
+	private String shotMemberRrn;
 	
 	public ShotDto() {
 		super();
@@ -30,23 +32,35 @@ public class ShotDto {
 	public void setResNo(int resNo) {
 		this.resNo = resNo;
 	}
-	public String getShotStCom() {
-		return shotStCom;
+	public int getClinicNo() {
+		return clinicNo;
 	}
-	public void setShotStCom(String shotStCom) {
-		this.shotStCom = shotStCom;
+	public void setClinicNo(int clinicNo) {
+		this.clinicNo = clinicNo;
 	}
-	public String getShotEndCom() {
-		return shotEndCom;
+	public int getVaccineNo() {
+		return vaccineNo;
 	}
-	public void setShotEndCom(String shotEndCom) {
-		this.shotEndCom = shotEndCom;
+	public void setVaccineNo(int vaccineNo) {
+		this.vaccineNo = vaccineNo;
 	}
-	public String getShotMemberNo() {
-		return shotMemberNo;
+	public String getShotOne() {
+		return shotOne;
 	}
-	public void setShotMemberNo(String shotMemberNo) {
-		this.shotMemberNo = shotMemberNo;
+	public void setShotOne(String shotOne) {
+		this.shotOne = shotOne;
 	}
-	
+	public String getShotTwo() {
+		return shotTwo;
+	}
+	public void setShotTwo(String shotTwo) {
+		this.shotTwo = shotTwo;
+	}
+	public String getShotMemberRrn() {
+		return shotMemberRrn;
+	}
+	public void setShotMemberRrn(String shotMemberRrn) {
+		this.shotMemberRrn = shotMemberRrn;
+	}
+
 }

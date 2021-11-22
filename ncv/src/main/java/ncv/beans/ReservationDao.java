@@ -94,7 +94,7 @@ public class ReservationDao {
 		public List<ReservationVo> list2() throws Exception {
 			Connection con = JdbcUtils.connect();
 
-			String sql = "select a.res_no, a.member_id, b.vaccine_name, c.clinic_name, a.shot_no, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no";
+			String sql = "select a.res_no, a.member_id, b.vaccine_name, c.clinic_name, a.shot_no, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no  inner join member d on a.member_id = d.member_id";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
@@ -126,7 +126,7 @@ public class ReservationDao {
 		//예약 상세보기 기능 ( 조인o )
 		public ReservationVo get(int resNo) throws Exception {
 			Connection con = JdbcUtils.connect();
-			String sql = "select a.res_no, a.member_id, b.vaccine_name, c.clinic_name, a.shot_no, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no where res_no = ?";
+			String sql = "select a.res_no, a.member_id, b.vaccine_name, c.clinic_name, a.shot_no, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no  inner join member d on a.member_id = d.member_id where res_no = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, resNo);
 			ResultSet rs = ps.executeQuery();
@@ -244,4 +244,29 @@ public class ReservationDao {
 
 			return result > 0;		
 		}
+		
+		//예약 상태 확인 기능
+		public ReservationDto Check(String memberId) throws Exception {
+			Connection con = JdbcUtils.connect();
+			String sql = "select member_id from reservation where member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			ResultSet rs = ps.executeQuery();
+
+			ReservationDto reservationDto;
+			if(rs.next()) {
+				reservationDto = new ReservationDto();
+				reservationDto.setMemberId(rs.getString("member_id"));;
+			}
+			else {
+				
+				reservationDto = null;
+				
+			}
+
+			con.close();
+			return reservationDto;
+			
+		}		
+		
 }

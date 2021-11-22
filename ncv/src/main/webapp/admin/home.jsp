@@ -11,6 +11,9 @@
 		<a href="./member/list.jsp" class="link-btn-block">회원 관리</a>
 	</div>
 	<div class="row center">
+		<a href="./member/shot.jsp" class="link-btn-block">회원 접종 내역 관리</a>
+	</div>
+	<div class="row center">
 		<a href="./clinic/list.jsp" class="link-btn-block">병원 관리</a>
 	</div>
 	<div class="row center">
