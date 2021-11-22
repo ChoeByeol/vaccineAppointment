@@ -48,11 +48,11 @@
     padding:10px;
 }
 .form-input {
-    border:1px solid rgb(0, 55, 100);
+    border:1px solid rgb(26,44,48);
 }
 .form-btn {
     color:white;
-    background-color: rgb(0, 55, 100);
+    background-color: rgb(26,44,48);
     font-weight: bold;
 }
 .form-block{
