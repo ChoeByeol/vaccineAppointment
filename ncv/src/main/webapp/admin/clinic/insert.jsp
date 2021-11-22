@@ -67,7 +67,7 @@
     });
 </script>
 
-<form action="clinicInsert.txt" method="post">
+<form action="<%=request.getContextPath()%>/clinic/clinicInsert.txt" method="post">
 	<input type="text" name="clinicName" placeholder="병원 이름">
 	<br>
 	<input type="text" name="clinicTel" placeholder="병원 전화번호">
