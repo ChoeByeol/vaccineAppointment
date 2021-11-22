@@ -85,7 +85,7 @@
             <tr>
                 <th>비밀번호</th>
                 <td>
-                    <input type="password" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
+                    <input type="text" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
                 </td>
             </tr>
             

@@ -177,22 +177,22 @@
 		 	</div>
 		 	<div class="row">
 		 		<label>아이디</label>
-		 		<input type="text" name="memberId" placeholder="아이디"required class="form-input" onblur="idCheck();">
+		 		<input type="text" name="memberId" placeholder="아이디" class="form-input" onblur="idCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	<div class="row">
 		 		<label>비밀번호</label>
-		 		<input type="password" name="memberPw" placeholder="비밀번호"required class="form-input" onblur="pwCheck();">
+		 		<input type="password" name="memberPw" placeholder="비밀번호" class="form-input" onblur="pwCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
 		 		<label>비밀번호 확인</label>
-		 		<input type="password" name="memberPw2" placeholder="비밀번호 확인"required class="form-input" onblur="pw2Check();">
+		 		<input type="password" name="memberPw2" placeholder="비밀번호 확인" class="form-input" onblur="pw2Check();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
 		 		<label>이름</label>
-		 		<input type="text" name="memberName" placeholder="이름"required class="form-input" onblur="nameCheck();">
+		 		<input type="text" name="memberName" placeholder="이름" class="form-input" onblur="nameCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
@@ -206,23 +206,23 @@
 		 	</div>
 			<div class="row">
 		 		<label>핸드폰 번호</label>
-		 		<input type="tel" name="memberPhone" placeholder="-제외"required class="form-input" maxlength="11" onblur="phoneCheck();">
+		 		<input type="tel" name="memberPhone" placeholder="-제외" class="form-input" maxlength="11" onblur="phoneCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
 		 		<label>우편번호</label>
-		 		<input type="text" name="memberPostcode" placeholder="우편번호" required readonly class="form-input">
+		 		<input type="text" name="memberPostcode" placeholder="우편번호"  readonly class="form-input">
 		 		<div class="notice"></div>
 		 	</div>
 		 	<button type="button" class="find-address-btn form-btn">주소 찾기</button><br>
 		  	 <div class="row">
 		 		<label>주소</label>
-		 		<input type="text" name="memberAddress" placeholder="주소"required readonly class="form-input">
+		 		<input type="text" name="memberAddress" placeholder="주소" readonly class="form-input">
 		 		<div class="notice"></div>
 		 	</div>
 		  	 <div class="row">
 		 		<label>상세 주소</label>
-		 		<input type="text" name="memberDetailAddress" placeholder="상세 주소"required class="form-input" onblur="addressCheck();">
+		 		<input type="text" name="memberDetailAddress" placeholder="상세 주소" class="form-input" onblur="addressCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 			<div class="row">
