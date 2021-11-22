@@ -57,6 +57,8 @@
                     }
                     
 
+                    //원래 써있던 값지우기
+                    document.querySelector("input[name=clinicDetailAddress]").value = null;
                     // 커서를 상세주소 필드로 이동한다.
                     document.querySelector("input[name=clinicDetailAddress]").focus();
                     //$("input[name=detailAddress]").focus();
