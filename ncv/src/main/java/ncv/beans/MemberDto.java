@@ -122,4 +122,9 @@ public class MemberDto {
 
         return age;
     	}
+    
+    //주민번호에 하이픈보이게
+    public String getHyphenRrn() {
+    	return this.memberRrn.substring(0, 6) + "-" + this.memberRrn.substring(6, 13);
+    }
 }

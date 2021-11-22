@@ -1,12 +1,11 @@
 package ncv.beans;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import ncv.beans.JdbcUtils;
 
 public class MemberDao {
 	
@@ -19,7 +18,7 @@ public class MemberDao {
 				+ "member_id, member_pw, member_name, "
 				+ "member_Rrn, member_gender, "
 				+ "member_address, member_phone, member_join,"
-				+ "member_DetailAddress, member_postcode"
+				+ "member_detailaddress, member_postcode"
 				+ ") "
 				+ "values(?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
 		
@@ -361,7 +360,7 @@ public class MemberDao {
 	   public String findPw(String memberId, String memberName, String memberRrn) throws Exception{
 	      Connection con = JdbcUtils.connect();
 	      
-	      String sql = "SELECT member_id FROM member "
+	      String sql = "SELECT member_pw FROM member "
 	            + "WHERE member_id = ? and member_name=? and member_rrn=?";
 	      PreparedStatement ps = con.prepareStatement(sql);
 	      ps.setString(1, memberId);
@@ -380,5 +379,47 @@ public class MemberDao {
 	      con.close();
 	      
 	      return memberPw;
+	   }
+	   
+	   //아이디 비밀번호 주민번호 입력하면 임시비밀번호로 업데이트
+	   public boolean randomPassword(String memberId, String memberName, String memberRrn) throws Exception {
+		   
+		   //10자리 임시비밀번호 생성 (나중에 클래스로 빼주기)
+		   char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
+				   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
+				   'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
+				   'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 
+				   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
+				   'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+				   'y', 'z', }; 
+		   StringBuffer sb = new StringBuffer(); 
+		   int idx = 0; 
+		   int len = charSet.length; 
+		   for (int i=0; i<10; i++) {
+			   idx = (int) (len * Math.random()); 
+			   sb.append(charSet[idx]); 
+		   }
+	   		
+		   String rpw = sb.toString();
+		   //System.out.println("생성된 임시비밀번호" + rpw);
+
+		   //생성된 임시비밀번호로 변경
+		   Connection con = JdbcUtils.connect();
+	
+		   String sql = "update member "
+		   		+ "set member_pw=? "
+		   		+ "where member_id=? "
+		   		+ "and member_name=? "
+		   		+ "and member_rrn=?";
+		   PreparedStatement ps = con.prepareStatement(sql);
+		   ps.setString(1, rpw);
+		   ps.setString(2, memberId);
+		   ps.setString(3, memberName);
+		   ps.setString(4, memberRrn);
+		   int result = ps.executeUpdate();
+		   
+		   con.close();
+		   
+		   return result > 0 ;
 	   }
 }

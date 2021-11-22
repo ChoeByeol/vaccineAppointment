@@ -21,11 +21,15 @@ public class MemberFindPwServlet extends HttpServlet{
          
          //처리
          MemberDao memberDao = new MemberDao();
+         boolean randomPw = memberDao.randomPassword(memberId, memberName, memberRrn);
          String memberPw = memberDao.findPw(memberId, memberName, memberRrn);
          
          //출력
-         if(memberPw == null) {
-            resp.sendRedirect("find_pw.jsp?error");
+         if(randomPw) {
+        	 resp.sendRedirect("find_pw.jsp?memberPw=" + memberPw);
+         }
+         else {
+        	 resp.sendRedirect("find_pw.jsp?error");
          }
       }
       catch(Exception e) {
