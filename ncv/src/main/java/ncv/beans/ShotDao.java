@@ -23,9 +23,10 @@ public class ShotDao {
 			shotDto.setShotNo(rs.getInt("shot_no"));
 			shotDto.setMemberId(rs.getString("member_id"));
 			shotDto.setResNo(rs.getInt("res_no"));
-			shotDto.setShotStCom(rs.getString("shot_st_com"));
-			shotDto.setShotEndCom(rs.getString("shot_end_com"));
-			shotDto.setShotMemberNo(rs.getString("shot_member_no"));
+			shotDto.setClinicNo(rs.getInt("clinic_no"));
+			shotDto.setShotOne(rs.getString("shot_one"));
+			shotDto.setShotTwo(rs.getString("shot_two"));
+			shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 			
 			list.add(shotDto);
 		}
@@ -49,9 +50,10 @@ public class ShotDao {
 				shotDto.setShotNo(rs.getInt("shot_no"));
 				shotDto.setMemberId(rs.getString("member_id"));
 				shotDto.setResNo(rs.getInt("res_no"));
-				shotDto.setShotStCom(rs.getString("shot_st_com"));
-				shotDto.setShotEndCom(rs.getString("shot_end_com"));
-				shotDto.setShotMemberNo(rs.getString("shot_member_no"));
+				shotDto.setClinicNo(rs.getInt("clinic_no"));
+				shotDto.setShotOne(rs.getString("shot_one"));
+				shotDto.setShotTwo(rs.getString("shot_two"));
+				shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 				
 				list.add(shotDto);
 			}
@@ -65,10 +67,17 @@ public class ShotDao {
 	public ShotVo get(String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
-		String sql = "select S.shot_no, S.res_no, S.shot_st_com, "
-				+ "S.shot_end_com, S.shot_member_no, R.res_shot_no, "
-				+ "R.res_date, R.res_time, R.res_name, R.res_rrn, R.res_phone from shot S "
-				+ "left outer join reservation R on S.res_no = R.res_no where member_id = ?";
+		String sql = "select S.shot_no, S.res_no, C.clinic_no, S.shot_one, S.shot_two, S.shot_member_rrn, "
+				+ "R.shot_count, R.res_date, R.res_time, R.res_name, R.res_rrn, R.res_phone, "
+				+ "C.clinic_name, C.clinic_tel, C.clinic_time, C.clinic_postcode, C.clinic_address, C.clinic_detailaddress, "
+				+ "C.clinic_sido, C.clinic_sigungu, C.clinic_bname, "
+				+ "V.vaccine_no, V.vaccine_platform, V.vaccine_name, V.vaccine_value, V.vaccine_company, "
+				+ "V.vaccine_age, V.vaccine_composition, V.vaccine_interval, "
+				+ "V.vaccine_method, V.vaccine_keep, V.vaccine_expire, V.vaccine_life "
+				+ "from shot S left outer join reservation R on S.res_no = R.res_no "
+				+ "left outer join clinic C on R.clinic_no = C.clinic_no "
+				+ "left outer join vaccine V on R.vaccine_no = V.vaccine_no "
+				+ "where S.member_id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberId);
 		ResultSet rs = ps.executeQuery();
@@ -78,15 +87,37 @@ public class ShotDao {
 			shotVo = new ShotVo();
 			shotVo.setShotNo(rs.getInt(1));
 			shotVo.setResNo(rs.getInt(2));
-			shotVo.setShotStCom(rs.getString(3));
-			shotVo.setShotEndCom(rs.getString(4));
-			shotVo.setShotMemberNo(rs.getString(5));
-			shotVo.setResShotNo(rs.getInt(6));
-			shotVo.setResDate(rs.getDate(7));
-			shotVo.setResTime(rs.getString(8));
-			shotVo.setResName(rs.getString(9));
-			shotVo.setResRrn(rs.getString(10));
-			shotVo.setResPhone(rs.getString(11));
+			shotVo.setClinicNo(rs.getInt(3));
+			shotVo.setShotOne(rs.getString(4));
+			shotVo.setShotTwo(rs.getString(5));
+			shotVo.setShotMemberRrn(rs.getString(6));
+			shotVo.setShotCount(rs.getInt(7));
+			shotVo.setResDate(rs.getDate(8));
+			shotVo.setResTime(rs.getString(9));
+			shotVo.setResName(rs.getString(10));
+			shotVo.setResRrn(rs.getString(11));
+			shotVo.setResPhone(rs.getString(12));
+			shotVo.setClinicName(rs.getString(13));
+			shotVo.setClinicTel(rs.getString(14));
+			shotVo.setClinicTime(rs.getString(15));
+			shotVo.setClinicPostcode(rs.getString(16));
+			shotVo.setClinicAddress(rs.getString(17));
+			shotVo.setClinicDetailAddress(rs.getString(18));
+			shotVo.setClinicSido(rs.getString(19));
+			shotVo.setClinicSigungu(rs.getString(20));
+			shotVo.setClinicBname(rs.getString(21));
+			shotVo.setVaccineNo(rs.getInt(22));
+			shotVo.setVaccinePlatform(rs.getString(23));
+			shotVo.setVaccineName(rs.getString(24));
+			shotVo.setVaccineValue(rs.getString(25));
+			shotVo.setVaccineCompany(rs.getString(26));
+			shotVo.setVaccineAge(rs.getString(27));
+			shotVo.setVaccineComposition(rs.getString(28));
+			shotVo.setVaccineInterval(rs.getString(29));
+			shotVo.setVaccineMethod(rs.getString(30));
+			shotVo.setVaccineKeep(rs.getString(31));
+			shotVo.setVaccineExpire(rs.getString(32));
+			shotVo.setVaccinLife(rs.getString(33));
 		}
 		else {
 			shotVo = null;
@@ -149,9 +180,10 @@ public class ShotDao {
 			shotDto.setShotNo(rs.getInt("shot_no"));
 			shotDto.setMemberId(rs.getString("member_id"));
 			shotDto.setResNo(rs.getInt("res_no"));
-			shotDto.setShotStCom(rs.getString("shot_st_com"));
-			shotDto.setShotEndCom(rs.getString("shot_end_com"));
-			shotDto.setShotMemberNo(rs.getString("shot_member_no"));
+			shotDto.setClinicNo(rs.getInt("clinic_no"));
+			shotDto.setShotOne(rs.getString("shot_one"));
+			shotDto.setShotTwo(rs.getString("shot_two"));
+			shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 			
 			list.add(shotDto);
 		}
@@ -179,9 +211,10 @@ public class ShotDao {
 			shotDto.setShotNo(rs.getInt("shot_no"));
 			shotDto.setMemberId(rs.getString("member_id"));
 			shotDto.setResNo(rs.getInt("res_no"));
-			shotDto.setShotStCom(rs.getString("shot_st_com"));
-			shotDto.setShotEndCom(rs.getString("shot_end_com"));
-			shotDto.setShotMemberNo(rs.getString("shot_member_no"));
+			shotDto.setClinicNo(rs.getInt("clinic_no"));
+			shotDto.setShotOne(rs.getString("shot_one"));
+			shotDto.setShotTwo(rs.getString("shot_two"));
+			shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 			
 			list.add(shotDto);
 		}

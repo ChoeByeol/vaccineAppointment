@@ -29,8 +29,9 @@
 		<tr>
 			<th>접종 번호</th>
 			<th>예약 번호</th>
+			<th>아이디</th>
 			<th>1차 접종 완료 여부</th>
-			<th>최종 접종 완료 여부</th>
+			<th>2차 접종 완료 여부</th>
 			<th>주민등록번호</th>
 			<th>메뉴</th>
 		</tr>
@@ -40,9 +41,10 @@
 			<tr>
 				<td><%=shotDto.getShotNo()%></td>
 				<td><%=shotDto.getResNo()%></td>
-				<td><%=shotDto.getShotStCom()%></td>
-				<td><%=shotDto.getShotEndCom()%></td>
-				<td><%=shotDto.getShotMemberNo()%></td>	
+				<td><%=shotDto.getMemberId()%></td>
+				<td><%=shotDto.getShotOne()%></td>
+				<td><%=shotDto.getShotTwo()%></td>
+				<td><%=shotDto.getShotMemberRrn()%></td>	
 				<td>
 					<a href="shot_detail.jsp?memberId=<%=shotDto.getMemberId()%>">상세</a>
 				</td>	
@@ -95,7 +97,7 @@
 	<select name="column" required>
 		<option value="">선택</option>
 		<option value="member_id">아이디</option>
-		<option value="shot_member_no">주민등록번호</option>
+		<option value="shot_member_rrn">주민등록번호</option>
 	</select>
 	<input type="text" name="keyword" required value="<%=shotPgn.getKeywordString()%>">
 	

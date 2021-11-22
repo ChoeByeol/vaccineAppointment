@@ -15,8 +15,6 @@
 <table width="1100">
 	<thead>
 		<tr>
-			<th>접종 번호</th>
-			<th>예약 번호</th>
 			<th>1차 접종 완료 여부</th>
 			<th>최종 접종 완료 여부</th>
 			<th>주민등록번호</th>
@@ -25,20 +23,24 @@
 			<th>예약 시간</th>
 			<th>예약자 이름</th>
 			<th>예약자 전화번호</th>
+			<th>병원 이름</th>
+			<th>병원 주소</th>
+			<th>접종한 백신</th>
 		</tr>
 	</thead>
 	<tbody align="center">
 			<tr>			
-				<td><%=shotVo.getShotNo()%></td>
-				<td><%=shotVo.getResNo()%></td>
-				<td><%=shotVo.getShotStCom()%></td>
-				<td><%=shotVo.getShotEndCom()%></td>
-				<td><%=shotVo.getShotMemberNo()%></td>
-				<td><%=shotVo.getResShotNo()%></td>
+				<td><%=shotVo.getShotOne()%></td>
+				<td><%=shotVo.getShotTwo()%></td>
+				<td><%=shotVo.getShotMemberRrn()%></td>
+				<td><%=shotVo.getShotCount()%></td>
 				<td><%=shotVo.getResDate()%></td>
 				<td><%=shotVo.getResTime()%></td>
 				<td><%=shotVo.getResName()%></td>
 				<td><%=shotVo.getResPhone()%></td>
+				<td><%=shotVo.getClinicName()%></td>
+				<td><%=shotVo.getClinicAddress()%></td>
+				<td><%=shotVo.getVaccineName()%></td>
 			</tr>
 	</tbody>
 </table>
