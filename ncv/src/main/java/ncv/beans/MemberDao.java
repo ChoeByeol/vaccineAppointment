@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MemberDao {
@@ -357,12 +356,21 @@ public class MemberDao {
 	      return memberId;
 	   }
 	 
+<<<<<<< HEAD
 	   //임시 비밀번호를 불러오는 메소드
 	   public String findPw(String memberId) throws Exception{
+=======
+	   //비밀번호 찾기 메소드(안씀)
+	   public String findPw(String memberId, String memberName, String memberRrn) throws Exception{
+>>>>>>> refs/remotes/origin/main
 	      Connection con = JdbcUtils.connect();
 	      
 	      String sql = "SELECT member_pw FROM member "
+<<<<<<< HEAD
 	            + "WHERE member_id = ?";
+=======
+	            + "WHERE member_id = ? and member_name=? and member_rrn=?";
+>>>>>>> refs/remotes/origin/main
 	      PreparedStatement ps = con.prepareStatement(sql);
 	      ps.setString(1, memberId);
 	      ResultSet rs = ps.executeQuery();
@@ -381,8 +389,9 @@ public class MemberDao {
 	   }
 	   
 	   //아이디 비밀번호 주민번호 입력하면 임시비밀번호로 업데이트
-	   public boolean randomPassword(String memberId, String memberName, String memberRrn) throws Exception {
+	   public boolean editPassword(String tmpPw, String memberId, String memberName, String memberRrn) throws Exception {	   
 		   
+<<<<<<< HEAD
 		   char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 				   'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 
 				   'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 
@@ -403,6 +412,8 @@ public class MemberDao {
 	   		
 		   String rpw = sb.toString();
 		   System.out.println(rpw);
+=======
+>>>>>>> refs/remotes/origin/main
 		   Connection con = JdbcUtils.connect();
 	
 		   String sql = "update member "
@@ -411,13 +422,16 @@ public class MemberDao {
 		   		+ "and member_name=? "
 		   		+ "and member_rrn=?";
 		   PreparedStatement ps = con.prepareStatement(sql);
+<<<<<<< HEAD
 		   ps.setString(1, rpw);
+=======
+		   ps.setString(1, tmpPw);
+>>>>>>> refs/remotes/origin/main
 		   ps.setString(2, memberId);
 		   ps.setString(3, memberName);
 		   ps.setString(4, memberRrn);
 		   int result = ps.executeUpdate();
-		   System.out.println(result);
-		   
+		  
 		   con.close();
 		   
 		   return result > 0 ;

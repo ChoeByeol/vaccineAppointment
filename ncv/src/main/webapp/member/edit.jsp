@@ -133,7 +133,7 @@
 </form>
 
 <%if(request.getParameter("error") != null){%>
-<h4>비밀번호가 일치하지 않습니다.</h4>
+	<h4>비밀번호가 일치하지 않습니다.</h4>
 <%} %>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
