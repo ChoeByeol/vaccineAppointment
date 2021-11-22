@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <jsp:include page="/template/header.jsp"></jsp:include>
 <style>
 .title{
@@ -77,7 +76,7 @@
 			})
         });
     </script>
-<jsp:include page="/template/header.jsp"></jsp:include>
+<form action="<%=request.getContextPath()%>/member/find_pw.txt" method="post">
  	<div class="container-400 container-center">
  	
 		<div class="row center">

@@ -1,6 +1,7 @@
 <%@page import="ncv.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="/template/header.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
         $(function(){
@@ -55,7 +56,6 @@
 			})
         });
     </script>
-<jsp:include page="/template/header.jsp"></jsp:include>
     
 <form action="<%=request.getContextPath()%>/member/find_id.txt" method="post">
 	<div class="container-400 container-center">
