@@ -68,14 +68,18 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 				</tr>
 				<tr>
 					<th>연령</th>
-					<td><%=vaccineDto.getVaccineAge()%></td>
+					<td><%=vaccineDto.getVaccineAge()%>세 이상</td>
 				</tr>
 				<tr>
 					<th>구성</th>
 					<td><%=vaccineDto.getVaccineComposition()%></td>
 				</tr>
 				<tr>
-					<th>접종 횟수(간격)</th>
+					<th>접종 횟수</th>
+					<td><%=vaccineDto.getVaccineShot()%>회</td>
+				</tr>
+				<tr>
+					<th>접종 간격</th>
 					<td><%=vaccineDto.getVaccineInterval()%></td>
 				</tr>
 				<tr>
