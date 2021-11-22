@@ -15,16 +15,18 @@
 	String title = memPgn.isSearch() ? "회원 검색" : "회원 목록";
 %>
 
-<%=memPgn.toString() %>
-
 <jsp:include page="/template/header.jsp"></jsp:include>
-
-<h2><%=title%></h2>
+<div class="container-900 container-center">
+<div class="row center">
+	<h2><%=title%></h2>
+</div>
 
 <%if(memPgn.getList().isEmpty()){ %>
-<h3>데이터가 존재하지 않습니다</h3>
+<div class="row center">
+	<h3>데이터가 존재하지 않습니다</h3>
+</div>
 <%}else{ %>
-<table width="1100">
+<table class="table table-stripe">
 	<thead>
 		<tr>
 			<th>아이디</th>
@@ -51,6 +53,7 @@
 	</tbody>
 </table>
 <%}%>
+</div>
 
 <!-- 페이지 네비게이터 -->
 <br><br>
