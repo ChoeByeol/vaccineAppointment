@@ -14,19 +14,16 @@ public class MemberFindPwServlet extends HttpServlet{
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       try {
-         //입력 : 아이디, 이름, 주민등록번호
+         //입력 : 아이디
     	 String memberId = req.getParameter("memberId");
-    	 String memberName = req.getParameter("memberName");
-    	 String memberRrn = req.getParameter("memberRrn");
          
          //처리
          MemberDao memberDao = new MemberDao();
-         boolean randomPw = memberDao.randomPassword(memberId, memberName, memberRrn);
-         String memberPw = memberDao.findPw(memberId, memberName, memberRrn);
+         String memberPw = memberDao.findPw(memberId);
          
          //출력
-         if(randomPw) {
-        	 resp.sendRedirect("find_pw.jsp?memberPw=" + memberPw);
+         if(memberPw != null) {
+            resp.getWriter().println("임시 비밀번호는 "+memberPw);
          }
          else {
         	 resp.sendRedirect("find_pw.jsp?error");

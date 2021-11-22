@@ -17,6 +17,7 @@
     </script>
 <jsp:include page="/template/header.jsp"></jsp:include>
 <form action="<%=request.getContextPath()%>/member/find_pw.txt" method="post">
+
  	<div class="container-400 container-center">
  	
 		<div class="row center">
@@ -48,4 +49,6 @@
    		</div>
 	</div>
 </form>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>  
+

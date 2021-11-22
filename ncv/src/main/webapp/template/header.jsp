@@ -23,7 +23,6 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/commons.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/layout.css">
     <style>
-
     .logo-wrapper {
     width: 120px;
     height: 40px;
@@ -91,7 +90,6 @@
 			</div>
 		</header>
 			<!-- 메뉴 영역 -->
-			
   <nav>
     <ul class="slide-menu">
     	<%if(login){ %>
@@ -128,6 +126,3 @@
 		</ul>
    </nav>
 <section>
-		
-		   
-

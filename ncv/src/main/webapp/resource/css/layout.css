@@ -39,16 +39,12 @@ main > header {
     height: 80px;
     margin: 0 auto;
 }
-main > nav {
-/* 	메뉴는 슬라이드 될 경우 화면을 넘어가기 때문에 overflow시 숨기지 않는다 */
-/*     overflow: hidden; */
-}
 main > section {
-    padding:1rem;
+    padding:30px;
     min-height: 300px;
     overflow: hidden;
 }
 main > footer {
-    padding:1rem;
+    padding:3rem;
     overflow: hidden;
 }

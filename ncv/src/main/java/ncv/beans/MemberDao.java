@@ -356,16 +356,15 @@ public class MemberDao {
 	      return memberId;
 	   }
 	 
-	   //비밀번호 찾기 메소드
-	   public String findPw(String memberId, String memberName, String memberRrn) throws Exception{
+	   //임시 비밀번호를 불러오는 메소드
+	   public String findPw(String memberId) throws Exception{
 	      Connection con = JdbcUtils.connect();
 	      
 	      String sql = "SELECT member_pw FROM member "
 	            + "WHERE member_id = ? and member_name=? and member_rrn=?";
+
 	      PreparedStatement ps = con.prepareStatement(sql);
 	      ps.setString(1, memberId);
-	      ps.setString(2, memberName);
-	      ps.setString(3, memberRrn);
 	      ResultSet rs = ps.executeQuery();
 	      
 	      String memberPw;
@@ -391,7 +390,7 @@ public class MemberDao {
 				   'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 
 				   'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
 				   'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-				   'y', 'z', }; 
+				   'y', 'z', };
 		   StringBuffer sb = new StringBuffer(); 
 		   int idx = 0; 
 		   int len = charSet.length; 
@@ -401,9 +400,11 @@ public class MemberDao {
 		   }
 	   		
 		   String rpw = sb.toString();
+
 		   //System.out.println("생성된 임시비밀번호" + rpw);
 
 		   //생성된 임시비밀번호로 변경
+
 		   Connection con = JdbcUtils.connect();
 	
 		   String sql = "update member "

@@ -4,7 +4,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
-<head> 
+<head>
     <style>
         .notice {
             color:red;
@@ -169,34 +169,33 @@
         
     </script>
 </head>
-
-	 <form action="join.txt" name="form" method="post" onsubmit="return formCheck();">
-		 <div class="container-400 container-center">	 
+	 <form action="join.txt" name="form" method="post" onsubmit="return formCheck();" autocomplete="off">
+		 <div class="container-500 container-center">	 
 		 	<div class="row center">
 		 		<h1>회원가입</h1>
 		 	</div>
 		 	<div class="row">
-		 		<label>아이디</label>
-		 		<input type="text" name="memberId" placeholder="아이디"required class="form-input" onblur="idCheck();">
+		 		<label class="label-text">아이디</label>
+		 		<input type="text" name="memberId" placeholder="아이디" class="form-input" onblur="idCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	<div class="row">
-		 		<label>비밀번호</label>
-		 		<input type="password" name="memberPw" placeholder="비밀번호"required class="form-input" onblur="pwCheck();">
+		 		<label class="label-text">비밀번호</label>
+		 		<input type="password" name="memberPw" placeholder="비밀번호" class="form-input" onblur="pwCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
-		 		<label>비밀번호 확인</label>
-		 		<input type="password" name="memberPw2" placeholder="비밀번호 확인"required class="form-input" onblur="pw2Check();">
+		 		<label class="label-text">비밀번호 확인</label>
+		 		<input type="password" name="memberPw2" placeholder="비밀번호 확인" class="form-input" onblur="pw2Check();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
-		 		<label>이름</label>
-		 		<input type="text" name="memberName" placeholder="이름"required class="form-input" onblur="nameCheck();">
+		 		<label class="label-text">이름</label>
+		 		<input type="text" name="memberName" placeholder="이름" class="form-input" onblur="nameCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
-		 		<label class="form-block">주민등록번호</label>
+		 		<label class="form-block lable-text">주민등록번호</label>
 		        <input type="text" name="memberRrn" class="form-input" placeholder="-제외" maxlength="13" onblur="rrnCheck();">
 		        <div class="notice"></div>
 		 	</div>
@@ -205,24 +204,24 @@
 		 		<input type="hidden" name="memberGender">
 		 	</div>
 			<div class="row">
-		 		<label>핸드폰 번호</label>
-		 		<input type="tel" name="memberPhone" placeholder="-제외"required class="form-input" maxlength="11" onblur="phoneCheck();">
+		 		<label class="label-text">핸드폰 번호</label>
+		 		<input type="tel" name="memberPhone" placeholder="-제외" class="form-input" maxlength="11" onblur="phoneCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 		 	 <div class="row">
-		 		<label>우편번호</label>
-		 		<input type="text" name="memberPostcode" placeholder="우편번호" required readonly class="form-input">
-		 		<div class="notice"></div>
-		 	</div>
-		 	<button type="button" class="find-address-btn form-btn">주소 찾기</button><br>
-		  	 <div class="row">
-		 		<label>주소</label>
-		 		<input type="text" name="memberAddress" placeholder="주소"required readonly class="form-input">
+		 		<label class="label-text">우편번호</label><br>
+		 		<input type="text" name="memberPostcode" placeholder="우편번호"  readonly class="address-input">
+		 		<button type="button" class="find-address-btn form-btn form-inline">주소 찾기</button>
 		 		<div class="notice"></div>
 		 	</div>
 		  	 <div class="row">
-		 		<label>상세 주소</label>
-		 		<input type="text" name="memberDetailAddress" placeholder="상세 주소"required class="form-input" onblur="addressCheck();">
+		 		<label class="label-text">주소</label>
+		 		<input type="text" name="memberAddress" placeholder="주소" readonly class="form-input">
+		 		<div class="notice"></div>
+		 	</div>
+		  	 <div class="row">
+		 		<label class="label-text">상세 주소</label>
+		 		<input type="text" name="memberDetailAddress" placeholder="상세 주소" class="form-input" onblur="addressCheck();">
 		 		<div class="notice"></div>
 		 	</div>
 			<div class="row">
