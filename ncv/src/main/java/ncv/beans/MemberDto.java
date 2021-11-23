@@ -90,7 +90,7 @@ public class MemberDto {
     }
     //만 나이 계산
     public int getAge() {
-    	this.memberRrn = memberRrn;
+    	String memberRrn = this.memberRrn;
     	//오늘 날짜
     	LocalDate now = LocalDate.now();
 
@@ -126,5 +126,10 @@ public class MemberDto {
     //주민번호에 하이픈보이게
     public String getHyphenRrn() {
     	return this.memberRrn.substring(0, 6) + "-" + this.memberRrn.substring(6, 13);
+    }
+    
+    //전화번호에 하이픈보이게
+    public String getHyphenPhone() {
+    	return this.memberPhone.substring(0, 3) + "-" + this.memberPhone.substring(3, 7) + "-" + this.memberPhone.substring(7, 11);
     }
 }

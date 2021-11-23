@@ -27,8 +27,9 @@ public class VaccineDao {
 			vaccineDto.setVaccineName(rs.getString("vaccine_name"));
 			vaccineDto.setVaccineValue(rs.getString("vaccine_value"));
 			vaccineDto.setVaccineCompany(rs.getString("vaccine_company"));
-			vaccineDto.setVaccineAge(rs.getString("vaccine_age"));
+			vaccineDto.setVaccineAge(rs.getInt("vaccine_age"));
 			vaccineDto.setVaccineComposition(rs.getString("vaccine_composition"));
+			vaccineDto.setVaccineShot(rs.getInt("vaccine_shot"));
 			vaccineDto.setVaccineInterval(rs.getString("vaccine_interval"));
 			vaccineDto.setVaccineMethod(rs.getString("vaccine_method"));
 			vaccineDto.setVaccineKeep(rs.getString("vaccine_keep"));
@@ -61,8 +62,9 @@ public class VaccineDao {
 			vaccineDto.setVaccineName(rs.getString("vaccine_name"));
 			vaccineDto.setVaccineValue(rs.getString("vaccine_value"));
 			vaccineDto.setVaccineCompany(rs.getString("vaccine_company"));
-			vaccineDto.setVaccineAge(rs.getString("vaccine_age"));
+			vaccineDto.setVaccineAge(rs.getInt("vaccine_age"));
 			vaccineDto.setVaccineComposition(rs.getString("vaccine_composition"));
+			vaccineDto.setVaccineShot(rs.getInt("vaccine_shot"));
 			vaccineDto.setVaccineInterval(rs.getString("vaccine_interval"));
 			vaccineDto.setVaccineMethod(rs.getString("vaccine_method"));
 			vaccineDto.setVaccineKeep(rs.getString("vaccine_keep"));
@@ -85,14 +87,15 @@ public class VaccineDao {
 	public boolean vaccineEdit(VaccineDto vaccineDto) throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "update vaccine set vaccine_platform = ?, vaccine_name = ?, vaccine_value = ?, vaccine_company = ?, vaccine_age = ?, vaccine_composition = ?, vaccine_interval = ? , vaccine_method = ? , vaccine_keep = ? , vaccine_expire = ?, vaccine_life = ? where vaccine_no = ?";
+		String sql = "update vaccine set vaccine_platform = ?, vaccine_name = ?, vaccine_value = ?, vaccine_company = ?, vaccine_age = ?, vaccine_composition = ?, vaccine_shot = ?, vaccine_interval = ? , vaccine_method = ? , vaccine_keep = ? , vaccine_expire = ?, vaccine_life = ? where vaccine_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, vaccineDto.getVaccinePlatform());
 		ps.setString(2, vaccineDto.getVaccineName());
 		ps.setString(3, vaccineDto.getVaccineValue());
 		ps.setString(4,	vaccineDto.getVaccineCompany());
-		ps.setString(5, vaccineDto.getVaccineAge());
+		ps.setInt(5, vaccineDto.getVaccineAge());
 		ps.setString(6, vaccineDto.getVaccineComposition());
+		ps.setInt(7, vaccineDto.getVaccineShot());
 		ps.setString(7, vaccineDto.getVaccineInterval());
 		ps.setString(8, vaccineDto.getVaccineMethod());
 		ps.setString(9, vaccineDto.getVaccineKeep());
@@ -110,7 +113,7 @@ public class VaccineDao {
 	public int getSequence() throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "select vaccine_seq.nextval from dual";
+		String sql = "select vac_seq.nextval from dual";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs= ps.executeQuery();
 
@@ -126,20 +129,21 @@ public class VaccineDao {
 	public void vaccineWrite(VaccineDto vaccineDto) throws Exception{
 		Connection con = JdbcUtils.connect();
 
-		String sql = "insert into vaccine values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into vaccine values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, vaccineDto.getVaccineNo());
 		ps.setString(2, vaccineDto.getVaccinePlatform());
 		ps.setString(3, vaccineDto.getVaccineName());
 		ps.setString(4, vaccineDto.getVaccineValue());
 		ps.setString(5, vaccineDto.getVaccineCompany());
-		ps.setString(6, vaccineDto.getVaccineAge());
+		ps.setInt(6, vaccineDto.getVaccineAge());
 		ps.setString(7, vaccineDto.getVaccineComposition());
-		ps.setString(8, vaccineDto.getVaccineInterval());
-		ps.setString(9, vaccineDto.getVaccineMethod());
-		ps.setString(10, vaccineDto.getVaccineKeep());
-		ps.setString(11, vaccineDto.getVaccineExpire());
-		ps.setString(12, vaccineDto.getVaccineLife());
+		ps.setInt(8, vaccineDto.getVaccineShot());
+		ps.setString(9, vaccineDto.getVaccineInterval());
+		ps.setString(10, vaccineDto.getVaccineMethod());
+		ps.setString(11, vaccineDto.getVaccineKeep());
+		ps.setString(12, vaccineDto.getVaccineExpire());
+		ps.setString(13, vaccineDto.getVaccineLife());
 		ps.execute();
 
 		con.close();
@@ -158,6 +162,44 @@ public class VaccineDao {
 
 		return result > 0;
 	}	
+	
+	
+	//접종가능한 백신 목록
+	public List<VaccineDto> listByAge(MemberDto memberDto) throws Exception{
+		Connection con = JdbcUtils.connect();
+		
+		String sql = "select * from vaccine "
+				+ "where vaccine_age <= ? "
+				+ "order by vaccine_no asc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, memberDto.getAge());
+		ResultSet rs = ps.executeQuery();
+		
+		List<VaccineDto> list = new ArrayList<>();
+		while(rs.next()) {
+			VaccineDto vaccineDto = new VaccineDto();
+
+			vaccineDto.setVaccineNo(rs.getInt("vaccine_no"));
+			vaccineDto.setVaccinePlatform(rs.getString("vaccine_platform"));;
+			vaccineDto.setVaccineName(rs.getString("vaccine_name"));
+			vaccineDto.setVaccineValue(rs.getString("vaccine_value"));
+			vaccineDto.setVaccineCompany(rs.getString("vaccine_company"));
+			vaccineDto.setVaccineAge(rs.getInt("vaccine_age"));
+			vaccineDto.setVaccineComposition(rs.getString("vaccine_composition"));
+			vaccineDto.setVaccineShot(rs.getInt("vaccine_shot"));
+			vaccineDto.setVaccineInterval(rs.getString("vaccine_interval"));
+			vaccineDto.setVaccineMethod(rs.getString("vaccine_method"));
+			vaccineDto.setVaccineKeep(rs.getString("vaccine_keep"));
+			vaccineDto.setVaccineExpire(rs.getString("vaccine_expire"));
+			vaccineDto.setVaccineLife(rs.getString("vaccine_life"));
+			
+			list.add(vaccineDto);
+		}
+		
+		con.close();
+		
+		return list;
+	}
 	
 	
 }
