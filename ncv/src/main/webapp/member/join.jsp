@@ -54,6 +54,9 @@
 	                    //$("input[name=postcode]").val(data.zonecode);
 	                    document.querySelector("input[name=memberAddress]").value = addr;
 	                    //$("input[name=address]").val(addr);
+	                    
+                        //원래 써있던 값지우기
+                    	document.querySelector("input[name=memberDetailAddress]").value = null;
 	                    // 커서를 상세주소 필드로 이동한다.
 	                    document.querySelector("input[name=memberDetailAddress]").focus();
 	                    //$("input[name=detailAddress]").focus();

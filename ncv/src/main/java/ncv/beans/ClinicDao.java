@@ -33,15 +33,15 @@ public class ClinicDao {
         
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, clinicDto.getClinicNo());
-        ps.setString(1, clinicDto.getClinicName());
-        ps.setString(2, clinicDto.getClinicTel());
-        ps.setString(3, clinicDto.getClinicTime());
-        ps.setString(4, clinicDto.getClinicPostcode());
-        ps.setString(5, clinicDto.getClinicAddress());
-        ps.setString(6, clinicDto.getClinicDetailAddress());
-        ps.setString(7, clinicDto.getClinicSido());
-        ps.setString(8, clinicDto.getClinicSigungu());
-        ps.setString(9, clinicDto.getClinicBname());
+        ps.setString(2, clinicDto.getClinicName());
+        ps.setString(3, clinicDto.getClinicTel());
+        ps.setString(4, clinicDto.getClinicTime());
+        ps.setString(5, clinicDto.getClinicPostcode());
+        ps.setString(6, clinicDto.getClinicAddress());
+        ps.setString(7, clinicDto.getClinicDetailAddress());
+        ps.setString(8, clinicDto.getClinicSido());
+        ps.setString(9, clinicDto.getClinicSigungu());
+        ps.setString(10, clinicDto.getClinicBname());
         
         ps.execute();
         
