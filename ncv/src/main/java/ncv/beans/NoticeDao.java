@@ -105,7 +105,7 @@ public class NoticeDao {
 		Connection con = JdbcUtils.connect();
 		
 		String sql = "update notice "
-							+ "set notice_read = notice_read + 1 "
+							+ "set notice_hit = notice_hit + 1 "
 							+ "where notice_no = ? and notice_writer != ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, noticeNo);
