@@ -106,7 +106,7 @@
             	<%if(admin){ %>
             	<li><a href="<%=request.getContextPath()%>/admin/home.jsp">관리메뉴</a></li>
             	<%} else { %>
-                <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보보기</a></li>
+                <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
                 <li><a href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">나의예약조회</a></li>
                 <li><a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">접종내역조회</a></li>
                 <%} %>

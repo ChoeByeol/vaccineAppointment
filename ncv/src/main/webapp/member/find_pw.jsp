@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <jsp:include page="/template/header.jsp"></jsp:include>
 <style>
 .title{
 	margin-bottom:10px;
+}
+.edit-text{
+			margin-top:10px;
+			margin-bottom:15px;
+    		line-height:50px;
+    		height:50px;
+		}
+.label-text{
+	font-size:16px !important;
 }
 </style>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -77,24 +85,23 @@
 			})
         });
     </script>
-<jsp:include page="/template/header.jsp"></jsp:include>
+ <form action="find_pw.txt" method="post">
  	<div class="container-400 container-center">
- 	
 		<div class="row center">
 			<a href="find_id.jsp" class="find-btn find-id-btn">아이디 찾기</a><a href="find_pw.jsp" class="find-btn find-pw-btn">비밀번호 찾기</a>
 		</div>
 		 <div class="row">
-		 	<label for="id">아이디</label>
+		 	<label for="id" class="label-text">아이디</label>
 			<input type="text" name="memberId" class="form-input" id="id">
 			<div class="notice"></div>
 		</div>
 		 <div class="row">
-			<label for="name">이름</label>
+			<label for="name" class="label-text">이름</label>
 			<input type="text" name="memberName" class="form-input" id="name">
 			<div class="notice"></div>
 		</div>
 		<div class="row">
-			<label for="rrn">주민번호</label>
+			<label for="rrn" class="label-text">주민번호</label>
 			<input type="text" name="memberRrn" class="form-input" id="rrn" placeholder="-제외" maxlength="13">
 			<div class="notice"></div>
 		</div>
