@@ -1,3 +1,4 @@
+<%@page import="ncv.beans.MemberDao"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.Shot2Dao"%>
 <%@page import="ncv.beans.Shot2Vo"%>
@@ -82,16 +83,23 @@ tbody {
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
-        $(function(){
+         $(function(){
+        	$(".page").hide();
+            $(".page").eq(0).show();
+             
+            var p = 0;
+            
             $(".form-btn-check").on("click",function(){
-
+			
                 var inputName = $("input[name=resName]").val();
+                console.log(inputName);
                 var inputRrn = $("input[name=resRrn]").val();
+                console.log(inputRrn);
                 var inputPhone = $("input[name=resPhone]").val();
+                console.log(inputPhone);
                 $.ajax({
-                    url:"http://localhost:8080/ncv/reservation/memberCheck.txt",
-                    //contentType:"application/x-www-form-urlencoded; charset=UTF-8",
-                    type:"post",//전송방식
+                    url:"http://localhost:8080/ncv/reservation/member_check.txt",
+                    type:"get",//전송방식
                     data:{
                         resName:inputName,
                         resRrn:inputRrn,
@@ -101,6 +109,9 @@ tbody {
                         if(resp=="YYYYY"){
                         	console.log(resp);
                             alert("본인인증에 성공하였습니다.")
+
+                            $(".page").eq(1).show();
+                            $(".readonly-form").attr("readonly",true)
                         }
                         else if(resp=="NNNNN"){
                         	console.log(resp);
@@ -115,30 +126,27 @@ tbody {
             });
         });
     </script>
-
-<div class="container-500 container-center"></div>
-<input type="hidden" name="memberId" value="<%=memberId%>">
-		
-	<div class="container-400 container-center">
-	<div class="row center">
+<div class="container-400 container-center">
+<div class="row center">
 		<h1>예약하기</h1>
 	</div>
-					
+	<div class="page">
 	<div class="row">
 			<label>예약자 이름</label>
-			<input type="text" name="resName" class="form-input">
+			<input type="text" name="resName" class="form-input readonly-form">
 	</div>
 	<div class="row">
 			<label>예약자 주민번호</label>
-			<input type="text" name="resRrn" class="form-input">
+			<input type="text" name="resRrn" class="form-input readonly-form">
 	</div>
 	<div class="row">
 			<label>예약자 전화번호</label>
-			<input type="tel" name="resPhone" class="form-input">
+			<input type="text" name="resPhone" class="form-input readonly-form">
 			<span></span>
-			<button type="button" class="form-btn-check"></button>
+			<button type="button" class="form-btn-check">전송</button>
 	</div>
-	<form action="reserve.txt" method="post">
+	</div>
+	<div class="page">
 	<% if (vacNo == 1) { %>				
 		<div class="row">
 			<label>백신</label>
@@ -168,8 +176,6 @@ tbody {
 			<%} %>
 			</select>
 			<% } %>	
-		</div>		
-			
 		</div>
 		<div class="container-400 container-center">	
 			
@@ -219,16 +225,16 @@ tbody {
 			<option>18:00</option>
 		</select>
 	</div>
-			
+</div>	
 
 	<div class="row right">
 		<input type="submit" value="예약" class="link-btn" >
 		<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
 	</div>
-
+	</div>
 	</div>
 		
 	
-</form>
+
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

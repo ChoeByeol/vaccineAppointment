@@ -1,5 +1,9 @@
 <%@page import="ncv.beans.Shot2Vo"%>
 <%@page import="ncv.beans.Shot2Dao"%>
+<%@page import="ncv.beans.ReservationVo"%>
+<%@page import="ncv.beans.ReservationDao"%>
+<%@page import="ncv.beans.MemberDao"%>
+<%@page import="ncv.beans.MemberDto"%>
 <%@page import="java.util.List"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,96 +14,109 @@
 %>
 
 <%
-Shot2Dao shotDao = new Shot2Dao();
-List<Shot2Vo> myShotList  = shotDao.myShotList(memberId);
+	MemberDao memberDao = new MemberDao();
+	MemberDto memberDto = memberDao.get(memberId);
+%>
+
+<%
+	Shot2Dao shotDao = new Shot2Dao();
+	List<Shot2Vo> myShotList  = shotDao.myShotList(memberId);
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <style>
-.float-container>.float-item-left:nth-child(1) {
-	width: 25%;
-	padding: 0.5rem;
-}
-
-.float-container>.float-item-left:nth-child(2) {
-	width: 75%;
-	padding: 0.5rem;
-}
-
-.link-btn {
-	width: 100%;
-}
-
-tr {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-	border-top: 1px solid black;
-}
-td {	
-	border-left : 1px solid black;
-	border-right : 1px solid black;
-	vertical-align: middle;
-	word-wrap: break-word;
-    word-break: keep-all;
-    font-size: 11px;
-}
-tbody {
-	border-bottom: 1px solid black;
-}
-
-.table.table-font {
-	font-size: 16px;
-}
+	.link-btn {
+		width:100%;
+	}
+	.flex-item{
+		width:450px;
+	}
+	.quit-btn{
+		border:none;
+		padding:0.5rem;
+		text-decoration:none;
+		color:gray;
+		font-family:NotoSans;
+		font-size:12px;
+	}
+	.quit-btn:hover{
+		color:red;
+	}
+	.table-title{
+		font-family:Apple;
+		font-size:20px;
+		margin-bottom:10px;
+		color:rgb(26, 44, 48);
+	}
+	.page-title{
+		color:rgb(26, 44, 48);
+	}
 </style>
 
 <div class="container-900 container-center">
+	
+	<div class="row">
+		<div class="page-title">
+		<h2 class="page-title">접종 결과가 조회되었습니다!</h2>
+		</div>
+		<br><br>
+			<!-- 1단 : 예약자 정보 -->
+			<div class="row">
+				<div>
+					<a class="table-title">접종자정보</a>
+				</div>
+				<table class="table table-stripe">
+					<tbody>
+						<tr class="table-line">
+							<th width="30%">아이디</th>
+							<td><%=memberDto.getMemberId()%></td>
+						</tr>
+						<tr class="table-line">
+							<th width="30%">이름</th>
+							<td><%=memberDto.getMemberName()%></td>
+						</tr>
+						<tr class="table-line">
+							<th width="30%">주민등록번호</th>
+ 							<td><%=memberDto.getMemberRrn()%></td>
+						</tr>
+						<tr class="table-line">
+							<th width="30%">핸드폰번호</th>
+							<td><%=memberDto.getMemberPhone()%></td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
+			<br><br><br>
 
-	<div class="row center">
-		<h2>나의 접종 리스트</h2>		
+		<!-- 2단 -->
+			<!-- 예약 정보 -->
+			<div class="row">
+				<div class="table-title">
+					<a class="table-title">접종정보</a>
+				</div>
+				<table class="table table-stripe">
+					<tbody>
+					
+					<% for (Shot2Vo shotVo : myShotList) { %>
+						<tr class="table-line">
+							<th width="30%"><%=shotVo.getShotCount()%>차 예약번호</th>
+							<td><%=shotVo.getShotNo()%></td>
+						</tr>
+						<tr class="table-line">
+							<th width="30%"><%=shotVo.getShotCount()%>차 의료기관</th>
+							<td><%=shotVo.getClinicName()%></td>
+						</tr>
+						<tr class="table-line">
+							<th width="30%"><%=shotVo.getShotCount()%>차 접종일시</th>
+							<td><%=shotVo.getShotDateDay()%></td>
+						</tr>
+						<%} %>
+						<tr>						
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 
-	<!-- 데이터 표시 영역 -->
-	<div class="row center">
-
-		<table class="table table-border table-hover">
-			<thead>
-				<tr>
-					<td>접종번호</td>
-					<td>예약번호</td>
-					<td>아이디</td>
-					<td>이름</td>
-					<td>주민등록번호</td>
-					<td>전화번호</td>
-					<td>백신명</td>
-					<td>접종차수</td>
-					<td>접종병원</td>
-					<td>접종일시</td>
-				</tr>
-			</thead>
-			<tbody align="center">
-			
-				<% for (Shot2Vo shotVo : myShotList) { %>
-				<tr>		
-					<td><%=shotVo.getShotNo()%></td>
-					<td><%=shotVo.getResOkNo()%></td>
-					<td><%=shotVo.getMemberId()%></td>
-					<td><%=shotVo.getMemberName()%></td>
-					<td><%=shotVo.getResRrn()%></td>
-					<td><%=shotVo.getResPhone()%></td>
-					<td><%=shotVo.getVaccineName()%></td>
-					<td><%=shotVo.getShotCount()%>차</td>
-					<td><%=shotVo.getClinicName()%></td>
-					<td><%=shotVo.getShotDateDay()%></td>
-				</tr>
-				<%} %>
-			</tbody>
-		</table>
-
-	</div>
-
-</div>
-
-
-<jsp:include page="/template/footer.jsp"></jsp:include>
+ <jsp:include page="/template/footer.jsp"></jsp:include>

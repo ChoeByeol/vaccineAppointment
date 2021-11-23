@@ -2,6 +2,7 @@ package ncv.beans;
 
 import java.security.SecureRandom;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -406,14 +407,23 @@ public class MemberDao {
 //		예약 회원 정보 확인
 		
 		public int checkMember(String resName, String resRrn, String resPhone) throws Exception {
-			Connection con = JdbcUtils.connect();
+			//Connection con = JdbcUtils.connect();
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "semi", "semi");
 			
-			String sql = "select count(*) from member where member_Name = ? and member_rrn = ? and member_phone = ?";
+			String sql = "select count(*) "
+					+ "from member "
+					+ "where member_name = ? "
+					+ "and member_rrn = ? "
+					+ "and member_phone = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, resName);
 			ps.setString(2, resRrn);
 			ps.setString(3, resPhone);
+			System.out.println(resName);
+			System.out.println(resRrn);
+			System.out.println(resPhone);
 			ResultSet rs = ps.executeQuery();
+			
 			rs.next();
 			
 			int count = rs.getInt("count(*)");

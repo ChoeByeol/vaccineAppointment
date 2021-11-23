@@ -17,41 +17,16 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <style>
-.float-container>.float-item-left:nth-child(1) {
-	width: 25%;
-	padding: 0.5rem;
-}
 
-.float-container>.float-item-left:nth-child(2) {
-	width: 75%;
-	padding: 0.5rem;
-}
 
-.link-btn {
-	width: 100%;
-}
+.sub_news,.sub_news th,.sub_news td{border:0}
+.sub_news a{color:#383838;text-decoration:none}
+.sub_news{width:100%;border-bottom:1px solid #999;color:#666;font-size:14px;table-layout:fixed}
+.sub_news caption{display:none}
+.sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
+.sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+.sub_news .no,.sub_news .memberid,.sub_news .name,.sub_news .rrn,.sub_news .phmoe,.sub_news .vacineName,.sub_news .shot,.sub_news .clinicname,.sub_news .nodateday,.sub_news .time{padding:0;font-family:Tahoma;font-size:14px;line-height:normal}
 
-tr {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-	border-top: 1px solid black;
-}
-td {	
-	border-left : 1px solid black;
-	border-right : 1px solid black;
-	vertical-align: middle;
-	word-wrap: break-word;
-    word-break: keep-all;
-    font-size: 11px;
-}
-tbody {
-	border-bottom: 1px solid black;
-}
-
-.table.table-font {
-	font-size: 16px;
-}
 </style>
 
 <div class="container-900 container-center">
@@ -63,35 +38,37 @@ tbody {
 	<!-- 데이터 표시 영역 -->
 	<div class="row center">
 
-		<table class="table table-border table-hover">
+		<table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
+		<caption>나의 예약 리스트</caption>
+
 			<thead>
 				<tr>
-					<td>예약번호</td>
-					<td>아이디</td>
-					<td>이름</td>
-					<td>주민등록번호</td>
-					<td>전화번호</td>
-					<td>백신명</td>
-					<td>접종차수</td>
-					<td>예약병원</td>
-					<td>예약일</td>
-					<td>예약시간</td>
+				<th scope="col" style="width: 70px;">예약번호</th>
+				<th scope="col">아이디</th>
+				<th scope="col" style="width: 70px;">이름</th>
+				<th scope="col">주민등록번호</th>
+				<th scope="col">전화번호</th>
+				<th scope="col">백신명</th>
+				<th scope="col" style="width: 55px;">접종차수</th>
+				<th scope="col">예약병원</th>
+				<th scope="col"style="width: 70px;">예약일</th>
+				<th scope="col"style="width: 70px;">예약시간</th>
 				</tr>
 			</thead>
-			<tbody align="center">
+			<tbody>
 			
 				<% for (ReservationVo reservationVo : myResList) { %>
 				<tr>		
-					<td><%=reservationVo.getResNo()%></td>
-					<td><%=reservationVo.getMemberId()%></td>
-					<td><%=reservationVo.getResName()%></td>
-					<td><%=reservationVo.getResRrn()%></td>
-					<td><%=reservationVo.getResPhone()%></td>
-					<td><%=reservationVo.getVaccineName()%></td>
-					<td><%=reservationVo.getResShot()%>차</td>
-					<td><%=reservationVo.getClinicName()%></td>
-					<td><%=reservationVo.getResDateDay()%></td>
-					<td><%=reservationVo.getResTime()%></td>
+					<td class="no"><%=reservationVo.getResNo()%></td>
+					<td class="memberid"><%=reservationVo.getMemberId()%></td>
+					<td class="name"><%=reservationVo.getResName()%></td>
+					<td class="rrn"><%=reservationVo.getResRrn()%></td>
+					<td class="phone"><%=reservationVo.getResPhone()%></td>
+					<td class="vaccineName"><%=reservationVo.getVaccineName()%></td>
+					<td class="shot"><%=reservationVo.getResShot()%>차</td>
+					<td class="clinicname"><%=reservationVo.getClinicName()%></td>
+					<td class="dateday"><%=reservationVo.getResDateDay()%></td>
+					<td class="time"><%=reservationVo.getResTime()%></td>
 				</tr>
 				<%} %>
 			</tbody>

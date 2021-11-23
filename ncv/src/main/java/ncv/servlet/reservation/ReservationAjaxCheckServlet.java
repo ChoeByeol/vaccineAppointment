@@ -11,18 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import ncv.beans.MemberDao;
 import ncv.beans.MemberDto;
 
-@WebServlet(urlPatterns="/reservation/memberCheck.txt")
+@WebServlet(urlPatterns="/reservation/member_check.txt")
 public class ReservationAjaxCheckServlet extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try{
 			String resName = req.getParameter("resName");
 			String resRrn = req.getParameter("resRrn");
 			String resPhone = req.getParameter("resPhone");
 			
-			System.out.println(resName);
-			System.out.println(resRrn);
-			System.out.println(resPhone);
 			MemberDao memberDao = new MemberDao();
 			int result = memberDao.checkMember(resName, resRrn, resPhone);
 			System.out.println(result);
