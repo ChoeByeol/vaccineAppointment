@@ -1,3 +1,5 @@
+<%@page import="ncv.beans.ShotDao"%>
+<%@page import="ncv.beans.MemberDto"%>
 <%@page import="ncv.beans.MemberDao"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.Shot2Dao"%>
@@ -15,11 +17,18 @@
 
 <%
 	String memberId = (String) session.getAttribute("ses");
+	MemberDao memberDao = new MemberDao();
+	MemberDto memberDto = memberDao.get(memberId);
 %>
 
 <%
 VaccineDao vaccineDao = new VaccineDao();
-List<VaccineDto> vaccineList = vaccineDao.list();
+List<VaccineDto> canShotVaccineList = vaccineDao.listByAge(memberDto);
+
+Shot2Dao shotDao = new Shot2Dao();
+List<Shot2Vo> shotVaccineList = shotDao.myVaccineList(memberId);
+
+boolean shot2 = shotVaccineList.size()>0;
 %>
 
 
@@ -27,11 +36,6 @@ List<VaccineDto> vaccineList = vaccineDao.list();
 			ReservationDao reservationDao = new ReservationDao();
 			List<ReservationVo> myResList = reservationDao.myResList(memberId);
 			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
-
-			int vacNo = 0;
-			if (reservationDto != null) {
-				vacNo= reservationDto.getVaccineNo();
-			}
 
 			boolean check = memberId != null && myResList.size() == 0; // 미접종
 %>
@@ -202,6 +206,10 @@ tbody {
         color: #080808;
     }
 }
+.shot-sec{
+	border:none;
+	font-size:20px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
@@ -308,29 +316,19 @@ tbody {
 				<option>18:00</option>
 			</select>
 		</div>	
-		<% if (vacNo == 1) { %>				
+		<% if (shot2) { %>				
 			<div class="row content-auto">
 				<label class="text-auto">백신</label>
 				<input type="hidden" name="vaccineNo" value="1" class="form-input">
-				<label class="text-auto">화이자</label>
-			</div>	
-		<%} else if (vacNo == 2){ %>	
-			<div class="row content-auto">
-				<label class="text-auto">백신</label>
-				<input type="hidden" name="vaccineNo" value="2" class="form-input">
-				<label class="text-auto">모더나</label>
-			</div>					
-		<%} else if (vacNo == 3){ %>
-			<div class="row content-auto">
-				<label class="text-auto">백신</label>
-				<input type="hidden" name="vaccineNo" value="3" class="form-input">
-				<label class="text-auto">아스트라제네카</label>
-			</div>	
+				<%for(Shot2Vo shot2Vo : shotVaccineList){ %>
+				<input type="text" value="<%=shot2Vo.getVaccineName()%>" class="shot-sec" readonly>
+				<%} %>
+			</div>		
 		<%} else{ %>		
 			<div class="row content-auto">
 				<label class="text-auto">백신</label>
 				<select class="text-auto" name="vaccineNo">
-			<%for(VaccineDto vaccineDto : vaccineList){ %>
+			<%for(VaccineDto vaccineDto : canShotVaccineList){ %>
 				<option value="<%=vaccineDto.getVaccineNo()%>">
 			<%=vaccineDto.getVaccineName()%>
 				</option>
