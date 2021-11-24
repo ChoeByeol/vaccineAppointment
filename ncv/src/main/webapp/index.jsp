@@ -5,7 +5,7 @@
 
             <div class="container-1000 container-center">
                 <div class="row center">
-                    <h1>예방접종 사전예약 시스템</h1>
+                    <h1>예방접종 사전예약 시스템 </h1>
                 </div>
                 <div class="row">
                     <img src="<%=request.getContextPath()%>/resource/image/index.png" width="100%">
