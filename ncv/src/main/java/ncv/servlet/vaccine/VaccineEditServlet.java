@@ -24,8 +24,9 @@ public class VaccineEditServlet extends HttpServlet{
 			vaccineDto.setVaccineName(req.getParameter("vaccineName"));
 			vaccineDto.setVaccineValue(req.getParameter("vaccineValue"));
 			vaccineDto.setVaccineCompany(req.getParameter("vaccineCompany"));
-			vaccineDto.setVaccineAge(req.getParameter("vaccineAge"));
+			vaccineDto.setVaccineAge(Integer.parseInt(req.getParameter("vaccineAge")));
 			vaccineDto.setVaccineComposition(req.getParameter("vaccineComposition"));
+			vaccineDto.setVaccineShot(Integer.parseInt(req.getParameter("vaccineShot")));
 			vaccineDto.setVaccineInterval(req.getParameter("vaccineInterval"));
 			vaccineDto.setVaccineMethod(req.getParameter("vaccineMethod"));
 			vaccineDto.setVaccineKeep(req.getParameter("vaccineKeep"));

@@ -215,5 +215,33 @@ public class QnaDao {
 		return count;
 	}
 	
-	
+	//내가 작성한 1대1문의 목록
+	public List<QnaDto> mylist(String qnaWriter) throws Exception{
+		Connection con = JdbcUtils.connect();
+		
+		String sql = "select * from qna where qna_writer = ? order by qna_no desc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, qnaWriter);
+		ResultSet rs = ps.executeQuery();
+		
+		List<QnaDto> list = new ArrayList<>();
+		while (rs.next()) {
+			QnaDto qnaDto = new QnaDto();
+			qnaDto.setQnaNo(rs.getInt("qna_no"));
+			qnaDto.setQnaWriter(rs.getString("qna_writer"));
+			qnaDto.setQnaTitle(rs.getString("qna_title"));
+			qnaDto.setQnaContent(rs.getString("qna_content"));
+			qnaDto.setQnaDate(rs.getDate("qna_date"));
+			qnaDto.setQnaAnswer(rs.getString("qna_answer"));
+			qnaDto.setQnaState(rs.getString("qna_state"));
+			
+			list.add(qnaDto);
+		}
+
+		con.close();
+
+		return list;
+		
+		
+	}
 }

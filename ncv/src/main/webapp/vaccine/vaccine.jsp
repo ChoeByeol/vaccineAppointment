@@ -111,7 +111,7 @@ tbody {
 						<%
 						for (VaccineDto vaccineDto : vaccineList) {
 						%>
-						<td><%=vaccineDto.getVaccineAge()%></td>
+						<td><%=vaccineDto.getVaccineAge()%>세 이상</td>
 						<%
 						}
 						%>
@@ -127,7 +127,17 @@ tbody {
 						%>
 					</tr>
 					<tr>
-						<td>접종 횟수(간격)</td>
+						<td>접종 횟수</td>
+						<%
+						for (VaccineDto vaccineDto : vaccineList) {
+						%>
+						<td><%=vaccineDto.getVaccineShot()%>회</td>
+						<%
+						}
+						%>
+					</tr>
+					<tr>
+						<td>접종 간격</td>
 						<%
 						for (VaccineDto vaccineDto : vaccineList) {
 						%>

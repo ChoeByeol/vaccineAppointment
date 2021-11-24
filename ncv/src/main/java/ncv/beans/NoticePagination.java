@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
+
 public class NoticePagination {
 	//필수 데이터
 	private int p;
@@ -34,13 +34,15 @@ public class NoticePagination {
 	private int startBlock, finishBlock, lastBlock;
 	private List<NoticeDto> list;
 	public void calculate() throws Exception {
+		
+		//count 계산
 
 		NoticeDao noticeDao = new NoticeDao();
 		if(isSearch()) {
 			this.count = noticeDao.count(column,keyword);
 		}
 		else {
-			this.count = noticeDao.count(column,keyword);
+			this.count = noticeDao.count();
 		}
 		
 		//rownum 계산
@@ -58,41 +60,93 @@ public class NoticePagination {
 		}
 		else {
 
-			this.list = noticeDao.listByTreeSort(begin, end);//계층형
+			this.list = noticeDao.listByRownum(begin, end);
 		}
 	}
 	public int getPage() {
 		return p;
 	}
+
+	public void setPage(int p) {
+		this.p = p;
+	}
+
 	public int getCount() {
 		return count;
 	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
 	public String getColumn() {
 		return column;
 	}
+
+	public void setColumn(String column) {
+		this.column = column;
+	}
+
 	public String getKeyword() {
 		return keyword;
 	}
-	public int getPageSize() {
-		return pageSize;
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
-	public int getBlockSize() {
-		return blockSize;
-	}
+
 	public int getBegin() {
 		return begin;
 	}
+
+	public void setBegin(int begin) {
+		this.begin = begin;
+	}
+
 	public int getEnd() {
 		return end;
 	}
+
+	public void setEnd(int end) {
+		this.end = end;
+	}
+
 	public int getStartBlock() {
 		return startBlock;
 	}
+
+	public void setStartBlock(int startBlock) {
+		this.startBlock = startBlock;
+	}
+
 	public int getFinishBlock() {
 		return finishBlock;
 	}
+
+	public void setFinishBlock(int finishBlock) {
+		this.finishBlock = finishBlock;
+	}
+
 	public int getLastBlock() {
 		return lastBlock;
+	}
+
+	public void setLastBlock(int lastBlock) {
+		this.lastBlock = lastBlock;
+	}
+
+	
+	public List<NoticeDto> getList() {
+		return list;
+	}
+	
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public int getBlockSize() {
+		return blockSize;
 	}
 	
 	//추가 : 이전이 존재하나요?
@@ -131,6 +185,13 @@ public class NoticePagination {
 			return this.keyword;
 	}
 	
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public void setBlockSize(int blockSize) {
+		this.blockSize = blockSize;
+	}
+	
 	@Override
 	public String toString() {
 		return "Pagination [p=" + p + ", count=" + count + ", column=" + column + ", keyword=" + keyword + ", pageSize="
@@ -138,14 +199,6 @@ public class NoticePagination {
 				+ startBlock + ", finishBlock=" + finishBlock + ", lastBlock=" + lastBlock + "]";
 	}
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-	public void setBlockSize(int blockSize) {
-		this.blockSize = blockSize;
-	}
-	public List<NoticeDto> getList() {
-		return list;
-	}
-}
 
+
+}

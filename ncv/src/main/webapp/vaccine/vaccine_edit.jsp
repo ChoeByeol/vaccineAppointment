@@ -57,7 +57,12 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 	</div>
 	
 	<div class="row">
-	<label>접종 횟수(간격)</label>
+	<label>접종 횟수</label>
+	<input type="text" name="vaccineShot" value="<%=vaccineDto.getVaccineShot()%>" class="form-input">
+	</div>
+	
+	<div class="row">
+	<label>접종 간격</label>
 	<input type="text" name="vaccineInterval" value="<%=vaccineDto.getVaccineInterval()%>" class="form-input">
 	</div>
 	

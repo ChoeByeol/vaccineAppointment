@@ -46,13 +46,23 @@ public class QnaDto {
 		this.qnaDate = qnaDate;
 	}
 	public String getQnaAnswer() {
-		return qnaAnswer;
+		if(qnaAnswer == null) {
+			return "";
+		}
+		else {
+			return qnaAnswer;
+		}
 	}
 	public void setQnaAnswer(String qnaAnswer) {
 		this.qnaAnswer = qnaAnswer;
 	}
 	public String getQnaState() {
-		return qnaState;
+		if(this.qnaAnswer == null) {
+			return qnaState = "답변대기";
+		}
+		else {
+			return qnaState = "답변완료";
+		}
 	}
 	public void setQnaState(String qnaState) {
 		this.qnaState = qnaState;

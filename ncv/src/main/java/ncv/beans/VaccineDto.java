@@ -7,8 +7,9 @@ public class VaccineDto {
 	private String vaccineName;
 	private String vaccineValue;
 	private String vaccineCompany;
-	private String vaccineAge;
+	private int vaccineAge;
 	private String vaccineComposition;
+	private int vaccineShot;
 	private String vaccineInterval;
 	private String vaccineMethod;
 	private String vaccineKeep;
@@ -48,10 +49,10 @@ public class VaccineDto {
 	public void setVaccineCompany(String vaccineCompany) {
 		this.vaccineCompany = vaccineCompany;
 	}
-	public String getVaccineAge() {
+	public int getVaccineAge() {
 		return vaccineAge;
 	}
-	public void setVaccineAge(String vaccineAge) {
+	public void setVaccineAge(int vaccineAge) {
 		this.vaccineAge = vaccineAge;
 	}
 	public String getVaccineComposition() {
@@ -60,8 +61,19 @@ public class VaccineDto {
 	public void setVaccineComposition(String vaccineComposition) {
 		this.vaccineComposition = vaccineComposition;
 	}
+	public int getVaccineShot() {
+		return vaccineShot;
+	}
+	public void setVaccineShot(int vaccineShot) {
+		this.vaccineShot = vaccineShot;
+	}
 	public String getVaccineInterval() {
-		return vaccineInterval;
+		if(vaccineInterval == null) {
+			return "";
+		}
+		else {
+			return vaccineInterval;
+		}
 	}
 	public void setVaccineInterval(String vaccineInterval) {
 		this.vaccineInterval = vaccineInterval;
