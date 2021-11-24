@@ -22,7 +22,7 @@ public class ReservationAjaxCheckServlet extends HttpServlet{
 			
 			MemberDao memberDao = new MemberDao();
 			int result = memberDao.checkMember(resName, resRrn, resPhone);
-			System.out.println(result);
+
 			if(result==1) {
 				//일치한다.
 				resp.getWriter().write("YYYYY");
