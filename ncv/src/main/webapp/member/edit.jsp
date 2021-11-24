@@ -104,17 +104,16 @@
 		</div>
 		<div class="row">
 		 		<label class="label-text">아이디</label>
-		 		<input type="hidden" class="form-input" name="memberId" value="<%=memberDto.getMemberId()%>">
+		 		<input type="hidden" name="memberId" value="<%=memberDto.getMemberId()%>">
                 <p class="edit-text"><%=memberDto.getMemberId()%></p>
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">이름</label>
-		 		<input type="hidden" name="memberName" value="<%=memberDto.getMemberName()%>">
                 <p class="edit-text"><%=memberDto.getMemberName()%></p>
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">전화번호</label>
-		 		<input type= "tel" class="form-input" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
+		 		<input type= "tel" class="form-input" name= "memberPhone" required value="<%=memberDto.getMemberPhone()%>">
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">우편번호</label><br>

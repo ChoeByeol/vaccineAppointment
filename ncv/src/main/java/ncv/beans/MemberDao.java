@@ -291,14 +291,13 @@ public class MemberDao {
 						+ "member_DetailAddress=?,"
 						+ "member_phone = ? " 
 					+ "where "
-							+ "member_id = ? and member_pw = ?";
+							+ "member_id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberPostcode());
 		ps.setString(2, memberDto.getMemberAddress());
 		ps.setString(3, memberDto.getMemberDetailAddress());
 		ps.setString(4, memberDto.getMemberPhone());
 		ps.setString(5, memberDto.getMemberId());
-		ps.setString(6, memberDto.getMemberPw());
 		int result = ps.executeUpdate();
 
 		con.close();
@@ -419,15 +418,11 @@ public class MemberDao {
 			ps.setString(1, resName);
 			ps.setString(2, resRrn);
 			ps.setString(3, resPhone);
-			System.out.println(resName);
-			System.out.println(resRrn);
-			System.out.println(resPhone);
 			ResultSet rs = ps.executeQuery();
-			
 			rs.next();
 			
 			int count = rs.getInt("count(*)");
-			System.out.println(count);
+
 			con.close();
 			
 		    return count;
