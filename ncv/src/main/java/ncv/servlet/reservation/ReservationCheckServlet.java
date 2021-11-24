@@ -20,7 +20,7 @@ public class ReservationCheckServlet extends HttpServlet{
 			String memberId = (String)req.getSession().getAttribute("ses");
 	
 			ReservationDao reservationDao = new ReservationDao();
-			ReservationDto reservationDto = reservationDao.Check(memberId);
+			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
 			
 			boolean check = reservationDto != null && memberId.equals(reservationDto.getMemberId());
 
