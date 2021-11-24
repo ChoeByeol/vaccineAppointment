@@ -112,6 +112,7 @@ tbody {
 
                             $(".page").eq(1).show();
                             $(".readonly-form").attr("readonly",true)
+                            $(".form-btn-check").hide();
                         }
                         else if(resp=="NNNNN"){
                         	console.log(resp);
@@ -144,13 +145,13 @@ tbody {
 		</div>
 		<div class="row">
 			<label>예약자 주민번호</label>
-			<input type="text" name="resRrn" class="form-input readonly-form">
+			<input type="text" name="resRrn" class="form-input readonly-form" maxlength="13">
 		</div>
 		<div class="row">
 			<label>예약자 전화번호</label>
-			<input type="text" name="resPhone" class="form-input readonly-form">
+			<input type="text" name="resPhone" class="form-input readonly-form" maxlength="11">
 			<span></span>
-			<button type="button" class="form-btn-check">전송</button>
+			<button type="button" class="form-btn form-btn-check">본인인증</button>
 		</div>
 	</div>
 	<div class="page">
