@@ -17,7 +17,7 @@
  		<h1>비밀번호</h1>
  		<input type="password" name="memberPw" required class="form-input">
  	</div>
-  	<div class="row right">
+  	<div class="row right"> 
  		<input type="submit" value="로그인" required class="form-btn form-incline">
  	</div>
  	<div class="row center">
