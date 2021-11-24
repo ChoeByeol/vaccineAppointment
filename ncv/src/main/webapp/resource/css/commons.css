@@ -58,6 +58,8 @@
     outline:2px solid rgb(49, 107, 152);
     border-radius:2px;
 }
+
+
 .form-btn {
     color:white;
     background-color: rgb(26,44,48);
@@ -112,6 +114,7 @@
 .form-inline{
     width:auto;
 }
+
 .address-input{
     width:392.95px;
     font-size: 20px;

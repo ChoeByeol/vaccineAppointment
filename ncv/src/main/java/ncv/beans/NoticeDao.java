@@ -123,11 +123,12 @@ public class NoticeDao {
 	public void write(NoticeDto noticeDto) throws Exception{
 		Connection con = JdbcUtils.connect();
 		
-		String sql = "insert into notice values(notice_seq.nextval, ?, ?, ?, sysdate, 0, 0, null, 0, 0)";
+		String sql = "insert into notice values(?, ?, ?, ?, sysdate, 0)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, noticeDto.getNoticeWriter());
-		ps.setString(2, noticeDto.getNoticeTitle());
-		ps.setString(3, noticeDto.getNoticeContent());
+		ps.setInt(1,noticeDto.getNoticeNo());
+		ps.setString(2, noticeDto.getNoticeWriter());
+		ps.setString(3, noticeDto.getNoticeTitle());
+		ps.setString(4, noticeDto.getNoticeContent());
 		ps.execute();
 		
 		con.close();
@@ -321,10 +322,3 @@ public class NoticeDao {
 		return list;
 	}
 }
-
-
-
-
-
-	
-
