@@ -149,6 +149,13 @@
     text-align: right !important;
 }
 
+.float-right{
+	float:right;
+}
+.float-left{
+	float:left;
+}
+
 /*
     영역 배치
     .container-left = 영역 왼쪽 배치

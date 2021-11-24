@@ -43,5 +43,4 @@
 
 </form>
 <jsp:include page="/template/footer.jsp"></jsp:include>
-</form>
 <jsp:include page="/template/footer.jsp"></jsp:include>
