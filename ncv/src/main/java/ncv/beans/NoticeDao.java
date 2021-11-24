@@ -28,9 +28,7 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-			noticeDto.setNoticeSuperNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeGroupNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
+
 			
 			list.add(noticeDto);
 		}
@@ -61,10 +59,7 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-			noticeDto.setNoticeSuperNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeGroupNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
-			
+
 			list.add(noticeDto);
 		}
 		
@@ -74,12 +69,12 @@ public class NoticeDao {
 	}
 	
 	//상세보기 기능
-	public NoticeDto get(int boardNo) throws Exception {
+	public NoticeDto get(int noticeNo) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
 		String sql = "select * from notice where notice_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, boardNo);
+		ps.setInt(1, noticeNo);
 		ResultSet rs = ps.executeQuery();
 		
 		NoticeDto noticeDto;
@@ -93,9 +88,6 @@ public class NoticeDao {
 				noticeDto.setNoticeContent(rs.getString("notice_content"));
 				noticeDto.setNoticeTime(rs.getDate("notice_time"));
 				noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-				noticeDto.setNoticeSuperNo(rs.getInt("notice_super_no"));
-				noticeDto.setNoticeGroupNo(rs.getInt("notice_super_no"));
-				noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
 
 		}
 		else {
@@ -107,19 +99,24 @@ public class NoticeDao {
 		return noticeDto;
 	}
 	
-	//조회수 증가 기능
-	public boolean readUp(int noticeNo) throws Exception {
+
+	//남의 글일 때 조회수 증가 기능
+	public boolean readUp(int noticeNo, String memberId) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
-		String sql = "update notice set notice_hit = notice_hit + 1 where notice_no = ?";
+		String sql = "update notice "
+							+ "set notice_hit = notice_hit + 1 "
+							+ "where notice_no = ? and notice_writer != ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, noticeNo);
+		ps.setString(2, memberId);
 		int result = ps.executeUpdate();
 		
 		con.close();
 		
 		return result > 0;
 	}
+	
 	
 
 	//등록 기능
@@ -152,21 +149,7 @@ public class NoticeDao {
 		return seq;
 	}
 	
-	//등록 기능2 : 번호를 미리 생성해놓은 경우의 추가 기능
-	public void write2(NoticeDto noticeDto) throws Exception{
-		Connection con = JdbcUtils.connect();
-		
-		String sql = "insert into notice values(?, ?, ?, ?, sysdate, 0, 0, null, ?, 0)";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, noticeDto.getNoticeNo());
-		ps.setString(2, noticeDto.getNoticeWriter());
-		ps.setString(3, noticeDto.getNoticeTitle());
-		ps.setString(4, noticeDto.getNoticeContent());
-		ps.setInt(5, noticeDto.getNoticeNo());
-		ps.execute();
-		
-		con.close();
-	}
+
 
 	//삭제 기능
 	public boolean delete(int noticeNo) throws Exception{
@@ -226,9 +209,6 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-			noticeDto.setNoticeSuperNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeGroupNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
 
 			
 			list.add(noticeDto);
@@ -265,11 +245,7 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-			noticeDto.setNoticeSuperNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeGroupNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
 
-			
 			list.add(noticeDto);
 		}
 		
@@ -314,66 +290,6 @@ public class NoticeDao {
 	}
 
 	
-	//계층형 목록(Tree)
-	public List<NoticeDto> listByTreeSort(int begin, int end) throws Exception {
-		Connection con = JdbcUtils.connect();
-		
-		String sql = "select * from ("
-								+ "select rownum rn, TMP.* from ("
-									+ "select * from notice "
-									+ "connect by prior notice_no = notice_superno "
-									+ "start with notice_superno is null "
-									+ "order siblings by notice_groupno desc, notice_no asc"
-								+ ")TMP"
-						+ ") where rn between ? and ?";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, begin);
-		ps.setInt(2, end);
-		ResultSet rs = ps.executeQuery();
-		
-		List<NoticeDto> list = new ArrayList<>();
-		while(rs.next()) {
-			NoticeDto noticeDto = new NoticeDto();
-			
-			noticeDto.setNoticeNo(rs.getInt("notice_no"));
-			noticeDto.setNoticeWriter(rs.getString("notice_writer"));
-			noticeDto.setNoticeTitle(rs.getString("notice_title"));
-			noticeDto.setNoticeContent(rs.getString("notice_content"));
-			noticeDto.setNoticeTime(rs.getDate("notice_time"));
-			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-			noticeDto.setNoticeSuperNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeGroupNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
-
-			
-			list.add(noticeDto);
-		
-		}
-		
-		con.close();
-		
-		return list;
-	}
-
-	
-	public void writeAnswer(NoticeDto noticeDto) throws Exception{
-		Connection con = JdbcUtils.connect();
-		
-		String sql = "insert into board values(?, ?, ?, ?, sysdate, 0, 0, ?, ?, ?)";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, noticeDto.getNoticeNo());
-		ps.setString(2, noticeDto.getNoticeWriter());
-		ps.setString(3, noticeDto.getNoticeTitle());
-		ps.setString(4, noticeDto.getNoticeContent());
-		ps.setInt(5, noticeDto.getNoticeSuperNo());//계산된 상위글번호
-		ps.setInt(6, noticeDto.getNoticeGroupNo());//계산된 그룹번호(원본글 그룹번호와 동일)
-		ps.setInt(7, noticeDto.getNoticeDepth());//계산된 차수(원본글 차수 + 1)
-		ps.execute();
-	
-		
-		con.close();
-	}
-	
 	//일치 검색 기능
 	public List<NoticeDto> searchEquals(String column, String keyword) throws Exception {
 		Connection con = JdbcUtils.connect();
@@ -394,9 +310,7 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-			noticeDto.setNoticeSuperNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeGroupNo(rs.getInt("notice_super_no"));
-			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
+
 
 			
 			list.add(noticeDto);

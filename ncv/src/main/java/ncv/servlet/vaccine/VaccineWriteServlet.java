@@ -23,8 +23,9 @@ public class VaccineWriteServlet extends HttpServlet {
 			vaccineDto.setVaccineName(req.getParameter("vaccineName"));
 			vaccineDto.setVaccineValue(req.getParameter("vaccineValue"));
 			vaccineDto.setVaccineCompany(req.getParameter("vaccineCompany"));
-			vaccineDto.setVaccineAge(req.getParameter("vaccineAge"));
+			vaccineDto.setVaccineAge(Integer.parseInt(req.getParameter("vaccineAge")));
 			vaccineDto.setVaccineComposition(req.getParameter("vaccineComposition"));
+			vaccineDto.setVaccineShot(Integer.parseInt(req.getParameter("vaccineShot")));
 			vaccineDto.setVaccineInterval(req.getParameter("vaccineInterval"));
 			vaccineDto.setVaccineMethod(req.getParameter("vaccineMethod"));
 			vaccineDto.setVaccineKeep(req.getParameter("vaccineKeep"));
@@ -33,12 +34,10 @@ public class VaccineWriteServlet extends HttpServlet {
 			
 			//처리
 			VaccineDao vaccineDao = new VaccineDao();
-
 			int vaccineNo = vaccineDao.getSequence();
+			System.out.println("백신 시퀀스 = " + vaccineNo);
 			vaccineDto.setVaccineNo(vaccineNo);
-			
 			vaccineDao.vaccineWrite(vaccineDto);
-
 
 			//resp.sendRedirect("vaccine.jsp");
 			resp.sendRedirect("vaccine_detail.jsp?vaccineNo="+vaccineNo);

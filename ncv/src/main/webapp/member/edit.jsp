@@ -4,6 +4,39 @@
     pageEncoding="UTF-8"%>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<head>
+    <style>
+        .notice {
+            color:red;
+        }
+        .address-input{
+        	width:392.95px;
+    		font-size: 20px;
+    		padding:10px;
+    		margin-top:10px;
+			margin-bottom:15px;
+    		border:1px solid rgb(0, 0, 0);
+        }
+        .address-input:focus{
+			border:none;
+    		outline:2px solid rgb(0, 55, 100);
+    		border-radius: 2px;
+		}
+		div	{
+			height:auto;
+			width: 100%;
+			border-bottom:1px solid gold;
+		}
+		.edit-text{
+			margin-top:10px;
+			margin-bottom:15px;
+    		line-height:50px;
+    		height:50px;
+		}
+		.label-text{
+			font-family:Apple;
+		}
+    </style>
 	 <script>	 
 	    $(function(){        
 		//주소 찾기   	
@@ -37,6 +70,9 @@
 	                    //$("input[name=postcode]").val(data.zonecode);
 	                    document.querySelector("input[name=memberAddress]").value = addr;
 	                    //$("input[name=address]").val(addr);
+	                    
+	                    //원래 써있던 값지우기
+	                    document.querySelector("input[name=memberDetailAddress]").value = null;
 	                    // 커서를 상세주소 필드로 이동한다.
 	                    document.querySelector("input[name=memberDetailAddress]").focus();
 	                    //$("input[name=detailAddress]").focus();
@@ -60,94 +96,47 @@
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<h2>회원 정보 수정</h2>
 
 <form action="edit.txt" method="post">
-    
-    <table border="0">
-        <tbody>
-        <tr>
-                <th>이름</th>
-                <td>
-                <input type="hidden" name="memberName" value="<%=memberDto.getMemberName()%>">
-                <%=memberDto.getMemberName()%>
-                </td>
-            </tr>
-            
-            <tr>
-                <th>아이디</th>
-                <td>
-                <input type="hidden" name="memberId" value="<%=memberDto.getMemberId()%>">
-                <%=memberDto.getMemberId()%>
-                </td>
-            </tr>
-                
-            <tr>
-                <th>비밀번호</th>
-                <td>
-                    <input type="password" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
-                </td>
-            </tr>
-            
-             <tr>
-                <th>주민등록번호</th>
-                <td>
-                <input type="hidden" name="memberRrn" value="<%=memberDto.getMemberRrn()%>">
-                <%=memberDto.getMemberRrn()%>
-                </td>
-            </tr>
-            
-            <tr>
-                <th>성별</th>
-                <td>
-                <input type="hidden" name="memberGender" value="<%=memberDto.getMemberGender()%>">
-                <%=memberDto.getMemberGender()%>
-                </td>
-            </tr>
-            
-			<tr>
-                <th>우편번호</th>
-                <td>
-                    <input type="text" name="memberPostcode" required value="<%=memberDto.getMemberPostcode()%>">
-                    <button type="button" class="find-address-btn">주소 찾기</button><br>
-                </td>
-            </tr>
-			
-			<tr>
-				<th>주소</th>
-				<td>
-					<input type="text" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
-				</td>
-			</tr>
-			
-			<tr>
-				<th>상세주소</th>
-				<td>
-					<input type="text" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
-				</td>
-			</tr>
-			
-			<tr>
-				<th>전화번호</th>
-				<td>
-					<input type= "tel" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
-					</td>
-			</tr>
-			
-			<tr>
-				<td colspan="2" align="right">
-					<input type="submit" value="수정">
-				</td>
-			</tr>
-
-			
-		</tbody>
-	</table>
-	
+   	<div class="container-500 container-center">
+   		<div class="row center">
+		 		<h1>회원정보수정</h1>
+		</div>
+		<div class="row">
+		 		<label class="label-text">아이디</label>
+		 		<input type="hidden" class="form-input" name="memberId" value="<%=memberDto.getMemberId()%>">
+                <p class="edit-text"><%=memberDto.getMemberId()%></p>
+		 </div>
+		 <div class="row">
+		 		<label class="label-text">이름</label>
+		 		<input type="hidden" name="memberName" value="<%=memberDto.getMemberName()%>">
+                <p class="edit-text"><%=memberDto.getMemberName()%></p>
+		 </div>
+		 <div class="row">
+		 		<label class="label-text">전화번호</label>
+		 		<input type= "tel" class="form-input" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
+		 </div>
+		 <div class="row">
+		 		<label class="label-text">우편번호</label><br>
+		 		<input type="text" name="memberPostcode" value="<%=memberDto.getMemberPostcode()%>" readonly class="address-input">
+		 		<button type="button" class="find-address-btn form-btn form-inline">주소 찾기</button>
+		 </div>
+		 <div class="row">
+		 		<label class="label-text">주소</label>
+		 		<input type="text" class="form-input" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
+		 </div>
+		 <div class="row">
+		 		<label class="label-text">상세주소</label>
+		 		<input type="text" class="form-input" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
+		 </div>
+		 <div class="row">
+				<input type="submit" value="수정" class="form-btn">
+			</div>
+   	</div>
 </form>
 
 <%if(request.getParameter("error") != null){%>
-<h4 class="error">비밀번호가 일치하지 않습니다.</h4>
+	<h4>비밀번호가 일치하지 않습니다.</h4>
 <%} %>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

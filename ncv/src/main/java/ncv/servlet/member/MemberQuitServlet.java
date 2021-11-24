@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.MemberDao;
+import ncv.beans.SHA256;
 
 @WebServlet(urlPatterns = "/member/quit.txt")
 public class MemberQuitServlet extends HttpServlet{
@@ -18,7 +19,7 @@ public class MemberQuitServlet extends HttpServlet{
 			//입력 : 회원아이디(세션) + 회원 비밀번호(파라미터)
 			//=세션 : member_id
 			String memberId = (String)req.getSession().getAttribute("ses");
-			String memberPw = req.getParameter("memberPw");
+			String memberPw = SHA256.encrypt(req.getParameter("memberPw"));
 			
 			//처리 : 회원삭제 + 로그아웃
 			MemberDao memberDao = new MemberDao();
