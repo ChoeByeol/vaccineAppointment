@@ -83,7 +83,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     }
 }
 
-
 @-moz-keyframes btn {
     from,
     to {
@@ -114,7 +113,6 @@ tbody {
 
 .table.table-font {
 	font-size: 16px;
->>>>>>> refs/remotes/origin/chany
 }
 </style>
 
