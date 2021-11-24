@@ -14,12 +14,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 	$(function(){
-		$("#cClinic").click(function(){
+		$("#btn").click(function(){
 			var answer = document.getElementById("cClinicNo").value;
 			window.opener.document.getElementById("pClinicNo").value = answer;
 			
 			var answer2 = document.getElementById("cClinicName").value;
 			window.opener.document.getElementById("pClinicName").value = answer2;
+
 			window.close();
 		});
 	});
@@ -55,5 +56,8 @@
 </table>
 
 <a href="javascript:history.back()">목록으로</a>
-<button id="cClinicNo" value="<%=clinicDto.getClinicNo()%>">선택하기</button>
-<input type="hidden" id="cClinicName" value="<%=clinicDto.getClinicName()%>">
+<form>
+	<button id="btn">선택하기</button>
+	<input type="hidden" id="cClinicNo" value="<%=clinicDto.getClinicNo() %>">
+	<input type="hidden" id="cClinicName" value="<%=clinicDto.getClinicName()%>">
+</form>

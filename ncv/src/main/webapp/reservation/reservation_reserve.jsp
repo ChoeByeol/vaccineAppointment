@@ -17,14 +17,6 @@
 	String memberId = (String) session.getAttribute("ses");
 %>
 
-
-
-<%
-int clinicNo=0;
-ClinicDao clinicDao = new ClinicDao();
-ClinicDto clinicDto = clinicDao.select(clinicNo);
-%>	
-
 <%
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
@@ -135,6 +127,7 @@ tbody {
             });
         });
     </script>
+<form action="<%=request.getContextPath()%>/reservation/reserve.txt">
 <div class="container-400 container-center">
 	<div class="row center">
 		<h1>예약하기</h1>
@@ -164,7 +157,7 @@ tbody {
 			<label>의료기관</label>
 			<button type="button" class="clinic-btn" >의료기관 찾기</button>
 			<input type="hidden" id="pClinicNo">
-			<input type="text" id="pClinicName">
+			<input type="text" id="pClinicName" readonly>
 		</div>
 		<div class="row">
 			<label>예약시간</label>
@@ -232,8 +225,6 @@ tbody {
 		</div>
 	</div>
 </div>
-		
-	
-
+</form>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
