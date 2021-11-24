@@ -43,7 +43,7 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		});
 	  	
  	  	$("#sigungu").change(function(){
- 	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
+  	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
  	  		
 		   	$.ajax({
 		    	url : "http://localhost:8080/ncv/admin/clinic/ajax_bname_list.jsp",
@@ -54,7 +54,7 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		    	}
 		   	})
 	  		
-	  	});
+	  	}); 
 	});
 </script>
 
