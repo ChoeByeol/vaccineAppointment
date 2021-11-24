@@ -30,8 +30,7 @@ public class QnaFileDownloadServlet extends HttpServlet{
 			QnaFileDto qnaFileDto = qnaFileDao.get(qnaFileNo);
 			
 			//2. 파일 정보 설정
-			//File dir = new File("D:/upload/qna");
-			File dir = new File("C:/Users/kit34/upload");
+			File dir = new File("D:/upload/qna");
 			File target = new File(dir, qnaFileDto.getQnaFileSaveName());
 			InputStream in = new FileInputStream(target);
 			byte[] buffer = new  byte[8192];
