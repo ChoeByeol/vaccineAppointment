@@ -14,7 +14,7 @@
  		<input type="text" name="memberId" required class="form-input" autocomplete="off">
  	</div>
  	<div class="row">
- 		<h1>비밀번호</h1>
+ 		<h1>비밀번호</h1> 
  		<input type="password" name="memberPw" required class="form-input">
  	</div>
   	<div class="row right"> 
