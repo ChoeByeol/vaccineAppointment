@@ -18,7 +18,7 @@
 	<%=reservationDto.getMemberId()%>
 	<%=reservationDto.getVaccineNo()%>
 	<%=reservationDto.getClinicNo()%>
-	<%=reservationDto.getShotNo()%>
+	<%=reservationDto.getResShot()%>
 	<%=reservationDto.getResDate()%>
 	<%=reservationDto.getResTime()%>
 	<%=reservationDto.getResName()%>
