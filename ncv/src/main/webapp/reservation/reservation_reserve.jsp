@@ -161,6 +161,7 @@ tbody {
 		<div class="row">
 			<label>의료기관</label>
 			<button type="button" class="clinic-btn" >의료기관 찾기</button>
+			<input type="text" id="pClinic" readonly>
 		</div>
 		<div class="row">
 			<label>예약시간</label>
