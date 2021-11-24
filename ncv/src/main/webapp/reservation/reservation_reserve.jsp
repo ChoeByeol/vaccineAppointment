@@ -156,7 +156,7 @@ tbody {
 		<div class="row">
 			<label>의료기관</label>
 			<button type="button" class="clinic-btn" >의료기관 찾기</button>
-			<input type="hidden" id="pClinicNo">
+			<input type="hidden" name="clinicNo" id="pClinicNo">
 			<input type="text" id="pClinicName" readonly>
 		</div>
 		<div class="row">
