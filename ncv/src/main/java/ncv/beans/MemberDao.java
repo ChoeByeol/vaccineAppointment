@@ -418,6 +418,7 @@ public class MemberDao {
 			ps.setString(1, resName);
 			ps.setString(2, resRrn);
 			ps.setString(3, resPhone);
+
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			
