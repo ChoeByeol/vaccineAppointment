@@ -35,9 +35,7 @@ pagination.calculate();
 		<h2>공지 및 안내사항</h2>
 	</div>
 
-<div class="row right">
-	<a href="write.jsp">글쓰기</a>
-</div>
+
 <br>
 <br>
 

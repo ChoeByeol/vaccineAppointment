@@ -3,10 +3,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<html>
 
 <%
 	int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 %>
+
 
 <%
 	NoticeDao noticeDao = new NoticeDao();
@@ -15,7 +17,7 @@
 
 
 
-<html>
+
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <head>

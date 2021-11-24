@@ -32,13 +32,13 @@ import ncv.beans.NoticeFileDto;
  * 		= 파일 유형 : mRequest.getContentType()
  * 		= 파일 반환 : mRequest.getFile()
  */
-@WebServlet(urlPatterns = "/board/write.kh")
+@WebServlet(urlPatterns = "/notice/write.txt")
 public class NoticeWriteServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//multipart/form-data를 해석하기 위한 객체 생성
-			String savePath = "D:/upload/notice";
+			String savePath = "C:/upload/notice";
 			int maxSize = 10 * 1024 * 1024;
 			String encoding = "UTF-8";
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
@@ -49,7 +49,8 @@ public class NoticeWriteServlet extends HttpServlet{
 			NoticeDto noticeDto = new NoticeDto();
 			noticeDto.setNoticeTitle(mRequest.getParameter("noticeTitle"));
 			noticeDto.setNoticeContent(mRequest.getParameter("noticeContent"));
-			
+			System.out.println(mRequest.getParameter("noticeTitle"));
+			System.out.println(mRequest.getParameter("noticeContent"));
 			//아이디는 세션에서 수집하여 추가
 			noticeDto.setNoticeWriter((String)req.getSession().getAttribute("ses"));
 			

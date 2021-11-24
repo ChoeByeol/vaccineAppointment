@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="ncv.servlet.notice.NoticeWriteServlet"%>
+
 <html>
 <jsp:include page="/template/header.jsp"></jsp:include>  
 <head>
@@ -16,7 +18,11 @@
     <table width="700" border="3" bordercolor="lightgray" align="center">
         <tr>
             <td>작성자</td>
+			<td>
+              <input type="text" name="noticeWriter" required value=" 관리자                       
+              ">
 
+            </td>   
         </tr>
             <tr>
             <td>
@@ -46,8 +52,8 @@
         <tr align="center" valign="middle">
             <td colspan="5">
                 <input type="reset" value="작성취소" >
-                <input type="submit" value="등록" >
-                <input type="button" value="목록" >            
+                <input type="submit" value="등록">
+                <input type="button" value="목록" onClick="location.href='http://localhost:8061/ncv/notice/list.jsp'">            
             </td>
         </tr>
     </table>    
