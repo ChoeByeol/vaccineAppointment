@@ -49,8 +49,8 @@ public class NoticeWriteServlet extends HttpServlet{
 			NoticeDto noticeDto = new NoticeDto();
 			noticeDto.setNoticeTitle(mRequest.getParameter("noticeTitle"));
 			noticeDto.setNoticeContent(mRequest.getParameter("noticeContent"));
-			System.out.println(mRequest.getParameter("noticeTitle"));
-			System.out.println(mRequest.getParameter("noticeContent"));
+
+			
 			//아이디는 세션에서 수집하여 추가
 			noticeDto.setNoticeWriter((String)req.getSession().getAttribute("ses"));
 			

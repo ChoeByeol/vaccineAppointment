@@ -47,22 +47,14 @@
                 내 용
             </td>
             <td>
-                <textarea name="noticeContent" required cols="80" rows="20">
-      <%=noticeDto.getNoticeContent()%></textarea>       
+                <textarea name="noticeContent" required cols="80" rows="20"><%=noticeDto.getNoticeContent()%></textarea>       
             </td>        
         </tr>
 
  
+
             <tr>
-                <td id="title">
-                    기존 파일
-                </td>
                 <td>
-                    &nbsp;&nbsp; ${notice.notice_file}
-                </td>    
-            </tr>
-            <tr>
-                <td id="title">
                     첨부파일
                 </td>
                 <td>
