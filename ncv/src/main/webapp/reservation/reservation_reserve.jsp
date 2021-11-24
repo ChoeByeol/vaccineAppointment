@@ -141,6 +141,7 @@ tbody {
     </script>
 <%=memberId %>
 <%=check %>
+
 <form action="<%=request.getContextPath()%>/reservation/reserve.txt">
 <div class="container-400 container-center">
 	<div class="row center">
@@ -154,11 +155,11 @@ tbody {
 		</div>
 		<div class="row">
 			<label>예약자 주민번호</label>
-			<input type="text" name="resRrn" class="form-input readonly-form" maxlength="13" value="9602111111111">
+			<input type="text" name="resRrn" class="form-input readonly-form" maxlength="13">
 		</div>
 		<div class="row">
 			<label>예약자 전화번호</label>
-			<input type="text" name="resPhone" class="form-input readonly-form" maxlength="11" value="01045454545">
+			<input type="text" name="resPhone" class="form-input readonly-form" maxlength="11">
 			<span></span>
 			<button type="button" class="form-btn form-btn-check">본인인증</button>
 		</div>
@@ -218,15 +219,14 @@ tbody {
 			<%} %>
 				</select>
 			<% } %>	
-			</div>
-		<div class="container-400 container-center">		
+			</div>	
 			<% if (check) { %>
 			<div class="row">
 				<label>접종차수</label>
 				<input type="hidden" name="resShot" value="1" >
 				<label>1차</label>
 			</div>			
-			<%} else{ %>			
+			<%} else { %>			
 			<div class="row">
 				<label>접종차수</label>
 				<input type="hidden" name="resShot" value="2">
@@ -237,12 +237,14 @@ tbody {
 				<input type="submit" value="예약" class="link-btn">
 				<input type="button" value="취소" class="link-btn" onclick=" location.href = '<%=request.getContextPath()%>'" >
 			</div>
-		</div>
 	</div>
 </div>
 </form>
+<<<<<<< HEAD
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
 
+=======
+>>>>>>> refs/remotes/origin/BYEOL
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -11,7 +11,21 @@
     ClinicDao clinicDao = new ClinicDao();
     ClinicDto clinicDto = clinicDao.select(clinicNo); //상세조회
 %>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51857ee590e6cc2b1c3f4879f1fdf7b2&libraries=services,clusterer,drawing"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function(){
+		$("#btn").click(function(){
+			var answer = document.getElementById("cClinicNo").value;
+			window.opener.document.getElementById("pClinicNo").value = answer;
+			
+			var answer2 = document.getElementById("cClinicName").value;
+			window.opener.document.getElementById("pClinicName").value = answer2;
 
+			window.close();
+		});
+	});
+</script>
 <%--출력--%>
 <table border="1" width="300">
     <tbody>
@@ -41,18 +55,6 @@
         </tr>
     </tbody>
 </table>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>주소로 장소 표시하기</title>
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51857ee590e6cc2b1c3f4879f1fdf7b2&libraries=services,clusterer,drawing"></script>
-
-</head>
-<body>
-
 <div id="map" style="width:100%;height:350px;"></div>
 
 <script>
@@ -86,11 +88,9 @@ geocoder.addressSearch("<%=clinicDto.getClinicAddress()%>", function(result, sta
 });    
 </script>
 
-<a href="reservation_list.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">백신 예약 내역 보기</a>
-<a href="shot_list.jsp?cliniNo=<%=clinicDto.getClinicNo()%>">백신 접종 내역 보기</a>
-<br><br>
-<a href="edit.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 수정</a>
-<a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 삭제</a>
-<a href="list.jsp">목록으로...</a>
-</body>
-</html>
+<a href="javascript:history.back()">목록으로</a>
+<form>
+	<button id="btn">선택하기</button>
+	<input type="hidden" id="cClinicNo" value="<%=clinicDto.getClinicNo() %>">
+	<input type="hidden" id="cClinicName" value="<%=clinicDto.getClinicName()%>">
+</form>

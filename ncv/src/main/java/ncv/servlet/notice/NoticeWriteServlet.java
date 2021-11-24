@@ -32,7 +32,7 @@ import ncv.beans.NoticeFileDto;
  * 		= 파일 유형 : mRequest.getContentType()
  * 		= 파일 반환 : mRequest.getFile()
  */
-@WebServlet(urlPatterns = "/board/write.kh")
+@WebServlet(urlPatterns = "/notice/write.txt")
 public class NoticeWriteServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

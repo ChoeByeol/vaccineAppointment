@@ -15,13 +15,13 @@ import ncv.beans.VaccineDao;
 @WebServlet(urlPatterns = "/reservation/reserve.txt")
 public class ReservationReserveServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			
 			req.setCharacterEncoding("UTF-8");
 			ReservationDto reservationDto = new ReservationDto();
 			
-			reservationDto.setMemberId(req.getParameter("memberId"));
+			reservationDto.setMemberId((String)req.getSession().getAttribute("ses"));
 			reservationDto.setClinicNo(Integer.parseInt(req.getParameter("clinicNo")));
 			reservationDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
 			reservationDto.setShotNo(Integer.parseInt(req.getParameter("shotNo")));
@@ -33,6 +33,7 @@ public class ReservationReserveServlet extends HttpServlet {
 
 			ReservationDao reservationDao = new ReservationDao();		
 			int resNo = reservationDao.getSequence();
+			System.out.println(resNo);
 			reservationDto.setResNo(resNo);
 			reservationDao.reserve(reservationDto);
 			
