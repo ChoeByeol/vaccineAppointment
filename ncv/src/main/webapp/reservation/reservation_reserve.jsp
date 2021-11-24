@@ -29,16 +29,16 @@ List<VaccineDto> vaccineList = vaccineDao.list();
 
 
 <%
-			ReservationDao reservationDao = new ReservationDao();
-			List<ReservationVo> myResList = reservationDao.myResList(memberId);
-			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
+		ReservationDao reservationDao = new ReservationDao();
+		List<ReservationVo> myResList = reservationDao.myResList(memberId);
+		ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
 
-			int vacNo = 0;
-			if (reservationDto != null) {
-				vacNo= reservationDto.getVaccineNo();
-			}
+		int vacNo = 0;
+		if (reservationDto != null) {
+			vacNo= reservationDto.getVaccineNo();
+		}
 
-			boolean check = memberId != null && myResList.size() == 0; // 미접종
+		boolean check = memberId != null && myResList.size() == 0; // 미접종
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -240,11 +240,5 @@ tbody {
 	</div>
 </div>
 </form>
-<<<<<<< HEAD
-
-<jsp:include page="/template/footer.jsp"></jsp:include>
-
-=======
->>>>>>> refs/remotes/origin/BYEOL
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
