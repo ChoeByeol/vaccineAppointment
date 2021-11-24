@@ -40,15 +40,20 @@
 </style>
 
 <div class="container-800 container-center">
-	<div class="row center">
-		<h2><%=qnaDto.getQnaNo()%>번 게시글</h2>
-	</div>
 	<div class="row">
 		<table class="table table-hover">
 			<thead>
-				<tr align="left"><td><h3><%=qnaDto.getQnaTitle()%></h3></td></tr>
 				<tr>
-					<th colspan="2" align="left"><%=qnaDto.getQnaWriter()%> | <%=qnaDto.getQnaDate()%></th>
+					<td>제목</td>
+					<td><%=qnaDto.getQnaTitle()%></td>
+				</tr>
+				<tr>
+					<td>글쓴이</td>
+					<td><%=qnaDto.getQnaWriter()%></td>
+				</tr>
+				<tr>
+					<td>작성일</td>
+					<td><%=qnaDto.getQnaDate()%></td>
 				</tr>
 			</thead>
 			<tr><td colspan="4"><hr><td></tr>
@@ -60,28 +65,29 @@
 			 -->
 				<tr height="200" valign="top">
 					<td colspan="4"><pre><%=qnaDto.getQnaContent()%></pre></td>
-				</tr>		
-				<%if(qnaDto.getQnaAnswer() != null){%>
-				<tr height="200" valign="top">
+				</tr>	
+					
+				<%if(!qnaDto.getQnaAnswer().isEmpty()){ %>
+				<tr height="200" valign="top" style="background-color:#EEEEEE">
 					<td colspan="4"><pre><%=qnaDto.getQnaAnswer()%></pre></td>
 				</tr>
-				<%} %>	
+				<%} %>
 			</tbody>
 			<tr><td colspan="4"><hr><td></tr>
 			<tfoot>
 				<tr align="right">
 					<td colspan="4">
-						<a href="write.jsp">글쓰기</a>
-						<a href="list.jsp">목록</a>
 						
 						<%if(writer){%>
-						<a href="edit.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정</a>
-						<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
-						<%}%>
-						<%if(admin){ %>
-						<a href="../admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">답변달기</a>
-						<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
+							<a href="<%=request.getContextPath()%>/qna/list.jsp">목록</a>
+							<%if(qnaDto.getQnaState().equals("답변대기")){ %>
+							<a href="edit.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정</a>
+							<%} %>
+						<%}else if(admin){%>
+							<a href="<%=request.getContextPath()%>/admin/qna/list.jsp">목록</a>
+							<a href="../admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">답변달기</a>
 						<%} %>
+							<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
 					</td>
 			</tfoot>
 		</table>

@@ -1,6 +1,11 @@
 <%@page import="ncv.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>    
+<style>
+.label-text{
+	font-size:16px !important;
+}
+</style>
 <jsp:include page="/template/header.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
@@ -64,12 +69,12 @@
 			<a href="find_id.jsp" class="find-btn find-id-btn">아이디 찾기</a><a href="find_pw.jsp" class="find-btn find-pw-btn">비밀번호 찾기</a>
 		</div>
 		 <div class="row">
-		 	<label for="name">이름</label>
+		 	<label for="name" class="label-text">이름</label>
 			<input type="text" name="memberName" class="form-input" id="name">
 			<div class="notice"></div>
 		</div>
 		<div class="row">
-			<label for=rrn>주민번호</label>
+			<label for="rrn" class="label-text">주민번호</label>
 			<input type="text" name="memberRrn" class="form-input" id="rrn" placeholder="-제외" maxlength="13">
 			<div class="notice"></div>
 		</div>
