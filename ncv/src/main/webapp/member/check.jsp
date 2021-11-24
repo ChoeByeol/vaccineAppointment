@@ -8,10 +8,6 @@
 	}
 	.flex-container > .form-btn {
 		width:25%;
-		height:50px;
-		margin-top:10px;
-		margin-bottom:20px;
-		margin-left: 2px;
 	}
 </style>
 
@@ -23,7 +19,7 @@
 	</div>
 	<div class="row flex-container">
 		<input type="password" name="memberPw" required class="form-input">
-		<input type="submit" value="회원탈퇴" class="form-btn form-inline find-address-btn">
+		 <input type="submit" value="회원탈퇴" class="form-btn">
 	</div>
 	
 	<%if(request.getParameter("error") != null){ %>

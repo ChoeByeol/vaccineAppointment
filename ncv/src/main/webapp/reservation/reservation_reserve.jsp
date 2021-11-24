@@ -1,3 +1,4 @@
+<%@page import="ncv.beans.MemberDto"%>
 <%@page import="ncv.beans.MemberDao"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.Shot2Dao"%>
@@ -15,18 +16,15 @@
 
 <%
 	String memberId = (String) session.getAttribute("ses");
+
+	MemberDao memberDao = new MemberDao();
+	MemberDto memberDto = memberDao.get(memberId);
 %>
-
-
-
-<%
-ClinicDao clinicDao = new ClinicDao();
-List<ClinicDto> list  = clinicDao.list();
-%>	
 
 <%
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
+//List<VaccineDto> vaccineList = vaccineDao.listByAge(memberDto);
 %>
 
 
@@ -84,6 +82,9 @@ tbody {
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
          $(function(){
+        	 
+        	
+        	 
         	$(".page").hide();
             $(".page").eq(0).show();
              
@@ -91,6 +92,8 @@ tbody {
             
             $(".form-btn-check").on("click",function(){
 			
+            	//var inputId = $("#memberId").val();
+            	//console.log(inputId);
                 var inputName = $("input[name=resName]").val();
                 console.log(inputName);
                 var inputRrn = $("input[name=resRrn]").val();
@@ -101,6 +104,7 @@ tbody {
                     url:"http://localhost:8080/ncv/reservation/member_check.txt",
                     type:"get",//전송방식
                     data:{
+                    	//memberId:inputId,
                         resName:inputName,
                         resRrn:inputRrn,
                         resPhone:inputPhone
@@ -112,6 +116,7 @@ tbody {
 
                             $(".page").eq(1).show();
                             $(".readonly-form").attr("readonly",true)
+                            $(".form-btn-check").hide();
                         }
                         else if(resp=="NNNNN"){
                         	console.log(resp);
@@ -124,117 +129,120 @@ tbody {
                     }
                 });
             });
+            
+            $(".clinic-btn").click(function(){
+                var url ="reservation_popup.jsp";
+                var option="resizable=no, scrollbars=no, status=no, width=500, height=500, left=400%, top=100%";
+                
+                var child;
+                child = window.open(url,'',option);
+            });
         });
     </script>
+<%=memberId %>
+<%=check %>
+<form action="<%=request.getContextPath()%>/reservation/reserve.txt">
 <div class="container-400 container-center">
-<div class="row center">
+	<div class="row center">
 		<h1>예약하기</h1>
 	</div>
 	<div class="page">
-	<div class="row">
+		<%-- <input type="hidden" id="memberId" value="<%=memberId%>"> --%>
+		<div class="row">
 			<label>예약자 이름</label>
-			<input type="text" name="resName" class="form-input readonly-form">
-	</div>
-	<div class="row">
+			<input type="text" name="resName" class="form-input readonly-form" value="테스트">
+		</div>
+		<div class="row">
 			<label>예약자 주민번호</label>
-			<input type="text" name="resRrn" class="form-input readonly-form">
-	</div>
-	<div class="row">
+			<input type="text" name="resRrn" class="form-input readonly-form" maxlength="13" value="9602111111111">
+		</div>
+		<div class="row">
 			<label>예약자 전화번호</label>
-			<input type="text" name="resPhone" class="form-input readonly-form">
+			<input type="text" name="resPhone" class="form-input readonly-form" maxlength="11" value="01045454545">
 			<span></span>
-			<button type="button" class="form-btn-check">전송</button>
-	</div>
+			<button type="button" class="form-btn form-btn-check">본인인증</button>
+		</div>
 	</div>
 	<div class="page">
-	<% if (vacNo == 1) { %>				
 		<div class="row">
-			<label>백신</label>
-			<input type="hidden" name="vaccineNo" value="1" class="form-input">
-			<label>화이자</label>
-		</div>	
-	<%} else if (vacNo == 2){ %>	
-		<div class="row">
-			<label>백신</label>
-			<input type="hidden" name="vaccineNo" value="2" class="form-input">
-			<label>모더나</label>
-		</div>					
-	<%} else if (vacNo == 3){ %>
-		<div class="row">
-			<label>백신</label>
-			<input type="hidden" name="vaccineNo" value="3" class="form-input">
-			<label>아스트라제네카</label>
-		</div>	
-		<%} else{ %>		
-		<div class="row">
-			<label>백신</label>
-			<select name="vaccineNo">
-			<%for(VaccineDto vaccineDto : vaccineList){ %>
-			<option value="<%=vaccineDto.getVaccineNo()%>">
-			<%=vaccineDto.getVaccineName()%>
-			</option>
-			<%} %>
-			</select>
-			<% } %>	
+			<label>예약일</label>
+			<input type="date" name="resDate" class="form-input" min="now">
 		</div>
-		<div class="container-400 container-center">	
-			
-	<% if (check) { %>
-	<div class="row">
-		<label>접종차수</label>
-		<input type="hidden" name="resShot" value="1" >
-		<label>1차</label>
-	</div>			
-	<%} else{ %>			
 		<div class="row">
-			<label>접종차수</label>
-			<input type="hidden" name="resShot" value="2">
-			<label>2차</label>
-		</div>				
-	<% } %>
-
-	<div class="row">
-		<label>의료기관</label>
-		<select name="clinicNo" >
-			<option value="" selected="selected" hidden="hidden" class="form-input">병원선택</option>
-				<%for(ClinicDto clinicDto : list){ %>
-				<option value="<%=clinicDto.getClinicNo()%>">
-				<%=clinicDto.getClinicName()+" / "+clinicDto.getClinicAddress()+" / "+clinicDto.getClinicDetailAddress()%>
-				</option>
-				<%} %>
+			<label>의료기관</label>
+			<button type="button" class="clinic-btn" >의료기관 찾기</button>
+			<input type="hidden" name="clinicNo" id="pClinicNo">
+			<input type="text" id="pClinicName" readonly>
+		</div>
+		<div class="row">
+			<label>예약시간</label>
+			<select name="resTime" class="form-input">
+				<option>09:00</option>
+				<option>10:00</option>
+				<option>11:00</option>
+				<option>12:00</option>
+				<option>13:00</option>
+				<option>14:00</option>
+				<option>15:00</option>
+				<option>16:00</option>
+				<option>17:00</option>
+				<option>18:00</option>
 			</select>
-		</div>		
-			
-	<div class="row">
-		<label>예약일</label>
-		<input type="date" name="resDate" class="form-input">
+		</div>	
+		<% if (vacNo == 1) { %>				
+			<div class="row">
+				<label>백신</label>
+				<input type="hidden" name="vaccineNo" value="1" class="form-input">
+				<label>화이자</label>
+			</div>	
+		<%} else if (vacNo == 2){ %>	
+			<div class="row">
+				<label>백신</label>
+				<input type="hidden" name="vaccineNo" value="2" class="form-input">
+				<label>모더나</label>
+			</div>					
+		<%} else if (vacNo == 3){ %>
+			<div class="row">
+				<label>백신</label>
+				<input type="hidden" name="vaccineNo" value="3" class="form-input">
+				<label>아스트라제네카</label>
+			</div>	
+		<%} else{ %>		
+			<div class="row">
+				<label>백신</label>
+				<select name="vaccineNo">
+			<%for(VaccineDto vaccineDto : vaccineList){ %>
+				<option value="<%=vaccineDto.getVaccineNo()%>">
+			<%=vaccineDto.getVaccineName()%>
+				</option>
+			<%} %>
+				</select>
+			<% } %>	
+			</div>
+		<div class="container-400 container-center">		
+			<% if (check) { %>
+			<div class="row">
+				<label>접종차수</label>
+				<input type="hidden" name="resShot" value="1" >
+				<label>1차</label>
+			</div>			
+			<%} else{ %>			
+			<div class="row">
+				<label>접종차수</label>
+				<input type="hidden" name="resShot" value="2">
+				<label>2차</label>
+			</div>				
+			<% } %>
+			<div class="row right">
+				<input type="submit" value="예약" class="link-btn">
+				<input type="button" value="취소" class="link-btn" onclick=" location.href = '<%=request.getContextPath()%>'" >
+			</div>
+		</div>
 	</div>
-			
-	<div class="row">
-		<label>예약시간</label>
-		<select name="resTime" class="form-input">
-			<option>09:00</option>
-			<option>10:00</option>
-			<option>11:00</option>
-			<option>12:00</option>
-			<option>13:00</option>
-			<option>14:00</option>
-			<option>15:00</option>
-			<option>16:00</option>
-			<option>17:00</option>
-			<option>18:00</option>
-		</select>
-	</div>
-</div>	
+</div>
+</form>
 
-	<div class="row right">
-		<input type="submit" value="예약" class="link-btn" >
-		<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
-	</div>
-	</div>
-	</div>
-		
-	
+<jsp:include page="/template/footer.jsp"></jsp:include>
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

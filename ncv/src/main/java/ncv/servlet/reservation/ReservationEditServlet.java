@@ -24,7 +24,7 @@ public class ReservationEditServlet extends HttpServlet{
 			reservationDto.setMemberId(req.getParameter("memberId"));
 			reservationDto.setClinicNo(Integer.parseInt(req.getParameter("clinicNo")));
 			reservationDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
-			reservationDto.setResShot(Integer.parseInt(req.getParameter("resShot")));
+			reservationDto.setShotNo(Integer.parseInt(req.getParameter("shotNo")));
 			reservationDto.setResDate(req.getParameter("resDate"));
 			reservationDto.setResTime(req.getParameter("resTime"));
 			reservationDto.setResName(req.getParameter("resName"));
