@@ -25,7 +25,6 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
-
  	$(function(){
   
 	  	$("#sido").change(function(){
@@ -44,7 +43,6 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		});
 	  	
  	  	$("#sigungu").change(function(){
-
  	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
  	  		
 		   	$.ajax({
