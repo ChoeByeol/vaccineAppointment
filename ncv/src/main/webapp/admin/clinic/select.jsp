@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <th>병원 진료시간</th>
-            <td><%=clinicDto.getClinicTime()%></td>
+            <td><pre><%=clinicDto.getClinicTime()%></pre></td>
         </tr>
         <tr>
             <th>병원 우편번호</th>

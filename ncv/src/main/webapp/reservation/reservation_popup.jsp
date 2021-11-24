@@ -22,7 +22,17 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>의료기관 선택하기</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/reset.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/commons.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/layout.css">
+<style>
+.form-input{
+	margin-left:2%;
+	margin-right:2%;
+	width:25%;
+}
+</style> 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
  	$(function(){
@@ -66,22 +76,22 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 <body>
 <form action="reservation_popup.jsp" method="get">
 	<div id="test">
-		<select name="clinicSido" id="sido">
+		<select name="clinicSido" id="sido" class="form-input">
 			<option value="">광역시도</option>
 			<%for(String sido : sidoList){ %>
 			<option value="<%=sido %>"><%=sido %></option>
 			<%} %>
 		</select>
 		
-		<select name="clinicSigungu" id="sigungu">
+		<select name="clinicSigungu" id="sigungu" class="form-input">
 			<option value="">시군구</option>
 		</select>
 		
-		<select name="clinicBname" id="bname">
+		<select name="clinicBname" id="bname" class="form-input" required>
 			<option value="">읍면동</option>
 		</select>
 		
-		<input type="submit" value="의료기관 찾기">
+		<input type="submit" value="의료기관 찾기" class="input-btn">
 	</div>
 </form>
 

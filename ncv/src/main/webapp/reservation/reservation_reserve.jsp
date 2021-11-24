@@ -73,6 +73,135 @@ tbody {
 .table.table-font {
 	font-size: 16px;
 }
+.address-input{
+	width:63%;
+}
+.text-auto{
+	font-size: 20px;
+}
+.content-auto{
+	height:50px;
+}
+ .button_base {
+    position:absolute;
+    bottom:10%;
+    font-weight: bold;
+    font-size:17px;
+    border: 0;
+    position: relative;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+    border-radius: 2px;
+}
+.btn {
+    color: #000000;
+    background-color:#dee2e6;
+ 	padding:7px; 
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+}
+
+.btn:hover {
+    color: #ffffff;
+    background-color:rgb(53, 66, 68);
+    animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -webkit-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -moz-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    transition: all 0.2s ease 0.2s;
+    -webkit-transition: all 0.2s ease 0.2s;
+    -moz-transition: all 0.2s ease 0.2s;
+}
+
+@-webkit-keyframes btn {
+    from,
+    to {
+        background-color: #f8f8f8;
+        color: #080808;
+    }
+    50% {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+@-moz-keyframes btn {
+    from,
+    to {
+        background-color: #f8f8f8;
+        color: #080808;
+    }
+    50% {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+ .button_base_oppo {
+    position:absolute;
+    bottom:10%;
+    font-weight: bold;
+    font-size:17px;
+    border: 0;
+    position: relative;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+    border-radius: 2px;
+}
+.btn_oppo {
+    color: #ffffff;
+    background-color:rgb(53, 66, 68);
+ 	padding:7px; 
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+}
+
+.btn_oppo:hover {
+    color: #000000;
+    background-color:#dee2e6;
+    animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -webkit-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -moz-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    transition: all 0.2s ease 0.2s;
+    -webkit-transition: all 0.2s ease 0.2s;
+    -moz-transition: all 0.2s ease 0.2s;
+}
+
+@-webkit-keyframes btn_oppo {
+    from,
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+    50% {
+        background-color: #f8f8f8;
+        color: #080808;
+    }
+}
+
+@-moz-keyframes btn_oppo {
+    from,
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+    50% {
+        background-color: #f8f8f8;
+        color: #080808;
+    }
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
@@ -84,6 +213,8 @@ tbody {
             
             $(".form-btn-check").on("click",function(){
 			
+            	//var inputId = $("#memberId").val();
+            	//console.log(inputId);
                 var inputName = $("input[name=resName]").val();
                 console.log(inputName);
                 var inputRrn = $("input[name=resRrn]").val();
@@ -94,6 +225,7 @@ tbody {
                     url:"http://localhost:8080/ncv/reservation/member_check.txt",
                     type:"get",//전송방식
                     data:{
+                    	//memberId:inputId,
                         resName:inputName,
                         resRrn:inputRrn,
                         resPhone:inputPhone
@@ -121,7 +253,7 @@ tbody {
             
             $(".clinic-btn").click(function(){
                 var url ="reservation_popup.jsp";
-                var option="resizable=no, scrollbars=no, status=no, width=500, height=500, left=400%, top=100%";
+                var option="resizable=no, scrollbars=no, status=no, width=700, height=500, left=400%, top=100%";
                 
                 var child;
                 child = window.open(url,'',option);
@@ -134,6 +266,7 @@ tbody {
 		<h1>예약하기</h1>
 	</div>
 	<div class="page">
+		<%-- <input type="hidden" id="memberId" value="<%=memberId%>"> --%>
 		<div class="row">
 			<label>예약자 이름</label>
 			<input type="text" name="resName" class="form-input readonly-form">
@@ -155,10 +288,10 @@ tbody {
 			<input type="date" name="resDate" class="form-input">
 		</div>
 		<div class="row">
-			<label>의료기관</label>
-			<button type="button" class="clinic-btn" >의료기관 찾기</button>
+			<label>의료기관</label><br>
+			<input type="text" id="pClinicName" class="address-input" readonly>
+			<button type="button" class="clinic-btn form-btn form-inline" >의료기관 찾기</button>
 			<input type="hidden" name="clinicNo" id="pClinicNo">
-			<input type="text" id="pClinicName" readonly>
 		</div>
 		<div class="row">
 			<label>예약시간</label>
@@ -176,51 +309,51 @@ tbody {
 			</select>
 		</div>	
 		<% if (vacNo == 1) { %>				
-			<div class="row">
-				<label>백신</label>
+			<div class="row content-auto">
+				<label class="text-auto">백신</label>
 				<input type="hidden" name="vaccineNo" value="1" class="form-input">
-				<label>화이자</label>
+				<label class="text-auto">화이자</label>
 			</div>	
 		<%} else if (vacNo == 2){ %>	
-			<div class="row">
-				<label>백신</label>
+			<div class="row content-auto">
+				<label class="text-auto">백신</label>
 				<input type="hidden" name="vaccineNo" value="2" class="form-input">
-				<label>모더나</label>
+				<label class="text-auto">모더나</label>
 			</div>					
 		<%} else if (vacNo == 3){ %>
-			<div class="row">
-				<label>백신</label>
+			<div class="row content-auto">
+				<label class="text-auto">백신</label>
 				<input type="hidden" name="vaccineNo" value="3" class="form-input">
-				<label>아스트라제네카</label>
+				<label class="text-auto">아스트라제네카</label>
 			</div>	
 		<%} else{ %>		
-			<div class="row">
-				<label>백신</label>
-				<select name="vaccineNo">
+			<div class="row content-auto">
+				<label class="text-auto">백신</label>
+				<select class="text-auto" name="vaccineNo">
 			<%for(VaccineDto vaccineDto : vaccineList){ %>
 				<option value="<%=vaccineDto.getVaccineNo()%>">
 			<%=vaccineDto.getVaccineName()%>
 				</option>
 			<%} %>
 				</select>
+			</div>
 			<% } %>	
-			</div>	
 			<% if (check) { %>
-			<div class="row">
-				<label>접종차수</label>
+			<div class="row content-auto">
+				<label class="text-auto">접종차수</label>
 				<input type="hidden" name="resShot" value="1" >
-				<label>1차</label>
+				<label class="text-auto">1차</label>
 			</div>			
 			<%} else { %>			
-			<div class="row">
-				<label>접종차수</label>
+			<div class="row content-auto">
+				<label class="text-auto">접종차수</label>
 				<input type="hidden" name="resShot" value="2">
-				<label>2차</label>
+				<label class="text-auto">2차</label>
 			</div>				
 			<% } %>
-			<div class="row right">
-				<input type="submit" value="예약" class="link-btn" >
-				<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
+			<div class="row center">
+				<input type="submit" value="예약" class="btn_oppo button_base_oppo" >
+				<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="btn button_base">
 			</div>
 	</div>
 </div>
