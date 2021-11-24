@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.MemberDao;
 import ncv.beans.MemberDto;
+import ncv.beans.SHA256;
 
 @WebServlet(urlPatterns = "/member/login.txt")
 public class MemberLoginServlet extends HttpServlet {
@@ -18,7 +19,7 @@ public class MemberLoginServlet extends HttpServlet {
 		try {
 			//입력 : member_id, member_pw
 			String memberId = req.getParameter("memberId");
-			String memberPw = req.getParameter("memberPw");
+			String memberPw = SHA256.encrypt(req.getParameter("memberPw"));
 			
 			//처리
 			MemberDao memberDao = new MemberDao();

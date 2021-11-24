@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.MemberDao;
 import ncv.beans.MemberDto;
+import ncv.beans.SHA256;
 
 
 @WebServlet(urlPatterns = "/member/join.txt")
@@ -19,7 +20,7 @@ public class MemberJoinServlet extends HttpServlet{
 			req.setCharacterEncoding("UTF-8");
 			MemberDto memberDto = new MemberDto();
 			memberDto.setMemberId(req.getParameter("memberId"));
-			memberDto.setMemberPw(req.getParameter("memberPw"));
+			memberDto.setMemberPw(SHA256.encrypt(req.getParameter("memberPw")));
 			memberDto.setMemberName(req.getParameter("memberName"));
 			memberDto.setMemberRrn(req.getParameter("memberRrn"));
 			memberDto.setMemberGender(req.getParameter("memberGender"));

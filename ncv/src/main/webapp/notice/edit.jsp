@@ -74,7 +74,7 @@
             <td colspan="5">
                 <input type="reset" value="작성취소" >
                 <input type="submit" value="수정" >
-                <input type="button" value="목록" onclick="changeView()" >            
+                <input type="button" value="목록" onClick="location.href='http://localhost:8061/ncv/notice/list.jsp'">            
             </td>
         </tr>
     </table>    

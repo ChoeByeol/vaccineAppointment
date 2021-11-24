@@ -23,7 +23,6 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/commons.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/layout.css">
     <style>
-
     .logo-wrapper {
     width: 120px;
     height: 40px;
@@ -91,16 +90,15 @@
 			</div>
 		</header>
 			<!-- 메뉴 영역 -->
-			
   <nav>
     <ul class="slide-menu">
     	<%if(login){ %>
     	<li><a href="<%=request.getContextPath()%>/index.jsp">MAIN</a></li>
-        <li><a href="#">공지사항</a></li>
-        <li><a href="<%=request.getContextPath()%>/qna/list.jsp" >1:1 문의</a></li>
+        <li><a href="<%=request.getContextPath()%>/notice/list.jsp">공지사항</a></li>
+        <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">임시접종완료</a></li>
     	<%if(admin){ %>
         <%} else { %>
-        <li><a href="<%=request.getContextPath()%>/reservation/reservation_reserve.jsp">예약하기</a></li>
+        <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li>
         <%} %>        
         <li class="flex-right">
         	<a href="#" >회원메뉴</a>
@@ -108,10 +106,9 @@
             	<%if(admin){ %>
             	<li><a href="<%=request.getContextPath()%>/admin/home.jsp">관리메뉴</a></li>
             	<%} else { %>
-                <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보보기</a></li>
-                <li><a href="<%=request.getContextPath()%>/reservation/reservation_detail.jsp">예약조회</a></li>
-                <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">접종내역확인</a></li>
-                <li><a href="#">내질문확인</a></li>
+                <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
+                <li><a href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">나의예약조회</a></li>
+                <li><a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">접종내역조회</a></li>
                 <%} %>
                 <li><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
   			</ul>
@@ -129,6 +126,3 @@
 		</ul>
    </nav>
 <section>
-		
-		   
-

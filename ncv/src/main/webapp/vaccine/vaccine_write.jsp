@@ -47,7 +47,12 @@
 	</div>
 	
 	<div class="row">
-	<label>접종 횟수(간격)</label>
+	<label>접종 횟수</label>
+	<input type="text" name="vaccineShot"  class="form-input">
+	</div>
+	
+	<div class="row">
+	<label>접종 간격</label>
 	<input type="text" name="vaccineInterval"  class="form-input">
 	</div>
 	

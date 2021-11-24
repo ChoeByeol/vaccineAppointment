@@ -38,10 +38,7 @@ pagination.calculate();
 
 <br>
 <br>
-
-
 <div class="row">
-
 	<table class="table table-border table-hover">
 		<thead>
 			<tr>
@@ -53,42 +50,24 @@ pagination.calculate();
 			</tr>
 		</thead>
 		<tbody align="center">
-			<%
-			for (NoticeDto noticeDto : pagination.getList()) {
-			%>
+			<%for (NoticeDto noticeDto : pagination.getList()) {%>
 			<tr>
 				<td><%=noticeDto.getNoticeNo()%></td>
-				<td class="left"><a
-					href="detail.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>"> <%=noticeDto.getNoticeTitle()%>
-				</a></td>
-
+				<td class="left">
+					<a href="detail.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>"> <%=noticeDto.getNoticeTitle()%></a>
+				</td>
 				<td><%=noticeDto.getNoticeWriter()%></td>
 				<td><%=noticeDto.getNoticeTime()%></td>
 				<td><%=noticeDto.getNoticeHit()%></td>
-
-
 			</tr>
-			<%
-			}
-			%>
+			<%}%>
 		</tbody>
 	</table>
-
 	<br>
 </div>
-
-
-
-<div class="row right">
+	<div class="row right">
 		<a href="write.jsp" class="link-btn">글쓰기</a>
 	</div>
-	
-	
-	
-	
-	
-	
-	
 	<div class="row pagination">
 		<!-- 이전 버튼 -->
 		<%if(pagination.isPreviousAvailable()){ %>
@@ -153,18 +132,13 @@ pagination.calculate();
 				<%}else{ %>
 				<option value="notice_writer">작성자</option>
 				<%} %>
-				
 			</select>
-			
 			<input type="search" name="keyword" placeholder="검색어 입력" required 
 					value="<%=pagination.getKeywordString()%>" class="form-input form-inline">
 			
 			<input type="submit" value="검색" class="form-btn form-inline">
-			
 		</form>
 	</div>
-	
-	
 </div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
