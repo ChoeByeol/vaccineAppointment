@@ -21,7 +21,7 @@
  		<input type="submit" value="로그인" required class="form-btn form-incline">
  	</div>
  	<div class="row center">
- 		<a href="<%=request.getContextPath()%>/member/find_id.jsp" class="link-btn">아이디 찾기</a>|<a href="<%=request.getContextPath()%>/member/find_pw.jsp" class="link-btn">비밀번호 찾기</a>|<a href="<%=request.getContextPath()%>/member/join.jsp"class="link-btn">회원가입</a>
+ 		<a href="<%=request.getContextPath()%>/member/find_id.jsp" class="link-btn">아이디 찾기</a>|<a href="<%=request.getContextPath()%>/member/find_pw.jsp" class="link-btn">비밀번호 찾기</a>|<a href="<%=request.getContextPath()%>/member/agree.jsp"class="link-btn">회원가입</a>
  	</div>
   
 	<%if(request.getParameter("error") != null){ %>
