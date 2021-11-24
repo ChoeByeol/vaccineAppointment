@@ -33,6 +33,7 @@ public class MemberFindPwServlet extends HttpServlet{
          //String memberPw = memberDao.findPw(memberId, memberName, memberRrn);
          
          //출력
+
          if(success) {
         	 resp.sendRedirect("find_pw.jsp?tmpPw=" + tmpPw);
          }

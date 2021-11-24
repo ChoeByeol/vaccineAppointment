@@ -124,115 +124,111 @@ tbody {
                     }
                 });
             });
+            
+            $(".clinic-btn").click(function(){
+                var url ="reservation_popup.jsp";
+                var option="resizable=no, scrollbars=no, status=no, width=500, height=500, left=400%, top=100%";
+                
+                window.open(url,'',option); 
+            });
         });
     </script>
 <div class="container-400 container-center">
-<div class="row center">
+	<div class="row center">
 		<h1>예약하기</h1>
 	</div>
 	<div class="page">
-	<div class="row">
+		<div class="row">
 			<label>예약자 이름</label>
 			<input type="text" name="resName" class="form-input readonly-form">
-	</div>
-	<div class="row">
+		</div>
+		<div class="row">
 			<label>예약자 주민번호</label>
 			<input type="text" name="resRrn" class="form-input readonly-form">
-	</div>
-	<div class="row">
+		</div>
+		<div class="row">
 			<label>예약자 전화번호</label>
 			<input type="text" name="resPhone" class="form-input readonly-form">
 			<span></span>
 			<button type="button" class="form-btn-check">전송</button>
-	</div>
+		</div>
 	</div>
 	<div class="page">
-	<% if (vacNo == 1) { %>				
 		<div class="row">
-			<label>백신</label>
-			<input type="hidden" name="vaccineNo" value="1" class="form-input">
-			<label>화이자</label>
-		</div>	
-	<%} else if (vacNo == 2){ %>	
-		<div class="row">
-			<label>백신</label>
-			<input type="hidden" name="vaccineNo" value="2" class="form-input">
-			<label>모더나</label>
-		</div>					
-	<%} else if (vacNo == 3){ %>
-		<div class="row">
-			<label>백신</label>
-			<input type="hidden" name="vaccineNo" value="3" class="form-input">
-			<label>아스트라제네카</label>
-		</div>	
-		<%} else{ %>		
-		<div class="row">
-			<label>백신</label>
-			<select name="vaccineNo">
-			<%for(VaccineDto vaccineDto : vaccineList){ %>
-			<option value="<%=vaccineDto.getVaccineNo()%>">
-			<%=vaccineDto.getVaccineName()%>
-			</option>
-			<%} %>
-			</select>
-			<% } %>	
+			<label>예약일</label>
+			<input type="date" name="resDate" class="form-input">
 		</div>
-		<div class="container-400 container-center">	
-			
-	<% if (check) { %>
-	<div class="row">
-		<label>접종차수</label>
-		<input type="hidden" name="resShot" value="1" >
-		<label>1차</label>
-	</div>			
-	<%} else{ %>			
 		<div class="row">
-			<label>접종차수</label>
-			<input type="hidden" name="resShot" value="2">
-			<label>2차</label>
-		</div>				
-	<% } %>
-
-	<div class="row">
-		<label>의료기관</label>
-		<select name="clinicNo" >
-			<option value="" selected="selected" hidden="hidden" class="form-input">병원선택</option>
-				<%for(ClinicDto clinicDto : list){ %>
-				<option value="<%=clinicDto.getClinicNo()%>">
-				<%=clinicDto.getClinicName()+" / "+clinicDto.getClinicAddress()+" / "+clinicDto.getClinicDetailAddress()%>
-				</option>
-				<%} %>
+			<label>의료기관</label>
+			<button type="button" class="clinic-btn" >의료기관 찾기</button>
+			<input type="text" id="pClinic" readonly>
+		</div>
+		<div class="row">
+			<label>예약시간</label>
+			<select name="resTime" class="form-input">
+				<option>09:00</option>
+				<option>10:00</option>
+				<option>11:00</option>
+				<option>12:00</option>
+				<option>13:00</option>
+				<option>14:00</option>
+				<option>15:00</option>
+				<option>16:00</option>
+				<option>17:00</option>
+				<option>18:00</option>
 			</select>
-		</div>		
-			
-	<div class="row">
-		<label>예약일</label>
-		<input type="date" name="resDate" class="form-input">
+		</div>	
+		<% if (vacNo == 1) { %>				
+			<div class="row">
+				<label>백신</label>
+				<input type="hidden" name="vaccineNo" value="1" class="form-input">
+				<label>화이자</label>
+			</div>	
+		<%} else if (vacNo == 2){ %>	
+			<div class="row">
+				<label>백신</label>
+				<input type="hidden" name="vaccineNo" value="2" class="form-input">
+				<label>모더나</label>
+			</div>					
+		<%} else if (vacNo == 3){ %>
+			<div class="row">
+				<label>백신</label>
+				<input type="hidden" name="vaccineNo" value="3" class="form-input">
+				<label>아스트라제네카</label>
+			</div>	
+		<%} else{ %>		
+			<div class="row">
+				<label>백신</label>
+				<select name="vaccineNo">
+			<%for(VaccineDto vaccineDto : vaccineList){ %>
+				<option value="<%=vaccineDto.getVaccineNo()%>">
+			<%=vaccineDto.getVaccineName()%>
+				</option>
+			<%} %>
+				</select>
+			<% } %>	
+			</div>
+		<div class="container-400 container-center">		
+			<% if (check) { %>
+			<div class="row">
+				<label>접종차수</label>
+				<input type="hidden" name="resShot" value="1" >
+				<label>1차</label>
+			</div>			
+			<%} else{ %>			
+			<div class="row">
+				<label>접종차수</label>
+				<input type="hidden" name="resShot" value="2">
+				<label>2차</label>
+			</div>				
+			<% } %>
+			<div class="row right">
+				<input type="submit" value="예약" class="link-btn" >
+				<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
+			</div>
+		</div>
 	</div>
-			
-	<div class="row">
-		<label>예약시간</label>
-		<select name="resTime" class="form-input">
-			<option>09:00</option>
-			<option>10:00</option>
-			<option>11:00</option>
-			<option>12:00</option>
-			<option>13:00</option>
-			<option>14:00</option>
-			<option>15:00</option>
-			<option>16:00</option>
-			<option>17:00</option>
-			<option>18:00</option>
-		</select>
-	</div>
-</div>	
-
-	<div class="row right">
-		<input type="submit" value="예약" class="link-btn" >
-		<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
-	</div>
-	</div>
-	</div>
+</div>
 		
 	
 
