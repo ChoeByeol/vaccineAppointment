@@ -20,8 +20,9 @@
 
 
 <%
+int clinicNo=0;
 ClinicDao clinicDao = new ClinicDao();
-List<ClinicDto> list  = clinicDao.list();
+ClinicDto clinicDto = clinicDao.select(clinicNo);
 %>	
 
 <%
@@ -129,7 +130,8 @@ tbody {
                 var url ="reservation_popup.jsp";
                 var option="resizable=no, scrollbars=no, status=no, width=500, height=500, left=400%, top=100%";
                 
-                window.open(url,'',option); 
+                var child;
+                child = window.open(url,'',option);
             });
         });
     </script>
@@ -161,7 +163,8 @@ tbody {
 		<div class="row">
 			<label>의료기관</label>
 			<button type="button" class="clinic-btn" >의료기관 찾기</button>
-			<input type="text" id="pClinic" readonly>
+			<input type="hidden" id="pClinicNo">
+			<input type="text" id="pClinicName">
 		</div>
 		<div class="row">
 			<label>예약시간</label>

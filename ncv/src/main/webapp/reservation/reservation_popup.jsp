@@ -55,10 +55,8 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		   	})
 	  		
 	  	});
- 	  	var radio_value = $('input:#cClinic:checked').val();
  	  	
  	  	$("#close-btn").click(function(){
- 	  		opener.document.getElementById("#pClinic").value = opener.document.getElement(radio_value).value;
  	  		window.close();
  	  	});
 	});
@@ -91,12 +89,8 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 
 		<%for(ClinicDto clinicDto : list){ %>
 			<div>
-				<label>병원 선택</label>
-				<input type="radio" id="cClinic" value="<%=clinicDto.getClinicNo()%><%=clinicDto.getClinicName()%><%=clinicDto.getClinicTel()%><%=clinicDto.getClinicPostcode()%><%=clinicDto.getClinicAddress()%>">
-			</div>
-			<div>
 				<label>병원 이름</label>
-				<a href="/ncv/admin/clinic/select.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a>
+				<a href="/ncv/reservation/reservation_clinic_detail.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a>
 			</div>
 			<div>
 				<label>전화번호</label>
@@ -107,6 +101,6 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 				<%="(" + clinicDto.getClinicPostcode() + ") " + clinicDto.getClinicAddress()%>
 			</div>
 		<%} %>
-	<button id="close-btn">병원 선택 완료</button>
+	<button id="close-btn">닫기</button>
 </body>
 </html>
