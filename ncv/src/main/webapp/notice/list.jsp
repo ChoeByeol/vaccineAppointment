@@ -35,7 +35,6 @@ pagination.calculate();
 		<h2>공지 및 안내사항</h2>
 	</div>
 
-
 <br>
 <br>
 <div class="row">
@@ -136,7 +135,7 @@ pagination.calculate();
 			<input type="search" name="keyword" placeholder="검색어 입력" required 
 					value="<%=pagination.getKeywordString()%>" class="form-input form-inline">
 			
-			<input type="submit" value="검색" class="form-btn form-inline">
+			<input type="submit" value="검색" class="form-btn form-inline form-notice-btn">
 		</form>
 	</div>
 </div>
