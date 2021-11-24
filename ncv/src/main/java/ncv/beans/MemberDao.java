@@ -425,7 +425,7 @@ public class MemberDao {
 			rs.next();
 			
 			int count = rs.getInt("count(*)");
-			System.out.println(count);
+
 			con.close();
 			
 		    return count;
