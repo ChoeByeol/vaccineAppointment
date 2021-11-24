@@ -31,5 +31,4 @@ public class AgreeFilter implements Filter{
 			resp.sendError(401);
 		}
 	}
-
 }
