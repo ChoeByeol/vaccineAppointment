@@ -10,7 +10,6 @@ public class QnaDto {
 	private String qnaContent;
 	private Date qnaDate;
 	private String qnaAnswer;
-	private String qnaState;
 	
 	public QnaDto() {
 		super();
@@ -56,16 +55,14 @@ public class QnaDto {
 	public void setQnaAnswer(String qnaAnswer) {
 		this.qnaAnswer = qnaAnswer;
 	}
+	
+	//답변상태 보여주기
 	public String getQnaState() {
-		if(this.qnaAnswer == null) {
-			return qnaState = "답변대기";
+		if(this.qnaAnswer == null || this.qnaAnswer.isEmpty()) {
+			return "답변대기";
 		}
 		else {
-			return qnaState = "답변완료";
+			return "답변완료";
 		}
 	}
-	public void setQnaState(String qnaState) {
-		this.qnaState = qnaState;
-	}
-	
 }
