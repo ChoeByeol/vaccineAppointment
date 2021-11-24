@@ -55,11 +55,12 @@
 </style>
 
 <div class="container-900 container-center">
-	
+	<%if(myShotList.isEmpty()) {%>
+	<div class="row center">
+		<h1 class="page-title">접종 내역이 없습니다.</h1>
+	</div>
+	<%}else{ %>
 	<div class="row">
-		<div class="page-title">
-		<h2 class="page-title">접종 결과가 조회되었습니다!</h2>
-		</div>
 		<br><br>
 			<!-- 1단 : 예약자 정보 -->
 			<div class="row">
@@ -118,5 +119,6 @@
 			</div>
 		</div>
 	</div>
+	<%} %>
 
  <jsp:include page="/template/footer.jsp"></jsp:include>
