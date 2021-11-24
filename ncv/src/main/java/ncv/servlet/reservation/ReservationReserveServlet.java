@@ -21,7 +21,7 @@ public class ReservationReserveServlet extends HttpServlet {
 			req.setCharacterEncoding("UTF-8");
 			ReservationDto reservationDto = new ReservationDto();
 			
-			reservationDto.setMemberId(req.getParameter("memberId"));
+			reservationDto.setMemberId((String)req.getSession().getAttribute("ses"));
 			reservationDto.setClinicNo(Integer.parseInt(req.getParameter("clinicNo")));
 			reservationDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
 			reservationDto.setResShot(Integer.parseInt(req.getParameter("resShot")));

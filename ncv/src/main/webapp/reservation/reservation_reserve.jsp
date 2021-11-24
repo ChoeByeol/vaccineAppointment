@@ -84,6 +84,8 @@ tbody {
             
             $(".form-btn-check").on("click",function(){
 			
+            	//var inputId = $("#memberId").val();
+            	//console.log(inputId);
                 var inputName = $("input[name=resName]").val();
                 console.log(inputName);
                 var inputRrn = $("input[name=resRrn]").val();
@@ -94,6 +96,7 @@ tbody {
                     url:"http://localhost:8080/ncv/reservation/member_check.txt",
                     type:"get",//전송방식
                     data:{
+                    	//memberId:inputId,
                         resName:inputName,
                         resRrn:inputRrn,
                         resPhone:inputPhone
@@ -128,23 +131,26 @@ tbody {
             });
         });
     </script>
+<%=memberId %>
+<%=check %>
 <form action="<%=request.getContextPath()%>/reservation/reserve.txt">
 <div class="container-400 container-center">
 	<div class="row center">
 		<h1>예약하기</h1>
 	</div>
 	<div class="page">
+		<%-- <input type="hidden" id="memberId" value="<%=memberId%>"> --%>
 		<div class="row">
 			<label>예약자 이름</label>
-			<input type="text" name="resName" class="form-input readonly-form">
+			<input type="text" name="resName" class="form-input readonly-form" value="테스트">
 		</div>
 		<div class="row">
 			<label>예약자 주민번호</label>
-			<input type="text" name="resRrn" class="form-input readonly-form" maxlength="13">
+			<input type="text" name="resRrn" class="form-input readonly-form" maxlength="13" value="9602181111111">
 		</div>
 		<div class="row">
 			<label>예약자 전화번호</label>
-			<input type="text" name="resPhone" class="form-input readonly-form" maxlength="11">
+			<input type="text" name="resPhone" class="form-input readonly-form" maxlength="11" value="01055555555">
 			<span></span>
 			<button type="button" class="form-btn form-btn-check">본인인증</button>
 		</div>

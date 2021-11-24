@@ -404,28 +404,29 @@ public class MemberDao {
 		   return result > 0 ;
 	   }
 	   
-//		예약 회원 정보 확인
-		
-		public int checkMember(String resName, String resRrn, String resPhone) throws Exception {
-			//Connection con = JdbcUtils.connect();
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "semi", "semi");
+//		본인인증 메소드
+		public int checkMember(String memberId, String resName, String resRrn, String resPhone) throws Exception {
+			Connection con = JdbcUtils.connect();
 			
 			String sql = "select count(*) "
 					+ "from member "
-					+ "where member_name = ? "
+					+ "where "
+					+ "member_id = ? "
+					+ "and member_name = ? "
 					+ "and member_rrn = ? "
 					+ "and member_phone = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, resName);
-			ps.setString(2, resRrn);
-			ps.setString(3, resPhone);
+			ps.setString(1, memberId);
+			ps.setString(2, resName);
+			ps.setString(3, resRrn);
+			ps.setString(4, resPhone);
 
 			ResultSet rs = ps.executeQuery();
 			
 			rs.next();
 			
 			int count = rs.getInt("count(*)");
-
+			System.out.println(count);
 			con.close();
 			
 		    return count;
