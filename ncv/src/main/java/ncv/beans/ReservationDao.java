@@ -381,10 +381,10 @@ public class ReservationDao {
 			int count = rs.getInt("count(*)");
 
 			System.out.println("카운트 = " + count);
-			con.close();
+			con.close(); 
 
 			return count;
-			
+			 
 			
 		}				
 		

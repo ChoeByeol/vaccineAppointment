@@ -41,7 +41,7 @@ public class ReservationVacCheckServlet extends HttpServlet {
 				stock += reservationVo.getQuantity();
 			}
 
-	 
+	  
 			if(stock >= result) {
 				System.out.println("예약가능");
 				System.out.println("재고수량 = " + stock);
