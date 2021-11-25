@@ -4,6 +4,8 @@
     pageEncoding="UTF-8"%>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<jsp:include page="/template/header.jsp"></jsp:include>
+<head>
 <script>
     $(function(){
         $(".find-address-btn").click(function(){
@@ -78,29 +80,51 @@
 	ClinicDao clinicDao = new ClinicDao();
 	ClinicDto clinicDto = clinicDao.select(clinicNo);
 %>
+</head>
+<body>
 
-<form action="edit.txt" method="post">
+<form action="edit.txt" method="post" name="form">
+
+ <div class="container-500 container-center">
 		<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
-		병원 이름 : <input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>">
-		<br><br>
-		병원 연락처 : <input type="text" name="clinicTel" required value="<%=clinicDto.getClinicTel()%>">
-		<br><br>
-		진료시간 : <input type="text" name="clinicTime" required value="<%=clinicDto.getClinicTime()%>">
-		<br><br>
-		우편번호 : <input type="text" name="clinicPostcode" required value="<%=clinicDto.getClinicPostcode()%>">
-		<button type="button" class="find-address-btn">주소 검색</button>
-		<br><br>
-		병원 주소 : <input type="text" name="clinicAddress" required value="<%=clinicDto.getClinicAddress()%>">
-		<br><br>
-		상세주소 : <input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>">
-		<br><br>
-		<input type="submit" value="수정">
+		<div class="row">
+			<label class="label-text">병원이름</label>
+			<input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>" class="form-input">
+		</div>
+		<div class="row">
+			<label class="label-text">병원 연락처</label>
+			<input type="text" name="clinicTel" required value="<%=clinicDto.getClinicTel()%>" class="form-input">
+		</div>
+		<div class="row">
+			<label class="label-text">진료 시간</label>
+			<input type="text" name="clinicTime" required value="<%=clinicDto.getClinicTime()%>" class="form-input">
+		</div>
+		<div class="row">
+			<label class="label-text">우편번호</label>
+			<input type="text" name="clinicPostcode" required value="<%=clinicDto.getClinicPostcode()%>" class="form-input">
+			<button type="button" class="find-address-btn form-inline">주소 검색</button>
+		</div>
+		<div class="row">
+			<label class="label-text">병원 주소</label>
+			<input type="text" name="clinicAddress" required value="<%=clinicDto.getClinicAddress()%>"class="form-input">
+		</div>
+		<div class="row">
+			<label class="label-text">상세주소</label>
+			<input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>"class="form-input">
+		</div>
+		<div class="row">
+			<input type="submit" value="수정"class="form-btn">
+		</div>
 		<!-- 아래 히든으로 바꿔줘야함  -->
 		<input type="text" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
 		<input type="text" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
-		<input type="text" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">		
-</form>
+		<input type="text" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">
+		</div>		
+	</form>
+</body>
 
 <%if(request.getParameter("error") != null){ %>
 	<h4 class="error">정보 수정 오류!</h4>
 <%} %>
+
+<jsp:include page="/template/footer.jsp"></jsp:include>

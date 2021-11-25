@@ -240,7 +240,6 @@ tbody {
                     },
                     success:function(resp){//NNNNN, YYYYYY 중 하나가 돌아옴.
                         if(resp=="YYYYY"){
-                        	console.log(resp);
                             alert("본인인증에 성공하였습니다.")
 
                             $(".page").eq(1).show();
@@ -248,7 +247,6 @@ tbody {
                             $(".form-btn-check").hide();
                         }
                         else if(resp=="NNNNN"){
-                        	console.log(resp);
                             alert("본인인증에 실패하였습니다.")
                         }
                     },
@@ -290,11 +288,11 @@ tbody {
 			<button type="button" class="form-btn form-btn-check">본인인증</button>
 		</div>
 	</div>
-	<div class="page">
 		<div class="row">
 			<label>예약일</label>
-			<input type="date" name="resDate" class="form-input">
+			<input type="date" name="resDate" class="form-input" id="date-btn">
 		</div>
+	<div class="page">
 		<div class="row">
 			<label>의료기관</label><br>
 			<input type="text" id="pClinicName" class="address-input" readonly>

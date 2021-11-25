@@ -42,7 +42,7 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		   	var param = "clinicSido=" + $("#sido").val();
 		   
 		   	$.ajax({
-		    	url : "http://localhost:8080/ncv/admin/clinic/ajax_sigungu_list.jsp",
+		    	url : "http://localhost:8080/ncv/reservation/ajax_sigungu_list.jsp",
 		    	data : param,
 		    	type : "get",
 		    	success : function(data){
@@ -56,7 +56,7 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
   	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
  	  		
 		   	$.ajax({
-		    	url : "http://localhost:8080/ncv/admin/clinic/ajax_bname_list.jsp",
+		    	url : "http://localhost:8080/ncv/reservation/ajax_bname_list.jsp",
 		    	data : param,
 		    	type : "get",
 		    	success : function(data){

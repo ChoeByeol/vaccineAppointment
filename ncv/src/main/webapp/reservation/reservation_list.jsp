@@ -23,7 +23,7 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 .sub_news caption{display:none}
 .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
 .sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
-.sub_news .no,.sub_news .memberid,.sub_news .name,.sub_news .rrn,.sub_news .phmoe,.sub_news .vacineName,.sub_news .shot,.sub_news .clinicname,.sub_news .nodateday,.sub_news .time,.sub_news .detailno{padding:0;font-family:Tahoma;font-size:14px;line-height:normal}
+.sub_news .no,.sub_news .memberId,.sub_news .name,.sub_news .rrn,.sub_news .phone,.sub_news .vacineName,.sub_news .shot,.sub_news .clinicname,.sub_news .nodateday,.sub_news .time,.sub_news .detailno{padding:0;font-family:Tahoma;font-size:14px;line-height:normal}
 
 <style>
  .button_base {
@@ -63,31 +63,8 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     -moz-transition: all 0.2s ease 0.2s;
 }
 
-@-webkit-keyframes btn {
-    from,
-    to {
-        background-color: #f8f8f8;
-        color: #080808;
-    }
-    50% {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
 
-@-moz-keyframes btn {
-    from,
-    to {
-        background-color: #f8f8f8;
-        color: #080808;
-    }
-    50% {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
 </style>
-
 
 
 <div class="container-900 container-center">
@@ -105,8 +82,8 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 				
 				<thead>
 				<tr>
-					<th scope="col" style="width: 60px;">예약번호</th>
-					<th scope="col" style="width: 90px;">아이디</th>
+					<th class="no" style="width: 60px;">예약번호</th>
+					<th class="memberId" style="width: 90px;">아이디</th>
 					<th scope="col" style="width: 70px;">이름</th>
 					<th scope="col" style="width: 120px;">주민등록번호</th>
 					<th scope="col" style="width: 90px;">전화번호</th>
