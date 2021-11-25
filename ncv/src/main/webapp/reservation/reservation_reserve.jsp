@@ -216,8 +216,6 @@ tbody {
          $(function(){
         	$(".page").hide();
             $(".page").eq(0).show();
-             
-            var p = 0;
             
             $(".form-btn-check").on("click",function(){
 			
@@ -259,7 +257,7 @@ tbody {
             
             $(".clinic-btn").click(function(){
                 var url ="reservation_popup.jsp";
-                var option="resizable=no, scrollbars=no, status=no, width=700, height=500, left=400%, top=100%";
+                var option="resizable=no, scrollbars=no, status=no, width=800, height=600, left=400%, top=100%";
                 
                 var child;
                 child = window.open(url,'',option);
@@ -288,11 +286,11 @@ tbody {
 			<button type="button" class="form-btn form-btn-check">본인인증</button>
 		</div>
 	</div>
+	<div class="page">
 		<div class="row">
 			<label>예약일</label>
-			<input type="date" name="resDate" class="form-input readonly-form" id="date-btn">
+			<input type="date" name="resDate" class="form-input">
 		</div>
-	<div class="page">
 		<div class="row">
 			<label>의료기관</label><br>
 			<input type="text" id="pClinicName" class="address-input" readonly>

@@ -16,6 +16,70 @@
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
+<style>
+
+ .button_base {
+    position:absolute;
+    bottom:10%;
+    font-weight: bold;
+    font-size:16px;
+    border: 0;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+    border-radius: 2px;
+}
+.btn {
+	text-decoration:none;
+    color: #000000;
+ 	padding:2px; 
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+}
+
+.btn:hover {
+    color: #dee2e6;
+    animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -webkit-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -moz-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    transition: all 0.2s ease 0.2s;
+    -webkit-transition: all 0.2s ease 0.2s;
+    -moz-transition: all 0.2s ease 0.2s;
+}
+
+@-webkit-keyframes btn {
+    from,
+    to {
+        background-color: #f8f8f8;
+        color: #080808;
+    }
+    50% {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+@-moz-keyframes btn {
+    from,
+    to {
+        background-color: #f8f8f8;
+        color: #080808;
+    }
+    50% {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+table > tbody > tr > td{
+	height:15px;
+	padding:2px;
+}
+</style>
 <div class="container-900 container-center">
 <div class="row center">
 	<h2><%=title%></h2>
@@ -44,9 +108,9 @@
 				<td><%=memberDto.getMemberGender()%></td>
 				<td><%=memberDto.getMemberRole()%></td>
 				<td>
-					<a href="detail.jsp?memberId=<%=memberDto.getMemberId()%>">상세</a>
-					<a href="edit.jsp?memberId=<%=memberDto.getMemberId()%>">수정</a>
-					<a href="quit.txt?memberId=<%=memberDto.getMemberId()%>">탈퇴</a>
+					<a href="detail.jsp?memberId=<%=memberDto.getMemberId()%>" class="btn button_base">상세</a>
+					<a href="edit.jsp?memberId=<%=memberDto.getMemberId()%>" class="btn button_base">수정</a>
+					<a href="quit.txt?memberId=<%=memberDto.getMemberId()%>" class="btn button_base">탈퇴</a>
 				</td>	
 			</tr>
 		<%}%>
@@ -55,6 +119,7 @@
 <%}%>
 </div>
 
+<div class="center">
 <!-- 페이지 네비게이터 -->
 <br><br>
 <%if(memPgn.isPreviousAvailable()){ %>
@@ -93,6 +158,7 @@
 
 <br><br>
 
+
 <!-- 검색창 -->
 <form action="list.jsp" method="get">
 	<select name="column" required>
@@ -106,6 +172,6 @@
 	
 	<input type="submit" value="검색">
 </form>
-
+</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

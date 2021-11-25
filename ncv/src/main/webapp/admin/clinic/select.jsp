@@ -11,7 +11,7 @@
     ClinicDao clinicDao = new ClinicDao();
     ClinicDto clinicDto = clinicDao.select(clinicNo); //상세조회
 %>
-
+<jsp:include page="/template/header.jsp"></jsp:include>
 <%--출력--%>
 <table border="1" width="300">
     <tbody>
@@ -91,6 +91,7 @@ geocoder.addressSearch("<%=clinicDto.getClinicAddress()%>", function(result, sta
 <br><br>
 <a href="edit.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 수정</a>
 <a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 삭제</a>
-<a href="list.jsp">목록으로...</a>
+<a href="list.jsp">목록으로</a>
 </body>
+<jsp:include page="/template/footer.jsp"></jsp:include>
 </html>

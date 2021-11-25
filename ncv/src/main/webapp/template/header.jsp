@@ -93,8 +93,7 @@
   <nav>
     <ul class="slide-menu">
     	<%if(login){ %>
-    	<li><a href="<%=request.getContextPath()%>/index.jsp">MAIN</a></li>
-        <li><a href="#">공지사항</a></li>
+        <li><a href="<%=request.getContextPath()%>/notice/list.jsp">공지사항</a></li>
         <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">임시접종완료</a></li>
     	<%if(admin){ %>
         <%} else { %>
