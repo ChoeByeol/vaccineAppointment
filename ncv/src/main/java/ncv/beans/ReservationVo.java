@@ -9,6 +9,7 @@ public class ReservationVo {
 	private int resShot;
 	private int vaccineNo;
 	private int clinicNo;
+	private int shotNo;
 	private String resDate;
 	private String resTime;
 	private String resName;
@@ -17,6 +18,13 @@ public class ReservationVo {
 	private int quantity;
 	
 	
+	public int getResShot() {
+		return resShot;
+	}
+
+	public void setResShot(int resShot) {
+		this.resShot = resShot;
+	}
 	public int getClinicNo() {
 		return clinicNo;
 	}
@@ -76,12 +84,12 @@ public class ReservationVo {
 		this.vaccineName = vaccineName;
 	}
 
-	public int getResShot() {
-		return resShot;
+	public int getShotNo() {
+		return shotNo;
 	}
 
-	public void setResShot(int resShot) {
-		this.resShot = resShot;
+	public void setShotNo(int shotNo) {
+		this.shotNo = shotNo;
 	}
 
 	public String getResDate() {

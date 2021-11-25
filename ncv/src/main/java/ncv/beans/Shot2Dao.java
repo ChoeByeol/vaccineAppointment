@@ -164,6 +164,8 @@ public Shot2Vo get(int shotNo) throws Exception {
 	return shotVo;
 }	
 
+
+
 //나의 접종 백신 조회 기능
 //public List<Shot2Vo> myVaccineList(String memberId) throws Exception {
 //	Connection con = JdbcUtils.connect();

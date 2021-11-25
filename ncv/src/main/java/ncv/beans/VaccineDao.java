@@ -200,6 +200,21 @@ public class VaccineDao {
 		
 		return list;
 	}
-	
+
+    public int shot(int vaccineNo) throws Exception {
+        Connection con = JdbcUtils.connect();
+
+        String sql = "select vaccine_shot from vaccine where vaccine_no = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, vaccineNo);
+        ResultSet rs = ps.executeQuery();
+
+        rs.next();
+        int shot = rs.getInt(1);
+
+        con.close();
+
+        return shot;
+    }
 	
 }

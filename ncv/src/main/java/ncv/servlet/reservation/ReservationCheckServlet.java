@@ -14,6 +14,7 @@ import ncv.beans.ReservationDto;
 import ncv.beans.ReservationVo;
 import ncv.beans.Shot2Dao;
 import ncv.beans.Shot2Vo;
+import ncv.beans.VaccineDao;
 
 @WebServlet(urlPatterns = "/reservation/check.txt")
 public class ReservationCheckServlet extends HttpServlet {
@@ -27,16 +28,21 @@ public class ReservationCheckServlet extends HttpServlet {
 			ReservationDao reservationDao = new ReservationDao();
 			List<ReservationVo> myResList = reservationDao.myResList(memberId);
 			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
-
+			VaccineDao vaccineDao = new VaccineDao();
+			
+			int shot = 0;
 			int vacNo = 0;
 			if (reservationDto != null) {
 				vacNo= reservationDto.getVaccineNo();
+				shot = vaccineDao.shot(vacNo);
 			}
-
+			
+			boolean shotCheck = reservationDao.getResNum(memberId) >= shot;
+			
 			Shot2Dao shotDao = new Shot2Dao();
 			List<Shot2Vo> myShotList = shotDao.myShotList(memberId);
 
-//			System.out.println(myResList.size());
+			System.out.println("나의 예약차수 : " + shot);
 //			System.out.println(myShotList.size());
 			
 			boolean check = memberId != null && myResList.size() == 0; // 미접종
@@ -44,22 +50,19 @@ public class ReservationCheckServlet extends HttpServlet {
 										myResList.size() == 1 && myShotList != null && myShotList.size() != 0;// 접종내역 1차 완료
 			boolean check2 = memberId != null && myShotList != null && myShotList.size() == 2 &&
 										myResList.size() == 2; // 접종내역 1차 / 2차 완료
-			boolean vacCheck = vacNo == 4; // 얀센일때
-
-	
 			
 			// 출력
 			if (check) {// 미접종
 				resp.sendRedirect("reservation_reserve.jsp");
 //				System.out.println("미접종");
 
-			} else if (check1 && !vacCheck) { // 접종내역 1차 완료
+			} else if (check1 && !shotCheck) { // 접종내역 1차 완료
 				resp.sendRedirect("reservation_reserve.jsp");
 //				System.out.println("접종1차완료");
-			} else if (check2 && !vacCheck) { // 접종내역 1차 / 2차 완료
+			} else if (check2 && !shotCheck) { // 접종내역 1차 / 2차 완료
 				resp.sendRedirect("reservation_resNo.jsp");
 //				System.out.println("접종1차, 2차완료");
-			} else if (check1 && vacCheck) { // 접종내역 1차 완료 / 얀센 
+			} else if (check2 && shotCheck) { // 접종내역 1차 완료 / 예약한 수가 접종 차수보다 클 때 
 				resp.sendRedirect("reservation_resNo.jsp");
 //				System.out.println("접종1차완료, 얀센");	
 			} else {

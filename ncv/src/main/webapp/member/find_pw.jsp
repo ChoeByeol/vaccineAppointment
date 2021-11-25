@@ -86,9 +86,17 @@
 			})
         });
     </script>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> branch 'chany' of https://github.com/ChoeByeol/vaccineAppointment
 <form action="<%=request.getContextPath()%>/member/find_pw.txt" method="post">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'chany' of https://github.com/ChoeByeol/vaccineAppointment
  	<div class="container-400 container-center">
 		<div class="row center">
 			<a href="find_id.jsp" class="find-btn find-id-btn">아이디 찾기</a><a href="find_pw.jsp" class="find-btn find-pw-btn">비밀번호 찾기</a>

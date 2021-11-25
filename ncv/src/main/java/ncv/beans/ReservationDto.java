@@ -5,13 +5,13 @@ public class ReservationDto {
 	private String memberId;
 	private int vaccineNo;
 	private int clinicNo;
-	private int resShot;
+	private int shotNo;
 	private String resDate;
 	private String resTime;
 	private String resName;
 	private String resRrn;
 	private String resPhone;
-
+	
 	public ReservationDto() {
 		super();
 	}
@@ -39,11 +39,11 @@ public class ReservationDto {
 	public void setClinicNo(int clinicNo) {
 		this.clinicNo = clinicNo;
 	}
-	public int getResShot() {
-		return resShot;
+	public int getShotNo() {
+		return shotNo;
 	}
-	public void setResShot(int resShot) {
-		this.resShot = resShot;
+	public void setShotNo(int shotNo) {
+		this.shotNo = shotNo;
 	}
 	public String getResDate() {
 		return resDate;

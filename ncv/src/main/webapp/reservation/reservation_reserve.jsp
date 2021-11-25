@@ -17,10 +17,18 @@
 	String memberId = (String) session.getAttribute("ses");
 %>
 
+
+<%
+ClinicDao clinicDao = new ClinicDao();
+List<ClinicDto> list  = clinicDao.list();
+%>	
+
+
 <%
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
 %>
+
 
 
 <%
@@ -37,6 +45,12 @@ List<VaccineDto> vaccineList = vaccineDao.list();
 			
 			
 %>
+
+<%--
+	ReservationDao reservationDao = new ReservationDao();
+	List<ReservationDto> reservationList = reservationDao.list();
+--%>
+
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -76,6 +90,7 @@ tbody {
 	font-size: 16px;
 }
 </style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
          $(function(){
@@ -135,10 +150,8 @@ tbody {
     
 <form action="<%=request.getContextPath()%>/reservation/reserve.txt">
 <div class="container-400 container-center">
-	<div class="row center">
-		<h1>예약하기</h1>
-	</div>
-	
+
+
 	<div class="page">
 		<div class="row">
 			<label>예약자 이름</label>
