@@ -8,7 +8,7 @@
 
 </style>
 <form action="write.txt" method="post" enctype="multipart/form-data">
-
+ 
 <div class="container-800 container-center">
 
  <div class="row center form-title-font">공지사항 </div>
@@ -43,4 +43,5 @@
 </form>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
+
 

@@ -8,8 +8,8 @@
 %>
 
 <%
-NoticeDao noticeDao = new NoticeDao();
-NoticeDto noticeDto = noticeDao.get(noticeNo);
+	NoticeDao noticeDao = new NoticeDao();
+	NoticeDto noticeDto = noticeDao.get(noticeNo);
 %>
 
 <%-- 출력 --%>
@@ -27,7 +27,9 @@ NoticeDto noticeDto = noticeDao.get(noticeNo);
    <div class="row center form-title-font">
 
    </div>
+
  	<input type="hidden" name="noticeNo" value="<%=noticeDto.getNoticeNo()%>">
+
    <div class="row">
       <h3>제목</h3>
       <input type="text" name="noticeTitle" required value="<%=noticeDto.getNoticeTitle()%>" class="form-input-title form-input"  >
@@ -35,7 +37,9 @@ NoticeDto noticeDto = noticeDao.get(noticeNo);
 
    <div class="row">
       <h3>내용</h3>
+
       <textarea name="noticeContent" required cols="80" rows="20"class="form-input-board form-input"><%=noticeDto.getNoticeContent()%></textarea>   
+
    </div>
 
    <div class="row">
@@ -50,4 +54,6 @@ NoticeDto noticeDto = noticeDao.get(noticeNo);
 </div>
 
 </form>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>
+
