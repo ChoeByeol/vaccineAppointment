@@ -1,14 +1,20 @@
 package ncv.beans;
 
-public class StockVo {
+public class StockInVo {
+
+	private int stockInNo;
 	private String vaccineName;
 	private String clinicName;
 	private int stockInQty;
-	private int stockOutQty;
-	private int stock;
 	
-	public StockVo() {
+	public StockInVo() {
 		super();
+	}
+	public int getStockInNo() {
+		return stockInNo;
+	}
+	public void setStockInNo(int stockInNo) {
+		this.stockInNo = stockInNo;
 	}
 	public String getVaccineName() {
 		return vaccineName;
@@ -28,18 +34,7 @@ public class StockVo {
 	public void setStockInQty(int stockInQty) {
 		this.stockInQty = stockInQty;
 	}
-	public int getStockOutQty() {
-		return stockOutQty;
-	}
-	public void setStockOutQty(int stockOutQty) {
-		this.stockOutQty = stockOutQty;
-	}
-	public int getStock() {
-		return stock;
-	}
-	public void setStock(int stock) {
-		this.stock = stockInQty - stockOutQty;
-	}
-
+	
+	
 	
 }
