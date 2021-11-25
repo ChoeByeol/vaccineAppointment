@@ -34,6 +34,8 @@ List<VaccineDto> vaccineList = vaccineDao.list();
 			}
 
 			boolean check = memberId != null && myResList.size() == 0; // 미접종
+			
+			
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -127,27 +129,34 @@ tbody {
             });
         });
     </script>
+   
+
+
+    
 <form action="<%=request.getContextPath()%>/reservation/reserve.txt">
 <div class="container-400 container-center">
 	<div class="row center">
 		<h1>예약하기</h1>
 	</div>
+	
 	<div class="page">
 		<div class="row">
 			<label>예약자 이름</label>
-			<input type="text" name="resName" class="form-input readonly-form">
+			<input type="text" name="resName" class="form-input readonly-form" value="김김김">
 		</div>
 		<div class="row">
 			<label>예약자 주민번호</label>
-			<input type="text" name="resRrn" class="form-input readonly-form">
+			<input type="text" name="resRrn" class="form-input readonly-form" value="1231411231231">
 		</div>
 		<div class="row">
 			<label>예약자 전화번호</label>
-			<input type="text" name="resPhone" class="form-input readonly-form">
+			<input type="text" name="resPhone" class="form-input readonly-form" value="01023120301">
+			
 			<span></span>
 			<button type="button" class="form-btn-check">전송</button>
 		</div>
 	</div>
+	
 	<div class="page">
 		<div class="row">
 			<label>예약일</label>
@@ -159,11 +168,13 @@ tbody {
 			<input type="hidden" name="clinicNo" id="pClinicNo">
 			<input type="text" id="pClinicName" readonly>
 		</div>
+		
+		
 		<div class="row">
 			<label>예약시간</label>
 			<select name="resTime" class="form-input">
 				<option>09:00</option>
-				<option>10:00</option>
+				<option>10:00</option> 
 				<option>11:00</option>
 				<option>12:00</option>
 				<option>13:00</option>
@@ -174,6 +185,7 @@ tbody {
 				<option>18:00</option>
 			</select>
 		</div>	
+
 		<% if (vacNo == 1) { %>				
 			<div class="row">
 				<label>백신</label>
@@ -202,8 +214,9 @@ tbody {
 				</option>
 			<%} %>
 				</select>
+				</div>
 			<% } %>	
-			</div>
+			
 		<div class="container-400 container-center">		
 			<% if (check) { %>
 			<div class="row">

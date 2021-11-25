@@ -164,25 +164,28 @@ public Shot2Vo get(int shotNo) throws Exception {
 	return shotVo;
 }	
 
-	//예약하기 체크용 접종내역 확인 기능
-//	public List<Shot2Vo> checkList(String memberId) throws Exception {
-//		Connection con = JdbcUtils.connect();
+//나의 접종 백신 조회 기능
+//public List<Shot2Vo> myVaccineList(String memberId) throws Exception {
+//	Connection con = JdbcUtils.connect();
 //
-//		String sql = "select b.member_id from shot a inner join reservation b on a.resOk_no = b.res_no where member_id = ? ";
-//		PreparedStatement ps = con.prepareStatement(sql);
-//		ps.setString(1, memberId);
-//		ResultSet rs = ps.executeQuery();
+//	String sql = "select d.vaccine_no, d.vaccine_name from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no where member_id = ?";
+//	PreparedStatement ps = con.prepareStatement(sql);
+//	ps.setString(1, memberId);
+//	ResultSet rs = ps.executeQuery();
 //
-//		List<Shot2Vo> checkList = new ArrayList<>();
-//		while (rs.next()) {
-//			Shot2Vo shotVo = new Shot2Vo();
-//			
-//			checkList.add(shotVo);
-//		}
+//	List<Shot2Vo> myVaccineList = new ArrayList<>();
+//	while (rs.next()) {
+//		Shot2Vo shotVo = new Shot2Vo();
+//		
+//		shotVo.setVaccineNo(rs.getInt("vaccine_no"));
+//		shotVo.setVaccineName(rs.getString("vaccine_name"));
+//		
+//		myVaccineList.add(shotVo);
+//	}
 //
-//		con.close();
+//	con.close();
 //
-//		return checkList;
-//	}		
+//	return myVaccineList;
+//}
 	
 }
