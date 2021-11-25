@@ -107,7 +107,39 @@ ul.page li a:hover {
 	border: 1px solid #999;
 	background-color: #999;
 }
+.button_base {
+    position:absolute;
+    font-size:17px;
+    border: 0;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
+    border-radius: 2px;
+}
+.btn {
+    color: #000000;
+    background-color:#dee2e6;
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+}
 
+.btn:hover {
+    color: #ffffff;
+    background-color:rgb(53, 66, 68);
+    animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -webkit-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -moz-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    transition: all 0.2s ease 0.2s;
+    -webkit-transition: all 0.2s ease 0.2s;
+    -moz-transition: all 0.2s ease 0.2s;
+}
 .search-btn {
 	display: -moz-inline-stack; /*FF2*/
 	display: inline-block;
@@ -184,7 +216,7 @@ border-spacing:0px;
 	<div class="row center form-title-font" >공지 및 안내사항</div>
 	<table class="sub_news border-spacing" border="1"  summary="게시판의 글제목 리스트">
 
-		<caption>나의 예약 리스트</caption>
+		
 
 		<thead>
 			<tr>
@@ -341,7 +373,7 @@ border-spacing:0px;
 		</select> <input type="search" name="keyword" placeholder="검색어 입력" required
 			value="<%=pagination.getKeywordString()%>" class="search-keyword">
 
-		<input type="submit" value="검색" class="search-btn">
+		<input type="submit" value="검색" class="btn button_base">
 	</form>
 </div>
 
