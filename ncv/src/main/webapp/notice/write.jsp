@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="ncv.servlet.notice.NoticeWriteServlet"%>
 
-
-
-<%-- 출력 --%>
+<html>
 <jsp:include page="/template/header.jsp"></jsp:include>
 <style>
 
@@ -42,5 +41,5 @@
 </div>
 
 </form>
-<jsp:include page="/template/footer.jsp"></jsp:include>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

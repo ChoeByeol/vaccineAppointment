@@ -32,7 +32,7 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		   	var param = "clinicSido=" + $("#sido").val();
 		   
 		   	$.ajax({
-		    	url : "ajax_sigungu_list.jsp",
+		    	url : "http://localhost:8080/ncv/admin/clinic/ajax_sigungu_list.jsp",
 		    	data : param,
 		    	type : "get",
 		    	success : function(data){
@@ -43,10 +43,10 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		});
 	  	
  	  	$("#sigungu").change(function(){
- 	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
+  	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
  	  		
 		   	$.ajax({
-		    	url : "ajax_bname_list.jsp",
+		    	url : "http://localhost:8080/ncv/admin/clinic/ajax_bname_list.jsp",
 		    	data : param,
 		    	type : "get",
 		    	success : function(data){
@@ -54,13 +54,13 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		    	}
 		   	})
 	  		
-	  	});
+	  	}); 
 	});
 </script>
 
 </head>
 <body>
-<form action="list.jsp" method="get">
+<form action="http://localhost:8080/ncv/admin/clinic/list.jsp" method="get">
 	<div id="test">
 		<select name="clinicSido" id="sido">
 			<option value="">광역시도</option>

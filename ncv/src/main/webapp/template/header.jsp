@@ -119,7 +119,7 @@
 			<li class="flex-right">
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a>
 				<ul>
-					<li><a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a></li>
+					<li><a href="<%=request.getContextPath()%>/member/agree.jsp">회원가입</a></li>
 				</ul>
 			</li>
 			<%} %>
