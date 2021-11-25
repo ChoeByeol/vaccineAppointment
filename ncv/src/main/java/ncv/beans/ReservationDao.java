@@ -299,25 +299,54 @@ public class ReservationDao {
 			
 		}		
 		
-		//예약하기 체크용 예약내역 확인 기능
-//		public List<ReservationDto> resCheckList(String memberId) throws Exception {
-//			Connection con = JdbcUtils.connect();
-//
-//			String sql = "select member_id from reservation where member_id = ?";
-//			PreparedStatement ps = con.prepareStatement(sql);
-//			ps.setString(1, memberId);
-//			ResultSet rs = ps.executeQuery();
-//
-//			List<ReservationDto> resCheckList = new ArrayList<>();
-//			while(rs.next()) {
-//				ReservationDto reservationDto = new ReservationDto();
-//			
-//				resCheckList.add(reservationDto);
-//			}
-//
-//			con.close();
-//
-//			return resCheckList;
-//		}		
+		//?번 병원에 대한 ?번 백신 재고 리스트 = 리스트 합계로 해결 ^^
+		public List<ReservationVo> clinicVacCheck(int clinicNo, int vaccineNo) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select * from stock where clinic_no = ? and vaccine_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, clinicNo);
+			ps.setInt(2, vaccineNo);
+			ResultSet rs = ps.executeQuery();
+
+			List<ReservationVo> clinicVacCheck = new ArrayList<>();
+			while(rs.next()) {
+				ReservationVo reservationVo = new ReservationVo();
+
+				reservationVo.setClinicNo(rs.getInt("clinic_no"));
+				reservationVo.setVaccineNo(rs.getInt("vaccine_no"));
+				reservationVo.setQuantity(rs.getInt("quantity"));
+			
+				clinicVacCheck.add(reservationVo);
+			}
+
+			con.close();
+
+			return clinicVacCheck;
+			
+			
+		}
+		//?번 병원에 대한 ?번 백신 예약 건수 = 카운트로 해결 ^^
+		public int resVacCheck(int clinicNo, int vaccineNo) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select count(*) from reservation where clinic_no = ? and vaccine_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, clinicNo);
+			ps.setInt(2, vaccineNo);
+			ResultSet rs = ps.executeQuery();
+
+			rs.next();
+	
+			int count = rs.getInt("count(*)");
+
+			System.out.println("카운트 = " + count);
+			con.close();
+
+			return count;
+			
+			
+		}				
+		
 		
 }

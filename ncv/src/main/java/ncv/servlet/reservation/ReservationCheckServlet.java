@@ -45,6 +45,8 @@ public class ReservationCheckServlet extends HttpServlet {
 			boolean check2 = memberId != null && myShotList != null && myShotList.size() == 2 &&
 										myResList.size() == 2; // 접종내역 1차 / 2차 완료
 			boolean vacCheck = vacNo == 4; // 얀센일때
+
+	
 			
 			// 출력
 			if (check) {// 미접종

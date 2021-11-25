@@ -7,12 +7,39 @@ public class ReservationVo {
 	private String clinicName;
 	private String vaccineName;
 	private int resShot;
+	private int vaccineNo;
+	private int clinicNo;
 	private String resDate;
 	private String resTime;
 	private String resName;
 	private String resRrn;
 	private String resPhone;
+	private int quantity;
 	
+	
+	public int getClinicNo() {
+		return clinicNo;
+	}
+
+	public void setClinicNo(int clinicNo) {
+		this.clinicNo = clinicNo;
+	}
+	public int getVaccineNo() {
+		return vaccineNo;
+	}
+
+	public void setVaccineNo(int vaccineNo) {
+		this.vaccineNo = vaccineNo;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	public ReservationVo() {
 		super();
 	}
@@ -101,4 +128,11 @@ public class ReservationVo {
 		this.resPhone = resPhone;
 	}
 
+	@Override
+	public String toString() {
+		return "ReservationVo [vaccineNo=" + vaccineNo + ", clinicNo=" + clinicNo + ", quantity=" + quantity + "]";
+	}
+
+
+	
 }
