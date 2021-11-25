@@ -23,6 +23,10 @@
 		});
 		
 		$(".edit-row").hide();
+		
+		$(".delete-btn").click(function(){
+			return confirm("정말 삭제하시겠습니까?");
+		});
 	});
 </script>    
 
@@ -53,18 +57,18 @@
 	*/
 	
 	//1.boardViewedNo 라는 이름의 저장소를 세션에서 꺼내어 본다.
-	Set<Integer> boardViewedNo = (Set<Integer>)session.getAttribute("boardViewedNo");
+	Set<Integer> noticeViewedNo = (Set<Integer>)session.getAttribute("noticeViewedNo");
 	
 	//2. boardViewedNo 가 null 이면 "처음 글을 읽는 상태"임을 말하므로 저장소를 신규로 생성
-	if(boardViewedNo == null){
-		boardViewedNo = new HashSet<>();
+	if(noticeViewedNo == null){
+		noticeViewedNo = new HashSet<>();
 	
 	}
 	
 	//3. 현재 글 번호를 저장소에 추가해본다
 	//3-1. 추가가 된다면 이 글은 처음 읽는 글
 	//3-2. 추가가 안된다면 이 글은 두 번 이상 읽은 글
-	if(boardViewedNo.add(noticeNo)){//처음 읽은 글인 경우
+	if(noticeViewedNo.add(noticeNo)){//처음 읽은 글인 경우
 	noticeDao.readUp(noticeNo, memberId);
 	}
 	
@@ -73,11 +77,9 @@
 	}
 	
 	//저장소 갱신
-
 	
-	session.setAttribute("boardViewedNo", boardViewedNo);
+	session.setAttribute("noticeViewedNo", noticeViewedNo);
 	
-
 	%>
 	
 	<%
@@ -92,47 +94,41 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include> 
 
-<h2><%=noticeDto.getNoticeNo()%>번 게시글</h2>
+<div class="container-800 container-center" style="border:2px solid rgb(148, 161, 172); width : 100%; padding:20px; ">
 
-<table border="1" width="80%">
-	<tbody>
-		<tr>
-			<td>
-				<h3><%=noticeDto.getNoticeTitle()%></h3>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				등록일 : <%=noticeDto.getNoticeTime()%>
-				|
-				작성자 : <%=noticeDto.getNoticeWriter()%>
-				|
-				조회수 : <%=noticeDto.getNoticeHit()%>
-			</td>
-		</tr>
-		<!-- 답답해 보이지 않도록 기본높이를 부여 -->
-		<!-- 
-			pre 태그를 사용하여 내용을 있는 그대로 표시되도록 설정
-			(주의) 태그 사이에 쓸데없는 엔터, 띄어쓰기 등이 들어가지 않도록 해야 한다.(모두 표시된다) 
-		-->
-		<tr height="250" valign="top">
-			<td>
-				<pre><%=noticeDto.getNoticeContent()%></pre>
-			</td>
-		</tr>
-		<tr>
-			<td align="right">
-				<a href="write.jsp">글쓰기</a>
-				<a href="list.jsp">목록보기</a>
-				
-				<%if(writer){ %>
-				<a href="edit.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>">수정하기</a>
-				<a href="delete.txt?noticeNo=<%=noticeDto.getNoticeNo()%>">삭제하기</a>
-				<%} %>
-			</td>
-		</tr>
-	</tbody>
-</table>
+	<div class="row" style="font-size:25px; font-weight: bold;">
+		<%=noticeDto.getNoticeTitle()%>
+		</div>
+	<div class="row right" style="font-size: 13px;">
+		No.<%=noticeDto.getNoticeNo()%>
+		|
+		등록일 : <%=noticeDto.getNoticeTime()%>
+		|
+		작성자 : <%=noticeDto.getNoticeWriter()%>
+		|
+		조회수 : <%=noticeDto.getNoticeHit()%>
+	</div>
+	
+	<hr>
+	<div class="row" style="min-height:250px; font-size: 15px;">
+		<pre><%=noticeDto.getNoticeContent()%></pre>
+	</div>
+	<hr>
+	<div class="row right">
+	
+	
+		<a href="write.jsp" class="link-btn">글쓰기</a>
+		<a href="list.jsp" class="link-btn">목록보기</a>
+		
+		<%if(writer){ %>
+		<a href="edit.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">수정하기</a>
+		
+
+		<a href="delete.txt?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn delete-btn">삭제하기</a>
+		<%} %>
+	</div>
+	</div>
+		
 
 
 <%-- 첨부파일이 있다면 첨부파일을 다운받을 수 있는 링크를 제공 --%>
@@ -141,11 +137,11 @@
 		<h6>
 			<%=noticeFileDto.getNoticeFileUploadname() %>
 			(<%=noticeFileDto.getNoticeFileSize()%> bytes)
-			<a href="file/download.kh?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>">
+			<a href="file/download.txt?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>">
 				다운로드
 			</a>
 			
-			<img src="file/download.kh?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>" width="50" height="50">
+			<img src="file/download.txt?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>" width="50" height="50">
 		</h6>
 	<%} %>
 <%} %>

@@ -28,6 +28,7 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
+			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
 
 			
 			list.add(noticeDto);
@@ -59,6 +60,7 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
+			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
 
 			list.add(noticeDto);
 		}
@@ -88,7 +90,7 @@ public class NoticeDao {
 				noticeDto.setNoticeContent(rs.getString("notice_content"));
 				noticeDto.setNoticeTime(rs.getDate("notice_time"));
 				noticeDto.setNoticeHit(rs.getInt("notice_hit"));
-
+				noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
 		}
 		else {
 			noticeDto = null;
@@ -123,12 +125,14 @@ public class NoticeDao {
 	public void write(NoticeDto noticeDto) throws Exception{
 		Connection con = JdbcUtils.connect();
 		
-		String sql = "insert into notice values(?, ?, ?, ?, sysdate, 0)";
+		
+		String sql = "insert into notice values(?, ?, ?, ?, sysdate, 0,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1,noticeDto.getNoticeNo());
 		ps.setString(2, noticeDto.getNoticeWriter());
 		ps.setString(3, noticeDto.getNoticeTitle());
 		ps.setString(4, noticeDto.getNoticeContent());
+		ps.setInt(5, noticeDto.getNoticeDepth());
 		ps.execute();
 		
 		con.close();
@@ -185,13 +189,16 @@ public class NoticeDao {
 	
 	// 이 이하는 아직 이해가 덜 된 채로 긁어와서 잘못된 부분이 있을 수 있습니다.
 
-	//페이징 목록
-	public List<NoticeDto> listByRownum(int begin, int end) throws Exception {
+
+	
+	//그룹 상단 고정 페이징 목록
+	public List<NoticeDto> listByImportant(int begin, int end) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
 		String sql = "select * from ("
 								+ "select rownum rn, TMP.* from ("
-									+ "select * from notice order by notice_no desc"
+									+ "select * from notice "
+								+"order by notice_depth desc,notice_no desc"
 								+ ")TMP"
 						+ ") where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -210,6 +217,8 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
+			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
+
 
 			
 			list.add(noticeDto);
@@ -246,6 +255,7 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
+			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
 
 			list.add(noticeDto);
 		}
@@ -311,6 +321,8 @@ public class NoticeDao {
 			noticeDto.setNoticeContent(rs.getString("notice_content"));
 			noticeDto.setNoticeTime(rs.getDate("notice_time"));
 			noticeDto.setNoticeHit(rs.getInt("notice_hit"));
+			noticeDto.setNoticeDepth(rs.getInt("notice_depth"));
+
 
 
 			
