@@ -1,14 +1,30 @@
 package ncv.beans;
 
-public class StockVo {
-	
+import java.sql.Date;
+
+public class Stock3Vo {
+
+	private int stockNo;
+	private String clinicName;
 	private String vaccineName;
 	private int stockInQty;
 	private int stockOutQty;
-	private int totalStock;
+	private Date updateTime;
 	
-	public StockVo() {
+	public Stock3Vo() {
 		super();
+	}
+	public int getStockNo() {
+		return stockNo;
+	}
+	public void setStockNo(int stockNo) {
+		this.stockNo = stockNo;
+	}
+	public String getClinicName() {
+		return clinicName;
+	}
+	public void setClinicName(String clinicName) {
+		this.clinicName = clinicName;
 	}
 	public String getVaccineName() {
 		return vaccineName;
@@ -28,11 +44,12 @@ public class StockVo {
 	public void setStockOutQty(int stockOutQty) {
 		this.stockOutQty = stockOutQty;
 	}
-	public int getTotalStock() {
-		return totalStock;
+	public Date getUpdateTime() {
+		return updateTime;
 	}
-	public void setTotalStock(int totalStock) {
-		this.totalStock = totalStock;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
+	
 	
 }

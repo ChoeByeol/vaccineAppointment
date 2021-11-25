@@ -2,24 +2,25 @@ package ncv.beans;
 
 import java.sql.Date;
 
-public class StockInDto {
+public class StockDto {
 	
-	private int stockInNo;
+	private int stockNo;
 	private int vaccineNo;
 	private int clinicNo;
 	private int stockInQty;
-	private Date stockInTime;
+	private int stockOutQty;
+	private Date updateTime;
 	
-	public StockInDto() {
+	public StockDto() {
 		super();
 	}
 
-	public int getStockInNo() {
-		return stockInNo;
+	public int getStockNo() {
+		return stockNo;
 	}
 
-	public void setStockInNo(int stockInNo) {
-		this.stockInNo = stockInNo;
+	public void setStockNo(int stockNo) {
+		this.stockNo = stockNo;
 	}
 
 	public int getStockInQty() {
@@ -42,12 +43,23 @@ public class StockInDto {
 	public void setVaccineNo(int vaccineNo) {
 		this.vaccineNo = vaccineNo;
 	}
-	public Date getStockInTime() {
-		return stockInTime;
+
+	public int getStockOutQty() {
+		return stockOutQty;
 	}
-	public void setStockInTime(Date stockInTime) {
-		this.stockInTime = stockInTime;
+
+	public void setStockOutQty(int stockOutQty) {
+		this.stockOutQty = stockOutQty;
 	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+	
 
 }
 	

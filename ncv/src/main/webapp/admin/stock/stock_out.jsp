@@ -61,10 +61,10 @@ tbody {
 <div class="container-400 container-center">
 		
 	<div class="row center">
-		<h1>백신 입고 등록</h1>
+		<h1>백신 출고 등록</h1>
 	</div>
 					
-	<form action="stockIn.txt" method="post">
+	<form action="stockOut.txt" method="post">
 
 	<div class="row">
 		<label>병원선택</label>
@@ -91,7 +91,7 @@ tbody {
 			
 	<div class="row">
 		<label>수량</label>
-		<input type="number" name="StockInQty" class="form-input">
+		<input type="number" name="StockOutQty" class="form-input">
 	</div>	
 
 		

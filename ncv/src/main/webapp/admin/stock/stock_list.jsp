@@ -1,19 +1,18 @@
 
-입고목록과 출고목록을 같이 조회해야하며 페이지네이션까지 가능해야됌
-
-밑은 멤버리스트 일단 긁어온거임
-
+<%@page import="ncv.beans.Stock3Vo"%>
+<%@page import="ncv.beans.StockDto"%>
+<%@page import="ncv.beans.StockPagination"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
-	MemberPagination memPgn = new MemberPagination(request);
+	StockPagination stockPgn = new StockPagination(request);
 	
-	memPgn.calculate();
+	stockPgn.calculate();
 	
 	
 	//삼항 연산 : if문 축소버전 - (조건) ? 참 : 거짓
-	String title = memPgn.isSearch() ? "회원 검색" : "회원 목록";
+	String title = stockPgn.isSearch() ? "재고 검색" : "재고 목록";
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -22,7 +21,7 @@
 	<h2><%=title%></h2>
 </div>
 
-<%if(memPgn.getList().isEmpty()){ %>
+<%if(stockPgn.getList().isEmpty()){ %>
 <div class="row center">
 	<h3>데이터가 존재하지 않습니다</h3>
 </div>
@@ -30,24 +29,26 @@
 <table class="table table-stripe">
 	<thead>
 		<tr>
-			<th>아이디</th>
-			<th>이름</th>
-			<th>성별</th>
-			<th>등급</th>
+			<th>재고 번호</th>
+			<th>병원 이름</th>
+			<th>백신 이름</th>
+			<th>입고 수량</th>
+			<th>출고 수량</th>
+			<th>입/출고 일자</th>
 			<th>메뉴</th>
 		</tr>
 	</thead>
 	<tbody align="center">
-		<%for(MemberDto memberDto : memPgn.getList()){%>
+		<%for(Stock3Vo stock3Vo : stockPgn.getList()){%>
 			<tr>
-				<td><%=memberDto.getMemberId()%></td>
-				<td><%=memberDto.getMemberName()%></td>
-				<td><%=memberDto.getMemberGender()%></td>
-				<td><%=memberDto.getMemberRole()%></td>
+				<td><%=stock3Vo.getStockNo()%></td>
+				<td><%=stock3Vo.getClinicName()%></td>
+				<td><%=stock3Vo.getVaccineName()%></td>
+				<td><%=stock3Vo.getStockInQty()%></td>
+				<td><%=stock3Vo.getStockOutQty()%></td>
+				<td><%=stock3Vo.getUpdateTime()%></td>
 				<td>
-					<a href="detail.jsp?memberId=<%=memberDto.getMemberId()%>">상세</a>
-					<a href="edit.jsp?memberId=<%=memberDto.getMemberId()%>">수정</a>
-					<a href="quit.txt?memberId=<%=memberDto.getMemberId()%>">탈퇴</a>
+					<a href="cancel.txt?stockNo=<%=stock3Vo.getStockNo()%>">취소</a>
 				</td>	
 			</tr>
 		<%}%>
@@ -58,35 +59,35 @@
 
 <!-- 페이지 네비게이터 -->
 <br><br>
-<%if(memPgn.isPreviousAvailable()){ %>
-	<%if(memPgn.isSearch()){ %>
+<%if(stockPgn.isPreviousAvailable()){ %>
+	<%if(stockPgn.isSearch()){ %>
 		<!-- 검색용 링크 -->
-		<a href="list.jsp?column=<%=memPgn.getColumn()%>&keyword=<%=memPgn.getKeyword()%>&p=<%=memPgn.getPreviousBlock()%>">&lt;</a>
+		<a href="list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=stockPgn.getPreviousBlock()%>">&lt;</a>
 	<%} else { %>
 		<!-- 목록용 링크 -->
-		<a href="list.jsp?p=<%=memPgn.getPreviousBlock()%>">&lt;</a>
+		<a href="list.jsp?p=<%=stockPgn.getPreviousBlock()%>">&lt;</a>
 	<%} %>
 <%} else { %>
 	 <a>&lt;</a>
 <%} %> 
 
-<%for(int i = memPgn.getStartBlock(); i <= memPgn.getRealLastBlock(); i++){ %>
-	<%if(memPgn.isSearch()){ %>
+<%for(int i = stockPgn.getStartBlock(); i <= stockPgn.getRealLastBlock(); i++){ %>
+	<%if(stockPgn.isSearch()){ %>
 	<!-- 검색용 링크 -->
-	<a href="list.jsp?column=<%=memPgn.getColumn()%>&keyword=<%=memPgn.getKeyword()%>&p=<%=i%>"><%=i%></a>
+	<a href="list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=i%>"><%=i%></a>
 	<%}else{ %>
 	<!-- 목록용 링크 -->
 	<a href="list.jsp?p=<%=i%>"><%=i%></a>
 	<%} %>
 <%} %>
 
-<%if(memPgn.isNextAvailable()){ %>
-	<%if(memPgn.isSearch()){ %>
+<%if(stockPgn.isNextAvailable()){ %>
+	<%if(stockPgn.isSearch()){ %>
 		<!-- 검색용 링크 -->
-		<a href="list.jsp?column=<%=memPgn.getColumn()%>&keyword=<%=memPgn.getKeyword()%>&p=<%=memPgn.getNextBlock()%>">&gt;</a>
+		<a href="list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=stockPgn.getNextBlock()%>">&gt;</a>
 	<%} else { %>
 		<!-- 목록용 링크 -->
-		<a href="list.jsp?p=<%=memPgn.getNextBlock()%>">&gt;</a>
+		<a href="list.jsp?p=<%=stockPgn.getNextBlock()%>">&gt;</a>
 	<%} %> 
 <%} else {%>
 	<a>&gt;</a>
@@ -95,15 +96,14 @@
 <br><br>
 
 <!-- 검색창 -->
-<form action="list.jsp" method="get">
+<form action="stock_list.jsp" method="get">
 	<select name="column" required>
 		<option value="">선택</option>
-		<option value="member_id">아이디</option>
-		<option value="member_name">이름</option>
-		<option value="member_gender">성별</option>
-		<option value="member_grade">등급</option>
+		<option value="stock_no">재고번호</option>
+		<option value="vaccine_name">백신이름</option>
+		<option value="clinic_name">병원이름</option>
 	</select>
-	<input type="text" name="keyword" required value="<%=memPgn.getKeywordString()%>">
+	<input type="text" name="keyword" required value="<%=stockPgn.getKeywordString()%>">
 	
 	<input type="submit" value="검색">
 </form>
