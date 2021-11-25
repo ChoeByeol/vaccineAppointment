@@ -38,8 +38,9 @@ public class QnaFileDao {
 			
 			//copy
 			qnaFileDto.setQnaFileNo(rs.getInt("qna_file_no"));
-			qnaFileDto.setQnaFileSaveName(rs.getString("qna_file_savename"));
-			qnaFileDto.setQnaFileUploadName(rs.getString("qna_file_uploadname"));
+			qnaFileDto.setQnaNo(rs.getInt("qna_no"));
+			qnaFileDto.setQnaFileSaveName(rs.getString("qna_file_save_name"));
+			qnaFileDto.setQnaFileUploadName(rs.getString("qna_file_upload_name"));
 			qnaFileDto.setQnaFileType(rs.getString("qna_file_type"));
 			qnaFileDto.setQnaFileSize(rs.getLong("qna_file_size"));
 		}
@@ -67,8 +68,9 @@ public class QnaFileDao {
 			
 			//copy
 			qnaFileDto.setQnaFileNo(rs.getInt("qna_file_no"));
-			qnaFileDto.setQnaFileSaveName(rs.getString("qna_file_savename"));
-			qnaFileDto.setQnaFileUploadName(rs.getString("qna_file_uploadname"));
+			qnaFileDto.setQnaNo(rs.getInt("qna_no"));
+			qnaFileDto.setQnaFileSaveName(rs.getString("qna_file_save_name"));
+			qnaFileDto.setQnaFileUploadName(rs.getString("qna_file_upload_name"));
 			qnaFileDto.setQnaFileType(rs.getString("qna_file_type"));
 			qnaFileDto.setQnaFileSize(rs.getLong("qna_file_size"));
 			

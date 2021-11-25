@@ -19,7 +19,6 @@ public class AdminQnaAnswerServlet extends HttpServlet{
 			//입력 : QnaDto(QnaNo, QnaTitle, QnaContent)
 			QnaDto qnaDto = new QnaDto();
 			qnaDto.setQnaAnswer(req.getParameter("qnaAnswer"));
-			qnaDto.setQnaState(req.getParameter("qnaState"));
 			qnaDto.setQnaNo(Integer.parseInt(req.getParameter("qnaNo")));
 			
 			//처리

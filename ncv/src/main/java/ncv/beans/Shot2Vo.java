@@ -3,6 +3,7 @@ package ncv.beans;
 public class Shot2Vo {
 	private int shotNo;
 	private int resOkNo;
+	private int vaccineNo;
 	private String ClinicName;
 	private String memberId;
 	private String memberName;
@@ -99,7 +100,10 @@ public class Shot2Vo {
 	public void setShotCount(int shotCount) {
 		this.shotCount = shotCount;
 	}
-
-
-
+	public int getVaccineNo() {
+		return vaccineNo;
+	}
+	public void setVaccineNo(int vaccineNo) {
+		this.vaccineNo = vaccineNo;
+	}
 }

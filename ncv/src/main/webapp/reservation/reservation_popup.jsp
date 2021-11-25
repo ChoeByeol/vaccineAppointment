@@ -22,7 +22,17 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>의료기관 선택하기</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/reset.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/commons.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/layout.css">
+<style>
+.form-input{
+	margin-left:2%;
+	margin-right:2%;
+	width:25%;
+}
+</style> 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
  	$(function(){
@@ -54,54 +64,53 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		    	}
 		   	})
 	  		
-	  	}); 
+	  	});
+ 	  	
+ 	  	$("#close-btn").click(function(){
+ 	  		window.close();
+ 	  	});
 	});
 </script>
 
 </head>
 <body>
-<form action="http://localhost:8080/ncv/admin/clinic/list.jsp" method="get">
+<form action="reservation_popup.jsp" method="get">
 	<div id="test">
-		<select name="clinicSido" id="sido">
+		<select name="clinicSido" id="sido" class="form-input">
 			<option value="">광역시도</option>
 			<%for(String sido : sidoList){ %>
 			<option value="<%=sido %>"><%=sido %></option>
 			<%} %>
 		</select>
 		
-		<select name="clinicSigungu" id="sigungu">
+		<select name="clinicSigungu" id="sigungu" class="form-input">
 			<option value="">시군구</option>
 		</select>
 		
-		<select name="clinicBname" id="bname">
+		<select name="clinicBname" id="bname" class="form-input" required>
 			<option value="">읍면동</option>
 		</select>
 		
-		<input type="submit" value="의료기관 찾기">
+		<input type="submit" value="의료기관 찾기" class="input-btn">
 	</div>
 </form>
 
 <hr>
 
-<table border="1">
-	<thead>
-		<tr>
-			<th>병원 이름</th>
-			<th>전화번호</th>
-			<th>주소</th>
-		</tr>
-	</thead>
-	
-	<tbody>
 		<%for(ClinicDto clinicDto : list){ %>
-		<tr>
-			<td><a href="/ncv/admin/clinic/select.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a></td>
-			<td><%=clinicDto.getClinicTel() %></td>
-			<td><%="(" + clinicDto.getClinicPostcode() + ") " + clinicDto.getClinicAddress() %></td>
-		<tr>
+			<div>
+				<label>병원 이름</label>
+				<a href="/ncv/reservation/reservation_clinic_detail.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a>
+			</div>
+			<div>
+				<label>전화번호</label>
+				<%=clinicDto.getClinicTel()%>
+			</div>
+			<div>
+				<label>주소</label>
+				<%="(" + clinicDto.getClinicPostcode() + ") " + clinicDto.getClinicAddress()%>
+			</div>
 		<%} %>
-	</tbody>
-</table>
-
+	<button id="close-btn">닫기</button>
 </body>
 </html>
