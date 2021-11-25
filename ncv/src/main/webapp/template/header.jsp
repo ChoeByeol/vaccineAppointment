@@ -79,7 +79,7 @@
         <header>
 			<div class="flex-container">
 				<div class="logo-wrapper">
-				<a href="http://localhost:8080/ncv/index.jsp">
+				<a href="<%=request.getContextPath()%>/index.jsp">
 					<img src="<%=request.getContextPath()%>/resource/image/logo.png">
 				</a>
 				</div>
