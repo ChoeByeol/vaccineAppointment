@@ -16,7 +16,6 @@ pagination.calculate();
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <style>
-/* 링크를 버튼으로 만드는 스타일 */
 .link-btn {
 	display: inline-block;
 	padding: 0.5rem;
@@ -28,6 +27,61 @@ pagination.calculate();
 .link-btn:hover {
 	border-color: black;
 	color: black;
+}
+ul.page {
+	text-align:center;
+	width: auto;
+    height: 30px;
+}
+ ul.page li {
+	display:inline;
+	vertical-align:middle;
+}
+ ul.page li a {
+	display:-moz-inline-stack;
+	display:inline-block;
+	vertical-align:top;
+	padding:4px;
+	margin-right:3px;
+	width:15px !important;
+	color:#000;
+	text-align:center;
+	text-decoration:none;
+	width:26px;
+}
+ ul.page li a.now {
+	color:#fff;
+	background-color:#999;
+	border:1px solid #999;
+}
+ ul.page li a:hover {
+	color:#fff;
+	border:1px solid #999;
+	background-color:#999;
+}
+.search-select{
+	display:-moz-inline-stack;	/*FF2*/
+	display:inline-block;
+	vertical-align:top;
+	padding:4px;
+	margin-right:3px;
+	width:80px !important;
+	color:#000;
+	text-align:lefe;
+	text-decoration:none;
+	width /**/:26px;	/*IE 5.5*/
+}
+.search-keyword{
+	display:-moz-inline-stack;	/*FF2*/
+	display:inline-block;
+	vertical-align:top;
+	padding:4px;
+	margin-right:3px;
+	width:300px !important;
+	color:#000;
+	text-align:center;
+	text-decoration:none;
+	width /**/:26px;	/*IE 5.5*/
 }
 </style>
 <div class="container-800 container-center">
@@ -70,28 +124,29 @@ pagination.calculate();
 	<div class="row right">
 		<a href="write.jsp" class="link-btn">글쓰기</a>
 	</div>
+	<ul class="page">
 	<div class="row pagination">
 		<!-- 이전 버튼 -->
 		<%if(pagination.isPreviousAvailable()){ %>
 			<%if(pagination.isSearch()){ %>
 				<!-- 검색용 링크 -->
-				<a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=pagination.getPreviousBlock()%>">&lt;</a>
+				<li><a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=pagination.getPreviousBlock()%>"></a></li>
 			<%} else { %>
 				<!-- 목록용 링크 -->
-				<a href="list.jsp?p=<%=pagination.getPreviousBlock()%>">&lt;</a>
+				<li><a href="list.jsp?p=<%=pagination.getPreviousBlock()%>">&lt;</a></li>
 			<%} %>
 		<%} else { %>
-			 <a>&lt;</a>
+			 <li><a>&lt;</a></li>
 		<%} %> 
 	
 		<!-- 페이지 네비게이터 -->
 		<%for(int i = pagination.getStartBlock(); i <= pagination.getRealLastBlock(); i++){ %>
 			<%if(pagination.isSearch()){ %>
 			<!-- 검색용 링크 -->
-			<a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=i%>"><%=i%></a>
+			<li><a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=i%>"><%=i%></a></li>
 			<%}else{ %>
 			<!-- 목록용 링크 -->
-			<a href="list.jsp?p=<%=i%>"><%=i%></a>
+			<li><a href="list.jsp?p=<%=i%>"><%=i%></a></li>
 			<%} %>
 		<%} %>
 		
@@ -99,16 +154,16 @@ pagination.calculate();
 		<%if(pagination.isNextAvailable()){ %>
 			<%if(pagination.isSearch()){ %>
 				<!-- 검색용 링크 -->
-				<a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=pagination.getNextBlock()%>">&gt;</a>
+				<li><a href="list.jsp?column=<%=pagination.getColumn()%>&keyword=<%=pagination.getKeyword()%>&p=<%=pagination.getNextBlock()%>">&gt;</a></li>
 			<%} else { %>
 				<!-- 목록용 링크 -->
-				<a href="list.jsp?p=<%=pagination.getNextBlock()%>">&gt;</a>
+				<li><a href="list.jsp?p=<%=pagination.getNextBlock()%>">&gt;</a></li>
 			<%} %> 
 		<%} else {%>
-			<a>&gt;</a>
+			<li><a>&gt;</a></li>
 		<%} %>
 	</div>
-	
+	</ul>
 	
 	
 	
@@ -116,7 +171,7 @@ pagination.calculate();
 	<div class="row center">
 		<form action="list.jsp" method="get">
 	
-			<select name="column" class="form-input form-inline">
+			<select name="column" class="search-select">
 				<%if(pagination.columnIs("notice_title")){ %>
 				<option value="notice_title" selected>제목</option>
 				<%}else{ %>
@@ -136,9 +191,10 @@ pagination.calculate();
 				<%} %>
 			</select>
 			<input type="search" name="keyword" placeholder="검색어 입력" required 
-					value="<%=pagination.getKeywordString()%>" class="form-input form-inline">
-			
-			<input type="submit" value="검색" class="form-btn form-inline">
+					value="<%=pagination.getKeywordString()%>" class="search-keyword">
+			<div class="row">
+				<input type="submit" value="검색" class="link-btn">
+			</div>
 		</form>
 	</div>
 </div>

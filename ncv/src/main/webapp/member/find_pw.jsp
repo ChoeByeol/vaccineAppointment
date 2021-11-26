@@ -15,6 +15,7 @@
 	font-size:16px !important;
 }
 </style>
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
         $(function(){
@@ -85,8 +86,9 @@
 			})
         });
     </script>
-
+    
 <form action="<%=request.getContextPath()%>/member/find_pw.txt" method="post">
+
  	<div class="container-400 container-center">
 		<div class="row center">
 			<a href="find_id.jsp" class="find-btn find-id-btn">아이디 찾기</a><a href="find_pw.jsp" class="find-btn find-pw-btn">비밀번호 찾기</a>
@@ -124,4 +126,6 @@
    		<div class="row center msg"><a href="login.jsp">로그인하러 가기</a></div>
    		<%}%>
 	</div>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>  
+

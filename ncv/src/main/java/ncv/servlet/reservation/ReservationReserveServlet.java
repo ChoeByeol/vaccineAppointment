@@ -15,13 +15,13 @@ import ncv.beans.VaccineDao;
 @WebServlet(urlPatterns = "/reservation/reserve.txt")
 public class ReservationReserveServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			
 			req.setCharacterEncoding("UTF-8");
 			ReservationDto reservationDto = new ReservationDto();
 			
-			reservationDto.setMemberId(req.getParameter("memberId"));
+			reservationDto.setMemberId((String)req.getSession().getAttribute("ses"));
 			reservationDto.setClinicNo(Integer.parseInt(req.getParameter("clinicNo")));
 			reservationDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
 			reservationDto.setResShot(Integer.parseInt(req.getParameter("resShot")));
@@ -30,9 +30,13 @@ public class ReservationReserveServlet extends HttpServlet {
 			reservationDto.setResName(req.getParameter("resName"));
 			reservationDto.setResRrn(req.getParameter("resRrn"));
 			reservationDto.setResPhone(req.getParameter("resPhone"));
+			
+			//검사 : 예약을 해도 되는지 검사?
+			//재고테이블의 수량과 예약 건수를 비교
 
 			ReservationDao reservationDao = new ReservationDao();		
 			int resNo = reservationDao.getSequence();
+
 			reservationDto.setResNo(resNo);
 			reservationDao.reserve(reservationDto);
 			

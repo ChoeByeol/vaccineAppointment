@@ -2,6 +2,16 @@
 <%@page import="ncv.beans.ClinicDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%--입력--%>
+<% int clinicNo = Integer.parseInt(request.getParameter("clinicNo"));%>
+
+<%--처리--%>
+<%
+	ClinicDao clinicDao = new ClinicDao();
+	ClinicDto clinicDto = clinicDao.select(clinicNo);
+%>
+<jsp:include page="/template/header.jsp"></jsp:include>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
@@ -69,16 +79,7 @@
         };
     });
 </script>
-
-<%--입력--%>
-<% int clinicNo = Integer.parseInt(request.getParameter("clinicNo"));%>
-
-<%--처리--%>
-<%
-	ClinicDao clinicDao = new ClinicDao();
-	ClinicDto clinicDto = clinicDao.select(clinicNo);
-%>
-
+<div class="container-1000 container-center">
 <form action="edit.txt" method="post">
 		<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
 		병원 이름 : <input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>">
@@ -104,3 +105,5 @@
 <%if(request.getParameter("error") != null){ %>
 	<h4 class="error">정보 수정 오류!</h4>
 <%} %>
+</div>
+<jsp:include page="/template/footer.jsp"></jsp:include>

@@ -18,14 +18,19 @@ List<String> sidoList = clinicDao.sidoList();
 <%
 List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clinicBname);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/template/header.jsp"></jsp:include>
+<style>
+.form-input{
+	margin-left:2%;
+	margin-right:2%;
+	width:20%;
+	font-size:18px;
+	padding:0.2px;
+	height:30px;
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
-
  	$(function(){
   
 	  	$("#sido").change(function(){
@@ -55,37 +60,33 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 		     		$("#bname").html(data);
 		    	}
 		   	})
-	  		
 	  	});
 	});
 </script>
-
-</head>
-<body>
+<div class="container-900 container-center">
 <form action="list.jsp" method="get">
-	<div id="test">
-		<select name="clinicSido" id="sido">
+	<div id="test" class="page">
+		<select name="clinicSido" id="sido" class="form-input">
 			<option value="">광역시도</option>
 			<%for(String sido : sidoList){ %>
 			<option value="<%=sido %>"><%=sido %></option>
 			<%} %>
 		</select>
 		
-		<select name="clinicSigungu" id="sigungu">
+		<select name="clinicSigungu" id="sigungu" class="form-input">
 			<option value="">시군구</option>
 		</select>
 		
-		<select name="clinicBname" id="bname">
+		<select name="clinicBname" id="bname" class="form-input">
 			<option value="">읍면동</option>
 		</select>
-		
-		<input type="submit" value="의료기관 찾기">
+		<input type="submit" value="의료기관 찾기" class="input-btn">
 	</div>
 </form>
 
 <hr>
-
-<table border="1">
+<%if(list!=null&&list.size()!=0){%>
+<table class="table table-stripe">
 	<thead>
 		<tr>
 			<th>병원 이름</th>
@@ -95,15 +96,15 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 	</thead>
 	
 	<tbody>
-		<%for(ClinicDto clinicDto : list){ %>
+			<%for(ClinicDto clinicDto : list){ %>
 		<tr>
 			<td><a href="/ncv/admin/clinic/select.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a></td>
 			<td><%=clinicDto.getClinicTel() %></td>
 			<td><%="(" + clinicDto.getClinicPostcode() + ") " + clinicDto.getClinicAddress() %></td>
 		<tr>
 		<%} %>
+<%} %>
 	</tbody>
 </table>
-
-</body>
-</html>
+</div>
+<jsp:include page="/template/footer.jsp"></jsp:include>

@@ -64,8 +64,7 @@
 	            }).open();
 	        };
 	    });
-	</script>
-    <script>
+
         function idCheck(){
             var regex = /^[a-z][a-z0-9-_]{7,19}$/;
             var input = document.querySelector("input[name=memberId]");
