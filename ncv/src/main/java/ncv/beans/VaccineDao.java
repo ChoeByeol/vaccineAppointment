@@ -200,25 +200,8 @@ public class VaccineDao {
 		
 		return list;
 	}
-<<<<<<< HEAD
 
-    public int shot(int vaccineNo) throws Exception {
-        Connection con = JdbcUtils.connect();
 
-        String sql = "select vaccine_shot from vaccine where vaccine_no = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, vaccineNo);
-        ResultSet rs = ps.executeQuery();
-
-        rs.next();
-        int shot = rs.getInt(1);
-
-        con.close();
-
-        return shot;
-    }
-	
-=======
 	
 	//백신 차수 확인 기능
 		public int shot(int vaccineNo) throws Exception {
@@ -236,5 +219,5 @@ public class VaccineDao {
 
 			return shot;
 		}
->>>>>>> refs/remotes/origin/BYEOL
+
 }

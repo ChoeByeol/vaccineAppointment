@@ -1,6 +1,7 @@
+<%@page import="ncv.beans.Shot2Vo"%>
+<%@page import="ncv.beans.Shot2Dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 
 <script>
 	var index = 0; //이미지에 접근하는 인덱스

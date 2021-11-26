@@ -35,9 +35,9 @@ List<VaccineDto> canShotVaccineList = vaccineDao.listByAge(memberDto);
 Shot2Dao shotDao = new Shot2Dao();
 List<Shot2Vo> shotVaccineList = shotDao.myVaccineList(memberId);
 
+
 boolean shot2 = shotVaccineList.size()>0;
 %>
-
 
 
 <%
@@ -293,24 +293,15 @@ tbody {
 		<%-- <input type="hidden" id="memberId" value="<%=memberId%>"> --%>
 		<div class="row">
 			<label>예약자 이름</label>
-			<input type="text" name="resName" class="form-input readonly-form" value="김김김">
+			<input type="text" name="resName" class="form-input readonly-form" >
 		</div>
 		<div class="row">
 			<label>예약자 주민번호</label>
-<<<<<<< HEAD
-			<input type="text" name="resRrn" class="form-input readonly-form" value="1231411231231">
-=======
 			<input type="text" name="resRrn" class="form-input readonly-form" maxlength="13">
->>>>>>> refs/remotes/origin/BYEOL
 		</div>
 		<div class="row">
 			<label>예약자 전화번호</label>
-<<<<<<< HEAD
-			<input type="text" name="resPhone" class="form-input readonly-form" value="01023120301">
-			
-=======
 			<input type="text" name="resPhone" class="form-input readonly-form" maxlength="11">
->>>>>>> refs/remotes/origin/BYEOL
 			<span></span>
 			<button type="button" class="form-btn form-btn-check">본인인증</button>
 		</div>
@@ -344,40 +335,19 @@ tbody {
 				<option>18:00</option>
 			</select>
 		</div>	
-<<<<<<< HEAD
 
-		<% if (vacNo == 1) { %>				
-			<div class="row">
-				<label>백신</label>
-=======
-		<% if (shot2) { %>				
+			<% if (shot2) { %>				
 			<div class="row content-auto">
 				<label class="text-auto">백신</label>
->>>>>>> refs/remotes/origin/BYEOL
 				<input type="hidden" name="vaccineNo" value="1" class="form-input">
 				<%for(Shot2Vo shot2Vo : shotVaccineList){ %>
 				<input type="text" value="<%=shot2Vo.getVaccineName()%>" class="shot-sec" readonly>
 				<%} %>
 			</div>		
-		<%} else{ %>		
-			<div class="row content-auto">
-				<label class="text-auto">백신</label>
-				<select class="text-auto" name="vaccineNo">
-			<%for(VaccineDto vaccineDto : canShotVaccineList){ %>
-				<option value="<%=vaccineDto.getVaccineNo()%>">
-			<%=vaccineDto.getVaccineName()%>
-				</option>
-			<%} %>
-				</select>
-<<<<<<< HEAD
-				</div>
-			<% } %>	
 			
 		<div class="container-400 container-center">		
-=======
 			</div>
 			<% } %>	
->>>>>>> refs/remotes/origin/BYEOL
 			<% if (check) { %>
 			<div class="row content-auto">
 				<label class="text-auto">접종차수</label>
