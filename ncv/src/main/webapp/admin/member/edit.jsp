@@ -40,10 +40,47 @@
                 }
             }).open();
         };
-    
-    
 </script>
-
+<style>
+.address-input{
+        	width:392.95px;
+    		font-size: 20px;
+    		padding:10px;
+    		margin-top:10px;
+			margin-bottom:15px;
+    		border:1px solid rgb(0, 0, 0);
+        }
+        .address-input:focus{
+			border:none;
+    		outline:2px solid rgb(0, 55, 100);
+    		border-radius: 2px;
+		}
+		div	{
+			height:auto;
+			width: 100%;
+			border-bottom:1px solid gold;
+		}
+		.edit-text{
+			margin-top:10px;
+			margin-bottom:15px;
+    		line-height:50px;
+    		height:50px;
+		}
+		.label-text{
+			font-family:Apple;
+		}
+		.quit-btn{
+		border:none;
+		padding:0.5rem;
+		text-decoration:none;
+		color:gray;
+		font-family:NotoSans;
+		font-size:16px;
+	}
+	.quit-btn:hover{
+		color:red;
+	}
+</style>
 <%-- 입력 : memberId (session) --%>
 <%
 	String memberId = request.getParameter("memberId");
@@ -58,97 +95,66 @@
 <%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<h2>관리자용 회원 정보 수정</h2>
-
 <form action="edit.txt" method="post">
-    
-    <table border="0">
-        <tbody>
-        <tr>
-                <th>이름</th>
-                <td>
-                <input type="hidden" name="memberName" value="<%=memberDto.getMemberName()%>">
-                <%=memberDto.getMemberName()%>
-                </td>
-            </tr>
-            
-            <tr>
-                <th>아이디</th>
-                <td>
-                <input type="hidden" name="memberId" value="<%=memberDto.getMemberId()%>">
-                <%=memberDto.getMemberId()%>
-                </td>
-            </tr>
-                
-            <tr>
-                <th>비밀번호</th>
-                <td>
-                    <input type="password" name="memberPw" required value="<%=memberDto.getMemberPw()%>">
-                </td>
-            </tr>
-            
-             <tr>
-                <th>주민등록번호</th>
-                <td>
-                <input type="hidden" name="memberRrn" value="<%=memberDto.getMemberRrn()%>">
-                <%=memberDto.getMemberRrn()%>
-                </td>
-            </tr>
-            
-            <tr>
-                <th>성별</th>
-                <td>
-                <input type="hidden" name="memberGender" value="<%=memberDto.getMemberGender()%>">
-                <%=memberDto.getMemberGender()%>
-                </td>
-            </tr>
-            
-			<tr>
-                <th>우편번호</th>
-                <td>
-                    <input type="text" name="memberPostcode" required value="<%=memberDto.getMemberPostcode()%>">
-                    <button type="button" class="find-address-btn">주소 찾기</button><br>
-                </td>
-            </tr>
-			
-			<tr>
-				<th>주소</th>
-				<td>
-					<input type="text" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
-				</td>
-			</tr>
-			
-			<tr>
-				<th>상세주소</th>
-				<td>
-					<input type="text" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
-				</td>
-			</tr>
-			
-			<tr>
-				<th>전화번호</th>
-				<td>
-					<input type= "tel" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
-					</td>
-			</tr>
-			
-			<tr>
-				<td colspan="2" align="right">
-					<input type="submit" value="수정">
-				</td>
-			</tr>
-			
-			<tr>
-				<td colspan= "2" align= "right">
-					<a href="<%=request.getContextPath()%>/admin/member/quit.txt?memberId=<%=memberDto.getMemberId() %>" >회원 탈퇴</a>
-				</td>
-			</tr>
-			
-			
-		</tbody>
-	</table>
-	
+    <div class="container-400 container-center">
+    	<div class="row center">
+    		<h2>관리자용 회원 정보 수정</h2>
+    	</div>
+    	<div class="row">
+    		<label class="label-text">이름</label>
+    		<input type="hidden" class="form-input" name="memberName" value="<%=memberDto.getMemberName()%>">
+    		<p class="edit-text"><%=memberDto.getMemberName()%></p>
+    	</div>
+    	<div class="row">
+    		<label class="label-text">아이디</label>
+            <input type="hidden" class="form-input" name="memberId" value="<%=memberDto.getMemberId()%>">
+            <p class="edit-text"><%=memberDto.getMemberId()%></p>
+    	</div>
+    	<div class="row">
+    		<label class="label-text">비밀번호</label>
+            <input type="password" class="form-input"  name="memberPw" required value="<%=memberDto.getMemberPw()%>">
+    	</div>
+    	<div class="row">
+    		<label class="label-text">주민등록번호</label>
+            <input type="hidden" class="form-input"  name="memberRrn" value="<%=memberDto.getMemberRrn()%>">
+            <p class="edit-text"><%=memberDto.getMemberRrn()%></p>
+    	</div>
+    	<div class="row">
+    		<label class="label-text">성별</label>
+            <input type="hidden" class="form-input" name="memberGender" value="<%=memberDto.getMemberGender()%>">
+            <p class="edit-text"><%=memberDto.getMemberGender()%></p>
+    	</div>
+    	<div class="row">
+    		<label class="label-text">우편번호</label>
+            <input type="text" name="memberPostcode" value="<%=memberDto.getMemberPostcode()%>" readonly class="address-input">
+            <button type="button" class="find-address-btn form-btn form-inline">주소 찾기</button>
+    	</div>
+    	<div class="row">
+    		<label class="label-text">주소</label>
+			<input type="text" class="form-input" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
+    	</div>
+    	<div class="row">
+    		<label class="label-text">상세주소</label>
+			<input type="text" class="form-input" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
+    	</div>
+    	<div class="row">
+    		<label class="label-text">전화번호</label>
+			<input type= "tel" class="form-input" name="memberPhone" required value="<%=memberDto.getMemberPhone()%>">
+    	</div>
+    	<div class="row">
+    		<label class="label-text">회원등급</label>
+			<select class="form-input" name="memberRole" required>
+				<option selected>일반회원</option>
+				<option>관리자</option>
+			</select>
+    	</div>
+    	<div class="row">
+    		<input type="submit" value="수정" class="form-btn">
+    	</div>
+    </div>
 </form>
-
+<div class="quit-btn right">
+	<a class="quit-btn" href="<%=request.getContextPath()%>/admin/member/quit.txt?memberId=<%=memberDto.getMemberId()%>">회원 탈퇴</a>
+</div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -1,4 +1,5 @@
-
+<%@page import="ncv.beans.Shot2Vo"%>
+<%@page import="ncv.beans.Shot2Dao"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.ReservationDao"%>
 <%@page import="java.util.List"%>
@@ -10,15 +11,6 @@
 ReservationDao reservationDao = new ReservationDao();
 List<ReservationVo> reservationList  = reservationDao.list2();
 %>
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-	$(function() {
-		$("#confirm-link").click(function() {
-			return confirm("정말 취소하시겠습니까?");
-		});
-	});
-</script>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -93,26 +85,40 @@ List<ReservationVo> reservationList  = reservationDao.list2();
         background-color: #ffffff;
         color: #000000;
     }
-
-tr {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-	border-top: 1px solid black;
 }
-td {	
-	border-left : 1px solid black;
-	border-right : 1px solid black;
-	vertical-align: middle;
-	word-wrap: break-word;
-    word-break: keep-all;
-}
-tbody {
-	border-bottom: 1px solid black;
+.no{
+	width:20px;
 }
 
-.table.table-font {
-	font-size: 16px;
+.memberId{
+	width:90px;
+}
+.name{
+	width:70px;
+}
+.rrn{
+	width:120px;
+}
+.phone{
+	width:90px;
+}
+.vaccineName{
+	width:120px;
+}
+.shot{
+	width:55px;
+}
+.clinicName{
+	width:65px;
+}
+.dateDay{
+	width70px;
+}
+.time{
+	width:55px;
+}
+.detailNo{
+	width:90px;
 }
 </style>
 
@@ -133,34 +139,35 @@ tbody {
 				
 				<thead>
 				<tr>
-					<th scope="col" style="width: 60px;">예약번호</th>
-					<th scope="col" style="width: 90px;">아이디</th>
-					<th scope="col" style="width: 70px;">이름</th>
-					<th scope="col" style="width: 120px;">주민등록번호</th>
-					<th scope="col" style="width: 90px;">전화번호</th>
-					<th scope="col" style="width: 120px;">백신명</th>
-					<th scope="col" style="width: 55px;">접종차수</th>
-					<th scope="col" style="width: 65px;">예약병원</th>
-					<th scope="col"style="width: 70px;">예약일</th>
-					<th scope="col"style="width: 55px;">예약시간</th>
-					<th scope="col" style="width: 90px;">접종상태</th>
+					<th class="no">예약번호</th>
+					<th class="memberId">아이디</th>
+					<th class="name">이름</th>
+					<th class="rrn">주민등록번호</th>
+					<th class="phone">전화번호</th>
+					<th class="vaccineName">백신명</th>
+					<th class="shot">접종차수</th>
+					<th class="clinicName">예약병원</th>
+					<th class="dateDay">예약일</th>
+					<th class="time">예약시간</th>
+					<th class="detailNo">접종상태</th>
 				</tr>
 			</thead>
 			<tbody align="center">
 			
 				<% for (ReservationVo reservationVo : reservationList) { %>
 				<tr>		
-					<td class="no" style="width: 20px;"><a href="reservation_detail.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn"><%=reservationVo.getResNo()%></a></td>
-					<td class="memberid" style="width: 90px;"><%=reservationVo.getMemberId()%></td>
-					<td class="name" style="width: 70px;"><%=reservationVo.getResName()%></td>
-					<td class="rrn" style="width: 120px;"><%=reservationVo.getResRrn()%></td>
-					<td class="phone" style="width: 90px;"><%=reservationVo.getResPhone()%></td>
-					<td class="vaccineName" style="width: 120px;"><%=reservationVo.getVaccineName()%></td>
-					<td class="shot" style="width: 55px;"><%=reservationVo.getResShot()%>차</td>
-					<td class="clinicname" style="width: 65px;"><%=reservationVo.getClinicName()%></td>
-					<td class="dateday" style="width: 70px;"><%=reservationVo.getResDateDay()%></td>
-					<td class="time" style="width: 55px;"><%=reservationVo.getResTime()%></td>
-					<td class="detailno" style="width: 90px;"><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="btn button_base">상세내역</a></td>
+					<td class="no"><a href="reservation_detail.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn"><%=reservationVo.getResNo()%></a></td>
+					<td class="memberId"><%=reservationVo.getMemberId()%></td>
+					<td class="name"><%=reservationVo.getResName()%></td>
+					<td class="rrn"><%=reservationVo.getResRrn()%></td>
+					<td class="phone"><%=reservationVo.getResPhone()%></td>
+					<td class="vaccineName"><%=reservationVo.getVaccineName()%></td>
+					<td class="shot"><%=reservationVo.getResShot()%>차</td>
+					<td class="clinicName"><%=reservationVo.getClinicName()%></td>
+					<td class="dateDay"><%=reservationVo.getResDateDay()%></td>
+					<td class="time"><%=reservationVo.getResTime()%></td>
+					<td class="detailNo"><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="btn button_base">상세내역</a></td>
+
 				</tr>
 				<%} %>
 			</tbody>
@@ -169,6 +176,5 @@ tbody {
 	</div>
 
 </div>
-
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

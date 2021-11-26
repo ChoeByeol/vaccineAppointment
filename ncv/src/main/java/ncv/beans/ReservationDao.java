@@ -297,7 +297,23 @@ public class ReservationDao {
 			con.close();
 			return reservationDto;
 			
-		}		
+		}
+		
+		public int getResNum(String memberId) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select count(*) from reservation where member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			ResultSet rs= ps.executeQuery();
+
+			rs.next();
+			int count = rs.getInt(1);
+
+			con.close();
+
+			return count;
+		}
 		
 		//예약하기 체크용 예약내역 확인 기능
 //		public List<ReservationDto> resCheckList(String memberId) throws Exception {
@@ -320,4 +336,68 @@ public class ReservationDao {
 //			return resCheckList;
 //		}		
 		
+		//?번 병원에 대한 ?번 백신 재고 리스트 = 리스트 합계로 해결 ^^
+		public List<ReservationVo> clinicVacCheck(int clinicNo, int vaccineNo) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select * from stock where clinic_no = ? and vaccine_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, clinicNo);
+			ps.setInt(2, vaccineNo);
+			ResultSet rs = ps.executeQuery();
+
+			List<ReservationVo> clinicVacCheck = new ArrayList<>();
+			while(rs.next()) {
+				ReservationVo reservationVo = new ReservationVo();
+
+				reservationVo.setClinicNo(rs.getInt("clinic_no"));
+				reservationVo.setVaccineNo(rs.getInt("vaccine_no"));
+				reservationVo.setQuantity(rs.getInt("quantity"));
+
+				clinicVacCheck.add(reservationVo);
+			}
+
+			con.close();
+
+			return clinicVacCheck;
+		}
+		
+		//?번 병원에 대한 ?번 백신 예약 건수 = 카운트로 해결 ^^
+		public int resVacCheck(int clinicNo, int vaccineNo) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select count(*) from reservation where clinic_no = ? and vaccine_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, clinicNo);
+			ps.setInt(2, vaccineNo);
+			ResultSet rs = ps.executeQuery();
+
+			rs.next();
+
+			int count = rs.getInt("count(*)");
+
+			System.out.println("카운트 = " + count);
+			con.close();
+
+			return count;
+		}
+		
+		//예약 개수 조회 - 병원의 특정 백신 개수랑 비교하여 예약을 더 받지 못하도록 하기 위함
+        public int countRes(int vaccineNo, int clinicNo) throws Exception {
+            Connection con = JdbcUtils.connect();
+
+            String sql = "select count(*) from reservation where vaccine_no = ? and clinic_no = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, vaccineNo);
+            ps.setInt(2, clinicNo);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+
+            int count = rs.getInt(1);
+
+            con.close();
+
+            return count;
+        }
 }

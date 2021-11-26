@@ -79,7 +79,7 @@
         <header>
 			<div class="flex-container">
 				<div class="logo-wrapper">
-				<a href="http://localhost:8080/ncv/index.jsp">
+				<a href="<%=request.getContextPath()%>/index.jsp">
 					<img src="<%=request.getContextPath()%>/resource/image/logo.png">
 				</a>
 				</div>
@@ -93,8 +93,8 @@
   <nav>
     <ul class="slide-menu">
     	<%if(login){ %>
-    	<li><a href="<%=request.getContextPath()%>/index.jsp">MAIN</a></li>
-        <li><a href="#">공지사항</a></li>
+        <li><a href="<%=request.getContextPath()%>/notice/list.jsp">공지사항</a></li>
+        <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">임시접종완료</a></li>
     	<%if(admin){ %>
         <%} else { %>
         <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li>
@@ -105,9 +105,9 @@
             	<%if(admin){ %>
             	<li><a href="<%=request.getContextPath()%>/admin/home.jsp">관리메뉴</a></li>
             	<%} else { %>
-                <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">내정보보기</a></li>
-                <li><a href="<%=request.getContextPath()%>/reservation/reservation_detail.jsp">예약조회</a></li>
-                <li><a href="<%=request.getContextPath()%>/member/shot.jsp">접종내역확인</a></li>
+                <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
+                <li><a href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">나의예약조회</a></li>
+                <li><a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">접종내역조회</a></li>
                 <%} %>
                 <li><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
   			</ul>
@@ -118,7 +118,7 @@
 			<li class="flex-right">
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a>
 				<ul>
-					<li><a href="<%=request.getContextPath()%>/member/join.jsp">회원가입</a></li>
+					<li><a href="<%=request.getContextPath()%>/member/agree.jsp">회원가입</a></li>
 				</ul>
 			</li>
 			<%} %>

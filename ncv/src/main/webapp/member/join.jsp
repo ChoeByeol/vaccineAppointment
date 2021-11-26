@@ -64,8 +64,7 @@
 	            }).open();
 	        };
 	    });
-	</script>
-    <script>
+
         function idCheck(){
             var regex = /^[a-z][a-z0-9-_]{7,19}$/;
             var input = document.querySelector("input[name=memberId]");
@@ -124,7 +123,7 @@
             }
         }
         function rrnCheck(){
-            var regex = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-4][0-9]{6}$/;
+            var regex = /^[0-9]{6}[0-9]{7}$/;
             var input = document.querySelector("input[name=memberRrn]");
             var notice = input.nextElementSibling;
 

@@ -39,8 +39,7 @@ public class VaccineWriteServlet extends HttpServlet {
 			vaccineDto.setVaccineNo(vaccineNo);
 			vaccineDao.vaccineWrite(vaccineDto);
 
-			//resp.sendRedirect("vaccine.jsp");
-			resp.sendRedirect("vaccine_detail.jsp?vaccineNo="+vaccineNo);
+			resp.sendRedirect("admin/vaccine/vaccine_detail.jsp?vaccineNo="+vaccineNo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

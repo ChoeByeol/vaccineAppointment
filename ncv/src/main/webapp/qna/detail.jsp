@@ -28,6 +28,7 @@
 <%
 	//현재 게시글에 대한 파일 정보를 조회
 	QnaFileDao qnaFileDao = new QnaFileDao();
+	//List<QnaFileDto> fileList = qnaFileDao.find(qnaNo);
 	List<QnaFileDto> qnaFileList = qnaFileDao.find(qnaNo);//파일이 여러 개일 경우
 	//QnaFileDto qnaFileDto = qnaFileDao.find(qnaNo);//파일이 한 개일 경우
 %>
@@ -64,11 +65,27 @@
 				(주의) 태그 사이에 쓸데없는 엔터, 띄어쓰기 등이 들어가지 않도록 해야 한다.(모두 표시된다)
 			 -->
 				<tr height="200" valign="top">
+					<td>질문</td>
 					<td colspan="4"><pre><%=qnaDto.getQnaContent()%></pre></td>
-				</tr>	
+				</tr>
+				<%-- 첨부 파일이 있다면 첨부파일을 다운받을 수 있는 링크를 제공 --%>
+				<%if(!qnaFileList.isEmpty()){ %>
+				<tr>
+					<%for(QnaFileDto boardFileDto : qnaFileList){ %>
+						<td>첨부파일</td>
+						<td>
+							<%=boardFileDto.getQnaFileUploadName()%> 
+							(<%=boardFileDto.getQnaFileSize()%> bytes)
+							<a href="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>">다운로드</a>
+							<img src="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>" width="50" height="50">
+						<td>
+					<%} %>
+				</tr>
+				<%} %>	
 					
 				<%if(!qnaDto.getQnaAnswer().isEmpty()){ %>
 				<tr height="200" valign="top" style="background-color:#EEEEEE">
+					<td>답변</td>
 					<td colspan="4"><pre><%=qnaDto.getQnaAnswer()%></pre></td>
 				</tr>
 				<%} %>
@@ -79,15 +96,16 @@
 					<td colspan="4">
 						
 						<%if(writer){%>
-							<a href="<%=request.getContextPath()%>/qna/list.jsp">목록</a>
+							<a href="<%=request.getContextPath()%>/qna/mylist.jsp">목록</a>
 							<%if(qnaDto.getQnaState().equals("답변대기")){ %>
 							<a href="edit.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정</a>
+							<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
 							<%} %>
 						<%}else if(admin){%>
 							<a href="<%=request.getContextPath()%>/admin/qna/list.jsp">목록</a>
 							<a href="../admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">답변달기</a>
-						<%} %>
 							<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
+						<%} %>
 					</td>
 			</tfoot>
 		</table>
@@ -95,16 +113,6 @@
 </div>
 
 	
-<%-- 첨부 파일이 있다면 첨부파일을 다운받을 수 있는 링크를 제공 --%>
-<%if(!qnaFileList.isEmpty()){ %>
-	<%for(QnaFileDto boardFileDto : qnaFileList){ %>
-		<h6>
-			<%=boardFileDto.getQnaFileUploadName()%> 
-			(<%=boardFileDto.getQnaFileSize()%> bytes)
-			<a href="file/download.kh?boardFileNo=<%=boardFileDto.getQnaFileNo()%>">다운로드</a>
-			<img src="file/download.kh?boardFileNo=<%=boardFileDto.getQnaFileNo()%>" width="15" height="15">
-		</h6>
-	<%} %>
-<%} %>
+
 
 <jsp:include page="/template/footer.jsp"></jsp:include>    

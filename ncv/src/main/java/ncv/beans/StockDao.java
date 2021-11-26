@@ -248,6 +248,42 @@ public class StockDao {
 		
 		return list;
 	}
+	
+	//접종이 완료되면 병원의 백신 출고가 1 증가하는 기능
+    public void stockMinus(int clinicNo, int vaccineNo) throws Exception {
+        Connection con = JdbcUtils.connect();
+
+        String sql = "insert into stock values(stock_seq.nextval, ?, ?, 0, 1, sysdate)";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, vaccineNo);
+        ps.setInt(2, clinicNo);
+
+        ps.execute();
+
+        con.close();
+    }
+    
+    //특정 병원과 특정 백신의 입고 총합 - 예약을 받기 위해 필요
+    public int getStockInTotalQty(int vaccineNo, int clinicNo) throws Exception {
+        Connection con = JdbcUtils.connect();
+
+        String sql = "select sum(stock_in_qty) stock_in_qty from stock S "
+                + "left outer join clinic C on S.clinic_no = C.clinic_no "
+                + "left outer join vaccine V on S.vaccine_no = V.vaccine_no "
+                + "where V.vaccine_no = ? and C.clinic_no = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, vaccineNo);
+        ps.setInt(2, clinicNo);
+        ResultSet rs = ps.executeQuery();
+
+        rs.next();
+
+        int count = rs.getInt(1);
+
+        con.close();
+
+        return count;
+    }
 }
 
 

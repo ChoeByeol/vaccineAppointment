@@ -22,7 +22,10 @@
 		<a href="./clinic/list.jsp" class="link-btn">병원 관리</a>
 	</div>
 	<div class="link-btn center">
-		<a href="#" class="link-btn">백신 관리</a>
+		<a href="./vaccine/vaccine.jsp" class="link-btn">백신 관리</a>
+	</div>
+	<div class="link-btn center">
+		<a href="./qna/list.jsp" class="link-btn">1대1문의 관리</a>
 	</div>
 </div>
 
