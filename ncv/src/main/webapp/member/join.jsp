@@ -22,7 +22,6 @@
 	                $("input[name=memberGender]").val("여");
 	            }
 	        });
-	        
 		//주소 찾기   	
 	        $(".find-address-btn").click(function(){
 	            findAddress();
