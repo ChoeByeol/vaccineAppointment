@@ -1,4 +1,5 @@
-
+<%@page import="ncv.beans.Shot2Vo"%>
+<%@page import="ncv.beans.Shot2Dao"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.ReservationDao"%>
 <%@page import="java.util.List"%>
@@ -10,15 +11,6 @@
 ReservationDao reservationDao = new ReservationDao();
 List<ReservationVo> reservationList  = reservationDao.list2();
 %>
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-	$(function() {
-		$("#confirm-link").click(function() {
-			return confirm("정말 취소하시겠습니까?");
-		});
-	});
-</script>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -83,7 +75,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     }
 }
 
-
 @-moz-keyframes btn {
     from,
     to {
@@ -94,26 +85,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
         background-color: #ffffff;
         color: #000000;
     }
-\
-tr {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-	border-top: 1px solid black;
-}
-td {	
-	border-left : 1px solid black;
-	border-right : 1px solid black;
-	vertical-align: middle;
-	word-wrap: break-word;
-    word-break: keep-all;
-}
-tbody {
-	border-bottom: 1px solid black;
-}
-
-.table.table-font {
-	font-size: 16px;
 }
 .no{
 	width:20px;
@@ -163,38 +134,26 @@ tbody {
 	<!-- 데이터 표시 영역 -->
 	<div class="row center">
 
-				<table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">			
+				<table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">			<thead>
 				<caption>나의 예약 리스트</caption>
 				
 				<thead>
 				<tr>
-
-					<th scope="col" style="width: 60px;">예약번호</th>
-					<th scope="col" style="width: 90px;">아이디</th>
-					<th scope="col" style="width: 70px;">이름</th>
-					<th scope="col" style="width: 120px;">주민등록번호</th>
-					<th scope="col" style="width: 90px;">전화번호</th>
-					<th scope="col" style="width: 120px;">백신명</th>
-					<th scope="col" style="width: 55px;">접종차수</th>
-					<th scope="col" style="width: 65px;">예약병원</th>
-					<th scope="col"style="width: 70px;">예약일</th>
-					<th scope="col"style="width: 55px;">예약시간</th>
-					<th scope="col" style="width: 90px;">접종상태</th>
-					<th>예약번호</th>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>주민등록번호</th>
-					<th>전화번호</th>
-					<th>백신명</th>
-					<th>접종차수</th>
-					<th>예약병원</th>
-					<th>예약일</th>
-					<th>예약시간</th>
-					<th>비고</th>
-
+					<th class="no">예약번호</th>
+					<th class="memberId">아이디</th>
+					<th class="name">이름</th>
+					<th class="rrn">주민등록번호</th>
+					<th class="phone">전화번호</th>
+					<th class="vaccineName">백신명</th>
+					<th class="shot">접종차수</th>
+					<th class="clinicName">예약병원</th>
+					<th class="dateDay">예약일</th>
+					<th class="time">예약시간</th>
+					<th class="detailNo">접종상태</th>
+				</tr>
 			</thead>
 			<tbody align="center">
-
+			
 				<% for (ReservationVo reservationVo : reservationList) { %>
 				<tr>		
 					<td class="no"><a href="reservation_detail.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn"><%=reservationVo.getResNo()%></a></td>
@@ -208,11 +167,7 @@ tbody {
 					<td class="dateDay"><%=reservationVo.getResDateDay()%></td>
 					<td class="time"><%=reservationVo.getResTime()%></td>
 					<td class="detailNo"><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="btn button_base">상세내역</a></td>
-					<td>
-						<a href="reservation_detail.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">상세</a>
-						<a href="reservation_edit.jsp?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn">변경</a>
-						<a href="cancel.txt?resNo=<%=reservationVo.getResNo()%>" class="a-link-btn" id="confirm-link">예약취소</a>
-					</td>
+
 				</tr>
 				<%} %>
 			</tbody>

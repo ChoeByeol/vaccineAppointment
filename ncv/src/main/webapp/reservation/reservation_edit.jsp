@@ -32,7 +32,7 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 <input type="hidden" name="resRrn" value="<%=reservationDto.getResRrn()%>">
 <input type="hidden" name="resPhone" value="<%=reservationDto.getResPhone()%>">
 <input type="hidden" name="vaccineNo" value="<%=reservationDto.getVaccineNo()%>">
-<input type="hidden" name="shotNo" value="<%=reservationDto.getShotNo()%>">
+<input type="hidden" name="shotNo" value="<%=reservationDto.getResShot()%>">
 
 <div class="container-400 container-center">
 	<div class="row center">

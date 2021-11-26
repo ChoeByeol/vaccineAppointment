@@ -431,5 +431,4 @@ public class MemberDao {
 			
 		    return count;
 		}
-
 }

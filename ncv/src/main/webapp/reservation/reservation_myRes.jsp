@@ -57,7 +57,11 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 	
 	<div class="row">
 		<div class="page-title">
+		<%if(myResList.size() > 0) {%>
 		<h2 class="page-title">예약 결과가 조회되었습니다!</h2>
+		<%} else {%>
+		<h2 class="page-title">예약 내역이 존재하지 않습니다.</h2>
+		<%} %>
 		</div>
 		<br><br>
 			<!-- 1단 : 예약자 정보 -->
@@ -87,7 +91,7 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 				</table>
 			</div>
 			<br><br><br>
-
+<%if(myResList.size() > 0) {%>
 		<!-- 2단 -->
 			<!-- 예약 정보 -->
 			<div class="row">
@@ -96,7 +100,6 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 				</div>
 				<table class="table table-stripe">
 					<tbody>
-					
 					<% for (ReservationVo reservationVo : myResList) { %>
 						<tr class="table-line">
 							<th width="30%"><%=reservationVo.getResShot()%>차 예약번호</th>
@@ -118,5 +121,7 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 		</div>
 		<a class="link-btn" href="reservation/reservation_myRes_detail.jsp">예약정보 상세조회</a>
 	</div>
-
+<%} else {%>
+	<a class="link-btn" href="<%=request.getContextPath()%>/reservation/check.txt">예약하러 가기</a>
+<%} %>
  <jsp:include page="/template/footer.jsp"></jsp:include>

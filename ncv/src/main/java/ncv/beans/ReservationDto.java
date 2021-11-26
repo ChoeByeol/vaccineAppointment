@@ -11,7 +11,7 @@ public class ReservationDto {
 	private String resName;
 	private String resRrn;
 	private String resPhone;
-	
+
 	public ReservationDto() {
 		super();
 	}

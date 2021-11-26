@@ -200,8 +200,6 @@ public class VaccineDao {
 		
 		return list;
 	}
-
-
 	
 	//백신 차수 확인 기능
 		public int shot(int vaccineNo) throws Exception {
@@ -219,5 +217,4 @@ public class VaccineDao {
 
 			return shot;
 		}
-
 }

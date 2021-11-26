@@ -151,38 +151,12 @@ public class ReservationDao {
 			con.close();
 
 			return myResList;
-		}	
-		
-		//예약 백신 확인 기능
-        public ReservationDto vaccineCheck(String memberId) throws Exception {
-            Connection con = JdbcUtils.connect();
-            String sql = "select vaccine_no from reservation where member_id = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, memberId);
-            ResultSet rs = ps.executeQuery();
-
-            ReservationDto reservationDto;
-            if(rs.next()) {
-                reservationDto = new ReservationDto();
-                reservationDto.setVaccineNo(rs.getInt("vaccine_no"));
-            }
-            else {
-
-                reservationDto = null;
-
-            }
-
-            con.close();
-            return reservationDto;
-
-        }
-
-
+		}				
 		
 		//예약 상세보기 기능 ( 조인o )
 		public ReservationVo get(int resNo) throws Exception {
 			Connection con = JdbcUtils.connect();
-			String sql = "select a.res_no, a.member_id, b.vaccine_name, c.clinic_name, a.shot_no, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no  inner join member d on a.member_id = d.member_id where res_no = ?";
+			String sql = "select a.res_no, a.member_id, b.vaccine_name, c.clinic_name, a.res_shot, a.res_name, a.res_rrn, a.res_phone, a.res_date, a.res_time from reservation a inner join vaccine b on a.vaccine_no = b.vaccine_no inner join clinic c on a.clinic_no = c.clinic_no  inner join member d on a.member_id = d.member_id where res_no = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, resNo);
 			ResultSet rs = ps.executeQuery();
@@ -195,7 +169,7 @@ public class ReservationDao {
 				reservationVo.setMemberId(rs.getString("member_id"));
 				reservationVo.setClinicName(rs.getString("clinic_name"));
 				reservationVo.setVaccineName(rs.getString("vaccine_name"));
-				reservationVo.setShotNo(rs.getInt("shot_no"));
+				reservationVo.setResShot(rs.getInt("res_shot"));
 				reservationVo.setResDate(rs.getString("res_date"));
 				reservationVo.setResTime(rs.getString("res_time"));
 				reservationVo.setResName(rs.getString("res_name"));
@@ -301,10 +275,10 @@ public class ReservationDao {
 			return result > 0;		
 		}
 		
-		//예약 상태 확인 기능
-		public ReservationDto Check(String memberId) throws Exception {
+		//예약 백신 확인 기능
+		public ReservationDto vaccineCheck(String memberId) throws Exception {
 			Connection con = JdbcUtils.connect();
-			String sql = "select member_id from reservation where member_id = ?";
+			String sql = "select vaccine_no from reservation where member_id = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, memberId);
 			ResultSet rs = ps.executeQuery();
@@ -312,7 +286,7 @@ public class ReservationDao {
 			ReservationDto reservationDto;
 			if(rs.next()) {
 				reservationDto = new ReservationDto();
-				reservationDto.setMemberId(rs.getString("member_id"));;
+				reservationDto.setVaccineNo(rs.getInt("vaccine_no"));
 			}
 			else {
 				
@@ -341,6 +315,26 @@ public class ReservationDao {
 			return count;
 		}
 		
+		//예약하기 체크용 예약내역 확인 기능
+//		public List<ReservationDto> resCheckList(String memberId) throws Exception {
+//			Connection con = JdbcUtils.connect();
+//
+//			String sql = "select member_id from reservation where member_id = ?";
+//			PreparedStatement ps = con.prepareStatement(sql);
+//			ps.setString(1, memberId);
+//			ResultSet rs = ps.executeQuery();
+//
+//			List<ReservationDto> resCheckList = new ArrayList<>();
+//			while(rs.next()) {
+//				ReservationDto reservationDto = new ReservationDto();
+//			
+//				resCheckList.add(reservationDto);
+//			}
+//
+//			con.close();
+//
+//			return resCheckList;
+//		}		
 		//?번 병원에 대한 ?번 백신 재고 리스트 = 리스트 합계로 해결 ^^
 		public List<ReservationVo> clinicVacCheck(int clinicNo, int vaccineNo) throws Exception {
 			Connection con = JdbcUtils.connect();
@@ -358,15 +352,15 @@ public class ReservationDao {
 				reservationVo.setClinicNo(rs.getInt("clinic_no"));
 				reservationVo.setVaccineNo(rs.getInt("vaccine_no"));
 				reservationVo.setQuantity(rs.getInt("quantity"));
-			
+
 				clinicVacCheck.add(reservationVo);
 			}
 
 			con.close();
 
 			return clinicVacCheck;
-			
-			
+
+
 		}
 		//?번 병원에 대한 ?번 백신 예약 건수 = 카운트로 해결 ^^
 		public int resVacCheck(int clinicNo, int vaccineNo) throws Exception {
@@ -379,15 +373,16 @@ public class ReservationDao {
 			ResultSet rs = ps.executeQuery();
 
 			rs.next();
-	
+
 			int count = rs.getInt("count(*)");
 
 			System.out.println("카운트 = " + count);
-			con.close(); 
+			con.close();
 
 			return count;
-			 
-			
-		}				
+
+
+		}
+		
 		
 }

@@ -21,20 +21,12 @@
 	MemberDto memberDto = memberDao.get(memberId);
 %>
 
-
-<%
-ClinicDao clinicDao = new ClinicDao();
-List<ClinicDto> list  = clinicDao.list();
-%>	
-
-
 <%
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> canShotVaccineList = vaccineDao.listByAge(memberDto);
 
 Shot2Dao shotDao = new Shot2Dao();
 List<Shot2Vo> shotVaccineList = shotDao.myVaccineList(memberId);
-
 
 boolean shot2 = shotVaccineList.size()>0;
 %>
@@ -46,15 +38,7 @@ boolean shot2 = shotVaccineList.size()>0;
 			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
 
 			boolean check = memberId != null && myResList.size() == 0; // 미접종
-			
-			
 %>
-
-<%--
-	ReservationDao reservationDao = new ReservationDao();
-	List<ReservationDto> reservationList = reservationDao.list();
---%>
-
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -227,7 +211,6 @@ tbody {
 	font-size:20px;
 }
 </style>
-
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
          $(function(){
@@ -281,19 +264,16 @@ tbody {
             });
         });
     </script>
-   
-
-
-    
 <form action="<%=request.getContextPath()%>/reservation/reserve.txt">
 <div class="container-400 container-center">
-
-
+	<div class="row center">
+		<h1>예약하기</h1>
+	</div>
 	<div class="page">
 		<%-- <input type="hidden" id="memberId" value="<%=memberId%>"> --%>
 		<div class="row">
 			<label>예약자 이름</label>
-			<input type="text" name="resName" class="form-input readonly-form" >
+			<input type="text" name="resName" class="form-input readonly-form">
 		</div>
 		<div class="row">
 			<label>예약자 주민번호</label>
@@ -306,7 +286,6 @@ tbody {
 			<button type="button" class="form-btn form-btn-check">본인인증</button>
 		</div>
 	</div>
-	
 	<div class="page">
 		<div class="row">
 			<label>예약일</label>
@@ -318,13 +297,11 @@ tbody {
 			<button type="button" class="clinic-btn form-btn form-inline" >의료기관 찾기</button>
 			<input type="hidden" name="clinicNo" id="pClinicNo">
 		</div>
-		
-		
 		<div class="row">
 			<label>예약시간</label>
 			<select name="resTime" class="form-input">
 				<option>09:00</option>
-				<option>10:00</option> 
+				<option>10:00</option>
 				<option>11:00</option>
 				<option>12:00</option>
 				<option>13:00</option>
@@ -335,8 +312,7 @@ tbody {
 				<option>18:00</option>
 			</select>
 		</div>	
-
-			<% if (shot2) { %>				
+		<% if (shot2) { %>				
 			<div class="row content-auto">
 				<label class="text-auto">백신</label>
 				<input type="hidden" name="vaccineNo" value="1" class="form-input">
@@ -344,8 +320,16 @@ tbody {
 				<input type="text" value="<%=shot2Vo.getVaccineName()%>" class="shot-sec" readonly>
 				<%} %>
 			</div>		
-			
-		<div class="container-400 container-center">		
+		<%} else{ %>		
+			<div class="row content-auto">
+				<label class="text-auto">백신</label>
+				<select class="text-auto" name="vaccineNo">
+			<%for(VaccineDto vaccineDto : canShotVaccineList){ %>
+				<option value="<%=vaccineDto.getVaccineNo()%>">
+			<%=vaccineDto.getVaccineName()%>
+				</option>
+			<%} %>
+				</select>
 			</div>
 			<% } %>	
 			<% if (check) { %>

@@ -1,7 +1,6 @@
-<%@page import="ncv.beans.Shot2Vo"%>
-<%@page import="ncv.beans.Shot2Dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 
 <script>
 	var index = 0; //이미지에 접근하는 인덱스
@@ -84,7 +83,7 @@
 
 
 .aBtn1 {
-	width: 25%;
+	width: 283px;
 	height: 40px;
 	background-color: #f8585b;
 	border: none;
@@ -95,7 +94,7 @@
 }
 
 .aBtn2 {
-	width: 25%;
+	width: 283px;
 	height: 40px;
 	background-color: #21a089;
 	border: none;
@@ -106,7 +105,7 @@
 }
 
 .aBtn3 {
-	width: 25%;
+	width: 283px;
 	height: 40px;
 	background-color: #3b92cd;
 	border: none;
@@ -116,16 +115,6 @@
 	cursor: pointer;
 }
 
-.aBtn4 {
-	width: 25%;
-	height: 40px;
-	background-color: #765dc2;
-	border: none;
-	color: #fff;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
-}
 
 .aSpan {
 	width: 25%;
@@ -170,6 +159,7 @@
     height: 200px;
     box-sizing: border-box;
   	border: 1px solid black;
+  	margin-bottom: 20px;
 }
 
 .item-bottom2 {
@@ -180,6 +170,7 @@
     height: 200px;
     box-sizing: border-box;
   	border: 1px solid black;
+  	margin-bottom: 20px;
 }
 </style>
 
@@ -199,9 +190,6 @@
 		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
 		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co2.jpg">
 		</a>
-		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co3.jpg">
-		</a>
 	</div>
 
 	<div class="title">
@@ -215,9 +203,6 @@
 			<a href="#" class="aBtn3">
 			<span class="aSpan">코로나19 예방접종사전예약</span>
 			</a>
-			<a href="#" class="aBtn4">
-			<span class="aSpan">항생제내성인식주간</span>
-			</a>
 		</div>
 	</div>
 </div>
@@ -226,16 +211,16 @@
 	<div class="title">
 		<div class="box-select">
 			<div class="item">
-
+				<span>예약정보</span>
 			</div>
 			<div class="item">
-
+				<span>나의접종내역</span>
 			</div>
 			<div class="item">
-
+				<span>1:1문의</span>
 			</div>
 			<div class="item">
-	
+				<span>마이페이지</span>
 			</div>
 
 		</div>
@@ -248,16 +233,16 @@
 	<div class="title">
 		<div class="box-select">
 			<div class="item-bottom1">
-
+				공지사항
 			</div>
 			<div class="item-bottom2">
-
+				----------
 			</div>
 			<div class="item-bottom1">
-
+				백신정보
 			</div>
 			<div class="item-bottom2">
-	
+					-----------
 			</div>
 
 		</div>
@@ -271,5 +256,5 @@
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
-
+ 
 
