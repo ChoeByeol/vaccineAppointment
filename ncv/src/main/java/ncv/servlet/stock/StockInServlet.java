@@ -32,7 +32,7 @@ public class StockInServlet extends HttpServlet {
 			
 			//출력
 			resp.sendRedirect(req.getContextPath() + "/admin/stock/stock_list.jsp");
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
