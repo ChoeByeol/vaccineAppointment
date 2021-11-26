@@ -32,10 +32,14 @@ public class ReservationReserveServlet extends HttpServlet {
 			reservationDto.setResName(req.getParameter("resName"));
 			reservationDto.setResRrn(req.getParameter("resRrn"));
 			reservationDto.setResPhone(req.getParameter("resPhone"));
+			
+			//검사 : 예약을 해도 되는지 검사?
+			//재고테이블의 수량과 예약 건수를 비교
 
 			
 			ReservationDao reservationDao = new ReservationDao();		
 			int resNo = reservationDao.getSequence();
+
 			reservationDto.setResNo(resNo);
 
 			

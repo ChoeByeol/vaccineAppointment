@@ -132,7 +132,6 @@
 				<%}else{ %>
 				<option value="qna_writer">작성자</option>
 				<%} %>
-				
 			</select>
 			
 			<input type="search" name="keyword" placeholder="검색어 입력" required 

@@ -102,5 +102,10 @@ public class VaccineDto {
 	public void setVaccineLife(String vaccineLife) {
 		this.vaccineLife = vaccineLife;
 	}
+	@Override
+	public String toString() {
+		return "VaccineDto [vaccineNo=" + vaccineNo + ", vaccineShot=" + vaccineShot + "]";
+	}
+	
 }
 

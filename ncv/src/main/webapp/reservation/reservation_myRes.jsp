@@ -116,6 +116,7 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 				</table>
 			</div>
 		</div>
+		<a class="link-btn" href="reservation/reservation_myRes_detail.jsp">예약정보 상세조회</a>
 	</div>
 
  <jsp:include page="/template/footer.jsp"></jsp:include>

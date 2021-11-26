@@ -11,6 +11,9 @@
     ClinicDao clinicDao = new ClinicDao();
     ClinicDto clinicDto = clinicDao.select(clinicNo); //상세조회
 %>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/commons.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/css/layout.css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=51857ee590e6cc2b1c3f4879f1fdf7b2&libraries=services,clusterer,drawing"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
@@ -24,39 +27,64 @@
 
 			window.close();
 		});
+		$(".list-btn").click(function(){
+			window.history.back();
+		});
 	});
 </script>
+<style>
+.container-700{
+	margin-top:3%;
+	padding-left:10px;
+	padding-right:10px;
+}
+.title-table{
+	vertical-align : middle;
+}
+.table{
+	font-family:NotoSansL;
+	margin-bottom:8%;
+}
+.semi-title{
+	font-family:Apple;
+	font-size:24px;
+}
+#map{
+	margin-top:2%;
+	border-radius: 2px
+}
+.link-btn{
+	margin-bottom:2%;
+}
+</style>
 <%--출력--%>
-<table border="1" width="300">
-    <tbody>
-        <tr>
-            <th>병원 이름</th>
-            <td><%=clinicDto.getClinicName()%></td>
-        </tr>
-        <tr>
-            <th>병원 연락처</th>
-            <td><%=clinicDto.getClinicTel()%></td>
-        </tr>
-        <tr>
-            <th>병원 진료시간</th>
-            <td><%=clinicDto.getClinicTime()%></td>
-        </tr>
-        <tr>
-            <th>병원 우편번호</th>
-            <td><%=clinicDto.getClinicPostcode()%></td>
-        </tr>
-        <tr>
-            <th>병원 주소</th>
-            <td><%=clinicDto.getClinicAddress()%></td>
-        </tr>
-        <tr>
-            <th>병원 상세주소</th>
-            <td><%=clinicDto.getClinicDetailAddress()%></td>
-        </tr>
-    </tbody>
-</table>
-<div id="map" style="width:100%;height:350px;"></div>
-
+	<div class="container-700 center">
+		<label class="semi-title">의료기관 위치</label>
+		<div id="map" style="width:100%;height:350px;"></div>
+	<table class="table table-stripe">
+		<tbody>
+			<tr class="table-line">
+				<th width="30%">의료기관 이름</th>
+				<td><%=clinicDto.getClinicName()%></td>
+			</tr>
+			<tr class="table-line">
+				<th width="30%">연락처</th>
+ 				<td><%=clinicDto.getClinicTel()%></td>
+			</tr>
+			<tr class="table-line">
+				<th class="title-table" width="30%">진료시간</th>
+				<td><pre><%=clinicDto.getClinicTime()%></pre></td>
+			</tr>		
+			<tr class="table-line">
+				<th width="30%">주소</th>
+				<td><%=clinicDto.getClinicAddress()%></td>
+			</tr>
+			<tr class="table-line">
+				<th width="30%">상세주소</th>
+				<td><%=clinicDto.getClinicDetailAddress()%></td>
+			</tr>			
+		</tbody>
+	</table>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -87,10 +115,10 @@ geocoder.addressSearch("<%=clinicDto.getClinicAddress()%>", function(result, sta
     } 
 });    
 </script>
-
-<a href="javascript:history.back()">목록으로</a>
+	<button class="link-btn list-btn">목록으로</button>
+	<button class="link-btn" id="btn">선택하기</button>
 <form>
-	<button id="btn">선택하기</button>
 	<input type="hidden" id="cClinicNo" value="<%=clinicDto.getClinicNo() %>">
 	<input type="hidden" id="cClinicName" value="<%=clinicDto.getClinicName()%>">
 </form>
+</div>

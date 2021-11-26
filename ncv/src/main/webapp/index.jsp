@@ -27,18 +27,40 @@
 <style>
 .mainContainer {
 	width: 850px;
-	height: 800px;
+	height: 1050px;
 	position: relative;
 	margin: 0 auto;
 }
 
+.main-area {
+    position: relative;
+    background:no-repeat 50% 50%;
+    background-size: cover;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    z-index: 2;
+}
+    
+.mid-area {
+    position: relative;
+    background:no-repeat 50% 50%;
+    background-size: cover;
+    padding-bottom: 10px;
+}   
+
+.bottom-area {
+    position: relative;
+    background:no-repeat 50% 50%;
+    background-size: cover;
+} 
+    
 .mainSlide {
-	max-height: 438px;
+	max-height: 250px;
 	width: 100%;
 	text-align: center;
 }
 
-.slide {;
+.slide {
 	display: table;
 	position: absolute;
 	width: 100%;
@@ -47,8 +69,18 @@
 
 .slideImg {
 	width: 100%;
-	height: 300px;
+	height: 250px;
 }
+
+.title {
+    padding-bottom: 30px;
+    text-align: center;
+    font-size: 30px;
+    color: #727272;
+    font-weight: 600;
+    line-height: 1.4em;
+}
+
 
 .aBtn1 {
 	width: 25%;
@@ -102,6 +134,52 @@
 	display: table-cell;
 	text-align: center;
 }
+
+
+
+.fix-layout {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.box-select {
+    display: block;
+    position: relative;
+    margin: 0 -10px;
+}
+
+.item {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    width: 207px;
+    height: 250px;
+    box-sizing: border-box;
+  	border: 1px solid black;
+}
+
+.item-bottom1 {
+    display: inline-block;
+    position: relative;
+    padding: 20px;
+    width: 23%;
+    height: 200px;
+    box-sizing: border-box;
+  	border: 1px solid black;
+}
+
+.item-bottom2 {
+    display: inline-block;
+    position: relative;
+    padding: 20px;
+    width: 74%;
+    height: 200px;
+    box-sizing: border-box;
+  	border: 1px solid black;
+}
 </style>
 
 
@@ -109,7 +187,7 @@
 
 <div class="mainContainer">
 
-
+	<div class="main-area">
 	<div class="mainSlide">
 		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
 		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co.jpg">
@@ -125,21 +203,68 @@
 		</a>
 	</div>
 
-	<div class="slide">
-		<a href="#" class="aBtn1">
-		<span class="aSpan">코로나바이러스감염증-19</span>
-		</a>
-		<a href="#" class="aBtn2">
-		<span class="aSpan">코로나19 예방접종</span>
-		</a>
-		<a href="#" class="aBtn3">
-		<span class="aSpan">코로나19 예방접종사전예약</span>
-		</a>
-		<a href="#" class="aBtn4">
-		<span class="aSpan">항생제내성인식주간</span>
-		</a>
+	<div class="title">
+		<div class="slide">
+			<a href="#" class="aBtn1">
+			<span class="aSpan">코로나바이러스감염증-19</span>
+			</a>
+			<a href="#" class="aBtn2">
+			<span class="aSpan">코로나19 예방접종</span>
+			</a>
+			<a href="#" class="aBtn3">
+			<span class="aSpan">코로나19 예방접종사전예약</span>
+			</a>
+			<a href="#" class="aBtn4">
+			<span class="aSpan">항생제내성인식주간</span>
+			</a>
+		</div>
 	</div>
+</div>
 
+	<div class="mid-area">
+	<div class="title">
+		<div class="box-select">
+			<div class="item">
+
+			</div>
+			<div class="item">
+
+			</div>
+			<div class="item">
+
+			</div>
+			<div class="item">
+	
+			</div>
+
+		</div>
+
+	</div>
+	</div>
+	
+
+	<div class="bottom-area">
+	<div class="title">
+		<div class="box-select">
+			<div class="item-bottom1">
+
+			</div>
+			<div class="item-bottom2">
+
+			</div>
+			<div class="item-bottom1">
+
+			</div>
+			<div class="item-bottom2">
+	
+			</div>
+
+		</div>
+
+	</div>
+	</div>
+	
+	
 </div>
 
 

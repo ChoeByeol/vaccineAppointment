@@ -337,7 +337,23 @@ public class ReservationDao {
 			con.close();
 			return reservationDto;
 			
-		}		
+		}
+		
+		public int getResNum(String memberId) throws Exception {
+			Connection con = JdbcUtils.connect();
+
+			String sql = "select count(*) from reservation where member_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberId);
+			ResultSet rs= ps.executeQuery();
+
+			rs.next();
+			int count = rs.getInt(1);
+
+			con.close();
+
+			return count;
+		}
 		
 		//?번 병원에 대한 ?번 백신 재고 리스트 = 리스트 합계로 해결 ^^
 		public List<ReservationVo> clinicVacCheck(int clinicNo, int vaccineNo) throws Exception {

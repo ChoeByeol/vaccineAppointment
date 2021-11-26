@@ -32,12 +32,13 @@ public class QnaDao {
 	public void write(QnaDto qnaDto) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
-		String sql = "insert into qna values(?, ?, ?, ?, sysdate, null, '답변대기')";
+		String sql = "insert into qna values(?, ?, ?, ?, sysdate, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qnaDto.getQnaNo());
 		ps.setString(2, qnaDto.getQnaWriter());
 		ps.setString(3, qnaDto.getQnaTitle());
 		ps.setString(4, qnaDto.getQnaContent());
+		ps.setString(5, qnaDto.getQnaAnswer());
 		ps.execute();
 		
 		con.close();
@@ -60,6 +61,7 @@ public class QnaDao {
 			qnaDto.setQnaTitle(rs.getString("qna_title"));
 			qnaDto.setQnaContent(rs.getString("qna_content"));
 			qnaDto.setQnaDate(rs.getDate("qna_date"));
+			qnaDto.setQnaAnswer(rs.getString("qna_answer"));
 		}
 		else {
 			qnaDto = null;
@@ -91,11 +93,10 @@ public class QnaDao {
 	public boolean answer(QnaDto qnaDto) throws Exception {
 		Connection con = JdbcUtils.connect();
 		
-		String sql = "update qna set qna_answer = ?, qna_state = ? where qna_no = ?";
+		String sql = "update qna set qna_answer = ? where qna_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, qnaDto.getQnaAnswer());
-		ps.setString(2, qnaDto.getQnaState());
-		ps.setInt(3, qnaDto.getQnaNo());
+		ps.setInt(2, qnaDto.getQnaNo());
 		int result = ps.executeUpdate();
 		
 		con.close();
@@ -137,7 +138,6 @@ public class QnaDao {
 			qnaDto.setQnaContent(rs.getString("qna_content"));
 			qnaDto.setQnaDate(rs.getDate("qna_date"));
 			qnaDto.setQnaAnswer(rs.getString("qna_answer"));
-			qnaDto.setQnaState(rs.getString("qna_state"));
 			
 			list.add(qnaDto);
 		}
@@ -169,7 +169,6 @@ public class QnaDao {
 			qnaDto.setQnaContent(rs.getString("qna_content"));
 			qnaDto.setQnaDate(rs.getDate("qna_date"));
 			qnaDto.setQnaAnswer(rs.getString("qna_answer"));
-			qnaDto.setQnaState(rs.getString("qna_state"));
 			
 			list.add(qnaDto);
 		}
@@ -233,7 +232,6 @@ public class QnaDao {
 			qnaDto.setQnaContent(rs.getString("qna_content"));
 			qnaDto.setQnaDate(rs.getDate("qna_date"));
 			qnaDto.setQnaAnswer(rs.getString("qna_answer"));
-			qnaDto.setQnaState(rs.getString("qna_state"));
 			
 			list.add(qnaDto);
 		}
@@ -244,4 +242,5 @@ public class QnaDao {
 		
 		
 	}
+	
 }

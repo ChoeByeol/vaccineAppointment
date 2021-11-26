@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:include page="/template/header.jsp"></jsp:include>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
@@ -68,7 +69,7 @@
         };
     });
 </script>
-
+<div class="container-1000 container-center">
 <form action="<%=request.getContextPath()%>/clinic/clinicInsert.txt" method="post">
 	<input type="text" name="clinicName" placeholder="병원 이름">
 	<br>
@@ -89,3 +90,5 @@
 	<br>
 	<input type="submit" value="병원 등록">
 </form>
+</div>
+<jsp:include page="/template/footer.jsp"></jsp:include>

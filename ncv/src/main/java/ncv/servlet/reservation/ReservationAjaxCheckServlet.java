@@ -15,12 +15,14 @@ public class ReservationAjaxCheckServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try{
+			//String memberId = req.getParameter("memberId");
+			String memberId = (String)req.getSession().getAttribute("ses");
 			String resName = req.getParameter("resName");
 			String resRrn = req.getParameter("resRrn");
 			String resPhone = req.getParameter("resPhone");
 			
 			MemberDao memberDao = new MemberDao();
-			int result = memberDao.checkMember(resName, resRrn, resPhone);
+			int result = memberDao.checkMember(memberId, resName, resRrn, resPhone);
 
 			if(result==1) {
 				//일치한다.

@@ -42,7 +42,11 @@ public class ReservationCheckServlet extends HttpServlet {
 			Shot2Dao shotDao = new Shot2Dao();
 			List<Shot2Vo> myShotList = shotDao.myShotList(memberId);
 
+<<<<<<< HEAD
 			System.out.println("나의 예약차수 : " + shot);
+=======
+			System.out.println(shot);
+>>>>>>> refs/remotes/origin/BYEOL
 //			System.out.println(myShotList.size());
 			
 			boolean check = memberId != null && myResList.size() == 0; // 미접종
@@ -62,7 +66,11 @@ public class ReservationCheckServlet extends HttpServlet {
 			} else if (check2 && !shotCheck) { // 접종내역 1차 / 2차 완료
 				resp.sendRedirect("reservation_resNo.jsp");
 //				System.out.println("접종1차, 2차완료");
+<<<<<<< HEAD
 			} else if (check2 && shotCheck) { // 접종내역 1차 완료 / 예약한 수가 접종 차수보다 클 때 
+=======
+			} else if (check1 && shotCheck) { // 접종내역 1차 완료 / 예약한 수가 접종 차수보다 클 때 
+>>>>>>> refs/remotes/origin/BYEOL
 				resp.sendRedirect("reservation_resNo.jsp");
 //				System.out.println("접종1차완료, 얀센");	
 			} else {
