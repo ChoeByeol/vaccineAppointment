@@ -24,8 +24,10 @@
 <%
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> canShotVaccineList = vaccineDao.listByAge(memberDto);
+
 Shot2Dao shotDao = new Shot2Dao();
 List<Shot2Vo> shotVaccineList = shotDao.myVaccineList(memberId);
+
 boolean shot2 = shotVaccineList.size()>0;
 %>
 
@@ -34,6 +36,7 @@ boolean shot2 = shotVaccineList.size()>0;
 			ReservationDao reservationDao = new ReservationDao();
 			List<ReservationVo> myResList = reservationDao.myResList(memberId);
 			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
+
 			boolean check = memberId != null && myResList.size() == 0; // 미접종
 %>
 
@@ -44,13 +47,16 @@ boolean shot2 = shotVaccineList.size()>0;
 	width: 25%;
 	padding: 0.5rem;
 }
+
 .float-container>.float-item-left:nth-child(2) {
 	width: 75%;
 	padding: 0.5rem;
 }
+
 .link-btn {
 	width: 100%;
 }
+
 tr {
 	display: table;
 	table-layout: fixed;
@@ -67,6 +73,7 @@ td {
 tbody {
 	border-bottom: 1px solid black;
 }
+
 .table.table-font {
 	font-size: 16px;
 }
@@ -104,6 +111,7 @@ tbody {
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
 }
+
 .btn:hover {
     color: #ffffff;
     background-color:rgb(53, 66, 68);
@@ -114,6 +122,7 @@ tbody {
     -webkit-transition: all 0.2s ease 0.2s;
     -moz-transition: all 0.2s ease 0.2s;
 }
+
 @-webkit-keyframes btn {
     from,
     to {
@@ -125,6 +134,7 @@ tbody {
         color: #000000;
     }
 }
+
 @-moz-keyframes btn {
     from,
     to {
@@ -161,6 +171,7 @@ tbody {
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
 }
+
 .btn_oppo:hover {
     color: #000000;
     background-color:#dee2e6;
@@ -171,6 +182,7 @@ tbody {
     -webkit-transition: all 0.2s ease 0.2s;
     -moz-transition: all 0.2s ease 0.2s;
 }
+
 @-webkit-keyframes btn_oppo {
     from,
     to {
@@ -182,6 +194,7 @@ tbody {
         color: #080808;
     }
 }
+
 @-moz-keyframes btn_oppo {
     from,
     to {
@@ -226,6 +239,7 @@ tbody {
                     success:function(resp){//NNNNN, YYYYYY 중 하나가 돌아옴.
                         if(resp=="YYYYY"){
                             alert("본인인증에 성공하였습니다.")
+
                             $(".page").eq(1).show();
                             $(".readonly-form").attr("readonly",true)
                             $(".form-btn-check").hide();

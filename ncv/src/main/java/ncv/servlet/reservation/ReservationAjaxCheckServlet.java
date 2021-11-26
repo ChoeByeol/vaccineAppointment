@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.MemberDao;
-import ncv.beans.MemberDto;
 
 @WebServlet(urlPatterns="/reservation/member_check.txt")
 public class ReservationAjaxCheckServlet extends HttpServlet{
@@ -23,7 +22,6 @@ public class ReservationAjaxCheckServlet extends HttpServlet{
 			String resPhone = req.getParameter("resPhone");
 			
 			MemberDao memberDao = new MemberDao();
-
 			int result = memberDao.checkMember(memberId, resName, resRrn, resPhone);
 
 			if(result==1) {

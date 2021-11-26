@@ -1,14 +1,12 @@
 <%@page import="ncv.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<jsp:include page="/template/header.jsp"></jsp:include>
-
+    pageEncoding="UTF-8"%>    
 <style>
 .label-text{
 	font-size:16px !important;
 }
 </style>
+<jsp:include page="/template/header.jsp"></jsp:include>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
         $(function(){

@@ -185,4 +185,25 @@ public class Shot2Dao {
 
 	    return myVaccineList;
 	}
+
+	//예약번호로 접종내역 조회하기
+	public boolean listByResNo(int resNo) throws Exception{
+		Connection con = JdbcUtils.connect();
+		
+		String sql = "select count(*) "
+				+ "from shot a "
+				+ "inner join reservation  b on a.resOk_no = b.res_no "
+				+ "where resOk_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, resNo);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		
+		int result = rs.getInt(1);
+		
+		con.close();
+		
+		return result > 0;
+	}
 }

@@ -19,13 +19,16 @@ List<Shot2Vo> list  = shotDao.list();
 	width: 25%;
 	padding: 0.5rem;
 }
+
 .float-container>.float-item-left:nth-child(2) {
 	width: 75%;
 	padding: 0.5rem;
 }
+
 .link-btn {
 	width: 100%;
 }
+
 tr {
 	display: table;
 	table-layout: fixed;
@@ -43,6 +46,7 @@ td {
 tbody {
 	border-bottom: 1px solid black;
 }
+
 .table.table-font {
 	font-size: 16px;
 }
@@ -94,6 +98,5 @@ tbody {
 	</div>
 
 </div>
-
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

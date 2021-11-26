@@ -2,103 +2,143 @@ package ncv.beans;
 
 public class ReservationVo {
 
-    private int resNo;
-    private String memberId;
-    private String clinicName;
-    private String vaccineName;
-    private int resShot;
-    private String resDate;
-    private String resTime;
-    private String resName;
-    private String resRrn;
-    private String resPhone;
+	private int resNo;
+	private String memberId;
+	private String clinicName;
+	private String vaccineName;
+	private int resShot;
+	private int vaccineNo;
+	private int clinicNo;
+	private int shotNo;
+	private String resDate;
+	private String resTime;
+	private String resName;
+	private String resRrn;
+	private String resPhone;
+	private int quantity;
+	
+	
+	public int getResShot() {
+		return resShot;
+	}
 
-    public ReservationVo() {
-        super();
-    }
+	public void setResShot(int resShot) {
+		this.resShot = resShot;
+	}
+	public int getClinicNo() {
+		return clinicNo;
+	}
 
-    public int getResNo() {
-        return resNo;
-    }
+	public void setClinicNo(int clinicNo) {
+		this.clinicNo = clinicNo;
+	}
+	public int getVaccineNo() {
+		return vaccineNo;
+	}
 
-    public void setResNo(int resNo) {
-        this.resNo = resNo;
-    }
+	public void setVaccineNo(int vaccineNo) {
+		this.vaccineNo = vaccineNo;
+	}
 
-    public String getMemberId() {
-        return memberId;
-    }
+	public int getQuantity() {
+		return quantity;
+	}
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
-    }
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
-    public String getClinicName() {
-        return clinicName;
-    }
+	public ReservationVo() {
+		super();
+	}
 
-    public void setClinicName(String clinicName) {
-        this.clinicName = clinicName;
-    }
+	public int getResNo() {
+		return resNo;
+	}
 
-    public String getVaccineName() {
-        return vaccineName;
-    }
+	public void setResNo(int resNo) {
+		this.resNo = resNo;
+	}
 
-    public void setVaccineName(String vaccineName) {
-        this.vaccineName = vaccineName;
-    }
+	public String getMemberId() {
+		return memberId;
+	}
 
-    public int getResShot() {
-        return resShot;
-    }
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
 
-    public void setResShot(int resShot) {
-        this.resShot = resShot;
-    }
+	public String getClinicName() {
+		return clinicName;
+	}
 
-    public String getResDate() {
-        return resDate;
-    }
+	public void setClinicName(String clinicName) {
+		this.clinicName = clinicName;
+	}
 
-    public void setResDate(String resDate) {
-        this.resDate = resDate;
-    }
+	public String getVaccineName() {
+		return vaccineName;
+	}
 
-    public String getResDateDay() {
-        return resDate.substring(0, 10);
-    }
+	public void setVaccineName(String vaccineName) {
+		this.vaccineName = vaccineName;
+	}
 
-    public String getResTime() {
-        return resTime;
-    }
+	public int getShotNo() {
+		return shotNo;
+	}
 
-    public void setResTime(String resTime) {
-        this.resTime = resTime;
-    }
+	public void setShotNo(int shotNo) {
+		this.shotNo = shotNo;
+	}
 
-    public String getResName() {
-        return resName;
-    }
+	public String getResDate() {
+		return resDate;
+	}
 
-    public void setResName(String resName) {
-        this.resName = resName;
-    }
+	public void setResDate(String resDate) {
+		this.resDate = resDate;
+	}
+	
+	public String getResDateDay() {
+		return resDate.substring(0, 10);
+	}	
 
-    public String getResRrn() {
-        return resRrn;
-    }
+	public String getResTime() {
+		return resTime;
+	}
 
-    public void setResRrn(String resRrn) {
-        this.resRrn = resRrn;
-    }
+	public void setResTime(String resTime) {
+		this.resTime = resTime;
+	}
 
-    public String getResPhone() {
-        return resPhone;
-    }
+	public String getResName() {
+		return resName;
+	}
 
-    public void setResPhone(String resPhone) {
-        this.resPhone = resPhone;
-    }
+	public void setResName(String resName) {
+		this.resName = resName;
+	}
 
+	public String getResRrn() {
+		return resRrn;
+	}
+
+	public void setResRrn(String resRrn) {
+		this.resRrn = resRrn;
+	}
+
+	public String getResPhone() {
+		return resPhone;
+	}
+
+	public void setResPhone(String resPhone) {
+		this.resPhone = resPhone;
+	}
+
+	@Override
+	public String toString() {
+		return "ReservationVo [vaccineNo=" + vaccineNo + ", clinicNo=" + clinicNo + ", quantity=" + quantity + "]";
+	}	
 }
+

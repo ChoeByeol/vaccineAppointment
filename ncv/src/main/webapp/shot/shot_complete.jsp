@@ -13,6 +13,7 @@
 int resNo = Integer.parseInt(request.getParameter("resNo"));
 ReservationDao reservationDao = new ReservationDao();
 ReservationVo reservationVo = reservationDao.get(resNo);
+
 ReservationDto reservationDto = reservationDao.editGet(resNo);
 %>
 
@@ -37,9 +38,11 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 .flex-container>.reply-write-wrapper {
 	width: 80%;
 }
+
 .flex-container>.reply-send-wrapper {
 	flex-grow: 1;
 }
+
 .flex-container>.reply-send-wrapper>.form-btn, .flex-container>.reply-send-wrapper>.form-link-btn
 	{
 	width: 100%;
@@ -130,7 +133,5 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 			<a href="<%=request.getContextPath()%>/reservation/cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="cancel-link">예약취소</a>
 		</div>
 </div>
-
-
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

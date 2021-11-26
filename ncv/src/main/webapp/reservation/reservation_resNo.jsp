@@ -8,6 +8,4 @@
 <h3><a class="link-btn" href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></h3>
 <h3><a class="link-btn" href="<%=request.getContextPath()%>">메인 페이지로</a></h3>
 
-
-
 <jsp:include page="/template/footer.jsp"></jsp:include>
