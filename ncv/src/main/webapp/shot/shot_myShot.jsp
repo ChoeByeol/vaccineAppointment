@@ -52,10 +52,12 @@
 	.page-title{
 		color:rgb(26, 44, 48);
 	}
+	.warning-img{
+		width:70%;
+	}
 </style>
-
+<%if(myShotList.size() > 0) {%>
 <div class="container-900 container-center">
-	
 	<div class="row">
 		<div class="page-title">
 		<h2 class="page-title">접종 결과가 조회되었습니다!</h2>
@@ -88,7 +90,6 @@
 				</table>
 			</div>
 			<br><br><br>
-
 		<!-- 2단 -->
 			<!-- 예약 정보 -->
 			<div class="row">
@@ -118,5 +119,7 @@
 			</div>
 		</div>
 	</div>
-
+<%} else {%>
+		<img class="warning-img" src="<%=request.getContextPath()%>/resource/image/not_shot.png">
+<%} %>
  <jsp:include page="/template/footer.jsp"></jsp:include>

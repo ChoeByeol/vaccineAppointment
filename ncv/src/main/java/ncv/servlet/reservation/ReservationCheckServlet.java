@@ -62,7 +62,7 @@ public class ReservationCheckServlet extends HttpServlet {
 			} else if (check2 && !shotCheck) { // 접종내역 1차 / 2차 완료
 				resp.sendRedirect("reservation_resNo.jsp");
 //				System.out.println("접종1차, 2차완료");
-			} else if (check1 && shotCheck) { // 접종내역 1차 완료 / 예약한 수가 접종 차수보다 클 때 
+			} else if (check2 && shotCheck) { // 접종내역 1차 완료 / 예약한 수가 접종 차수보다 클 때 
 				resp.sendRedirect("reservation_resNo.jsp");
 //				System.out.println("접종1차완료, 얀센");	
 			} else {
