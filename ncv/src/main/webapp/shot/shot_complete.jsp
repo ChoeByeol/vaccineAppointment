@@ -13,7 +13,6 @@
 int resNo = Integer.parseInt(request.getParameter("resNo"));
 ReservationDao reservationDao = new ReservationDao();
 ReservationVo reservationVo = reservationDao.get(resNo);
-
 ReservationDto reservationDto = reservationDao.editGet(resNo);
 %>
 
@@ -38,11 +37,9 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 .flex-container>.reply-write-wrapper {
 	width: 80%;
 }
-
 .flex-container>.reply-send-wrapper {
 	flex-grow: 1;
 }
-
 .flex-container>.reply-send-wrapper>.form-btn, .flex-container>.reply-send-wrapper>.form-link-btn
 	{
 	width: 100%;

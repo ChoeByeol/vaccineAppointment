@@ -80,6 +80,7 @@
                         <li>이용약관을 모두 동의합니다.</li>
                         <li class="checkAllBtn">
                             <input type="checkbox" oninput="allAgree();" class="check-all" name="AllAgree" required>
+                            <!-- <div class="notice"></div> -->
                         </li>
                     </ul>
                     <ul>
@@ -141,6 +142,4 @@
         </form>
 
 
-
 <jsp:include page="/template/footer.jsp"></jsp:include>
-

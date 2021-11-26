@@ -1,5 +1,4 @@
-<%@page import="ncv.beans.Shot2Vo"%>
-<%@page import="ncv.beans.Shot2Dao"%>
+
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.ReservationDao"%>
 <%@page import="java.util.List"%>
@@ -11,6 +10,15 @@
 ReservationDao reservationDao = new ReservationDao();
 List<ReservationVo> reservationList  = reservationDao.list2();
 %>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function() {
+		$("#confirm-link").click(function() {
+			return confirm("정말 취소하시겠습니까?");
+		});
+	});
+</script>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -85,6 +93,26 @@ List<ReservationVo> reservationList  = reservationDao.list2();
         background-color: #ffffff;
         color: #000000;
     }
+
+tr {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	border-top: 1px solid black;
+}
+td {	
+	border-left : 1px solid black;
+	border-right : 1px solid black;
+	vertical-align: middle;
+	word-wrap: break-word;
+    word-break: keep-all;
+}
+tbody {
+	border-bottom: 1px solid black;
+}
+
+.table.table-font {
+	font-size: 16px;
 }
 .no{
 	width:20px;
@@ -167,7 +195,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 					<td class="dateDay"><%=reservationVo.getResDateDay()%></td>
 					<td class="time"><%=reservationVo.getResTime()%></td>
 					<td class="detailNo"><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="btn button_base">상세내역</a></td>
-
 				</tr>
 				<%} %>
 			</tbody>

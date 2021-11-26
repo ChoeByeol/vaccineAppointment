@@ -123,7 +123,7 @@
             }
         }
         function rrnCheck(){
-            var regex = /^[0-9]{6}[0-9]{7}$/;
+            var regex = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-4][0-9]{6}$/;
             var input = document.querySelector("input[name=memberRrn]");
             var notice = input.nextElementSibling;
 

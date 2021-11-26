@@ -23,6 +23,7 @@ public class ReservationAjaxCheckServlet extends HttpServlet{
 			String resPhone = req.getParameter("resPhone");
 			
 			MemberDao memberDao = new MemberDao();
+
 			int result = memberDao.checkMember(memberId, resName, resRrn, resPhone);
 
 			if(result==1) {

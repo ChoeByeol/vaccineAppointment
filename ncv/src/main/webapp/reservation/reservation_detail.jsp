@@ -20,13 +20,11 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 	$(function() {
-		$("#cancel-link").click(function() {
+		$("#confirm-link").click(function() {
 			return confirm("정말 취소하시겠습니까?");
 		});
 	});
-	
 </script>
-
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
@@ -101,7 +99,7 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 		<div class="row right">
 						<a href="reservation_list.jsp" class="link-btn">목록보기</a>
 						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="link-btn">변경</a>
-						<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="cancel-link-link">예약취소</a>
+						<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="confirm-link">예약취소</a>
 		</div>
 
 	</div>

@@ -55,8 +55,8 @@
 }
 .form-input:focus{
 	border:none;
-    outline:2px solid rgb(49, 107, 152);
-    border-radius:2px;
+    outline:2px solid rgb(0, 50, 100);
+    border-radius: 2px;
 }
 .form-btn {
     color:white;
