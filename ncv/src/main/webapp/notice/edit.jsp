@@ -3,75 +3,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<html>
-
 <%
 	int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 %>
-
 
 <%
 	NoticeDao noticeDao = new NoticeDao();
 	NoticeDto noticeDto = noticeDao.get(noticeNo);
 %>
 
-
-
-
+<%-- 출력 --%>
 <jsp:include page="/template/header.jsp"></jsp:include>
+<style>
+</style>
+<form action="edit.txt" method="post" enctype="multipart/form-data>">
 
-<head>
-<h2>공지사항 수정</h2>
-</head>
 
+<div class="container-800 container-center">
 
-<body>
+ <div class="row center form-title-font">공지사항 수정하기</div>
 
-    <br>
-    <br>
-   <form action="edit.txt" method="post">
- 
- <input type="hidden" name="noticeNo" value="<%=noticeDto.getNoticeNo()%>">
- 
-    <table width="700" border="3" bordercolor="lightgray" align="center">
-            <tr>
-            <td>
-                제 목
-            </td>
-            <td>
-               <td><input type="text" name="noticeTitle" required value="<%=noticeDto.getNoticeTitle()%>"></td>
-            </td>        
-        </tr>
-        <tr>
-            <td>
-                내 용
-            </td>
-            <td>
-                <textarea name="noticeContent" required cols="80" rows="20"><%=noticeDto.getNoticeContent()%></textarea>       
-            </td>        
-        </tr>
+   <!-- 제목 -->
+   <div class="row center form-title-font">
 
- 
+   </div>
+     <input type="hidden" name="noticeNo" value="<%=noticeDto.getNoticeNo()%>">
+   <div class="row">
+      <h3>제목</h3>
+      <input type="text" name="noticeTitle" required value="<%=noticeDto.getNoticeTitle()%>" class="form-input-title form-input"  >
+   </div>
 
-            <tr>
-                <td>
-                    첨부파일
-                </td>
-                <td>
-                    <input type="file" name="notice_file"/>
-                </td>    
-            </tr>
-        
-        <tr align="center" valign="middle">
-            <td colspan="5">
-                <input type="reset" value="작성취소" >
-                <input type="submit" value="수정" >
-                <input type="button" value="목록" onClick="location.href='http://localhost:8061/ncv/notice/list.jsp'">            
-            </td>
-        </tr>
-    </table>    
-    </form>
-    
-</body>
+   <div class="row">
+      <h3>내용</h3>
+      <textarea name="noticeContent" required cols="80" rows="20"class="form-input-board form-input"><%=noticeDto.getNoticeContent()%></textarea>
+   </div>
+
+   <div class="row">
+      <h4><label class="form-block">첨부파일</label></h4>
+      <input type="file" name="attach" class="form-btn form-file-btn">
+   </div>
+
+   <div class="row right">
+      <input type="submit" value="등록" class="form-btn form-inline form-notice-btn">
+   </div>
+
+</div>
+
+</form>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>
-</html>
