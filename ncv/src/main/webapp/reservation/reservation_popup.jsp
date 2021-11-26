@@ -40,41 +40,64 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 </style> 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
- 	$(function(){
-  
-	  	$("#sido").change(function(){
-	   	  		
-		   	var param = "clinicSido=" + $("#sido").val();
-		   
-		   	$.ajax({
-		    	url : "http://localhost:8080/ncv/reservation/ajax_sigungu_list.jsp",
-		    	data : param,
-		    	type : "get",
-		    	success : function(data){
+$(function(){
+	  
+  	$("#sido").change(function(){
+   	  		
+	   	var param = "clinicSido=" + $("#sido").val();
+	   
+	   	$.ajax({
+	    	url : "http://localhost:8080/ncv/reservation/ajax_sigungu_list.jsp",
+	    	data : param,
+	    	type : "get",
+	    		success : function(data){
+		    		//console.log(data);
+		    		console.log("성공");
 		     		$("#sigungu").html(data);
-		    	}
-		   	});
-		   	
+		     		$("#bname").html("<option value=\"\">읍면동</option>");
+		    		},
+	       		error:function(err){//통신이 실패했다.
+	       			console.log("성공");
+					alert("다시 시도해 주세요.");
+	        	}
+	   		});
 		});
-	  	
- 	  	$("#sigungu").change(function(){
- 	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
- 	  		
-		   	$.ajax({
-		    	url : "http://localhost:8080/ncv/reservation/ajax_bname_list.jsp",
-		    	data : param,
-		    	type : "get",
-		    	success : function(data){
-		     		$("#bname").html(data);
-		    	}
-		   	})
+  	
+	  	$("#sigungu").change(function(){
+	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
 	  		
+	   	$.ajax({
+	    	url : "http://localhost:8080/ncv/reservation/ajax_bname_list.jsp",
+	    	data : param,
+	    	type : "get",
+		    	success : function(data){
+		    		//console.log(data);
+		    		console.log("성공");
+		     		$("#bname").html(data);
+		    	},
+	       		error:function(err){//통신이 실패했다.
+	       			console.log("성공");
+					alert("다시 시도해 주세요.");
+	        	}
+	   		})
+  		});
+	  	
+	  	$("#close-btn").click(function(){
+	  		window.close();
 	  	});
- 	  	
- 	  	$("#close-btn").click(function(){
- 	  		window.close();
- 	  	});
-	});
+	  	
+	  	//주소를 다 선택안하면 검색이 안되게
+	  	$(".find-btn").click(function(){
+	  		if($("#bname").val() == ""){
+	  			alert("똑바로 고르셈");
+	  			return false
+	  		}
+	  		else{
+	  			return true;
+	  		}
+	  	});
+	  	
+});
 </script>
 
 </head>
@@ -92,10 +115,10 @@ List<ClinicDto> list = clinicDao.searchByAddress(clinicSido, clinicSigungu, clin
 			<option value="">시군구</option>
 		</select>
 		
-		<select name="clinicBname" id="bname" class="form-input" required>
+		<select name="clinicBname" id="bname" class="form-input">
 			<option value="">읍면동</option>
 		</select>
-		<input type="submit" value="의료기관 찾기" class="form-btn form-inline">
+		<input type="submit" value="의료기관 찾기" class="form-btn form-inline find-btn">
 	</div>
 </form>
 
