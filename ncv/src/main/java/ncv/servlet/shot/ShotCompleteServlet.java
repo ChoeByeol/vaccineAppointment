@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.Shot2Dao;
 import ncv.beans.Shot2Dto;
+import ncv.beans.StockDao;
 
 
 @WebServlet(urlPatterns = "/shot/complete.txt")
@@ -42,6 +43,12 @@ public class ShotCompleteServlet extends HttpServlet {
 				int shotNo = shot2Dao.getSequence();
 				shotDto.setShotNo(shotNo);
 				shot2Dao.shotComplete(shotDto);
+				
+				//접종이 완료되면 병원의 백신 출고가 1 증가
+				StockDao stockDao = new StockDao();
+				int vaccineNo = Integer.parseInt(req.getParameter("vaccineNo"));
+				int clinicNo = Integer.parseInt(req.getParameter("clinicNo"));
+				stockDao.stockMinus(vaccineNo, clinicNo);
 				
 				System.out.println("접종완료 성공");
 				resp.sendRedirect("shot_list.jsp");

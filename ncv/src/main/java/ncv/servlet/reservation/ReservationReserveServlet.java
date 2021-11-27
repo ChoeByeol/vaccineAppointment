@@ -36,10 +36,10 @@ public class ReservationReserveServlet extends HttpServlet {
             //입고 개수랑 예약 정보 개수랑 비교
             //병원의 특정 백신 입고 총 개수
             StockDao stockDao = new StockDao();
-            int count = stockDao.getStockInTotalQty(reservationDto.getClinicNo(), reservationDto.getVaccineNo());//입고 총 개수
-            
+            int inCount = stockDao.getStockInTotalQty(reservationDto.getVaccineNo(), reservationDto.getClinicNo());//입고 총 개수
+            int totalCount = stockDao.getStockTotalQty(reservationDto.getVaccineNo(), reservationDto.getClinicNo());//재고
             //stockInTotal = stock4Vo.getStockInTotalQty();
-            System.out.println(count);
+            System.out.println(inCount);
             //Integer stockInTotal = stock4Vo.getStockInTotalQty();
             
             //예약한 개수(접종 완료 X)
@@ -47,10 +47,10 @@ public class ReservationReserveServlet extends HttpServlet {
             int countRes = 0;
             countRes = reservationDao.countRes(reservationDto.getVaccineNo(), reservationDto.getClinicNo());
             
-            if(count == countRes || count == 0) {
+            if(inCount <= countRes && totalCount <= countRes || inCount == 0 || totalCount == 0) {
                 resp.sendRedirect("reservation_fail.jsp");
             }
-            else if(count > countRes){
+            else if(inCount > countRes && totalCount > countRes){
                 int resNo = reservationDao.getSequence();
                 reservationDto.setResNo(resNo);
                 reservationDao.reserve(reservationDto); //예약

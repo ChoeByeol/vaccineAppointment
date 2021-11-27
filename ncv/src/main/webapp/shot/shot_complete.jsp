@@ -63,6 +63,8 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 		<div>
 	<form action="../shot/complete.txt" method="post">
 			<input type="hidden" name="resOkNo" value = "<%=reservationDto.getResNo()%>">
+			<input type="hidden" name="vaccineNo" value = "<%=reservationDto.getVaccineNo()%>">
+			<input type="hidden" name="clinicNo" value = "<%=reservationDto.getClinicNo()%>">
 			<table class="table table-border table-hover">
 			
 				<tr>
