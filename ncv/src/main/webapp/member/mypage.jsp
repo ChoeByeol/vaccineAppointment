@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@page import="java.util.List"%>
 <%@page import="ncv.beans.MemberDto"%>
 <%@page import="ncv.beans.MemberDao"%>

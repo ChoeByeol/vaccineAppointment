@@ -131,7 +131,7 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 </div>
 
 			<div class="row right">
-			<a href="reservation_list.jsp" class="link-btn">목록보기</a>
+			<a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp" class="link-btn">목록보기</a>
 			<a href="<%=request.getContextPath()%>/reservation/cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="cancel-link">예약취소</a>
 		</div>
 </div>
