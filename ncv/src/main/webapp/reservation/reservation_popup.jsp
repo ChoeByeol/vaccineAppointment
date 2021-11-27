@@ -47,7 +47,7 @@ $(function(){
 	   	var param = "clinicSido=" + $("#sido").val();
 	   
 	   	$.ajax({
-	    	url : "http://localhost:8080/ncv/reservation/ajax_sigungu_list.jsp",
+	    	url : "${pageContext.request.contextPath}/reservation/ajax_sigungu_list.jsp",
 	    	data : param,
 	    	type : "get",
 	    		success : function(data){
@@ -67,7 +67,7 @@ $(function(){
 	  		var param = "clinicSido="+$("#sido").val()+"&clinicSigungu=" + $(this).val();
 	  		
 	   	$.ajax({
-	    	url : "http://localhost:8080/ncv/reservation/ajax_bname_list.jsp",
+	    	url : "${pageContext.request.contextPath}/reservation/ajax_bname_list.jsp",
 	    	data : param,
 	    	type : "get",
 		    	success : function(data){
