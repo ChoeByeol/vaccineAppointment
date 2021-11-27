@@ -80,11 +80,11 @@
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">주소</label>
-		 		<input type="text" class="form-input" name="memberAddress" required value="<%=memberDto.getMemberAddress()%>">
+		 		<input type="text" class="form-input" name="memberAddress" value="<%=memberDto.getMemberAddress()%>">
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">상세주소</label>
-		 		<input type="text" class="form-input" name="memberDetailAddress" required value="<%=memberDto.getMemberDetailAddress()%>">
+		 		<input type="text" class="form-input" name="memberDetailAddress" value="<%=memberDto.getMemberDetailAddress()%>">
 		 </div>
 		 <div class="row">
 				<input type="submit" value="수정" class="form-btn">

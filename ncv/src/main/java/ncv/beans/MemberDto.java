@@ -29,13 +29,23 @@ public class MemberDto {
         super();
     }
     public String getMemberDetailAddress() {
-		return memberDetailAddress;
+		if(memberDetailAddress == null) {
+			return "";
+		}
+		else {
+			return memberDetailAddress;
+		}
 	}
 	public void setMemberDetailAddress(String memberDetailAddress) {
 		this.memberDetailAddress = memberDetailAddress;
 	} 
 	public String getMemberPostcode() {
-		return memberPostcode;
+		if(memberPostcode == null) {
+			return "";
+		}
+		else {
+			return memberPostcode;
+		}
 	}
 	public void setMemberPostcode(String memberPostcode) {
 		this.memberPostcode = memberPostcode;
@@ -65,7 +75,12 @@ public class MemberDto {
         this.memberGender = memberGender;
     }
     public String getMemberAddress() {
-        return memberAddress;
+		if(memberAddress == null) {
+			return "";
+		}
+		else {
+			return memberAddress;
+		}
     }
     public void setMemberAddress(String memberAddress) {
         this.memberAddress = memberAddress;
