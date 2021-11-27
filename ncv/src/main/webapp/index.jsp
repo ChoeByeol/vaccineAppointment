@@ -214,6 +214,7 @@
 		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/iui.jpg">
 <!-- 		</a> -->
 	</div>
+</div>
 
 	<div class="title">
 		<div class="slide">
@@ -234,7 +235,7 @@
 			
 		</div>
 	</div>
-</div>
+
 
 <!-- 	<div class="mid-area"> -->
 <!-- 	<div class="title"> -->
