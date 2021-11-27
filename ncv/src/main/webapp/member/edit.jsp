@@ -2,10 +2,6 @@
 <%@page import="ncv.beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<!-- 주소 검색 모듈 -->
-<script src="<%=request.getContextPath()%>/resource/js/member_address.js"></script>
     <style>
         .notice {
             color:red;
@@ -38,6 +34,10 @@
 			font-family:Apple;
 		}
     </style>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<!-- 주소 검색 모듈 -->
+<script src="<%=request.getContextPath()%>/resource/js/member_address.js"></script>
 
 <%-- 입력 : memberId (session) --%>
 <%
@@ -80,7 +80,7 @@
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">주소</label>
-		 		<input type="text" class="form-input" name="memberAddress" value="<%=memberDto.getMemberAddress()%>">
+		 		<input type="text" class="form-input" name="memberAddress" value="<%=memberDto.getMemberAddress()%>" readonly>
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">상세주소</label>

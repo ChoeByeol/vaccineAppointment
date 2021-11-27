@@ -246,13 +246,13 @@
 		 	</div>
 		 	 <div class="row">
 		 		<label class="label-text">우편번호</label><br>
-		 		<input type="text" name="memberPostcode" placeholder="우편번호"  readonly class="address-input">
+		 		<input type="text" name="memberPostcode" placeholder="우편번호"  readonly class="address-input" readonly>
 		 		<button type="button" class="find-address-btn form-btn form-inline">주소 찾기</button>
 		 		<div class="notice"></div>
 		 	</div>
 		  	 <div class="row">
 		 		<label class="label-text">주소</label>
-		 		<input type="text" name="memberAddress" placeholder="주소" readonly class="form-input">
+		 		<input type="text" name="memberAddress" placeholder="주소" readonly class="form-input" readonly>
 		 		<div class="notice"></div>
 		 	</div>
 		  	 <div class="row">
