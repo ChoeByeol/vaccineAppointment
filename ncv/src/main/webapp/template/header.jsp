@@ -114,7 +114,7 @@
 		</li>
 		<%}else{%>
 			<li><a href="<%=request.getContextPath()%>/index.jsp">홈으로</a></li>
-			<li><a href="#">공지사항</a></li>
+			<li><a href="<%=request.getContextPath()%>/notice/list.jsp">공지사항</a></li>
 			<li class="flex-right">
 				<a href="<%=request.getContextPath()%>/member/login.jsp">로그인</a>
 				<ul>

@@ -43,4 +43,5 @@
 	<h4 class="error">정보 수정 오류!</h4>
 <%} %>
 </div>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

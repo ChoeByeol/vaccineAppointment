@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter(urlPatterns="/member/join.jsp")
 
 public class AgreeFilter implements Filter{
-	@Override
+	@Override 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
@@ -26,9 +26,9 @@ public class AgreeFilter implements Filter{
 		
 		if(agree) {
 			chain.doFilter(request, response);
-		}
+		} 
 		else {
-			resp.sendError(401);
+			resp.sendRedirect(req.getContextPath()+"/member/agree.jsp");
 		}
 	}
 }
