@@ -14,7 +14,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import ncv.beans.QnaDao;
 import ncv.beans.QnaDto;
-import ncv.beans.QnaFileDao;
+import ncv.beans.QnaFileDao; 
 import ncv.beans.QnaFileDto;
 
 @WebServlet(urlPatterns = "/qna/write.txt")

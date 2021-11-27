@@ -74,5 +74,4 @@ List<QnaDto> mylist = qnaDao.mylist(qnaWriter);
 	</div>
 	
 </div>
-
 <jsp:include page="/template/footer.jsp"></jsp:include>

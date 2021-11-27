@@ -58,6 +58,8 @@
     outline:2px solid rgb(49, 107, 152);
     border-radius:2px;
 }
+
+
 .form-btn {
     color:white;
     background-color: rgb(26,44,48);
@@ -72,7 +74,7 @@
     font-weight: bold;
 }
 .form-input-title {
-   	margin-top: 10px;
+   margin-top: 10px;
     margin-bottom: 20px;
     width: 100%;
     font-size: 15px;
@@ -112,6 +114,7 @@
 .form-inline{
     width:auto;
 }
+
 .address-input{
     width:392.95px;
     font-size: 20px;
@@ -144,6 +147,13 @@
 
 .right {
     text-align: right !important;
+}
+
+.float-right{
+	float:right;
+}
+.float-left{
+	float:left;
 }
 
 /*

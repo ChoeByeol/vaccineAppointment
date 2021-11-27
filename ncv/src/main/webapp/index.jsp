@@ -83,7 +83,7 @@
 
 
 .aBtn1 {
-	width: 283px;
+	width: 25%;
 	height: 40px;
 	background-color: #f8585b;
 	border: none;
@@ -94,7 +94,7 @@
 }
 
 .aBtn2 {
-	width: 283px;
+	width: 25%;
 	height: 40px;
 	background-color: #21a089;
 	border: none;
@@ -105,7 +105,7 @@
 }
 
 .aBtn3 {
-	width: 283px;
+	width: 25%;
 	height: 40px;
 	background-color: #3b92cd;
 	border: none;
@@ -115,15 +115,37 @@
 	cursor: pointer;
 }
 
-
-.aSpan {
+.aBtn4 {
 	width: 25%;
-	font-size: 15px;
 	height: 40px;
-	vertical-align: middle;
-	display: table-cell;
-	text-align: center;
+	background-color: #765dc2;
+	border: none;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
 }
+ .aBtn5{ 
+	width: 100%; 
+	height: 40%; 
+	font-size: 17px;
+	text-align:center;
+	background-color: #ffe3c8; 
+	border: none; 
+	color: black;
+ 	text-decoration: none; 
+ 	display: inline-block; 
+/*  	cursor: pointer; */
+ 	} 
+
+
+ .aSpan { 
+	width: 25%; 
+	font-size: 15px; 
+	height: 40px; 
+ 	vertical-align: middle; 
+ 	text-align: center; 
+ } 
 
 
 
@@ -159,7 +181,6 @@
     height: 200px;
     box-sizing: border-box;
   	border: 1px solid black;
-  	margin-bottom: 20px;
 }
 
 .item-bottom2 {
@@ -170,7 +191,6 @@
     height: 200px;
     box-sizing: border-box;
   	border: 1px solid black;
-  	margin-bottom: 20px;
 }
 </style>
 
@@ -181,80 +201,85 @@
 
 	<div class="main-area">
 	<div class="mainSlide">
-		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co.jpg">
-		</a>
-		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co1.jpg">
-		</a>
-		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co2.jpg">
-		</a>
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/0002.jpg">
+<!-- 		</a> -->
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/IU02.png">
+<!-- 		</a> -->
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/6.jpg">
+<!-- 		</a> -->
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/iui.jpg">
+<!-- 		</a> -->
 	</div>
+</div>
 
 	<div class="title">
 		<div class="slide">
-			<a href="#" class="aBtn1">
-			<span class="aSpan">코로나바이러스감염증-19</span>
+		<div class="flex_container"></div>
+		<div class="aBtn5">백신에 대해 궁금하다면??</div>		
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=1" class="aBtn1">
+			<span class="aSpan">화이자</span>
 			</a>
-			<a href="#" class="aBtn2">
-			<span class="aSpan">코로나19 예방접종</span>
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=2"  class="aBtn2">
+			<span class="aSpan">모더나</span>
 			</a>
-			<a href="#" class="aBtn3">
-			<span class="aSpan">코로나19 예방접종사전예약</span>
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=3"  class="aBtn3">
+			<span class="aSpan">아스트라제네카</span>
 			</a>
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=4"  class="aBtn4">
+			<span class="aSpan">얀센</span>
+			</a>
+			
 		</div>
 	</div>
-</div>
 
-	<div class="mid-area">
-	<div class="title">
-		<div class="box-select">
-			<div class="item">
-				<span>예약정보</span>
-			</div>
-			<div class="item">
-				<span>나의접종내역</span>
-			</div>
-			<div class="item">
-				<span>1:1문의</span>
-			</div>
-			<div class="item">
-				<span>마이페이지</span>
-			</div>
 
-		</div>
+<!-- 	<div class="mid-area"> -->
+<!-- 	<div class="title"> -->
+<!-- 		<div class="box-select"> -->
+<!-- 			<div class="item"> -->
 
-	</div>
-	</div>
+<!-- 			</div> -->
+<!-- 			<div class="item"> -->
+
+<!-- 			</div> -->
+<!-- 			<div class="item"> -->
+
+<!-- 			</div> -->
+<!-- 			<div class="item"> -->
+	
+<!-- 			</div> -->
+
+<!-- 		</div> -->
+
+<!-- 	</div> -->
+<!-- 	</div> -->
 	
 
-	<div class="bottom-area">
-	<div class="title">
-		<div class="box-select">
-			<div class="item-bottom1">
-				공지사항
-			</div>
-			<div class="item-bottom2">
-				----------
-			</div>
-			<div class="item-bottom1">
-				백신정보
-			</div>
-			<div class="item-bottom2">
-					-----------
-			</div>
+<!-- 	<div class="bottom-area"> -->
+<!-- 	<div class="title"> -->
+<!-- 		<div class="box-select"> -->
+<!-- 			<div class="item-bottom1"> -->
 
-		</div>
+<!-- 			</div> -->
+<!-- 			<div class="item-bottom2"> -->
 
-	</div>
-	</div>
+<!-- 			</div> -->
+<!-- 			<div class="item-bottom1"> -->
+
+<!-- 			</div> -->
+<!-- 			<div class="item-bottom2"> -->
+	
+<!-- 			</div> -->
+
+<!-- 		</div> -->
+
+<!-- 	</div> -->
+<!-- 	</div> -->
 	
 	
-</div>
-
-
-
-<jsp:include page="/template/footer.jsp"></jsp:include>
- 
-
+<!-- </div> -->
+>>>>>>> refs/remotes/origin/Jane

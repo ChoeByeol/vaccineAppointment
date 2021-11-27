@@ -15,8 +15,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <style>
-
-
 .sub_news,.sub_news th,.sub_news td{border:0}
 .sub_news a{color:#383838;text-decoration:none}
 .sub_news{width:100%;border-bottom:1px solid #999;color:#666;font-size:14px;table-layout:fixed}
@@ -24,7 +22,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
 .sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
 .sub_news .no,.sub_news .memberid,.sub_news .name,.sub_news .rrn,.sub_news .phmoe,.sub_news .vacineName,.sub_news .shot,.sub_news .clinicname,.sub_news .nodateday,.sub_news .time,.sub_news .detailno{padding:0;font-family:Tahoma;font-size:14px;line-height:normal}
-
 <style>
  .button_base {
     position:absolute;
@@ -51,7 +48,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
 }
-
 .btn:hover {
     color: #ffffff;
     background-color:rgb(53, 66, 68);
@@ -62,7 +58,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     -webkit-transition: all 0.2s ease 0.2s;
     -moz-transition: all 0.2s ease 0.2s;
 }
-
 @-webkit-keyframes btn {
     from,
     to {
@@ -74,7 +69,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
         color: #000000;
     }
 }
-
 @-moz-keyframes btn {
     from,
     to {
@@ -89,7 +83,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 .no{
 	width:20px;
 }
-
 .memberId{
 	width:90px;
 }

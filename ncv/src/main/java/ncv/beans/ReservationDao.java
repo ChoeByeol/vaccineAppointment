@@ -297,7 +297,7 @@ public class ReservationDao {
 			con.close();
 			return reservationDto;
 			
-		}
+		}		
 		
 		public int getResNum(String memberId) throws Exception {
 			Connection con = JdbcUtils.connect();
@@ -314,7 +314,6 @@ public class ReservationDao {
 
 			return count;
 		}
-		
 		//예약하기 체크용 예약내역 확인 기능
 //		public List<ReservationDto> resCheckList(String memberId) throws Exception {
 //			Connection con = JdbcUtils.connect();
