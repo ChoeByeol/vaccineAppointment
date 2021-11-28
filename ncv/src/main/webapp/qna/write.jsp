@@ -9,8 +9,6 @@
 <div class="container-800 container-center">
  <div class="row center form-title-font">1:1 문의</div>
    <!-- 제목 -->
-   <div class="row center form-title-font">
-   </div>
    <div class="row">
       <h3>제목</h3>
       <input type="text" name="qnaTitle" required class="form-input-title form-input" >
