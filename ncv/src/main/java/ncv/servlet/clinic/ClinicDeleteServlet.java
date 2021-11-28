@@ -1,6 +1,7 @@
 package ncv.servlet.clinic;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.ClinicDao;
 
-@WebServlet(urlPatterns="/clinic/delete.txt")
+@WebServlet(urlPatterns="/admin/clinic/delete.txt")
 public class ClinicDeleteServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +22,10 @@ public class ClinicDeleteServlet extends HttpServlet{
 			boolean success = clinicDao.delete(clinicNo);
 
 			if(success) {
-				resp.sendRedirect("list.jsp");
+				resp.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = resp.getWriter();
+                out.println("<script>alert('삭제가 완료되었습니다.'); location.href = 'list.jsp';</script>");
+                out.flush();
 			}
 			else {
 				resp.sendError(404);

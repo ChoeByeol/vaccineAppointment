@@ -89,13 +89,10 @@ $(function(){
 	    	data : param,
 	    	type : "get",
 	    		success : function(data){
-		    		//console.log(data);
-		    		console.log("성공");
 		     		$("#sigungu").html(data);
 		     		$("#bname").html("<option value=\"\">읍면동</option>");
 		    		},
 	       		error:function(err){//통신이 실패했다.
-	       			console.log("성공");
 					alert("다시 시도해 주세요.");
 	        	}
 	   		});
@@ -109,12 +106,9 @@ $(function(){
 	    	data : param,
 	    	type : "get",
 		    	success : function(data){
-		    		//console.log(data);
-		    		console.log("성공");
 		     		$("#bname").html(data);
 		    	},
 	       		error:function(err){//통신이 실패했다.
-	       			console.log("성공");
 					alert("다시 시도해 주세요.");
 	        	}
 	   		})
@@ -127,7 +121,7 @@ $(function(){
 	  	//주소를 다 선택안하면 검색이 안되게
 	  	$(".find-btn").click(function(){
 	  		if($("#bname").val() == ""){
-	  			alert("똑바로 고르셈");
+	  			alert("정확한 주소를 선택해 주세요.");
 	  			return false
 	  		}
 	  		else{
@@ -156,7 +150,7 @@ $(function(){
         <select name="clinicBname" id="bname" class="form-input" required>
             <option value="">읍면동</option>
         </select>
-        <input type="submit" value="의료기관 찾기" class="btn button_base">
+        <input type="submit" value="의료기관 찾기" class="btn button_base find-btn">
     </div>
 </form>
 
