@@ -58,6 +58,20 @@ public class StockDao {
 		con.close();
 	}	
 	
+	//입/출고 등록 취소 기능
+	public boolean cancel(int stockNo) throws Exception {
+		Connection con = JdbcUtils.connect();
+
+		String sql = "delete stock where stock_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, stockNo);
+		int result = ps.executeUpdate();
+
+		con.close();
+
+		return result > 0;
+	}
+	
 	//입출고 조회(조인)
 	public List<Stock3Vo> select() throws Exception{
 		Connection con = JdbcUtils.connect();
