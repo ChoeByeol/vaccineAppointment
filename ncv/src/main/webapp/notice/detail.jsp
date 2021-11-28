@@ -33,17 +33,29 @@
 %>
 
 <%
+
 	String memberId = (String)session.getAttribute("ses"); 
+    boolean member= memberId!=null&&memberId!="";	
 	NoticeDao noticeDao = new NoticeDao();
-	NoticeDto noticeDto = noticeDao.get(noticeNo);
+	NoticeDto noticeDto = noticeDao.get(noticeNo);%>
 	
 
 	
+	<%//권한 판정
 	
+	//NullPointerException 오류에 대한 처리
+	
+	boolean owner=memberId!=null&&memberId!=""&&memberId.equals(noticeDto.getNoticeWriter());
+
+	%>
+
+
+<%
 	//조회수 증가 처리
 	
+	if(member){
 	noticeDao.readUp(noticeNo,memberId);
-	
+	}
 	%>
 	
 	<%
@@ -56,51 +68,47 @@
 	%>
 	
 	
-<%-- 출력 --%>
-
 <jsp:include page="/template/header.jsp"></jsp:include> 
 
-<h2><%=noticeDto.getNoticeNo()%>번 게시글</h2>
+<div class="container-800 container-center" style="border:2px solid rgb(148, 161, 172); width : 100%; padding:20px; ">
 
-<table border="1" width="80%">
-	<tbody>
-		<tr>
-			<td>
-				<h3><%=noticeDto.getNoticeTitle()%></h3>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				등록일 : <%=noticeDto.getNoticeTime()%>
-				|
-				작성자 : <%=noticeDto.getNoticeWriter()%>
-				|
-				조회수 : <%=noticeDto.getNoticeHit()%>
-			</td>
-		</tr>
-		<!-- 답답해 보이지 않도록 기본높이를 부여 -->
-		<!-- 
-			pre 태그를 사용하여 내용을 있는 그대로 표시되도록 설정
-			(주의) 태그 사이에 쓸데없는 엔터, 띄어쓰기 등이 들어가지 않도록 해야 한다.(모두 표시된다) 
-		-->
-		<tr height="250" valign="top">
-			<td>
-				<pre><%=noticeDto.getNoticeContent()%></pre>
-			</td>
-		</tr>
-		<tr>
-			<td align="right">
-				<a href="write.jsp">글쓰기</a>
-				<a href="list.jsp">목록보기</a>
-				
-				<%if(memberId==noticeDto.getNoticeWriter()){ %>
-				<a href="edit.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>">수정하기</a>
-				<a href="delete.txt?noticeNo=<%=noticeDto.getNoticeNo()%>">삭제하기</a>
-				<%} %>
-			</td>
-		</tr>
-	</tbody>
-</table>
+	<div class="row" style="font-size:25px; font-weight: bold;">
+		<%=noticeDto.getNoticeTitle()%>
+		</div>
+	<div class="row right" style="font-size: 13px;">
+		No.<%=noticeDto.getNoticeNo()%>
+		|
+		등록일 : <%=noticeDto.getNoticeTime()%>
+		|
+		작성자 : <%=noticeDto.getNoticeWriter()%>
+		|
+		조회수 : <%=noticeDto.getNoticeHit()%>
+	</div>
+	
+	<hr>
+	<div class="row" style="min-height:250px; font-size: 15px;">
+		<pre><%=noticeDto.getNoticeContent()%></pre>
+	</div>
+	<hr>
+	<div class="row right">
+		<a href="write.jsp" class="link-btn">글쓰기</a>
+		<a href="list.jsp" class="link-btn">목록보기</a>
+		
+		
+		
+		<%-- 글쓴이 권한일때만 보이는것--%>
+		
+		
+		<%if(member&&owner){%>
+			<a href="edit.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">수정하기</a>
+		<a href="delete.txt?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">삭제하기</a>
+		<%} %>
+
+		
+
+	</div>
+	</div>
+		
 
 
 <%-- 첨부파일이 있다면 첨부파일을 다운받을 수 있는 링크를 제공 --%>
@@ -109,11 +117,11 @@
 		<h6>
 			<%=noticeFileDto.getNoticeFileUploadname() %>
 			(<%=noticeFileDto.getNoticeFileSize()%> bytes)
-			<a href="file/download.kh?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>">
+			<a href="file/download.txt?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>">
 				다운로드
 			</a>
 			
-			<img src="file/download.kh?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>" width="50" height="50">
+			<img src="file/download.txt?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>" width="50" height="50">
 		</h6>
 	<%} %>
 <%} %>
