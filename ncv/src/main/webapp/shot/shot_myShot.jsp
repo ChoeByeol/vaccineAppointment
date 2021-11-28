@@ -119,4 +119,5 @@
 <%} else {%>
 		<img class="warning-img" src="<%=request.getContextPath()%>/resource/image/not_shot.png">
 <%} %>
+
  <jsp:include page="/template/footer.jsp"></jsp:include>

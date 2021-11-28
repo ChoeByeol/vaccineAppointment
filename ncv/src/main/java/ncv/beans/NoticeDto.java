@@ -9,6 +9,7 @@ public class NoticeDto {
 	private String noticeContent;
 	private Date noticeTime;
 	private int noticeHit;
+	private int noticeDepth;
 	public NoticeDto() {
 		super();
 	}
@@ -47,5 +48,11 @@ public class NoticeDto {
 	}
 	public void setNoticeHit(int noticeHit) {
 		this.noticeHit = noticeHit;
+	}
+	public int getNoticeDepth() {
+		return noticeDepth;
+	}
+	public void setNoticeDepth(int noticeDepth) {
+		this.noticeDepth = noticeDepth;
 	}
 }

@@ -38,7 +38,7 @@ public class NoticeWriteServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//multipart/form-data를 해석하기 위한 객체 생성
-			String savePath = "D:/upload/notice";
+			String savePath = "C:/upload/notice";
 			int maxSize = 10 * 1024 * 1024;
 			String encoding = "UTF-8";
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
@@ -49,6 +49,12 @@ public class NoticeWriteServlet extends HttpServlet{
 			NoticeDto noticeDto = new NoticeDto();
 			noticeDto.setNoticeTitle(mRequest.getParameter("noticeTitle"));
 			noticeDto.setNoticeContent(mRequest.getParameter("noticeContent"));
+			
+			
+			// 체크박스 상태를 불러오는 방법을 알아내야함 noticeDto.setNoticeDepth(mRequest.("checkImportant"));
+
+			
+
 			
 			//아이디는 세션에서 수집하여 추가
 			noticeDto.setNoticeWriter((String)req.getSession().getAttribute("ses"));

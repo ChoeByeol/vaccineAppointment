@@ -195,9 +195,7 @@ ul.page li a:hover {
 	height: 30px;
 }
 
-.title{
-margin: 10px;
-}
+
 .border-spacing{
 border-spacing:0px;
 }
@@ -227,25 +225,42 @@ border-spacing:0px;
 				<th>조회수</th>
 			</tr>
 		</thead>
-		<tbody align="center">
+<tbody align="center">
+		<%for(NoticeDto noticeDto : pagination.getList()){ %>
+		<tr>
+			<td><%=noticeDto.getNoticeNo()%></td>
+			<td class="title">
+				
+				<%-- 
+					차수가 1인것은 상단에 고정된 공지입니다. 이미지 아이콘을 했습니다.
+					차수가 0인것은 일반 공지입니다. 띄어쓰기좀했습니다. 
+				--%>
+				<%
+					if(noticeDto.getNoticeDepth()==1){%>
+					<img src="<%=request.getContextPath()%>/resource/image/notice.jpg" width="15" height="15">
+				
+				<%} %>
+						
+				<%if(noticeDto.getNoticeDepth()==0){%>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<%} %>
+													
 
-			<%
-			for (NoticeDto noticeDto : pagination.getList()) {
-			%>
-			<tr>
-				<td class="no" style="width: 70px;"><%=noticeDto.getNoticeNo()%></td>
-				<td class="title"><a
-					href="detail.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>"> <%=noticeDto.getNoticeTitle()%></a>
-				</td>
-				<td class="writer"><%=noticeDto.getNoticeWriter()%></td>
-				<td class="time"><%=noticeDto.getNoticeTime()%></td>
-				<td class="hit"><%=noticeDto.getNoticeHit()%></td>
-			</tr>
-			<%
-			}
-			%>
-		</tbody>
+				<a href="detail.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>">
+					<%=noticeDto.getNoticeTitle()%>
+				</a>
+
+			</td>
+			<td><%=noticeDto.getNoticeWriter()%></td>
+			<td><%=noticeDto.getNoticeTime()%></td>
+			<td><%=noticeDto.getNoticeHit()%></td>
+
+		</tr>
+		<%} %>
+	</tbody>
 	</table>
+	
+	
 	<br>
 </div>
 <div class="row right">
@@ -376,4 +391,5 @@ border-spacing:0px;
 		<input type="submit" value="검색" class="btn button_base">
 	</form>
 </div>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

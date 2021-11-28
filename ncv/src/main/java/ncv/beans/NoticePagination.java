@@ -28,8 +28,8 @@ public class NoticePagination {
 	}
 	
 
-	private int pageSize = 20;
-	private int blockSize = 20;
+	private int pageSize = 10;
+	private int blockSize = 10;
 	private int begin, end;
 	private int startBlock, finishBlock, lastBlock;
 	private List<NoticeDto> list;
@@ -60,7 +60,7 @@ public class NoticePagination {
 		}
 		else {
 
-			this.list = noticeDao.listByRownum(begin, end);
+			this.list = noticeDao.listByImportant(begin, end);
 		}
 	}
 	public int getPage() {
@@ -198,7 +198,4 @@ public class NoticePagination {
 				+ pageSize + ", blockSize=" + blockSize + ", begin=" + begin + ", end=" + end + ", startBlock="
 				+ startBlock + ", finishBlock=" + finishBlock + ", lastBlock=" + lastBlock + "]";
 	}
-
-
-
 }
