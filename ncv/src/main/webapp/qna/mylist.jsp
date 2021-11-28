@@ -15,24 +15,27 @@ List<QnaDto> mylist = qnaDao.mylist(qnaWriter);
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <style>
-	/* 링크를 버튼으로 만드는 스타일 */
-	.link-btn {
-		display: inline-block;
-		padding:0.5rem;
-		border:1px solid gray;
-		text-decoration: none;
-		color:gray;
-	}
-	.link-btn:hover {
-		border-color:black;
-		color:black;
-	}
+		
+.sub_news,.sub_news th,.sub_news td{border:0}
+.sub_news a{color:#383838;text-decoration:none}
+.sub_news{width:100%;border-bottom:1px solid #999;color:#666;font-size:14px;table-layout:fixed}
+.sub_news caption{display:none}
+.sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top;}
+.sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+.sub_news .title{text-align:left; padding-left:15px; font-size:13px;}
+.sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
+.sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+	
+.border-spacing{
+	border-spacing:0px;
+}
+
 </style>
 
 <div class="container-800 container-center">
 
 	<div class="row center">
-		<h2>나의 1:1문의</h2>
+		<h2 class="row center" >나의 1:1문의</h2>
 	</div>
 	
 	<div class="row center">
@@ -41,7 +44,7 @@ List<QnaDto> mylist = qnaDao.mylist(qnaWriter);
 	</div>
 	
 	<div class="row">
-		<table class="table table-border table-hover">
+		<table class="sub_news border-spacing" border="1" cellspacing="0" >
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -50,7 +53,7 @@ List<QnaDto> mylist = qnaDao.mylist(qnaWriter);
 					<th>작성일</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody align="center">
 				<%for(QnaDto qnaDto : mylist){ %>
 				<tr>
 					<td><%=qnaDto.getQnaNo()%></td>
@@ -74,4 +77,5 @@ List<QnaDto> mylist = qnaDao.mylist(qnaWriter);
 	</div>
 	
 </div>
+
 <jsp:include page="/template/footer.jsp"></jsp:include>

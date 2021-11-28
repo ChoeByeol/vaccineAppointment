@@ -23,7 +23,7 @@ public class QnaWriteServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			//multipart/form-data를 해석하기 위한 객체 생성
-			String savePath = "D:/upload/qna";
+			String savePath = "c:/upload/qna";
 			int maxSize = 10 * 1024 * 1024;
 			String encoding = "UTF-8";
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
