@@ -13,17 +13,26 @@
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
-
+<style>
+.text-area{
+	width:100%;
+	height:20rem;
+}
+</style>
 <form action="edit.txt" method="post">
 <input type="hidden" name="qnaNo" required width="600" value="<%=qnaDto.getQnaNo()%>">
 	<div class="container-800 container-center">
 		<div class="row center form-title-font">1:1 문의글 수정</div>
 		<div class="row">
 			<h3>제목</h3>
-			<input type="text" name="qnaTitle" required width="600" value="<%=qnaDto.getQnaTitle()%>" class="form-input-title form-input">
+			<input type="text" name="qnaTitle" required value="<%=qnaDto.getQnaTitle()%>" class="form-input-title form-input">
+		</div>
+		<div class="row">
+			<h3>내용</h3>
+      		<textarea name="qnaContent" required class="form-input-board form-input text-area"><%=qnaDto.getQnaContent()%></textarea>
 		</div>
 		<div class="row right">
-			<input type="submit" value="수정하기">
+			<input type="submit" value="수정하기" class="form-btn form-inline form-notice-btn">
 		</div>
 	</div>
 </form>

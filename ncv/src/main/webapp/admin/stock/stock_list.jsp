@@ -58,7 +58,8 @@
 </div>
 
 <!-- 페이지 네비게이터 -->
-<br><br>
+<br><br><ul class="page">
+	<div class="row pagination">
 <%if(stockPgn.isPreviousAvailable()){ %>
 	<%if(stockPgn.isSearch()){ %>
 		<!-- 검색용 링크 -->
@@ -94,8 +95,10 @@
 <%} %>
 
 <br><br>
+</div>
 
 <!-- 검색창 -->
+<div class="row center">
 <form action="stock_list.jsp" method="get">
 	<select name="column" required>
 		<option value="">선택</option>
@@ -107,6 +110,7 @@
 	
 	<input type="submit" value="검색">
 </form>
+</div>
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

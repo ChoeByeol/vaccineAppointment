@@ -3,7 +3,12 @@
 
 
 <jsp:include page="/template/header.jsp"></jsp:include>    
-
+<style>
+.text-area{
+	width:100%;
+	height:20rem;
+}
+</style>
 <form action="write.txt" method="post" enctype="multipart/form-data">
 
 <div class="container-800 container-center">
@@ -15,7 +20,7 @@
    </div>
    <div class="row">
       <h3>내용</h3>
-      <textarea name="qnaContent" required rows="10" class="form-input-board form-input"></textarea>
+      <textarea name="qnaContent" required class="form-input-board form-input text-area"></textarea>
    </div>
    <div class="row">
       <h4><label class="form-block">첨부파일</label></h4>

@@ -95,17 +95,11 @@
 				<tr align="right">
 					<td colspan="4">
 						
-						<%if(writer){%>
-							<a href="<%=request.getContextPath()%>/qna/mylist.jsp">목록</a>
+							<a class="link-btn" href="<%=request.getContextPath()%>/qna/mylist.jsp">목록</a>
 							<%if(qnaDto.getQnaState().equals("답변대기")){ %>
-							<a href="edit.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정</a>
-							<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
+							<a class="link-btn" href="edit.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정</a>
+							<a class="link-btn" href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
 							<%} %>
-						<%}else if(admin){%>
-							<a href="<%=request.getContextPath()%>/admin/qna/list.jsp">목록</a>
-							<a href="../admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">답변달기</a>
-							<a href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
-						<%} %>
 					</td>
 			</tfoot>
 		</table>

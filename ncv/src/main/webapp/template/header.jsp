@@ -107,7 +107,8 @@
         </ul></li>
         <li><a href="#">백신관리</a>
         <ul>
-          	<li><a href="<%=request.getContextPath()%>/admin/stock/stock_list.jsp">백신재고관리</a></li>
+          	<li><a href="<%=request.getContextPath()%>/admin/stock/stock_list.jsp">백신재고목록</a></li>
+           	<li><a href="<%=request.getContextPath()%>/admin/stock/stock_in.jsp">백신입고등록</a></li>
            	<li><a href="<%=request.getContextPath()%>/admin/vaccine/vaccine.jsp">백신 추가</a></li>
         </ul></li>
         <li><a href="#">예약관리</a>
