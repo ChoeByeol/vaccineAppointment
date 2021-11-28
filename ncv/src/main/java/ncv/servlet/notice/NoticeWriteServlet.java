@@ -49,11 +49,18 @@ public class NoticeWriteServlet extends HttpServlet{
 			NoticeDto noticeDto = new NoticeDto();
 			noticeDto.setNoticeTitle(mRequest.getParameter("noticeTitle"));
 			noticeDto.setNoticeContent(mRequest.getParameter("noticeContent"));
+			try{if(mRequest.getParameter("noticefix") != null) {
+				noticeDto.setNoticeDepth(Integer.parseInt(mRequest.getParameter("noticefix")));}}
+			catch(NullPointerException e){
+				
+			}
 			
 			
-			// 체크박스 상태를 불러오는 방법을 알아내야함 noticeDto.setNoticeDepth(mRequest.("checkImportant"));
-
+		
 			
+			//noticefix가 null이면 0으로 세팅이되도록 설정하면 됨
+			
+	
 
 			
 			//아이디는 세션에서 수집하여 추가
@@ -65,8 +72,8 @@ public class NoticeWriteServlet extends HttpServlet{
 			NoticeDao noticeDao = new NoticeDao();
 			int noticeNo = noticeDao.getSequence();//시퀀스 번호 생성
 			noticeDto.setNoticeNo(noticeNo);//게시글 데이터에 생성된 번호 추가
-			
 			noticeDao.write(noticeDto);//게시글 등록(새글)
+			
 			
 			/**
 			 * 게시글 등록을 모두 마친 뒤에 파일 정보를 데이터베이스에 저장하도록 설정

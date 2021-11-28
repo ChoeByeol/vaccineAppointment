@@ -17,18 +17,9 @@
 </style>
 
 <script>
-
-	
-
-	
-
  
 
 </script>
-
- 
-
- 
 
  
 
@@ -36,13 +27,7 @@
 
 <form action="write.txt" method="post" enctype="multipart/form-data">
 
- 
-
- 
-
- 
-
- 
+  
 
 <div class="container-800 container-center">
 
@@ -96,7 +81,7 @@
 
    <label>
 
-   <input type="checkbox" name="noticeDepth" value="1">
+   <input type="checkbox" name="noticefix" value=1>
 
    <span>중요 게시글로 설정</span></label>
 
@@ -105,7 +90,8 @@
     <input type="submit" value="등록" class="form-btn form-inline form-notice-btn">
 
    </div>
-
+   
+  
  
 
 </div>
