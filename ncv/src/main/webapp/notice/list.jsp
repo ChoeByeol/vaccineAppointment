@@ -2,6 +2,8 @@
 <%@page import="ncv.beans.NoticeDto"%>
 <%@page import="java.util.List"%>
 <%@page import="ncv.beans.NoticeDao"%>
+<%@page import="ncv.beans.MemberDao"%>
+<%@page import="ncv.beans.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -11,6 +13,12 @@ pagination.calculate();
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
+
+<head>
+<style type="text/css"> 
+a { text-decoration:none } 
+</style> 
+</head>
 
 <style>
 .sub_news, .sub_news th, .sub_news td {
@@ -186,6 +194,18 @@ border-spacing:0px;
 }
 </style>
 
+<%
+//그니까... 여기서 owner라는 판정을 트루로하려면 세션에서 멤버롤을 가져와서 멤버롤이 관리자인지 아닌지 트루로 보면 된다...
+
+
+String memberRole = (String)session.getAttribute("ses"); 
+
+MemberDao memberDao = new MemberDao();
+MemberDto memberDto = memberDao.get(memberRole);
+
+boolean owner = memberDto != null && memberDto.getMemberRole().equals("관리자");
+
+%>
 
 <br>
 <br>
@@ -250,7 +270,12 @@ border-spacing:0px;
 	<br>
 </div>
 <div class="row right">
-	<a href="write.jsp" class="link-btn">글쓰기</a>
+
+		<!-- 관리자일 경우에만 글쓰기 버튼 보이도록 구현 -->
+<%if(owner){%>
+	<a href="write.jsp" class="form-btn form-inline form-notice-btn">글쓰기</a>
+		<%} %>
+
 </div>
 
 <ul class="page">

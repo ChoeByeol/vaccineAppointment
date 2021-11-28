@@ -36,6 +36,10 @@
 
 	String memberId = (String)session.getAttribute("ses"); 
     boolean member= memberId!=null&&memberId!="";	
+    
+    
+    
+    
 	NoticeDao noticeDao = new NoticeDao();
 	NoticeDto noticeDto = noticeDao.get(noticeNo);%>
 	
@@ -91,7 +95,7 @@
 	</div>
 	<hr>
 	<div class="row right">
-		<a href="write.jsp" class="link-btn">글쓰기</a>
+
 		<a href="list.jsp" class="link-btn">목록보기</a>
 		
 		
@@ -100,8 +104,10 @@
 		
 		
 		<%if(member&&owner){%>
-			<a href="edit.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">수정하기</a>
+
+		<a href="edit.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">수정하기</a>
 		<a href="delete.txt?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">삭제하기</a>
+		<a href="write.jsp" class="link-btn">글쓰기</a>
 		<%} %>
 
 		
