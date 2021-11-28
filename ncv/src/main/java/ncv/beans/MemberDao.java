@@ -74,43 +74,6 @@ public class MemberDao {
 		
 		return memberDto;
 	}
-	
-//  주민번호 중복 방지를 위한 회원 조회 메소드
-	public MemberDto pick(String memberRrn) throws Exception {
-		Connection con = JdbcUtils.connect();
-		
-		String sql = "select * from member where member_Rrn = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, memberRrn);
-		ResultSet rs = ps.executeQuery();
-		
-		MemberDto memberDto;
-		
-		if(rs.next()) {
-			memberDto = new MemberDto();
-			
-			//copy
-			memberDto.setMemberId(rs.getString("member_id"));
-			memberDto.setMemberPw(rs.getString("member_pw"));
-			memberDto.setMemberName(rs.getString("member_name"));
-			memberDto.setMemberRrn(rs.getString("member_rrn"));
-			memberDto.setMemberGender(rs.getString("member_gender"));
-			memberDto.setMemberPhone(rs.getString("member_phone"));
-			memberDto.setMemberPostcode(rs.getString("member_postcode"));
-			memberDto.setMemberAddress(rs.getString("member_address"));
-			memberDto.setMemberDetailAddress(rs.getString("member_detailaddress"));
-			memberDto.setMemberJoin(rs.getDate("member_join"));
-			memberDto.setMemberRole(rs.getString("member_role"));
-		}
-		else {
-			memberDto = null;
-		}
-		
-		con.close();
-		
-		return memberDto;
-	}
-	
 //  비밀번호 변경 메소드
 	public boolean editPassword(String memberId, String memberPw, String changePw) throws Exception {
 		Connection con = JdbcUtils.connect();
@@ -328,13 +291,14 @@ public class MemberDao {
 						+ "member_DetailAddress=?,"
 						+ "member_phone = ? " 
 					+ "where "
-							+ "member_id = ?";
+							+ "member_id = ? and member_pw = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberDto.getMemberPostcode());
 		ps.setString(2, memberDto.getMemberAddress());
 		ps.setString(3, memberDto.getMemberDetailAddress());
 		ps.setString(4, memberDto.getMemberPhone());
 		ps.setString(5, memberDto.getMemberId());
+		ps.setString(6, memberDto.getMemberPw());
 		int result = ps.executeUpdate();
 
 		con.close();
@@ -392,6 +356,31 @@ public class MemberDao {
 	      
 	      return memberId;
 	   }
+	 
+	   //비밀번호 찾기 메소드(안씀)
+	   public String findPw(String memberId, String memberName, String memberRrn) throws Exception{
+	      Connection con = JdbcUtils.connect();
+	      
+	      String sql = "SELECT member_pw FROM member "
+	            + "WHERE member_id = ? and member_name=? and member_rrn=?";
+	      PreparedStatement ps = con.prepareStatement(sql);
+	      ps.setString(1, memberId);
+	      ps.setString(2, memberName);
+	      ps.setString(3, memberRrn);
+	      ResultSet rs = ps.executeQuery();
+	      
+	      String memberPw;
+	      if(rs.next()) {
+	    	  memberPw = rs.getString(1);
+	      }
+	      else {
+	    	  memberPw = null;
+	      }
+	      
+	      con.close();
+	      
+	      return memberPw;
+	   }
 	   
 	   //아이디 비밀번호 주민번호 입력하면 임시비밀번호로 업데이트
 	   public boolean editPassword(String tmpPw, String memberId, String memberName, String memberRrn) throws Exception {	   
@@ -415,23 +404,25 @@ public class MemberDao {
 		   return result > 0 ;
 	   }
 	   
-//		예약 회원 정보 확인
-		
-		public int checkMember(String resName, String resRrn, String resPhone) throws Exception {
-			//Connection con = JdbcUtils.connect();
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "semi", "semi");
+//		본인인증 메소드
+		public int checkMember(String memberId, String resName, String resRrn, String resPhone) throws Exception {
+			Connection con = JdbcUtils.connect();
 			
 			String sql = "select count(*) "
 					+ "from member "
-					+ "where member_name = ? "
+					+ "where "
+					+ "member_id = ? "
+					+ "and member_name = ? "
 					+ "and member_rrn = ? "
 					+ "and member_phone = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, resName);
-			ps.setString(2, resRrn);
-			ps.setString(3, resPhone);
+			ps.setString(1, memberId);
+			ps.setString(2, resName);
+			ps.setString(3, resRrn);
+			ps.setString(4, resPhone);
 
 			ResultSet rs = ps.executeQuery();
+			
 			rs.next();
 			
 			int count = rs.getInt("count(*)");
@@ -439,5 +430,40 @@ public class MemberDao {
 			con.close();
 			
 		    return count;
+		}
+		
+		//주민번호 중복 검사용
+		public int rrnCheck(String memberRrn) throws Exception {
+			Connection con = JdbcUtils.connect();
+			
+			String sql = "select count(*) from member where member_rrn = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberRrn);
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+
+			int result = rs.getInt(1);
+			
+			con.close();
+			
+			return result;
+		}
+		//전화번호 중복 검사용
+		public int phoneCheck(String memberPhone) throws Exception {
+			Connection con = JdbcUtils.connect();
+			
+			String sql = "select count(*) from member where member_phone = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberPhone);
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+
+			int result = rs.getInt(1);
+			
+			con.close();
+			
+			return result;
 		}
 }

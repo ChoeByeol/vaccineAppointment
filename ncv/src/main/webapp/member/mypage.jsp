@@ -55,11 +55,11 @@
 						</tr>
 						<tr>
 							<th>주민등록번호</th>
- 							<td><%=memberDto.getMemberRrn()%></td>
+ 							<td><%=memberDto.getHyphenRrn()%></td>
 						</tr>
 						<tr>
 							<th>핸드폰번호</th>
-							<td><%=memberDto.getMemberPhone()%></td>
+							<td><%=memberDto.getHyphenPhone()%></td>
 						</tr>
 						<tr>
 							<th>주소</th>
