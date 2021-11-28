@@ -12,8 +12,25 @@
     ClinicDto clinicDto = clinicDao.select(clinicNo); //상세조회
 %>
 <jsp:include page="/template/header.jsp"></jsp:include>
+<style>
+
+ .link-btn{
+	font-family:NotoSans;
+	font-size: 20px;
+}
+
+.sub_news,.sub_news th,.sub_news td{border:0}
+.sub_news a{color:#383838;text-decoration:none}
+.sub_news{width:100%;border-bottom:1px solid #999;color:#666;font-size:14px;table-layout:fixed}
+.sub_news caption{display:none}
+.sub_news th{padding:5px 0 6px;width: 200px; border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
+.sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+.sub_news .title{text-align:left; padding-left:15px; font-size:13px;}
+.sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
+.sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+</style>
 <%--출력--%>
-<table border="1" width="300">
+<table class="sub_news" border="1" width="300">
     <tbody>
         <tr>
             <th>병원 이름</th>
@@ -85,13 +102,17 @@ geocoder.addressSearch("<%=clinicDto.getClinicAddress()%>", function(result, sta
     } 
 });    
 </script>
-
-<a href="reservation_list.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">백신 예약 내역 보기</a>
-<a href="shot_list.jsp?cliniNo=<%=clinicDto.getClinicNo()%>">백신 접종 내역 보기</a>
-<br><br>
-<a href="edit.jsp?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 수정</a>
-<a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>">병원 정보 삭제</a>
-<a href="list.jsp">목록으로</a>
+<div class="container-400 container-center">
+	<div class="link-btn center">
+		<a href="edit.jsp?clinicNo=<%=clinicDto.getClinicNo()%>"class="link-btn">병원 정보 수정</a>
+	</div>
+	<div class="link-btn center">
+		<a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>"class="link-btn">병원 정보 삭제</a>
+	</div>
+	<div class="link-btn center">
+		<a href="javascript:history.back()" class="link-btn">목록으로</a>
+	</div>
+</div>
 </body>
 <jsp:include page="/template/footer.jsp"></jsp:include>
 </html>

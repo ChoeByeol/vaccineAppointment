@@ -100,9 +100,11 @@ public class Shot2Vo {
 	public void setShotCount(int shotCount) {
 		this.shotCount = shotCount;
 	}
+
 	public int getVaccineNo() {
 		return vaccineNo;
 	}
+
 	public void setVaccineNo(int vaccineNo) {
 		this.vaccineNo = vaccineNo;
 	}

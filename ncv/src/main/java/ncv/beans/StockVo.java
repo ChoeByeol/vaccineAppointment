@@ -1,10 +1,12 @@
 package ncv.beans;
 
 public class StockVo {
+	
 	private String vaccineName;
-	private int quantity;
-	private String stockDate;
-	private String StockType;
+	private int stockInQty;
+	private int stockOutQty;
+	private int totalStock;
+	
 	public StockVo() {
 		super();
 	}
@@ -14,22 +16,23 @@ public class StockVo {
 	public void setVaccineName(String vaccineName) {
 		this.vaccineName = vaccineName;
 	}
-	public int getQuantity() {
-		return quantity;
+	public int getStockInQty() {
+		return stockInQty;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setStockInQty(int stockInQty) {
+		this.stockInQty = stockInQty;
 	}
-	public String getStockDate() {
-		return stockDate;
+	public int getStockOutQty() {
+		return stockOutQty;
 	}
-	public void setStockDate(String stockDate) {
-		this.stockDate = stockDate;
+	public void setStockOutQty(int stockOutQty) {
+		this.stockOutQty = stockOutQty;
 	}
-	public String getStockType() {
-		return StockType;
+	public int getTotalStock() {
+		return totalStock;
 	}
-	public void setStockType(String stockType) {
-		StockType = stockType;
+	public void setTotalStock(int totalStock) {
+		this.totalStock = totalStock;
 	}
+	
 }

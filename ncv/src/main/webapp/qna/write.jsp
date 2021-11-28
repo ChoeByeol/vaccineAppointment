@@ -3,44 +3,33 @@
 
 
 <jsp:include page="/template/header.jsp"></jsp:include>    
-
-<h2>1대1 문의</h2>
-
+<style>
+.text-area{
+	width:100%;
+	height:20rem;
+}
+</style>
 <form action="write.txt" method="post" enctype="multipart/form-data">
 
-<table>
-	<tbody>
-		<tr>
-			<th>제목</th>
-			<td>
-				<input type="text" name="qnaTitle" required>
-			</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>
-				<textarea name="qnaContent" rows="10" cols="80" required></textarea>
-			</td>
-		</tr>
-		
-		<tr>
-			<th>첨부</th>
-			<td>
-				<input type="file" name="attach">
-			</td>
-		</tr>
-		
-	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="submit" value="작성">
-			</td>
-		</tr>
-	</tfoot>
-</table>
+<div class="container-800 container-center">
+ <div class="row center form-title-font">1:1 문의</div>
+   <!-- 제목 -->
+   <div class="row">
+      <h3>제목</h3>
+      <input type="text" name="qnaTitle" required class="form-input-title form-input" >
+   </div>
+   <div class="row">
+      <h3>내용</h3>
+      <textarea name="qnaContent" required class="form-input-board form-input text-area"></textarea>
+   </div>
+   <div class="row">
+      <h4><label class="form-block">첨부파일</label></h4>
+      <input type="file" name="attach" class="form-btn form-file-btn">
+   </div>
+   <div class="row right">
+    	<input type="submit" value="등록" class="form-btn form-inline form-notice-btn">
+   </div>
+</div>
 </form>
-
-
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

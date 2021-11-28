@@ -1,5 +1,14 @@
+<%@page import="ncv.beans.NoticePagination"%>
+<%@page import="ncv.beans.NoticeDto"%>
+<%@page import="java.util.List"%>
+<%@page import="ncv.beans.NoticeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+NoticePagination pagination = new NoticePagination(request);
+pagination.calculate();
+%>
 
 
 <script>
@@ -7,7 +16,6 @@
 	window.onload = function() {
 		slideShow();
 	}
-
 	function slideShow() {
 		var i;
 		var x = document.getElementsByClassName("slideImg"); //slide1에 대한 dom 참조
@@ -20,25 +28,22 @@
 		}
 		x[index - 1].style.display = "block"; //해당 인덱스는 block으로
 		setTimeout(slideShow, 4000); //함수를 4초마다 호출
-
 	}
 </script>
 
 <style>
 .mainContainer {
-	width: 850px;
-	height: 1050px;
+	width: 100%;
+	height: 400px;
 	position: relative;
 	margin: 0 auto;
 }
-
 .main-area {
     position: relative;
     background:no-repeat 50% 50%;
     background-size: cover;
     padding-top: 10px;
-    padding-bottom: 50px;
-    z-index: 2;
+
 }
     
 .mid-area {
@@ -47,7 +52,6 @@
     background-size: cover;
     padding-bottom: 10px;
 }   
-
 .bottom-area {
     position: relative;
     background:no-repeat 50% 50%;
@@ -59,19 +63,16 @@
 	width: 100%;
 	text-align: center;
 }
-
 .slide {
 	display: table;
 	position: absolute;
 	width: 100%;
 	font-size: 0;
 }
-
 .slideImg {
 	width: 100%;
 	height: 250px;
 }
-
 .title {
     padding-bottom: 30px;
     text-align: center;
@@ -81,52 +82,54 @@
     line-height: 1.4em;
 }
 
-
 .aBtn1 {
-	width: 283px;
-	height: 40px;
-	background-color: #f8585b;
-	border: none;
-	color: #fff;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
-}
-
-.aBtn2 {
-	width: 283px;
-	height: 40px;
-	background-color: #21a089;
-	border: none;
-	color: #fff;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
-}
-
-.aBtn3 {
-	width: 283px;
-	height: 40px;
-	background-color: #3b92cd;
-	border: none;
-	color: #fff;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
-}
-
-
-.aSpan {
 	width: 25%;
-	font-size: 15px;
 	height: 40px;
-	vertical-align: middle;
-	display: table-cell;
-	text-align: center;
+	background-color: #2C7EA8;
+	border: none;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
 }
-
-
-
+.aBtn2 {
+	width: 25%;
+	height: 40px;
+	background-color: #1D5C94;
+	border: none;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+}
+.aBtn3 {
+	width: 25%;
+	height: 40px;
+	background-color: #113D80;
+	border: none;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+}
+.aBtn4 {
+	width: 25%;
+	height: 40px;
+	background-color: #08226C;
+	border: none;
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+}
+ 
+ .aSpan { 
+	width: 25%; 
+	font-size: 15px; 
+	height: 40px; 
+ 	vertical-align: middle; 
+ 	text-align: center; 
+ } 
 .fix-layout {
     position: relative;
     max-width: 1000px;
@@ -134,44 +137,70 @@
     padding: 0 15px;
     box-sizing: border-box;
 }
-
-.box-select {
-    display: block;
-    position: relative;
-    margin: 0 -10px;
+/* 공지사항 */
+.sub_news, .sub_news th, .sub_news td {
+	border: 0
 }
 
-.item {
-    display: inline-block;
-    position: relative;
-    padding: 10px;
-    width: 207px;
-    height: 250px;
-    box-sizing: border-box;
-  	border: 1px solid black;
+.sub_news a {
+	color: #383838;
+	text-decoration: none
 }
 
-.item-bottom1 {
-    display: inline-block;
-    position: relative;
-    padding: 20px;
-    width: 23%;
-    height: 200px;
-    box-sizing: border-box;
-  	border: 1px solid black;
-  	margin-bottom: 20px;
+.sub_news {
+	width: 40%;
+	float:right;
+	border-bottom: 1px solid #999;
+	color: #666;
+	font-size: 14px;
+	table-layout: fixed
 }
 
-.item-bottom2 {
-    display: inline-block;
-    position: relative;
-    padding: 20px;
-    width: 74%;
-    height: 200px;
-    box-sizing: border-box;
-  	border: 1px solid black;
-  	margin-bottom: 20px;
+.sub_news caption {
+	display: none
 }
+
+.sub_news th {
+	padding: 5px 0 6px;
+	border-bottom: solid 1px #b2b2b2;
+	background-color: #BBDEFB;
+	color: #333;
+	font-size: 28px;
+	font-weight: bold;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.sub_news td {
+	padding: 8px 0 9px;
+	border-bottom: solid 1px #d2d2d2;
+	text-align: center;
+	line-height: 18px;
+}
+
+.sub_news .title {
+	text-align: center;
+	padding-left: 15px;
+	font-size: 13px;
+}
+
+.sub_news .title .pic, .sub_news .title .new {
+	margin: 0 0 2px;
+	vertical-align: middle
+}
+
+.sub_news .title a.comment {
+	padding: 0;
+	background: none;
+	color: #f00;
+	font-size: 12px;
+	font-weight: bold
+}
+
+.border-spacing{
+border-spacing:0px;
+}
+
 </style>
 
 
@@ -181,80 +210,67 @@
 
 	<div class="main-area">
 	<div class="mainSlide">
-		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co.jpg">
-		</a>
-		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co1.jpg">
-		</a>
-		<a href="<%=request.getContextPath()%>/vaccine/vaccine.jsp">
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/co2.jpg">
-		</a>
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/0002.jpg">
+<!-- 		</a> -->
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/IU02.png">
+<!-- 		</a> -->
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/6.jpg">
+<!-- 		</a> -->
+<!-- 		<a href="#"> -->
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/iui.jpg">
+<!-- 		</a> -->
 	</div>
+</div>
+
 
 	<div class="title">
 		<div class="slide">
-			<a href="#" class="aBtn1">
-			<span class="aSpan">코로나바이러스감염증-19</span>
+		<div class="flex_container"></div>		
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=1" class="aBtn1">
+			<span class="aSpan">화이자</span>
 			</a>
-			<a href="#" class="aBtn2">
-			<span class="aSpan">코로나19 예방접종</span>
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=2"  class="aBtn2">
+			<span class="aSpan">모더나</span>
 			</a>
-			<a href="#" class="aBtn3">
-			<span class="aSpan">코로나19 예방접종사전예약</span>
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=3"  class="aBtn3">
+			<span class="aSpan">아스트라제네카</span>
 			</a>
+			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=4"  class="aBtn4">
+			<span class="aSpan">얀센</span>
+			</a>
+			
 		</div>
-	</div>
+	</div>	
 </div>
+<style>
 
-	<div class="mid-area">
-	<div class="title">
-		<div class="box-select">
-			<div class="item">
-				<span>예약정보</span>
-			</div>
-			<div class="item">
-				<span>나의접종내역</span>
-			</div>
-			<div class="item">
-				<span>1:1문의</span>
-			</div>
-			<div class="item">
-				<span>마이페이지</span>
-			</div>
+</style>
 
-		</div>
+<div class="right">
+	<table class="sub_news border-spacing" border="1"  summary="게시판의 글제목 리스트">		
+		
+		<thead>
+			<tr>
+				<th><a href="<%=request.getContextPath()%>/notice/list.jsp">공지사항</a></th>
+			</tr>
+		</thead>
+		<tbody align="center">
 
-	</div>
-	</div>
-	
-
-	<div class="bottom-area">
-	<div class="title">
-		<div class="box-select">
-			<div class="item-bottom1">
-				공지사항
-			</div>
-			<div class="item-bottom2">
-				----------
-			</div>
-			<div class="item-bottom1">
-				백신정보
-			</div>
-			<div class="item-bottom2">
-					-----------
-			</div>
-
-		</div>
-
-	</div>
-	</div>
-	
-	
+			<%
+			for (NoticeDto noticeDto : pagination.getList()) {
+			%>
+			<tr>
+				<td class="title">
+				<a href="detail.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>"> <%=noticeDto.getNoticeTitle()%></a>
+				</td>
+			</tr>
+			<%
+			}
+			%>
+		</tbody>
+	</table>
+	<br>
 </div>
-
-
-
-<jsp:include page="/template/footer.jsp"></jsp:include>
- 
-

@@ -1,39 +1,41 @@
 package ncv.beans;
 
+import java.sql.Date;
+
 public class StockDto {
 	
 	private int stockNo;
-	private int clinicNo;
-	private String stockDate;
-	private String StockType;
 	private int vaccineNo;
-	private int quantity;
+	private int clinicNo;
+	private int stockInQty;
+	private int stockOutQty;
+	private Date updateTime;
+	
 	public StockDto() {
 		super();
 	}
+
 	public int getStockNo() {
 		return stockNo;
 	}
+
 	public void setStockNo(int stockNo) {
 		this.stockNo = stockNo;
 	}
+
+	public int getStockInQty() {
+		return stockInQty;
+	}
+
+	public void setStockInQty(int stockInQty) {
+		this.stockInQty = stockInQty;
+	}
+
 	public int getClinicNo() {
 		return clinicNo;
 	}
 	public void setClinicNo(int clinicNo) {
 		this.clinicNo = clinicNo;
-	}
-	public String getStockDate() {
-		return stockDate;
-	}
-	public void setStockDate(String stockDate) {
-		this.stockDate = stockDate;
-	}
-	public String getStockType() {
-		return StockType;
-	}
-	public void setStockType(String stockType) {
-		StockType = stockType;
 	}
 	public int getVaccineNo() {
 		return vaccineNo;
@@ -41,12 +43,24 @@ public class StockDto {
 	public void setVaccineNo(int vaccineNo) {
 		this.vaccineNo = vaccineNo;
 	}
-	public int getQuantity() {
-		return quantity;
+
+	public int getStockOutQty() {
+		return stockOutQty;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+
+	public void setStockOutQty(int stockOutQty) {
+		this.stockOutQty = stockOutQty;
 	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+	
+
 }
 	
 

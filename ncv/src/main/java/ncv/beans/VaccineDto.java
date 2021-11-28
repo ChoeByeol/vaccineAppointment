@@ -106,6 +106,4 @@ public class VaccineDto {
 	public String toString() {
 		return "VaccineDto [vaccineNo=" + vaccineNo + ", vaccineShot=" + vaccineShot + "]";
 	}
-	
 }
-

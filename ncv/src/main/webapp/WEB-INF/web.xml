@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	XML(eXtend Markup Language)
+	- 임의로 태그를 만들 수 있는 데이터 저장 방식
+	- 해석하는 주체에 따라 필요한 태그가 정해져 있다.
+	- HTML과 동일한 문법체계를 가짐
+	- xmlns 속성을 통하여 필요한 태그를 알려줄 수 있다.
+		-xmlns는 XML NameSpace의 줄임말로 xml에서 사용할 문법체계가 저장된 위치
+		-xmlns는 Xml는 Xml Schema Instance의 줄임말로 xml에 대한 품질보증서 위치
+ -->
+ 
+<web-app version="4.0" 
+			xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                      
+							 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+		
+		<!-- 대문 페이지 설정 재정의 -->
+		<welcome-file-list>
+			<welcome-file>/index.jsp</welcome-file>
+		</welcome-file-list>
+		
+		<!-- 세션 만료시간 재정의 -->
+		<session-config>
+			<session-timeout>360</session-timeout>
+		</session-config>
+		
+		<!-- 에러 페이지 설정 -->
+		<error-page>
+			<error-code>401</error-code>
+			<location>/member/login.jsp</location>
+		</error-page>
+		
+		<error-page>
+			<error-code>403</error-code>
+			<location>/error/403.jsp</location>
+		</error-page>
+		
+		<error-page>
+			<error-code>404</error-code>
+			<location>/error/404.jsp</location>
+		</error-page>
+		
+		<error-page>
+			<error-code>405</error-code>
+			<location>/error/404.jsp</location>
+		</error-page>
+		
+		<error-page>
+			<error-code>500</error-code>
+			<location>/error/500.jsp</location>
+		</error-page>	
+		
+ </web-app>

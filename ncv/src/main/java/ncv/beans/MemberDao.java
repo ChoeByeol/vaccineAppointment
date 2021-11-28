@@ -431,4 +431,39 @@ public class MemberDao {
 			
 		    return count;
 		}
+		
+		//주민번호 중복 검사용
+		public int rrnCheck(String memberRrn) throws Exception {
+			Connection con = JdbcUtils.connect();
+			
+			String sql = "select count(*) from member where member_rrn = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberRrn);
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+
+			int result = rs.getInt(1);
+			
+			con.close();
+			
+			return result;
+		}
+		//전화번호 중복 검사용
+		public int phoneCheck(String memberPhone) throws Exception {
+			Connection con = JdbcUtils.connect();
+			
+			String sql = "select count(*) from member where member_phone = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, memberPhone);
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+
+			int result = rs.getInt(1);
+			
+			con.close();
+			
+			return result;
+		}
 }

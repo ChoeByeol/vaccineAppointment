@@ -13,28 +13,28 @@
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
-
-<h2>문의글 수정</h2>
-
+<style>
+.text-area{
+	width:100%;
+	height:20rem;
+}
+</style>
 <form action="edit.txt" method="post">
 <input type="hidden" name="qnaNo" required width="600" value="<%=qnaDto.getQnaNo()%>">
-	<table>
-		<tbody align="left">
-			<tr>
-				<th>제목 : </th>
-				<td><input type="text" name="qnaTitle" required width="600" value="<%=qnaDto.getQnaTitle()%>"></td>
-			</tr>
-			<tr>
-				<th>내용 : </th>
-				<td><textarea name="qnaContent" rows="10" cols="100" required ><%=qnaDto.getQnaContent()%></textarea></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2" align="right">
-					<input type="submit" value="수정하기">
-				</td>
-			</tr>
-		</tfoot>
-	</table>
+	<div class="container-800 container-center">
+		<div class="row center form-title-font">1:1 문의글 수정</div>
+		<div class="row">
+			<h3>제목</h3>
+			<input type="text" name="qnaTitle" required value="<%=qnaDto.getQnaTitle()%>" class="form-input-title form-input">
+		</div>
+		<div class="row">
+			<h3>내용</h3>
+      		<textarea name="qnaContent" required class="form-input-board form-input text-area"><%=qnaDto.getQnaContent()%></textarea>
+		</div>
+		<div class="row right">
+			<input type="submit" value="수정하기" class="form-btn form-inline form-notice-btn">
+		</div>
+	</div>
 </form>
+
+<jsp:include page="/template/footer.jsp"></jsp:include>

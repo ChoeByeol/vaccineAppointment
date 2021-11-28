@@ -139,8 +139,6 @@ public class ReservationVo {
 	@Override
 	public String toString() {
 		return "ReservationVo [vaccineNo=" + vaccineNo + ", clinicNo=" + clinicNo + ", quantity=" + quantity + "]";
-	}
-
-
-	
+	}	
 }
+

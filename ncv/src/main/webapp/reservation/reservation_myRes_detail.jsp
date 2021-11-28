@@ -22,8 +22,14 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
-
-
+<script>
+	$(function() {
+		$("#cancel-link").click(function() {
+			return confirm("정말 취소하시겠습니까?");
+		});
+	});
+	
+</script>
 <style>
 	.link-btn {
 		width:100%;
@@ -67,26 +73,26 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 				<table class="table table-stripe">
 					<tbody>
 					
-					<% for (ReservationVo reservationVo : myResList) { %>
+					<% for (ReservationVo reservationVo2 : myResList) { %>
 						<tr class="table-line">
-							<th width="30%"><%=reservationVo.getResShot()%>차 예약번호</th>
-							<td><%=reservationVo.getResNo()%></td>
+							<th width="30%"><%=reservationVo2.getResShot()%>차 예약번호</th>
+							<td><%=reservationVo2.getResNo()%></td>
 						</tr>
 						<tr class="table-line">
-							<th width="30%"><%=reservationVo.getResShot()%>차 의료기관</th>
-							<td><%=reservationVo.getClinicName()%></td>
+							<th width="30%"><%=reservationVo2.getResShot()%>차 의료기관</th>
+							<td><%=reservationVo2.getClinicName()%></td>
 						</tr>
 						<tr class="table-line">
-							<th width="30%"><%=reservationVo.getResShot()%>차 예약일시</th>
-							<td><%=reservationVo.getResDateDay()%></td>
+							<th width="30%"><%=reservationVo2.getResShot()%>차 예약일시</th>
+							<td><%=reservationVo2.getResDateDay()%></td>
 						</tr>
 						<tr class="table-line">
-							<th width="30%"><%=reservationVo.getResShot()%>차 예약시간</th>
-							<td><%=reservationVo.getResTime()%></td>
+							<th width="30%"><%=reservationVo2.getResShot()%>차 예약시간</th>
+							<td><%=reservationVo2.getResTime()%></td>
 						</tr>
 						<tr class="table-line">
-							<th width="30%"><%=reservationVo.getResShot()%>차 예약백신</th>
-							<td><%=reservationVo.getVaccineName()%></td>
+							<th width="30%"><%=reservationVo2.getResShot()%>차 예약백신</th>
+							<td><%=reservationVo2.getVaccineName()%></td>
 						</tr>
 						<%} %>
 						<tr>						
@@ -94,8 +100,9 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 				</table>
 			</div>
 		</div>
-		<a class="link-btn" href="<%=request.getContextPath()%>/ncv/index.jsp">메인페이지로</a>
+		<a class="link-btn" href="<%=request.getContextPath()%>/index.jsp">메인페이지로</a>
 		<a class="link-btn" href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">이전페이지</a>
+
 	</div>
 
  <jsp:include page="/template/footer.jsp"></jsp:include>

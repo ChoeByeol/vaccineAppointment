@@ -59,9 +59,6 @@
 <%if(myShotList.size() > 0) {%>
 <div class="container-900 container-center">
 	<div class="row">
-		<div class="page-title">
-		<h2 class="page-title">접종 결과가 조회되었습니다!</h2>
-		</div>
 		<br><br>
 			<!-- 1단 : 예약자 정보 -->
 			<div class="row">
@@ -122,4 +119,5 @@
 <%} else {%>
 		<img class="warning-img" src="<%=request.getContextPath()%>/resource/image/not_shot.png">
 <%} %>
+
  <jsp:include page="/template/footer.jsp"></jsp:include>

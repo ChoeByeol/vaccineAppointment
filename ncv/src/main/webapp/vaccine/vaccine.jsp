@@ -47,11 +47,8 @@ tbody {
 .table.table-font {
 	font-size: 16px;
 }
-</style>
-<style type="text/css">
  a:link { color: black; text-decoration: none;}
  a:visited { color: black; text-decoration: none;}
-
 </style>
 
 <!-- 이 페이지를 2단으로 구현 -->

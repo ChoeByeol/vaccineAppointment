@@ -43,13 +43,6 @@ public class ReservationCancelServlet extends HttpServlet {
                 out.println("<script>alert('이미 접종완료한 예약입니다. 취소가 불가능합니다.'); history.back();</script>");
                 out.flush();	
 			}
-			
-			
-			
-			
-			
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);

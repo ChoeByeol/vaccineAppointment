@@ -364,6 +364,8 @@ textarea.vertical {
 }
 .slide-menu {/*(3)*/
     display: flex;
+    z-index: 1;
+    position: relative;
 }
 .slide-menu > li {/*(4)*/
     width:120px;

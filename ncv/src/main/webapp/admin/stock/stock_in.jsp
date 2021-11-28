@@ -64,13 +64,8 @@ tbody {
 		<h1>백신 입고 등록</h1>
 	</div>
 					
-	<form action="<%=request.getContextPath()%>/stock/stockIn.txt" method="post">
-			
-	<div class="row">
-		<label>입고일자</label>
-		<input type="date" name="stockDate" class="form-input">
-	</div>	
-			
+	<form action="stockIn.txt" method="post">
+
 	<div class="row">
 		<label>병원선택</label>
 		<select name="clinicNo" >
@@ -80,7 +75,7 @@ tbody {
 				<%=clinicDto.getClinicName()+" / "+clinicDto.getClinicAddress()+" / "+clinicDto.getClinicDetailAddress()%>
 				</option>
 				<%} %>
-			</select>
+			</select> 
 		</div>				
 				
 		<div class="row">
@@ -96,7 +91,7 @@ tbody {
 			
 	<div class="row">
 		<label>수량</label>
-		<input type="number" name="quantity" class="form-input">
+		<input type="number" name="stockInQty" class="form-input">
 	</div>	
 
 		
@@ -104,7 +99,7 @@ tbody {
 		<input type="submit" value="입고" class="link-btn" >
 		<input type="button" value="취소" onclick=" location.href = '<%=request.getContextPath()%>'" class="link-btn">
 	</div>
-
+ 
 </form>
 </div>
 
