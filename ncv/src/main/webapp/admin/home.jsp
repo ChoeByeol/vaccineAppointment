@@ -25,7 +25,13 @@
 		<a href="./vaccine/vaccine.jsp" class="link-btn">백신 관리</a>
 	</div>
 	<div class="link-btn center">
+        <a href="./stock/stock_list.jsp" class="link-btn">백신 재고 관리</a>
+    </div>
+	<div class="link-btn center">
 		<a href="./qna/list.jsp" class="link-btn">1대1문의 관리</a>
+	</div>
+	<div class="link-btn center">
+		<a href="./member/agree_edit.jsp" class="link-btn">약관 수정</a>
 	</div>
 </div>
 

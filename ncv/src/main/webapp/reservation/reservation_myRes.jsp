@@ -119,7 +119,7 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 				</table>
 			</div>
 		</div>
-		<a class="link-btn" href="reservation/reservation_myRes_detail.jsp">예약정보 상세조회</a>
+		<a class="link-btn" href="<%=request.getContextPath()%>/reservation/reservation_myRes_detail.jsp">예약정보 상세조회</a>
 	</div>
 <%} else {%>
 	<a class="link-btn" href="<%=request.getContextPath()%>/reservation/check.txt">예약하러 가기</a>

@@ -12,30 +12,27 @@ import ncv.beans.ReservationDao;
 import ncv.beans.StockDao;
 import ncv.beans.StockDto;
 
-
-
-
-@WebServlet(urlPatterns = "/stock/stockIn.txt")
+@WebServlet(urlPatterns = "/admin/stock/stockIn.txt")
 public class StockInServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			
+			//입력
 			StockDto stockDto = new StockDto();
 			
-			stockDto.setQuantity(Integer.parseInt(req.getParameter("quantity")));
-			stockDto.setClinicNo(Integer.parseInt(req.getParameter("clinicNo")));
 			stockDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
-			stockDto.setStockDate(req.getParameter("stockDate"));
-			stockDto.setStockType(req.getParameter("stockType"));
-
+			stockDto.setClinicNo(Integer.parseInt(req.getParameter("clinicNo")));
+			stockDto.setStockInQty(Integer.parseInt(req.getParameter("stockInQty")));
+			
+			//처리
 			StockDao stockDao = new StockDao();
 			int stockNo = stockDao.getSequence();
 			stockDto.setStockNo(stockNo);
 			stockDao.stockIn(stockDto);			
-
-			resp.sendRedirect("http://localhost:8080/ncv/admin/stock/stock_in.jsp");
-
+			
+			//출력
+			resp.sendRedirect(req.getContextPath() + "/admin/stock/stock_list.jsp");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);

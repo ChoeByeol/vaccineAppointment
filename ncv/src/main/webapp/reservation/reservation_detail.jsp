@@ -109,4 +109,3 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
-

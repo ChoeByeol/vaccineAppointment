@@ -15,15 +15,13 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 <style>
-
-
 .sub_news,.sub_news th,.sub_news td{border:0}
 .sub_news a{color:#383838;text-decoration:none}
 .sub_news{width:100%;border-bottom:1px solid #999;color:#666;font-size:14px;table-layout:fixed}
 .sub_news caption{display:none}
 .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
 .sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
-.sub_news .no,.sub_news .memberid,.sub_news .name,.sub_news .rrn,.sub_news .phmoe,.sub_news .vacineName,.sub_news .shot,.sub_news .clinicname,.sub_news .nodateday,.sub_news .time,.sub_news .detailno{padding:0;font-family:Tahoma;font-size:14px;line-height:normal}
+.sub_news .no,.sub_news .memberId,.sub_news .name,.sub_news .rrn,.sub_news .phone,.sub_news .vacineName,.sub_news .shot,.sub_news .clinicname,.sub_news .nodateday,.sub_news .time,.sub_news .detailno{padding:0;font-family:Tahoma;font-size:14px;line-height:normal}
 
 <style>
  .button_base {
@@ -51,7 +49,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
 }
-
 .btn:hover {
     color: #ffffff;
     background-color:rgb(53, 66, 68);
@@ -62,7 +59,7 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     -webkit-transition: all 0.2s ease 0.2s;
     -moz-transition: all 0.2s ease 0.2s;
 }
-
+<<<<<<< HEAD
 @-webkit-keyframes btn {
     from,
     to {
@@ -74,7 +71,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
         color: #000000;
     }
 }
-
 @-moz-keyframes btn {
     from,
     to {
@@ -89,7 +85,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 .no{
 	width:20px;
 }
-
 .memberId{
 	width:90px;
 }
@@ -120,8 +115,8 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 .detailNo{
 	width:90px;
 }
-</style>
 
+</style>
 
 
 <div class="container-900 container-center">
@@ -133,23 +128,24 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 
 	<!-- 데이터 표시 영역 -->
 	<div class="row center">
-
-				<table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">			<thead>
+  <form action="<%=request.getContextPath()%>/admin/shot/complete.txt" method="post">
+  
+				<table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
 				<caption>나의 예약 리스트</caption>
 				
 				<thead>
 				<tr>
-					<th class="no">예약번호</th>
-					<th class="memberId">아이디</th>
-					<th class="name">이름</th>
-					<th class="rrn">주민등록번호</th>
-					<th class="phone">전화번호</th>
-					<th class="vaccineName">백신명</th>
-					<th class="shot">접종차수</th>
-					<th class="clinicName">예약병원</th>
-					<th class="dateDay">예약일</th>
-					<th class="time">예약시간</th>
-					<th class="detailNo">접종상태</th>
+					<th class="no" style="width: 60px;">예약번호</th>
+					<th class="memberId" style="width: 90px;">아이디</th>
+					<th scope="col" style="width: 70px;">이름</th>
+					<th scope="col" style="width: 120px;">주민등록번호</th>
+					<th scope="col" style="width: 90px;">전화번호</th>
+					<th scope="col" style="width: 120px;">백신명</th>
+					<th scope="col" style="width: 55px;">접종차수</th>
+					<th scope="col" style="width: 65px;">예약병원</th>
+					<th scope="col"style="width: 70px;">예약일</th>
+					<th scope="col"style="width: 55px;">예약시간</th>
+					<th scope="col" style="width: 90px;">접종완료하기</th>
 				</tr>
 			</thead>
 			<tbody align="center">
@@ -166,16 +162,20 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 					<td class="clinicName"><%=reservationVo.getClinicName()%></td>
 					<td class="dateDay"><%=reservationVo.getResDateDay()%></td>
 					<td class="time"><%=reservationVo.getResTime()%></td>
-					<td class="detailNo"><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="btn button_base">상세내역</a></td>
-
+					<td>
+					<input type="hidden" name="resOkNo" value = "<%=reservationVo.getResNo()%>">
+          			<input type="hidden" name="vaccineNo" value = "<%=reservationVo.getVaccineNo()%>">
+        		    <input type="hidden" name="clinicNo" value = "<%=reservationVo.getClinicNo()%>">
+        		    <input type="hidden" name="shotCount" value = "<%=reservationVo.getResShot()%>">
+                    <input type="submit" value="접종완료하기" id="complete-link" class="link-btn">
+                    </td>
 				</tr>
 				<%} %>
 			</tbody>
 		</table>
-
+</form>
 	</div>
 
 </div>
-
 
 <jsp:include page="/template/footer.jsp"></jsp:include>

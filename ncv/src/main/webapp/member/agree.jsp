@@ -1,5 +1,12 @@
+<%@page import="java.util.List"%>
+<%@page import="ncv.beans.AgreeDto"%>
+<%@page import="ncv.beans.AgreeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
+<%
+	AgreeDao agreeDao = new AgreeDao();
+	List<AgreeDto> list = agreeDao.list();
+%>    
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 <!DOCTYPE html>
@@ -72,8 +79,11 @@
 	</head>
 	
 	<body>
-	
-<form action="<%=request.getContextPath()%>/member/join.jsp" id="joinForm">
+<%if(list.size() == 0){ %>
+<h3>약관 내용이 존재하지 않습니다</h3>
+<%} else{ %>
+<form action="<%=request.getContextPath()%>/member/join.jsp?" id="joinForm">
+	<%for(AgreeDto agreeDto : list){ %>
             <ul class="join_box">
                 <li class="checkBox check01">
                     <ul class="clearfix">
@@ -93,7 +103,7 @@
                            <input type="checkbox" oninput="check();" class="ck1" required>
                         </li>
                     </ul>
-                    <textarea name="" id="">회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구회원정보 수집 항목 어쩌구
+                    <textarea name="agree1" ><%=agreeDto.getAgree1()%>
        				</textarea>
                 </li>
                 <li class="checkBox check03">
@@ -103,7 +113,7 @@
                             <input type="checkbox" oninput="check();" class="ck2"required>
                         </li>
                     </ul> 
-                    <textarea name="" id="">개인정보 수집 목적 어쩌구
+                    <textarea name="agree2" id=""><%=agreeDto.getAgree2()%>
        				</textarea>
                 </li>
                 <li class="checkBox check03">
@@ -113,7 +123,7 @@
                            <input type="checkbox" oninput="check();" class="ck3" required>
                         </li>
                     </ul> 
-                    <textarea name="" id="">개인정보 보유 및 이용 기간 어쩌구
+                    <textarea name="agree3" id=""><%=agreeDto.getAgree3()%>
        				</textarea>
                 </li>
                 <li class="checkBox check03">
@@ -123,7 +133,7 @@
                            <input type="checkbox" oninput="check();" class="ck4" required>
                         </li>
                     </ul> 
-                    <textarea name="" id="">개인정보 제3자 제공동의 어쩌구
+                    <textarea name="agree4" id=""><%=agreeDto.getAgree4()%>
        				</textarea>
 				</li>
                 <li class="checkBox check04">
@@ -132,6 +142,7 @@
                     </ul>
                         </li>
                     </ul>
+                   <%} %>
  
             <ul class="footBtwrap clearfix">
                 <li>
@@ -139,8 +150,8 @@
                 </li>                
             </ul>
         </form>
+        <%} %> 
 
 
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
-
