@@ -21,7 +21,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 .sub_news caption{display:none}
 .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
 .sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
-.sub_news .no,.sub_news .memberId,.sub_news .name,.sub_news .rrn,.sub_news .phone,.sub_news .vacineName,.sub_news .shot,.sub_news .clinicname,.sub_news .nodateday,.sub_news .time,.sub_news .detailno{padding:0;font-family:Tahoma;font-size:14px;line-height:normal}
 
 <style>
  .button_base {
@@ -59,31 +58,9 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     -webkit-transition: all 0.2s ease 0.2s;
     -moz-transition: all 0.2s ease 0.2s;
 }
-<<<<<<< HEAD
-@-webkit-keyframes btn {
-    from,
-    to {
-        background-color: #f8f8f8;
-        color: #080808;
-    }
-    50% {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-@-moz-keyframes btn {
-    from,
-    to {
-        background-color: #f8f8f8;
-        color: #080808;
-    }
-    50% {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
+
 .no{
-	width:20px;
+	width:30px;
 }
 .memberId{
 	width:90px;
@@ -134,17 +111,17 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 				
 				<thead>
 				<tr>
-					<th class="no" style="width: 60px;">예약번호</th>
-					<th class="memberId" style="width: 90px;">아이디</th>
-					<th scope="col" style="width: 70px;">이름</th>
-					<th scope="col" style="width: 120px;">주민등록번호</th>
-					<th scope="col" style="width: 90px;">전화번호</th>
-					<th scope="col" style="width: 120px;">백신명</th>
-					<th scope="col" style="width: 55px;">접종차수</th>
-					<th scope="col" style="width: 65px;">예약병원</th>
-					<th scope="col"style="width: 70px;">예약일</th>
-					<th scope="col"style="width: 55px;">예약시간</th>
-					<th scope="col" style="width: 90px;">접종상태</th>
+					<th class="no">번호</th>
+					<th class="memberId">아이디</th>
+					<th class="name">이름</th>
+					<th class="rrn">주민등록번호</th>
+					<th class="phone">전화번호</th>
+					<th class="vaccineName">백신명</th>
+					<th class="shot">차수</th>
+					<th class="clinicName">예약병원</th>
+					<th class="dateDay">예약일</th>
+					<th class="time">예약시간</th>
+					<th class="detailNo">접종상태</th>
 				</tr>
 			</thead>
 			<tbody align="center">
