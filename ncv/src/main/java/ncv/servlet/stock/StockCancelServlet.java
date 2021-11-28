@@ -12,21 +12,21 @@ import ncv.beans.StockDao;
 
 @WebServlet(urlPatterns = "/admin/stock/cancel.txt")
 public class StockCancelServlet extends HttpServlet{
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            int stockNo = Integer.parseInt(req.getParameter("stockNo"));
-
-            StockDao stockDao = new StockDao();
-            boolean success = stockDao.cancel(stockNo);
-
-            if(success) {
-                resp.sendRedirect("stock_list.jsp");
-            }
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-            resp.sendError(500);
-        }
-    }
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			int stockNo = Integer.parseInt(req.getParameter("stockNo"));
+			
+			StockDao stockDao = new StockDao();
+			boolean success = stockDao.cancel(stockNo);
+			
+			if(success) {
+				resp.sendRedirect("stock_list.jsp");
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			resp.sendError(500);
+		}
+	}
 }

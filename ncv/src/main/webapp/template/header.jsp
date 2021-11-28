@@ -100,7 +100,11 @@
         	<li><a href="<%=request.getContextPath()%>/admin/member/list.jsp">회원목록</a></li>
         	<li><a href="<%=request.getContextPath()%>/admin/agree_edit.jsp">약관수정</a></li>
         </ul></li>
-        <li><a href="<%=request.getContextPath()%>/admin/clinic/list.jsp">병원관리</a></li>
+        <li><a href="#">병원관리</a>
+        <ul>
+        	<li><a href="<%=request.getContextPath()%>/admin/clinic/list.jsp">병원목록</a></li>
+        	<li><a href="<%=request.getContextPath()%>/admin/clinic/insert.jsp">병원등록</a></li>
+        </ul></li>
         <li><a href="#">백신관리</a>
         <ul>
           	<li><a href="<%=request.getContextPath()%>/admin/stock/stock_list.jsp">백신재고목록</a></li>
@@ -109,18 +113,18 @@
         </ul></li>
         <li><a href="<%=request.getContextPath()%>/admin/qna/list.jsp">1:1문의관리</a></li>
         <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">임시접종완료</a></li>
+        <li class="flex-right"><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
          <%}else{%>
+         <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li> 
         <li class="flex-right">
-            <a href="#" >회원메뉴</a>
+            <li><a href="#" >회원메뉴</a>
             <ul>
-                <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li> 
                 <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
                 <li><a href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">나의예약조회</a></li>
                 <li><a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">접종내역조회</a></li>
-                <%} %>
                 <li class="flex-right"><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
-              </ul>
-        </li>
+            </ul></li>
+                <%} %>
         <%}else{%>
             <li><a href="<%=request.getContextPath()%>/index.jsp">홈으로</a></li>
             <li><a href="<%=request.getContextPath()%>/notice/list.jsp">공지사항</a></li>

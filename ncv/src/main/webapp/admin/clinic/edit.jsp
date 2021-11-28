@@ -16,27 +16,51 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- 주소 검색 모듈 -->
 <script src="<%=request.getContextPath()%>/resource/js/clinic_address.js"></script>
+<style>
+.clinic-text{
+	width:100%;
+	height:20rem;
+}
+</style>
 <div class="container-1000 container-center">
 <form action="edit.txt" method="post">
-		<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
-		병원 이름 : <input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>">
-		<br><br>
-		병원 연락처 : <input type="text" name="clinicTel" required value="<%=clinicDto.getClinicTel()%>">
-		<br><br>
-		진료시간 : <input type="text" name="clinicTime" required value="<%=clinicDto.getClinicTime()%>">
-		<br><br>
-		우편번호 : <input type="text" name="clinicPostcode" required value="<%=clinicDto.getClinicPostcode()%>">
-		<button type="button" class="find-address-btn">주소 검색</button>
-		<br><br>
-		병원 주소 : <input type="text" name="clinicAddress" required value="<%=clinicDto.getClinicAddress()%>">
-		<br><br>
-		상세주소 : <input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>">
-		<br><br>
-		<input type="submit" value="수정">
-		<!-- 아래 히든으로 바꿔줘야함  -->
-		<input type="text" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
-		<input type="text" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
-		<input type="text" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">		
+<input type="hidden" name="clinicNo" required value="<%=clinicDto.getClinicNo()%>">
+		 <div class="container-500 container-center">	 
+		 	<div class="row center">
+		 		<h1>병원 정보 수정</h1>
+		 	</div>
+		 	<div class="row">
+		 		<label class="label-text">병원이름</label>
+		 		<input type="text" name="clinicName" required value="<%=clinicDto.getClinicName()%>" class="form-input">
+		 	</div>
+		 	<div class="row">
+		 		<label class="label-text">전화번호</label>
+		 		<input type="text" name="clinicTel" required value="<%=clinicDto.getClinicTel()%>" class="form-input">
+		 	</div>
+		 	 <div class="row">
+		 		<label class="label-text">운영시간</label>
+		 		<textarea name="clinicTime" placeholder="병원 운영시간" required class="clinic-text"><%=clinicDto.getClinicNo()%></textarea>
+		 	</div>
+			<div class="row">
+		 		<label class="label-text">우편번호</label><br>
+		 		<input type="text" name="clinicPostcode" placeholder="우편번호"  readonly class="address-input" readonly value="<%=clinicDto.getClinicPostcode()%>">
+		 		<button type="button" class="find-address-btn form-btn form-inline">주소 찾기</button>
+		 	</div>
+		  	 <div class="row">
+		 		<label class="label-text">주소</label>
+		 		<input type="text" name="clinicAddress" required readonly value="<%=clinicDto.getClinicAddress()%>" class="form-input">
+		 	</div>
+		  	 <div class="row">
+		 		<label class="label-text">상세 주소</label>
+		 		<input type="text" name="clinicDetailAddress" required value="<%=clinicDto.getClinicDetailAddress()%>" class="form-input">
+		 	</div>
+		<input type="hidden" name="clinicSido" required value="<%=clinicDto.getClinicSido()%>">
+		<input type="hidden" name="clinicSigungu" required value="<%=clinicDto.getClinicSigungu()%>">
+		<input type="hidden" name="clinicBname" required value="<%=clinicDto.getClinicBname()%>">
+			<div class="row">
+				<input type="submit" value="수정" class="form-btn">
+			</div>
+		</div>	
 </form>
 
 <%if(request.getParameter("error") != null){ %>

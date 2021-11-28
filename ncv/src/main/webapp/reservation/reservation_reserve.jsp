@@ -215,7 +215,7 @@ tbody {
                 var inputPhone = $("input[name=resPhone]").val();
                 console.log(inputPhone);
                 $.ajax({
-                    url:"http://localhost:8080/ncv/reservation/member_check.txt",
+                    url:"${pageContext.request.contextPath}/reservation/member_check.txt",
                     type:"get",//전송방식
                     data:{
                     	//memberId:inputId,

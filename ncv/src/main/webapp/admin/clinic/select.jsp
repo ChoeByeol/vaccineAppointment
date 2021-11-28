@@ -104,19 +104,13 @@ geocoder.addressSearch("<%=clinicDto.getClinicAddress()%>", function(result, sta
 </script>
 <div class="container-400 container-center">
 	<div class="link-btn center">
-		<a href="reservation_list.jsp?clinicNo=<%=clinicDto.getClinicNo()%>"class="link-btn">백신 예약 내역 보기</a>
-	</div>
-	<div class="link-btn center">
-		<a href="shot_list.jsp?cliniNo=<%=clinicDto.getClinicNo()%>"class="link-btn">백신 접종 내역 보기</a>
-	</div>
-	<div class="link-btn center">
 		<a href="edit.jsp?clinicNo=<%=clinicDto.getClinicNo()%>"class="link-btn">병원 정보 수정</a>
 	</div>
 	<div class="link-btn center">
 		<a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>"class="link-btn">병원 정보 삭제</a>
 	</div>
 	<div class="link-btn center">
-		<a href="list.jsp"class="link-btn">목록으로</a>
+		<a href="javascript:history.back()" class="link-btn">목록으로</a>
 	</div>
 </div>
 </body>
