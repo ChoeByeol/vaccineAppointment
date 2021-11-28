@@ -54,7 +54,7 @@ public class ReservationReserveServlet extends HttpServlet {
                 reservationDto.setResNo(resNo);
                 reservationDao.reserve(reservationDto); //예약
                 
-                resp.sendRedirect("reservation_detail.jsp?resNo="+resNo);
+                resp.sendRedirect("reservation_myRes.jsp");
             }
             else {
                 resp.sendRedirect("reservation_fail.jsp");

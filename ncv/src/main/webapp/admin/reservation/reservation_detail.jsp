@@ -24,7 +24,11 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 			return confirm("정말 취소하시겠습니까?");
 		});
 	});
-	
+	$(function() {
+		$("#shot-link").click(function() {
+			return confirm("접종 완료로 변경하시겠습니까?");
+		});
+	});
 </script>
 
 
@@ -99,9 +103,8 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 
 
 		<div class="row right">
-						<a href="reservation_list.jsp" class="link-btn">목록보기</a>
-						<a href="reservation_edit.jsp?resNo=<%=reservationDto.getResNo()%>" class="link-btn">변경</a>
-						<a href="cancel.txt?resNo=<%=reservationDto.getResNo()%>" class="link-btn" id="cancel-link-link">예약취소</a>
+			<a href="<%=request.getContextPath()%>/admin/reservation/reservation_list.jsp" class="link-btn">목록보기</a>
+			<a href="<%=request.getContextPath()%>/admin/reservation/delete.txt?resNo=<%=reservationVo.getResNo()%>" class="link-btn" id="cancel-link">예약취소</a>
 		</div>
 
 	</div>

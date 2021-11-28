@@ -110,11 +110,16 @@
           	<li><a href="<%=request.getContextPath()%>/admin/stock/stock_list.jsp">백신재고관리</a></li>
            	<li><a href="<%=request.getContextPath()%>/admin/vaccine/vaccine.jsp">백신 추가</a></li>
         </ul></li>
+        <li><a href="#">예약관리</a>
+        <ul>
+          	<li><a href="<%=request.getContextPath()%>/admin/reservation/reservation_list.jsp">예약목록</a></li>
+        </ul></li>
         <li><a href="<%=request.getContextPath()%>/admin/qna/list.jsp">1:1문의관리</a></li>
-        <li><a href="<%=request.getContextPath()%>/reservation/reservation_list.jsp">임시접종완료</a></li>
+        <li><a href="<%=request.getContextPath()%>/admin/shot/shot_list.jsp">접종자목록</a></li>
         <li class="flex-right"><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
          <%}else{%>
-         <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li> 
+         <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li>
+         <li><a href="<%=request.getContextPath()%>/qna/list.jsp">1:1문의</a></li>
         <li class="flex-right">
             <li><a href="#" >회원메뉴</a>
             <ul>

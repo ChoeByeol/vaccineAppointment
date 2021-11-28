@@ -59,7 +59,6 @@ List<ReservationVo> reservationList  = reservationDao.list2();
     -webkit-transition: all 0.2s ease 0.2s;
     -moz-transition: all 0.2s ease 0.2s;
 }
-<<<<<<< HEAD
 @-webkit-keyframes btn {
     from,
     to {
@@ -144,7 +143,7 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 					<th scope="col" style="width: 65px;">예약병원</th>
 					<th scope="col"style="width: 70px;">예약일</th>
 					<th scope="col"style="width: 55px;">예약시간</th>
-					<th scope="col" style="width: 90px;">접종상태</th>
+					<th scope="col" style="width: 90px;">접종하러 가기</th>
 				</tr>
 			</thead>
 			<tbody align="center">
@@ -161,8 +160,8 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 					<td class="clinicName"><%=reservationVo.getClinicName()%></td>
 					<td class="dateDay"><%=reservationVo.getResDateDay()%></td>
 					<td class="time"><%=reservationVo.getResTime()%></td>
-					<td class="detailNo"><a href="../shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="btn button_base">상세내역</a></td>
-
+					<td class="detailNo"><a href="<%=request.getContextPath()%>/admin/shot/shot_complete.jsp?resNo=<%=reservationVo.getResNo()%>" class="btn button_base">접종 페이지</a></td>
+					
 				</tr>
 				<%} %>
 			</tbody>
