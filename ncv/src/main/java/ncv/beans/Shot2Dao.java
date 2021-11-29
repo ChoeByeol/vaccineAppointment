@@ -190,7 +190,7 @@ public class Shot2Dao {
 	public List<Shot2Vo> myVaccineList(String memberId) throws Exception {
 	    Connection con = JdbcUtils.connect();
 
-	    String sql = "select d.vaccine_no, d.vaccine_name from shot a inner join reservation  b on a.resOk_no = b.res_no inner join clinic c on b.clinic_no = c.clinic_no inner join vaccine d on b.vaccine_no = d. vaccine_no where member_id = ?";
+	    String sql = "select s.shot_vaccine_no, v.vaccine_name from shot s inner join vaccine v on v.vaccine_no = s.shot_vaccine_no where s.shot_member_id = ? ";
 	    PreparedStatement ps = con.prepareStatement(sql);
 	    ps.setString(1, memberId);
 	    ResultSet rs = ps.executeQuery();
@@ -199,7 +199,7 @@ public class Shot2Dao {
 	    while (rs.next()) {
 	        Shot2Vo shotVo = new Shot2Vo();
 
-	        shotVo.setVaccineNo(rs.getInt("vaccine_no"));
+	        shotVo.setVaccineNo(rs.getInt("shot_vaccine_no"));
 	        shotVo.setVaccineName(rs.getString("vaccine_name"));
 
 	        myVaccineList.add(shotVo);
@@ -230,4 +230,41 @@ public class Shot2Dao {
 		
 		return result > 0;
 	}
+	
+	public int getResNum(String memberId) throws Exception {
+	Connection con = JdbcUtils.connect();
+
+	String sql = "select count(*) from shot where shot_member_id = ?";
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setString(1, memberId);
+	ResultSet rs= ps.executeQuery();
+
+	rs.next();
+	int count = rs.getInt(1);
+
+	con.close();
+
+	return count;
+	}
+	
+	//내가 맞은 백신 번호 불러오깅
+	public int myVacNo(String memberId) throws Exception {
+	    Connection con = JdbcUtils.connect();
+
+	    String sql = "select s.shot_vaccine_no from shot s "
+	    		+ "inner join vaccine v on v.vaccine_no = s.shot_vaccine_no "
+	    		+ "where s.shot_member_id = ? ";
+	    PreparedStatement ps = con.prepareStatement(sql);
+	    ps.setString(1, memberId);
+	    ResultSet rs = ps.executeQuery();
+
+	    rs.next();
+	    
+	    int result = rs.getInt(1);
+	    
+	    con.close();
+
+	    return result;
+	}
+	
 }
