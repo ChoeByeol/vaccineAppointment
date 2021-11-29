@@ -34,7 +34,7 @@ public class ReservationVacCheckServlet extends HttpServlet {
 			int result = reservationDao.resVacCheck(clinicNo, vaccineNo);
 			
 			List<ReservationVo> clinicVacCheck = reservationDao.clinicVacCheck(clinicNo, vaccineNo);
-			System.out.println(clinicVacCheck.size());
+			//System.out.println(clinicVacCheck.size());
 			
 			int stock = 0;
 			for (ReservationVo reservationVo : clinicVacCheck) {
@@ -43,12 +43,12 @@ public class ReservationVacCheckServlet extends HttpServlet {
 
 	  
 			if(stock >= result) {
-				System.out.println("예약가능");
-				System.out.println("재고수량 = " + stock);
-				System.out.println("예약건수 = " + result);
+				//System.out.println("예약가능");
+				//System.out.println("재고수량 = " + stock);
+				//System.out.println("예약건수 = " + result);
 			}
 			else {
-				System.out.println("재고없음요");
+				//System.out.println("재고없음요");
 			}			
 			
 			boolean stockCheck = stock >= result;
@@ -59,7 +59,7 @@ public class ReservationVacCheckServlet extends HttpServlet {
 
 			} else { 
 				resp.sendRedirect("/reservation/reserve.txt");
-				System.out.println("백신재고없음 예약불가능");
+				//System.out.println("백신재고없음 예약불가능");
 			}
 			
 			

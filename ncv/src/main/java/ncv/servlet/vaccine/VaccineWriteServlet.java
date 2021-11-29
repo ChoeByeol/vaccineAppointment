@@ -35,7 +35,7 @@ public class VaccineWriteServlet extends HttpServlet {
 			//처리
 			VaccineDao vaccineDao = new VaccineDao();
 			int vaccineNo = vaccineDao.getSequence();
-			System.out.println("백신 시퀀스 = " + vaccineNo);
+			//System.out.println("백신 시퀀스 = " + vaccineNo);
 			vaccineDto.setVaccineNo(vaccineNo);
 			vaccineDao.vaccineWrite(vaccineDto);
 

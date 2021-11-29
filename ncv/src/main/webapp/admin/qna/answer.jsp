@@ -24,55 +24,52 @@
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
-<h2>문의글 답변</h2>
-
 <form action="answer.txt" method="post">
 <input type="hidden" name="qnaNo" required width="600" value="<%=qnaDto.getQnaNo()%>">
-	<table>
-		<tbody align="left">
-			<tr>
-				<th>제목 : </th>
-				<td><%=qnaDto.getQnaTitle()%></td>
-			</tr>
-			<tr height="200" valign="top">
-				<th>내용 : </th>
-				<td><pre><%=qnaDto.getQnaContent()%></pre></td>
-			</tr>
-							<%-- 첨부 파일이 있다면 첨부파일을 다운받을 수 있는 링크를 제공 --%>
-				<%if(!qnaFileList.isEmpty()){ %>
-				<tr>
-					<%for(QnaFileDto boardFileDto : qnaFileList){ %>
-						<th>첨부파일 : </th>
-						<td>
-							<%=boardFileDto.getQnaFileUploadName()%> 
-							(<%=boardFileDto.getQnaFileSize()%> bytes)
-							<a href="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>">다운로드</a>
-							<img src="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>" width="50" height="50">
-						<td>
-					<%} %>
-				</tr>
-				<%} %>
-			<tr>
-				<th>답변 : </th>
-				<td><textarea name="qnaAnswer" rows="10" cols="100" required ><%=qnaDto.getQnaAnswer()%></textarea></td>
-			</tr>
-		</tbody>
-		<tfoot>	
-		<%if(qnaDto.getQnaAnswer().length()==0){%>
-			<tr>
-				<td colspan="2" align="right">
-					<input type="submit" value="답변하기">
-					
-				</td>
-			</tr>
-		<%} else { %>
-			<tr>
-				<td colspan="2" align="right">
-					<input type="submit" value="수정하기">
-				</td>
-			</tr>
+	<div class="container-800 container-center">
+		<div class="row center form-title-font">1:1 문의글 답변</div>
+		<div class="row">
+			<h3>문의 제목</h3>
+			<input type="text" readonly required value="<%=qnaDto.getQnaTitle()%>" class="form-input-title form-input">
+		</div>
+		<div class="row">
+			<h3>문의자</h3>
+			<input type="text" readonly required value="<%=qnaDto.getQnaWriter()%>" class="form-input-title form-input">
+		</div>
+		<div class="row">
+			<h3>문의 내용</h3>
+      		<textarea readonly required class="form-input-board form-input text-area"><%=qnaDto.getQnaContent()%></textarea>
+		</div>
+		<%-- 첨부 파일이 있다면 첨부파일을 다운받을 수 있는 링크를 제공 --%>
+		<%if(!qnaFileList.isEmpty()){ %>
+		<div class="row left">
+			<%for(QnaFileDto boardFileDto : qnaFileList){ %>
+				<h3>첨부파일<h3>
+				<%=boardFileDto.getQnaFileUploadName()%> 
+				(<%=boardFileDto.getQnaFileSize()%> bytes)
+				<a href="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>">다운로드</a>
+				<img src="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>" width="50" height="50">
+			<%} %>
+		</div>
 		<%} %>
-		</tfoot>
-	</table>
-
+		<div class="row">
+			<h3>답변 내용</h3>
+      		<textarea name="qnaAnswer" required class="form-input-board form-input text-area"><%=qnaDto.getQnaAnswer()%></textarea>
+		</div>
+		<%if(qnaDto.getQnaAnswer().length()==0){%>
+		<div class="row right">
+			<input type="submit" value="답변하기" class="form-btn form-inline form-notice-btn">
+		</div>
+		<%} else { %>
+		<div class="row right">
+			<input type="submit" value="수정하기" class="form-btn form-inline form-notice-btn">
+		</div>
+		<%} %>
+	</div>
 </form>
+	
+	
+	
+	
+<jsp:include page="/template/footer.jsp"></jsp:include>
+	

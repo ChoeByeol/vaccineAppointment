@@ -34,7 +34,7 @@ pagination.calculate();
 <style>
 .mainContainer {
 	width: 850px;
-	height: 1050px;
+	height: 550px;
 	position: relative;
 	margin: 0 auto;
 }
@@ -327,10 +327,6 @@ a#img-qna:hover{
  text-decoration:  none;
  }
 
-
-
-출처: https://it77.tistory.com/126 [시원한물냉의 사람사는 이야기]
-
 </style>
 
 
@@ -341,26 +337,22 @@ a#img-qna:hover{
 
 <div class="mainContainer">
 
-	<div class="main-area">
-		<div class="mainSlide">
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/kid.png">
-			<!-- 		</a> -->
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/boostershot.png">
-			<!-- 		</a> -->
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/백신.png">
-			<!-- 		</a> -->
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/대상별부스터.png">
-			<!-- 		</a> -->
-		</div>
-
+		<div class="main-area">
+		   <div class="mainSlide">
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503020000&bid=0003%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/kid.png">
+		      </a>
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503020000&bid=0003%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/boostershot.png">
+		      </a>
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503020000&bid=0003%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/백신.png">
+		      </a>
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503010000&bid=0002%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/대상별부스터.png">
+		      </a>
+		   </div>
+		
 
 		<div class="title">
 			<div class="slide">
@@ -397,12 +389,12 @@ a#img-qna:hover{
 				onmouseout="this.src='/ncv/resource/image/img-revCheck-before.png';" alt="">
 				</a>
 
-				<a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">
+				<a href="<%=request.getContextPath()%>/member/shot_myShot.jsp">
 				<img src="/ncv/resource/image/img-shotCheck-before.png" onmouseover="this.src='/ncv/resource/image/img-shotCheck-after.png';" 
 				onmouseout="this.src='/ncv/resource/image/img-shotCheck-before.png';" alt="">
 				</a>
 				
-				<a href="<%=request.getContextPath()%>/qna/list.jsp">
+				<a href="<%=request.getContextPath()%>/qna/mylist.jsp">
 				<img src="/ncv/resource/image/img-qna-before.png" onmouseover="this.src='/ncv/resource/image/img-qna-after.png';" 
 				onmouseout="this.src='/ncv/resource/image/img-qna-before.png';" alt="">
 				</a>
@@ -413,7 +405,5 @@ a#img-qna:hover{
 
 
 	</div>
-
-</div>
-
+	</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>

@@ -32,17 +32,17 @@ public class AdminShotCompleteServlet extends HttpServlet {
 			//System.out.println("이게 왜 null이 나옴? 접종일 = "+req.getParameter("shotDate"));
 			
 			shotDto.setShotCount(Integer.parseInt(req.getParameter("shotCount")));
-			System.out.println("접종차수 파라미터값 = "+Integer.parseInt(req.getParameter("shotCount")));
+			//System.out.println("접종차수 파라미터값 = "+Integer.parseInt(req.getParameter("shotCount")));
 			shotDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
 			
 			int vaccineNo = shotDto.getVaccineNo();
 
 			//예약번호에 대한 접종내역이 이미 존재하면 예약불가능
 			int resOkNo = Integer.parseInt(req.getParameter("resOkNo"));
-			System.out.println("접종완료할 예약번호 = " + resOkNo);
+			//System.out.println("접종완료할 예약번호 = " + resOkNo);
 			Shot2Dao shot2Dao = new Shot2Dao();
 			boolean success = shot2Dao.listByResNo(resOkNo); //true면 받아온 예약내역에대한 접종내역이 있음 false면 없음
-			System.out.println(success);
+			//System.out.println(success);
 			
 			if(!success) {//접종내역이 없으면(false)면 성공
 				int shotNo = shot2Dao.getSequence();
@@ -58,12 +58,12 @@ public class AdminShotCompleteServlet extends HttpServlet {
 				int clinicNo = Integer.parseInt(req.getParameter("clinicNo"));
 				stockDao.stockMinus(vaccineNo, clinicNo);
 				
-				System.out.println("접종완료 성공");
+				//System.out.println("접종완료 성공");
 				resp.sendRedirect("shot_list.jsp");
 			}
 			else {//접종내역이 있으면(true)면 실패
 				//resp.sendError(500); //나중에 바꿔줘야함
-				System.out.println("접종완료 불가능");
+				//System.out.println("접종완료 불가능");
 				
 				resp.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = resp.getWriter();
