@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(urlPatterns = {
-		"/member/check.jsp","/member/edit_success.jsp","/member/edit.jsp",
-		"/member/edit.txt","/member/logout.txt",
-		"/member/mypage.jsp","/member/password_success.jsp",
-		"/member/password.jsp", "/member/password.txt", 
-		"/member/quit.txt", "/reservation/*",
-		"/board/*"
-		})
+        "/member/check.jsp","/member/edit_success.jsp","/member/edit.jsp",
+        "/member/edit.txt","/member/logout.txt",
+        "/member/mypage.jsp","/member/password_success.jsp",
+        "/member/password.jsp", "/member/password.txt", 
+        "/member/quit.txt", "/reservation/",
+        "/board/","/member/shot_myShot.jsp","/qna/mylist.jsp"
+        })
 public class MemberFilter implements Filter{
 @Override
 public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
