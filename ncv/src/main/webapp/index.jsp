@@ -34,7 +34,7 @@ pagination.calculate();
 <style>
 .mainContainer {
 	width: 850px;
-	height: 1050px;
+	height: 550px;
 	position: relative;
 	margin: 0 auto;
 }
