@@ -56,7 +56,6 @@
 			<h3>답변 내용</h3>
       		<textarea name="qnaAnswer" required class="form-input-board form-input text-area"><%=qnaDto.getQnaAnswer()%></textarea>
 		</div>
-		
 		<%if(qnaDto.getQnaAnswer().length()==0){%>
 		<div class="row right">
 			<input type="submit" value="답변하기" class="form-btn form-inline form-notice-btn">
