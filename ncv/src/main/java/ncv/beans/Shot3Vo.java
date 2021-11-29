@@ -1,14 +1,17 @@
 package ncv.beans;
 
-public class Shot2Dto {
-    private int shotNo;
-    private int resOkNo;
-    private String shotDate;
-    private int shotCount;
-    private int vaccineNo;
-    private String shotRrn;
-    private String shotMemberName;
-    private String memberId;
+import java.sql.Date;
+
+public class Shot3Vo {
+
+	private int shotNo;
+	private Date shotDate;
+	private int shotCount;
+	private int vaccineNo;
+	private String shotRrn;
+	private String shotMemberName;
+	private String vaccineName;
+	private String memberId;
 
     public int getShotNo() {
         return shotNo;
@@ -16,19 +19,13 @@ public class Shot2Dto {
     public void setShotNo(int shotNo) {
         this.shotNo = shotNo;
     }
-    public int getResOkNo() {
-        return resOkNo;
-    }
-    public void setResOkNo(int resOkNo) {
-        this.resOkNo = resOkNo;
-    }
-    public String getShotDate() {
+    public Date getShotDate() {
         return shotDate;
     }
-    public String getShotDateDay() {
-        return shotDate.substring(0, 16);
+    public Date getShotDateDay() {
+        return shotDate;
     }
-    public void setShotDate(String shotDate) {
+    public void setShotDate(Date shotDate) {
         this.shotDate = shotDate;
     }
     public int getShotCount() {
@@ -54,6 +51,12 @@ public class Shot2Dto {
 	}
 	public void setShotMemberName(String shotMemberName) {
 		this.shotMemberName = shotMemberName;
+	}
+	public String getVaccineName() {
+		return vaccineName;
+	}
+	public void setVaccineName(String vaccineName) {
+		this.vaccineName = vaccineName;
 	}
 	public String getMemberId() {
 		return memberId;

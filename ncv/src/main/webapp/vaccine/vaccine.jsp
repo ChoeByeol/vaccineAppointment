@@ -8,6 +8,9 @@
 //백신 정보 이력을 조회
 VaccineDao vaccineDao = new VaccineDao();
 List<VaccineDto> vaccineList = vaccineDao.list();
+
+String grade = (String)session.getAttribute("grade");
+boolean admin = grade != null && grade.equals("관리자");
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include> 
@@ -192,10 +195,11 @@ tbody {
 			</table>
 
 		</div>
+		<%if(admin){ %>
 		<div class="row right">
 			<a href="vaccine_write.jsp" class="link-btn">등록</a>
 		</div>
-
+		<%} %>
 	</div>
 </div>
 

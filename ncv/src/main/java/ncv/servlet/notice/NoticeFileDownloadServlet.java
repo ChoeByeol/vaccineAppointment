@@ -32,7 +32,7 @@ public class NoticeFileDownloadServlet extends HttpServlet{
 			NoticeFileDto noticeFileDto = noticeFileDao.get(noticeFileNo);
 			
 			//2. 파일 정보 설정
-			File dir = new File("D:/upload/notice");
+			File dir = new File("C:/upload/notice");
 			File target = new File(dir, noticeFileDto.getNoticeFileSavename());
 			InputStream in = new FileInputStream(target);
 			byte[] buffer = new byte[8192];

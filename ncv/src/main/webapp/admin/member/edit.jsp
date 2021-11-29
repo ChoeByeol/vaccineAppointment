@@ -110,10 +110,7 @@
             <input type="hidden" class="form-input" name="memberId" value="<%=memberDto.getMemberId()%>">
             <p class="edit-text"><%=memberDto.getMemberId()%></p>
     	</div>
-    	<div class="row">
-    		<label class="label-text">비밀번호</label>
-            <input type="password" class="form-input"  name="memberPw" required value="<%=memberDto.getMemberPw()%>">
-    	</div>
+            <input type="hidden" class="form-input"  name="memberPw" required value="<%=memberDto.getMemberPw()%>">
     	<div class="row">
     		<label class="label-text">주민등록번호</label>
             <input type="hidden" class="form-input"  name="memberRrn" value="<%=memberDto.getMemberRrn()%>">
