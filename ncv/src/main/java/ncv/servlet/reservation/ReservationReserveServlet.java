@@ -1,6 +1,7 @@
 package ncv.servlet.reservation;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,7 +49,10 @@ public class ReservationReserveServlet extends HttpServlet {
             countRes = reservationDao.countRes(reservationDto.getVaccineNo(), reservationDto.getClinicNo());
             //System.out.println("countRes = "+countRes);
             if(inCount <= countRes && totalCount <= countRes || inCount == 0 || totalCount == 0) {
-                resp.sendRedirect("reservation_fail.jsp");
+				resp.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = resp.getWriter();
+                out.println("<script>alert('예약이 불가능합니다. 다시 시도해 주세요.'); history.back();</script>");
+                out.flush();
             }
             else if(inCount > countRes && totalCount > countRes){
                 int resNo = reservationDao.getSequence();
@@ -58,7 +62,10 @@ public class ReservationReserveServlet extends HttpServlet {
                 resp.sendRedirect("reservation_myRes.jsp");
             }
             else {
-                resp.sendRedirect("reservation_fail.jsp");
+				resp.setContentType("text/html; charset=UTF-8");
+                PrintWriter out = resp.getWriter();
+                out.println("<script>alert('예약이 불가능합니다. 다시 시도해 주세요.'); history.back();</script>");
+                out.flush();
             }
             
         } catch (Exception e) {
