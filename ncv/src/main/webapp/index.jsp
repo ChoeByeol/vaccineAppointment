@@ -33,53 +33,58 @@ pagination.calculate();
 
 <style>
 .mainContainer {
-	width: 100%;
-	height: 400px;
+	width: 850px;
+	height: 1050px;
 	position: relative;
 	margin: 0 auto;
 }
-.main-area {
-    position: relative;
-    background:no-repeat 50% 50%;
-    background-size: cover;
-    padding-top: 10px;
 
+.main-area {
+	position: relative;
+	background: no-repeat 50% 50%;
+	background-size: cover;
+	padding-top: 10px;
+	padding-bottom: 50px;
 }
-    
+
 .mid-area {
-    position: relative;
-    background:no-repeat 50% 50%;
-    background-size: cover;
-    padding-bottom: 10px;
-}   
+	position: relative;
+	background: no-repeat 50% 50%;
+	background-size: cover;
+	padding-bottom: 10px;
+}
+
 .bottom-area {
-    position: relative;
-    background:no-repeat 50% 50%;
-    background-size: cover;
-} 
-    
+	position: relative;
+	background: no-repeat 50% 50%;
+	background-size: cover;
+}
+
 .mainSlide {
 	max-height: 250px;
 	width: 100%;
 	text-align: center;
 }
+
 .slide {
 	display: table;
 	position: absolute;
 	width: 100%;
 	font-size: 0;
 }
+
 .slideImg {
 	width: 100%;
 	height: 250px;
 }
+
 .title {
-    padding-bottom: 30px;
-    text-align: center;
-    font-size: 30px;
-    color: #727272;
-    font-weight: 600;
-    line-height: 1.4em;
+	padding-bottom: 30px;
+	text-align: center;
+	font-size: 30px;
+	color: #727272;
+	font-weight: 600;
+	line-height: 1.4em;
 }
 
 .aBtn1 {
@@ -92,6 +97,7 @@ pagination.calculate();
 	display: inline-block;
 	cursor: pointer;
 }
+
 .aBtn2 {
 	width: 25%;
 	height: 40px;
@@ -102,6 +108,7 @@ pagination.calculate();
 	display: inline-block;
 	cursor: pointer;
 }
+
 .aBtn3 {
 	width: 25%;
 	height: 40px;
@@ -112,6 +119,7 @@ pagination.calculate();
 	display: inline-block;
 	cursor: pointer;
 }
+
 .aBtn4 {
 	width: 25%;
 	height: 40px;
@@ -122,21 +130,62 @@ pagination.calculate();
 	display: inline-block;
 	cursor: pointer;
 }
- 
- .aSpan { 
-	width: 25%; 
-	font-size: 15px; 
-	height: 40px; 
- 	vertical-align: middle; 
- 	text-align: center; 
- } 
-.fix-layout {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 15px;
-    box-sizing: border-box;
+
+.aSpan {
+	width: 25%;
+	font-size: 15px;
+	height: 40px;
+	vertical-align: middle;
+	text-align: center;
 }
+
+.fix-layout {
+	position: relative;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 15px;
+	box-sizing: border-box;
+}
+
+.box-select {
+	display: block;
+	position: relative;
+	margin: 0 -10px;
+}
+
+.item {
+	display: inline-block;
+	position: relative;
+	padding: 10px;
+	width: 207px;
+	height: 250px;
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+.item-bottom1 {
+	display: inline-block;
+	position: relative;
+	padding: 20px;
+	width: 23%;
+	height: 200px;
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+.item-bottom2 {
+	display: inline-block;
+	position: relative;
+	padding: 20px;
+	width: 74%;
+	height: 200px;
+	box-sizing: border-box;
+	border: 1px solid black;
+}
+
+
+
+
 /* 공지사항 */
 .sub_news, .sub_news th, .sub_news td {
 	border: 0
@@ -149,7 +198,7 @@ pagination.calculate();
 
 .sub_news {
 	width: 40%;
-	float:right;
+	float: right;
 	border-bottom: 1px solid #999;
 	color: #666;
 	font-size: 14px;
@@ -193,84 +242,178 @@ pagination.calculate();
 	padding: 0;
 	background: none;
 	color: #f00;
-	font-size: 12px;
+	font-size: 15px;
 	font-weight: bold
 }
 
-.border-spacing{
-border-spacing:0px;
+.border-spacing {
+	border-spacing: 0px;
 }
 
+.bottom-area > .title > .box-select > .item-bottom2 > span {
+font-size : 15px;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+li {
+    text-align: -webkit-match-parent;
+}
+
+
+a#img-rev {
+	display:inline-block;
+	width: 207px;
+	height: 250px;
+  background:url('/ncv/resource/image/img-rev-before.png') no-repeat;
+}
+
+a#img-rev:hover{
+  background:url('/ncv/resource/image/img-rev-after.png') no-repeat;
+}
+
+
+a#img-revCheck {
+	display:inline-block;
+	width: 207px;
+	height: 250px;
+  background:url('/ncv/resource/image/img-revCheck-before.png') no-repeat;
+}
+
+a#img-revCheck:hover{
+  background:url('/ncv/resource/image/img-revCheck-after.png') no-repeat;
+}
+
+
+a#img-shotCheck {
+	display:inline-block;
+	width: 207px;
+	height: 250px;
+  background:url('/ncv/resource/image/img-shotCheck-before.png') no-repeat;
+}
+
+a#img-shotCheck:hover{
+  background:url('/ncv/resource/image/img-shotCheck-after.png') no-repeat;
+}
+
+
+a#img-qna {
+	display:inline-block;
+	width: 207px;
+	height: 250px;
+  background:url('/ncv/resource/image/img-qna-before.png') no-repeat;
+}
+
+a#img-qna:hover{
+  background:url('/ncv/resource/image/img-qna-after.png') no-repeat;
+}
+
+
+ a:link {
+ text-decoration: none;
+ }
+ a:visited {
+ text-decoration: none;
+ }
+ a:hover {
+ text-decoration:  none;
+ }
+
+
+
+출처: https://it77.tistory.com/126 [시원한물냉의 사람사는 이야기]
+
 </style>
+
+
 
 
 <jsp:include page="/template/header.jsp"></jsp:include>
 
+
 <div class="mainContainer">
 
 	<div class="main-area">
-	<div class="mainSlide">
-<!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/0002.jpg">
-<!-- 		</a> -->
-<!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/IU02.png">
-<!-- 		</a> -->
-<!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/6.jpg">
-<!-- 		</a> -->
-<!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/iui.jpg">
-<!-- 		</a> -->
-	</div>
-</div>
-
-
-	<div class="title">
-		<div class="slide">
-		<div class="flex_container"></div>		
-			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=1" class="aBtn1">
-			<span class="aSpan">화이자</span>
-			</a>
-			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=2"  class="aBtn2">
-			<span class="aSpan">모더나</span>
-			</a>
-			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=3"  class="aBtn3">
-			<span class="aSpan">아스트라제네카</span>
-			</a>
-			<a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=4"  class="aBtn4">
-			<span class="aSpan">얀센</span>
-			</a>
-			
+		<div class="mainSlide">
+			<!-- 		<a href="#"> -->
+			<img class="slideImg"
+				src="<%=request.getContextPath()%>/resource/image/kid.png">
+			<!-- 		</a> -->
+			<!-- 		<a href="#"> -->
+			<img class="slideImg"
+				src="<%=request.getContextPath()%>/resource/image/boostershot.png">
+			<!-- 		</a> -->
+			<!-- 		<a href="#"> -->
+			<img class="slideImg"
+				src="<%=request.getContextPath()%>/resource/image/백신.png">
+			<!-- 		</a> -->
+			<!-- 		<a href="#"> -->
+			<img class="slideImg"
+				src="<%=request.getContextPath()%>/resource/image/대상별부스터.png">
+			<!-- 		</a> -->
 		</div>
-	</div>	
+
+
+		<div class="title">
+			<div class="slide">
+				<a
+					href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=1"
+					class="aBtn1"> <span class="aSpan">화이자</span>
+				</a> <a
+					href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=2"
+					class="aBtn2"> <span class="aSpan">모더나</span>
+				</a> <a
+					href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=3"
+					class="aBtn3"> <span class="aSpan">아스트라제네카</span>
+				</a> <a
+					href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=4"
+					class="aBtn4"> <span class="aSpan">얀센</span>
+				</a>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="mid-area">
+		<div class="title">
+			<div class="box-select">
+
+				<a href="<%=request.getContextPath()%>/reservation/check.txt">
+				<img src="/ncv/resource/image/img-rev-before.png" onmouseover="this.src='/ncv/resource/image/img-rev-after.png';" 
+				onmouseout="this.src='/ncv/resource/image/img-rev-before.png';" alt="">
+				</a>
+
+				<a href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">
+				<img src="/ncv/resource/image/img-revCheck-before.png" onmouseover="this.src='/ncv/resource/image/img-revCheck-after.png';" 
+				onmouseout="this.src='/ncv/resource/image/img-revCheck-before.png';" alt="">
+				</a>
+
+				<a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">
+				<img src="/ncv/resource/image/img-shotCheck-before.png" onmouseover="this.src='/ncv/resource/image/img-shotCheck-after.png';" 
+				onmouseout="this.src='/ncv/resource/image/img-shotCheck-before.png';" alt="">
+				</a>
+				
+				<a href="<%=request.getContextPath()%>/qna/list.jsp">
+				<img src="/ncv/resource/image/img-qna-before.png" onmouseover="this.src='/ncv/resource/image/img-qna-after.png';" 
+				onmouseout="this.src='/ncv/resource/image/img-qna-before.png';" alt="">
+				</a>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
 </div>
-<style>
 
-</style>
-
-<div class="right">
-	<table class="sub_news border-spacing" border="1"  summary="게시판의 글제목 리스트">		
-		
-		<thead>
-			<tr>
-				<th><a href="<%=request.getContextPath()%>/notice/list.jsp">공지사항</a></th>
-			</tr>
-		</thead>
-		<tbody align="center">
-
-			<%
-			for (NoticeDto noticeDto : pagination.getList()) {
-			%>
-			<tr>
-				<td class="title">
-				<a href="detail.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>"> <%=noticeDto.getNoticeTitle()%></a>
-				</td>
-			</tr>
-			<%
-			}
-			%>
-		</tbody>
-	</table>
-	<br>
-</div>
+<jsp:include page="/template/footer.jsp"></jsp:include>

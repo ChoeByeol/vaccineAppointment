@@ -125,7 +125,7 @@
             <ul>
                 <li><a href="<%=request.getContextPath()%>/member/mypage.jsp">마이페이지</a></li>
                 <li><a href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">나의예약조회</a></li>
-                <li><a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">접종내역조회</a></li>
+                <li><a href="<%=request.getContextPath()%>/member/shot_myShot.jsp">접종내역조회</a></li>
                 <li class="flex-right"><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
             </ul></li>
                 <%} %>
