@@ -313,27 +313,7 @@ public class ReservationDao {
 			con.close();
 
 			return count;
-		}
-		//예약하기 체크용 예약내역 확인 기능
-//		public List<ReservationDto> resCheckList(String memberId) throws Exception {
-//			Connection con = JdbcUtils.connect();
-//
-//			String sql = "select member_id from reservation where member_id = ?";
-//			PreparedStatement ps = con.prepareStatement(sql);
-//			ps.setString(1, memberId);
-//			ResultSet rs = ps.executeQuery();
-//
-//			List<ReservationDto> resCheckList = new ArrayList<>();
-//			while(rs.next()) {
-//				ReservationDto reservationDto = new ReservationDto();
-//			
-//				resCheckList.add(reservationDto);
-//			}
-//
-//			con.close();
-//
-//			return resCheckList;
-//		}		
+		}	
 		
 		//?번 병원에 대한 ?번 백신 재고 리스트 = 리스트 합계로 해결 ^^
 		public List<ReservationVo> clinicVacCheck(int clinicNo, int vaccineNo) throws Exception {
