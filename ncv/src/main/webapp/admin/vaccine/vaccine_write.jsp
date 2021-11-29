@@ -7,7 +7,7 @@
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 
-<form action="<%=request.getContextPath()%>/vaccine/vaccineWrite.txt" method="post">
+<form action="<%=request.getContextPath()%>/admin/vaccine/vaccineWrite.txt" method="post">
 
 <input type="hidden" name="vaccineNo">
 

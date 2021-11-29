@@ -24,8 +24,6 @@ public class ShotDao {
 			shotDto.setMemberId(rs.getString("member_id"));
 			shotDto.setResNo(rs.getInt("res_no"));
 			shotDto.setClinicNo(rs.getInt("clinic_no"));
-			shotDto.setShotOne(rs.getString("shot_one"));
-			shotDto.setShotTwo(rs.getString("shot_two"));
 			shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 			
 			list.add(shotDto);
@@ -51,8 +49,6 @@ public class ShotDao {
 				shotDto.setMemberId(rs.getString("member_id"));
 				shotDto.setResNo(rs.getInt("res_no"));
 				shotDto.setClinicNo(rs.getInt("clinic_no"));
-				shotDto.setShotOne(rs.getString("shot_one"));
-				shotDto.setShotTwo(rs.getString("shot_two"));
 				shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 				
 				list.add(shotDto);
@@ -181,8 +177,6 @@ public class ShotDao {
 			shotDto.setMemberId(rs.getString("member_id"));
 			shotDto.setResNo(rs.getInt("res_no"));
 			shotDto.setClinicNo(rs.getInt("clinic_no"));
-			shotDto.setShotOne(rs.getString("shot_one"));
-			shotDto.setShotTwo(rs.getString("shot_two"));
 			shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 			
 			list.add(shotDto);
@@ -212,8 +206,6 @@ public class ShotDao {
 			shotDto.setMemberId(rs.getString("member_id"));
 			shotDto.setResNo(rs.getInt("res_no"));
 			shotDto.setClinicNo(rs.getInt("clinic_no"));
-			shotDto.setShotOne(rs.getString("shot_one"));
-			shotDto.setShotTwo(rs.getString("shot_two"));
 			shotDto.setShotMemberRrn(rs.getString("shot_member_rrn"));
 			
 			list.add(shotDto);

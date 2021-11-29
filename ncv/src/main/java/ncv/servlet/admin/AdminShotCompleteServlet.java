@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ncv.beans.ReservationDao;
 import ncv.beans.Shot2Dao;
 import ncv.beans.Shot2Dto;
 import ncv.beans.StockDao;
@@ -24,13 +25,17 @@ public class AdminShotCompleteServlet extends HttpServlet {
 			Shot2Dto shotDto = new Shot2Dto();
 					
 			shotDto.setResOkNo(Integer.parseInt(req.getParameter("resOkNo")));
-			
+			shotDto.setShotRrn(req.getParameter("shotRrn"));
 			shotDto.setShotDate(req.getParameter("shotDate"));
+			shotDto.setShotMemberName(req.getParameter("memberName"));
+			shotDto.setMemberId(req.getParameter("memberId"));
 			//System.out.println("이게 왜 null이 나옴? 접종일 = "+req.getParameter("shotDate"));
 			
 			shotDto.setShotCount(Integer.parseInt(req.getParameter("shotCount")));
 			System.out.println("접종차수 파라미터값 = "+Integer.parseInt(req.getParameter("shotCount")));
+			shotDto.setVaccineNo(Integer.parseInt(req.getParameter("vaccineNo")));
 			
+			int vaccineNo = shotDto.getVaccineNo();
 
 			//예약번호에 대한 접종내역이 이미 존재하면 예약불가능
 			int resOkNo = Integer.parseInt(req.getParameter("resOkNo"));
@@ -42,11 +47,14 @@ public class AdminShotCompleteServlet extends HttpServlet {
 			if(!success) {//접종내역이 없으면(false)면 성공
 				int shotNo = shot2Dao.getSequence();
 				shotDto.setShotNo(shotNo);
-				shot2Dao.shotComplete(shotDto);
+				shot2Dao.shotComplete(shotDto);//접종완료
+				
+				//해당 예약내역 삭제
+				ReservationDao reservationDao = new ReservationDao();
+				reservationDao.cancel(resOkNo);
 				
 				//접종이 완료되면 병원의 백신 출고가 1 증가
 				StockDao stockDao = new StockDao();
-				int vaccineNo = Integer.parseInt(req.getParameter("vaccineNo"));
 				int clinicNo = Integer.parseInt(req.getParameter("clinicNo"));
 				stockDao.stockMinus(vaccineNo, clinicNo);
 				

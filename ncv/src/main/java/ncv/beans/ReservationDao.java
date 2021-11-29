@@ -45,7 +45,7 @@ public class ReservationDao {
 			con.close();
 		}	
 	  
-		// 예약 취소 기능
+		// 예약 취소&삭제 기능
 		public boolean cancel(int resNo) throws Exception{
 			Connection con = JdbcUtils.connect();
 

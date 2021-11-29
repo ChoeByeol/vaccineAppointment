@@ -1,4 +1,4 @@
-<%@page import="ncv.beans.Shot2Vo"%>
+<%@page import="ncv.beans.Shot3Vo"%>
 <%@page import="ncv.beans.Shot2Dao"%>
 <%@page import="ncv.beans.ReservationVo"%>
 <%@page import="ncv.beans.ReservationDao"%>
@@ -20,7 +20,7 @@
 
 <%
 	Shot2Dao shotDao = new Shot2Dao();
-	List<Shot2Vo> myShotList  = shotDao.myShotList(memberId);
+	List<Shot3Vo> myShotList  = shotDao.myShotList(memberId);
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -96,18 +96,18 @@
 				<table class="table table-stripe">
 					<tbody>
 					
-					<% for (Shot2Vo shotVo : myShotList) { %>
+					<% for (Shot3Vo shotVo : myShotList) { %>
 						<tr class="table-line">
-							<th width="30%"><%=shotVo.getShotCount()%>차 예약번호</th>
+							<th width="30%"><%=shotVo.getShotCount()%>차 접종번호</th>
 							<td><%=shotVo.getShotNo()%></td>
-						</tr>
-						<tr class="table-line">
-							<th width="30%"><%=shotVo.getShotCount()%>차 의료기관</th>
-							<td><%=shotVo.getClinicName()%></td>
 						</tr>
 						<tr class="table-line">
 							<th width="30%"><%=shotVo.getShotCount()%>차 접종일시</th>
 							<td><%=shotVo.getShotDateDay()%></td>
+						</tr>
+						<tr class="table-line">
+							<th width="30%"><%=shotVo.getShotCount()%>차 접종백신</th>
+							<td><%=shotVo.getVaccineName()%></td>
 						</tr>
 						<%} %>
 						<tr>						

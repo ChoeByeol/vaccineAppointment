@@ -7,8 +7,6 @@ public class ShotDto {
 	private int resNo;
 	private int clinicNo;
 	private int vaccineNo;
-	private String shotOne;
-	private String shotTwo;
 	private String shotMemberRrn;
 	
 	public ShotDto() {
@@ -43,18 +41,6 @@ public class ShotDto {
 	}
 	public void setVaccineNo(int vaccineNo) {
 		this.vaccineNo = vaccineNo;
-	}
-	public String getShotOne() {
-		return shotOne;
-	}
-	public void setShotOne(String shotOne) {
-		this.shotOne = shotOne;
-	}
-	public String getShotTwo() {
-		return shotTwo;
-	}
-	public void setShotTwo(String shotTwo) {
-		this.shotTwo = shotTwo;
 	}
 	public String getShotMemberRrn() {
 		return shotMemberRrn;

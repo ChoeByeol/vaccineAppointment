@@ -7,13 +7,14 @@ import java.io.InputStream;
 import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ncv.beans.QnaFileDao;
 import ncv.beans.QnaFileDto;
-
+@WebServlet(urlPatterns="/qna/file/download.txt")
 public class QnaFileDownloadServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +29,7 @@ public class QnaFileDownloadServlet extends HttpServlet{
 			QnaFileDto qnaFileDto = qnaFileDao.get(qnaFileNo);
 			
 			//2. 파일 정보 설정
-			File dir = new File("D:/upload/qna");
+			File dir = new File("C:/upload/qna");
 			File target = new File(dir, qnaFileDto.getQnaFileSaveName());
 			InputStream in = new FileInputStream(target);
 			byte[] buffer = new  byte[8192];

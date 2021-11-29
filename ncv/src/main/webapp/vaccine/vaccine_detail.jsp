@@ -9,11 +9,12 @@
 <%-- 입력 : 백신번호(vaccineNo) --%>
 <%
 int vaccineNo = Integer.parseInt(request.getParameter("vaccineNo"));
+String grade = (String)session.getAttribute("grade");
+boolean admin = grade != null && grade.equals("관리자");
 %>
 
 <%-- 처리 --%>
 <%
-// String memberId = (String)session.getAttribute("ses"); 
 VaccineDao vaccineDao = new VaccineDao();
 VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 %>
@@ -101,13 +102,17 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 			</table>
 		</div>
 
-
+	<%if(admin){ %>
 		<div class="row right">
 			<a href="vaccine.jsp" class="link-btn">목록보기</a>
 			<a href="vaccine_edit.jsp?vaccineNo=<%=vaccineDto.getVaccineNo()%>" class="link-btn">수정</a> 
 			<a href="vaccineDelete.txt?vaccineNo=<%=vaccineDto.getVaccineNo()%>" class="link-btn" id="confirm-link">삭제</a>
 		</div>
-
+	<%}else{ %>
+		<div class="row right">
+			<a href="vaccine.jsp" class="link-btn">목록보기</a>
+		</div>
+	<%} %>
 	</div>
 </div>
 

@@ -76,7 +76,7 @@
 						<td>
 							<%=boardFileDto.getQnaFileUploadName()%> 
 							(<%=boardFileDto.getQnaFileSize()%> bytes)
-							<a href="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>">다운로드</a>
+							<a href="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>" class="link-btn">다운로드</a>
 							<img src="<%=request.getContextPath()%>/qna/file/download.txt?qnaFileNo=<%=boardFileDto.getQnaFileNo()%>" width="50" height="50">
 						<td>
 					<%} %>

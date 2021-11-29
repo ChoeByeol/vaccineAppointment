@@ -98,7 +98,7 @@
         <li><a href="#">회원관리</a>
         <ul>
         	<li><a href="<%=request.getContextPath()%>/admin/member/list.jsp">회원목록</a></li>
-        	<li><a href="<%=request.getContextPath()%>/admin/agree_edit.jsp">약관수정</a></li>
+        	<li><a href="<%=request.getContextPath()%>/admin/member/agree_edit.jsp">약관수정</a></li>
         </ul></li>
         <li><a href="#">병원관리</a>
         <ul>
@@ -108,8 +108,7 @@
         <li><a href="#">백신관리</a>
         <ul>
           	<li><a href="<%=request.getContextPath()%>/admin/stock/stock_list.jsp">백신재고목록</a></li>
-           	<li><a href="<%=request.getContextPath()%>/admin/stock/stock_in.jsp">백신입고등록</a></li>
-           	<li><a href="<%=request.getContextPath()%>/admin/vaccine/vaccine.jsp">백신 추가</a></li>
+           	<li><a href="<%=request.getContextPath()%>/admin/vaccine/vaccine.jsp">백신목록</a></li>
         </ul></li>
         <li><a href="#">예약관리</a>
         <ul>
@@ -120,7 +119,7 @@
         <li class="flex-right"><a href="<%=request.getContextPath()%>/member/logout.txt">로그아웃</a></li>
          <%}else{%>
          <li><a href="<%=request.getContextPath()%>/reservation/check.txt">예약하기</a></li>
-         <li><a href="<%=request.getContextPath()%>/qna/list.jsp">1:1문의</a></li>
+         <li><a href="<%=request.getContextPath()%>/qna/mylist.jsp">1:1문의</a></li>
         <li class="flex-right">
             <li><a href="#" >회원메뉴</a>
             <ul>
