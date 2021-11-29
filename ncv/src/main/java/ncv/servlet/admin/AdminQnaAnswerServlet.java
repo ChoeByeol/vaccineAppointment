@@ -27,7 +27,7 @@ public class AdminQnaAnswerServlet extends HttpServlet{
 			
 			//출력
 			if(success) {
-				resp.sendRedirect(req.getContextPath() + "/qna/detail.jsp?qnaNo=" + qnaDto.getQnaNo());
+				resp.sendRedirect(req.getContextPath() + "/admin/qna/detail.jsp?qnaNo=" + qnaDto.getQnaNo());
 			}
 			else {
 				resp.sendError(404);

@@ -110,6 +110,9 @@ geocoder.addressSearch("<%=clinicDto.getClinicAddress()%>", function(result, sta
 		<a href="delete.txt?clinicNo=<%=clinicDto.getClinicNo()%>"class="link-btn">병원 정보 삭제</a>
 	</div>
 	<div class="link-btn center">
+		<a href="<%=request.getContextPath()%>/admin/stock/stock_in.jsp?clinicNo=<%=clinicDto.getClinicNo()%>" class="link-btn">백신 입고 등록</a>
+	</div>
+	<div class="link-btn center">
 		<a href="javascript:history.back()" class="link-btn">목록으로</a>
 	</div>
 </div>

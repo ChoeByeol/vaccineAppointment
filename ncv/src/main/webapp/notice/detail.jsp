@@ -23,6 +23,11 @@
 		});
 		
 		$(".edit-row").hide();
+		
+		$(".cancel-btn").click(function(){
+            return confirm("정말 삭제하시겠습니까?");
+        });
+
 	});
 </script>    
 
@@ -106,7 +111,7 @@
 		<%if(member&&owner){%>
 
 		<a href="edit.jsp?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">수정하기</a>
-		<a href="delete.txt?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn">삭제하기</a>
+		<a href="delete.txt?noticeNo=<%=noticeDto.getNoticeNo()%>" class="link-btn cancel-btn">삭제하기</a>
 		<a href="write.jsp" class="link-btn">글쓰기</a>
 		<%} %>
 
@@ -123,7 +128,7 @@
 		<h6>
 			<%=noticeFileDto.getNoticeFileUploadname() %>
 			(<%=noticeFileDto.getNoticeFileSize()%> bytes)
-			<a href="file/download.txt?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>">
+			<a href="file/download.txt?noticeFileNo=<%=noticeFileDto.getNoticeFileNo()%>" class="link-btn">
 				다운로드
 			</a>
 			

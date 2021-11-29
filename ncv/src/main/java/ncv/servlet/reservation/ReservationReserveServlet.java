@@ -38,14 +38,15 @@ public class ReservationReserveServlet extends HttpServlet {
             int inCount = stockDao.getStockInTotalQty(reservationDto.getVaccineNo(), reservationDto.getClinicNo());//입고 총 개수
             int totalCount = stockDao.getStockTotalQty(reservationDto.getVaccineNo(), reservationDto.getClinicNo());//재고
             //stockInTotal = stock4Vo.getStockInTotalQty();
-            System.out.println(inCount);
+            System.out.println("inCount = "+inCount);
+            System.out.println("totalcount =  "+totalCount);
             //Integer stockInTotal = stock4Vo.getStockInTotalQty();
             
             //예약한 개수(접종 완료 X)
             ReservationDao reservationDao = new ReservationDao();
             int countRes = 0;
             countRes = reservationDao.countRes(reservationDto.getVaccineNo(), reservationDto.getClinicNo());
-            
+            System.out.println("countRes = "+countRes);
             if(inCount <= countRes && totalCount <= countRes || inCount == 0 || totalCount == 0) {
                 resp.sendRedirect("reservation_fail.jsp");
             }

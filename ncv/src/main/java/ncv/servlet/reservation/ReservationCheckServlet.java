@@ -14,6 +14,7 @@ import ncv.beans.ReservationDto;
 import ncv.beans.ReservationVo;
 import ncv.beans.Shot2Dao;
 import ncv.beans.Shot2Vo;
+import ncv.beans.Shot3Vo;
 import ncv.beans.VaccineDao;
 
 @WebServlet(urlPatterns = "/reservation/check.txt")
@@ -40,7 +41,7 @@ public class ReservationCheckServlet extends HttpServlet {
 			boolean shotCheck = reservationDao.getResNum(memberId) >= shot;
 			
 			Shot2Dao shotDao = new Shot2Dao();
-			List<Shot2Vo> myShotList = shotDao.myShotList(memberId);
+			List<Shot3Vo> myShotList = shotDao.myShotList(memberId);
 
 			System.out.println(shot);
 //			System.out.println(myShotList.size());

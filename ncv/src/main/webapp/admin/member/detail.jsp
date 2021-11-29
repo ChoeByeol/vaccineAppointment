@@ -82,10 +82,6 @@
 					<td><%=memberDto.getMemberId()%></td>
 				</tr>
 				<tr>
-					<th>비밀번호</th>
-					<td><%=memberDto.getMemberPw()%></td>
-				</tr>
-				<tr>
 					<th>이름</th>
 					<td><%=memberDto.getMemberName()%></td>
 				</tr>

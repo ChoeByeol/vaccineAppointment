@@ -96,7 +96,11 @@
 					<td colspan="4">
 
 							<a class="link-btn" href="<%=request.getContextPath()%>/admin/qna/list.jsp">목록</a>
+							<%if(qnaDto.getQnaAnswer().length()==0){%>
 							<a class="link-btn" href="<%=request.getContextPath()%>/admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">답변달기</a>
+							<%} else { %>
+							<a class="link-btn" href="<%=request.getContextPath()%>/admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정하기</a>
+							<%} %>
 							<a class="link-btn" href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
 					</td>
 			</tfoot>

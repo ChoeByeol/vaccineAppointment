@@ -28,7 +28,7 @@ public class AgreeDao {
 	}
 	
 	//공지조회 기능
-	public List<AgreeDto> list() throws Exception {
+	public AgreeDto get() throws Exception {
 		
 		Connection con = JdbcUtils.connect();
 		
@@ -36,19 +36,19 @@ public class AgreeDao {
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		
-		List<AgreeDto> agreeList = new ArrayList<>();
+		AgreeDto agreeDto;
 		
-		while (rs.next()) {
-			AgreeDto agreeDto = new AgreeDto();
+		if (rs.next()) {
+			agreeDto = new AgreeDto();
 			agreeDto.setAgree1(rs.getString("agree1"));
 			agreeDto.setAgree2(rs.getString("agree2"));
 			agreeDto.setAgree3(rs.getString("agree3"));
 			agreeDto.setAgree4(rs.getString("agree4"));
-			
-			agreeList.add(agreeDto);
+		}else {
+			agreeDto = null;
 		}
 		con.close();
 		
-		return agreeList;
+		return agreeDto;
 		}
 	}
