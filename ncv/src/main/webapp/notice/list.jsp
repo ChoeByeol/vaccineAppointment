@@ -273,7 +273,7 @@ boolean owner = memberDto != null && memberDto.getMemberRole().equals("관리자
 
 		<!-- 관리자일 경우에만 글쓰기 버튼 보이도록 구현 -->
 <%if(owner){%>
-	<a href="write.jsp" class="form-btn form-inline form-notice-btn">글쓰기</a>
+	<a href="write.jsp" class="form-link-btn">글쓰기</a>
 		<%} %>
 
 </div>
