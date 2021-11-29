@@ -83,31 +83,31 @@ public class VaccineDao {
 	
 
 
-//	백신 정보 변경 기능
-	public boolean vaccineEdit(VaccineDto vaccineDto) throws Exception {
-		Connection con = JdbcUtils.connect();
+//  백신 정보 변경 기능
+  public boolean vaccineEdit(VaccineDto vaccineDto) throws Exception {
+      Connection con = JdbcUtils.connect();
 
-		String sql = "update vaccine set vaccine_platform = ?, vaccine_name = ?, vaccine_value = ?, vaccine_company = ?, vaccine_age = ?, vaccine_composition = ?, vaccine_shot = ?, vaccine_interval = ? , vaccine_method = ? , vaccine_keep = ? , vaccine_expire = ?, vaccine_life = ? where vaccine_no = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, vaccineDto.getVaccinePlatform());
-		ps.setString(2, vaccineDto.getVaccineName());
-		ps.setString(3, vaccineDto.getVaccineValue());
-		ps.setString(4,	vaccineDto.getVaccineCompany());
-		ps.setInt(5, vaccineDto.getVaccineAge());
-		ps.setString(6, vaccineDto.getVaccineComposition());
-		ps.setInt(7, vaccineDto.getVaccineShot());
-		ps.setString(7, vaccineDto.getVaccineInterval());
-		ps.setString(8, vaccineDto.getVaccineMethod());
-		ps.setString(9, vaccineDto.getVaccineKeep());
-		ps.setString(10, vaccineDto.getVaccineExpire());
-		ps.setString(11, vaccineDto.getVaccineLife());
-		ps.setInt(12, vaccineDto.getVaccineNo());
-		int result = ps.executeUpdate();
+      String sql = "update vaccine set vaccine_platform = ?, vaccine_name = ?, vaccine_value = ?, vaccine_company = ?, vaccine_age = ?, vaccine_composition = ?, vaccine_shot = ?, vaccine_interval = ? , vaccine_method = ? , vaccine_keep = ? , vaccine_expire = ?, vaccine_life = ? where vaccine_no = ?";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setString(1, vaccineDto.getVaccinePlatform());
+      ps.setString(2, vaccineDto.getVaccineName());
+      ps.setString(3, vaccineDto.getVaccineValue());
+      ps.setString(4,    vaccineDto.getVaccineCompany());
+      ps.setInt(5, vaccineDto.getVaccineAge());
+      ps.setString(6, vaccineDto.getVaccineComposition());
+      ps.setInt(7, vaccineDto.getVaccineShot());
+      ps.setString(8, vaccineDto.getVaccineInterval());
+      ps.setString(9, vaccineDto.getVaccineMethod());
+      ps.setString(10, vaccineDto.getVaccineKeep());
+      ps.setString(11, vaccineDto.getVaccineExpire());
+      ps.setString(12, vaccineDto.getVaccineLife());
+      ps.setInt(13, vaccineDto.getVaccineNo());
+      int result = ps.executeUpdate();
 
-		con.close();
+      con.close();
 
-		return result > 0;		
-	}	
+      return result > 0;
+  }
 	
 	//번호 생성 기능 : 번호를 미리 생성해두어야 할 필요가 있는 경우 사용
 	public int getSequence() throws Exception {

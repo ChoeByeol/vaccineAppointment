@@ -68,7 +68,7 @@ tbody {
 						<%
 						for (VaccineDto vaccineDto : vaccineList) {
 						%>
-						<td style="background-color:#EEEEEE;"><a href="<%=request.getContextPath()%>/vaccine/vaccine_detail.jsp?vaccineNo=<%=vaccineDto.getVaccineNo()%>"><%=vaccineDto.getVaccineName()%></a></td>
+						<td style="background-color:#EEEEEE;"><a href="<%=request.getContextPath()%>/admin/vaccine/vaccine_detail.jsp?vaccineNo=<%=vaccineDto.getVaccineNo()%>"><%=vaccineDto.getVaccineName()%></a></td>
 						<%
 						}
 						%>
