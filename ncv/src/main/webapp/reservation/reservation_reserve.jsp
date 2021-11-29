@@ -1,4 +1,5 @@
-<%@page import="ncv.beans.ShotDao"%>
+
+<%@page import="ncv.beans.Shot3Vo"%>
 <%@page import="ncv.beans.MemberDto"%>
 <%@page import="ncv.beans.MemberDao"%>
 <%@page import="ncv.beans.ReservationVo"%>
@@ -31,10 +32,15 @@ boolean shot2 = shotVaccineList.size()>0;
 
 
 <%
+//기존
 			ReservationDao reservationDao = new ReservationDao();
 			List<ReservationVo> myResList = reservationDao.myResList(memberId);
 			ReservationDto reservationDto = reservationDao.vaccineCheck(memberId);
-			boolean check = memberId != null && myResList.size() == 0; // 미접종
+			
+			
+			//신규
+			List<Shot3Vo> myShotList = shotDao.myShotList(memberId);
+			boolean check = memberId != null && myShotList.size() == 0; // 미접종
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -345,8 +351,8 @@ var mindate  = 2021-11-20
 		<% if (shot2) { %>				
 			<div class="row content-auto">
 				<label class="text-auto">백신</label>
-				<input type="hidden" name="vaccineNo" value="1" class="form-input">
 				<%for(Shot2Vo shot2Vo : shotVaccineList){ %>
+				<input type="hidden" name="vaccineNo" value="<%=shot2Vo.getVaccineNo()%>" class="form-input">
 				<input type="text" value="<%=shot2Vo.getVaccineName()%>" class="shot-sec" readonly>
 				<%} %>
 			</div>		
