@@ -101,7 +101,7 @@
 							<%} else { %>
 							<a class="link-btn" href="<%=request.getContextPath()%>/admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정하기</a>
 							<%} %>
-							<a class="link-btn" href="delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
+							<a class="link-btn" href="<%=request.getContextPath()%>/qna/delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
 					</td>
 			</tfoot>
 		</table>
