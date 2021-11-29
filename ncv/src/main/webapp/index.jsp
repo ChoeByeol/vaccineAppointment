@@ -327,10 +327,6 @@ a#img-qna:hover{
  text-decoration:  none;
  }
 
-
-
-출처: https://it77.tistory.com/126 [시원한물냉의 사람사는 이야기]
-
 </style>
 
 
@@ -341,26 +337,22 @@ a#img-qna:hover{
 
 <div class="mainContainer">
 
-	<div class="main-area">
-		<div class="mainSlide">
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/kid.png">
-			<!-- 		</a> -->
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/boostershot.png">
-			<!-- 		</a> -->
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/백신.png">
-			<!-- 		</a> -->
-			<!-- 		<a href="#"> -->
-			<img class="slideImg"
-				src="<%=request.getContextPath()%>/resource/image/대상별부스터.png">
-			<!-- 		</a> -->
-		</div>
-
+		<div class="main-area">
+		   <div class="mainSlide">
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503020000&bid=0003%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/kid.png">
+		      </a>
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503020000&bid=0003%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/boostershot.png">
+		      </a>
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503020000&bid=0003%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/백신.png">
+		      </a>
+		      <a href="https://www.kdca.go.kr/gallery.es?mid=a20503010000&bid=0002%22%3E">
+		      <img class="slideImg" src="<%=request.getContextPath()%>/resource/image/대상별부스터.png">
+		      </a>
+		   </div>
+		
 
 		<div class="title">
 			<div class="slide">
@@ -413,7 +405,5 @@ a#img-qna:hover{
 
 
 	</div>
-
-</div>
-
+	</div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
