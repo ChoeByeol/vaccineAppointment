@@ -24,7 +24,7 @@ public class QnaDeleteServlet extends HttpServlet{
 			
 			//출력
 			if(success) {
-				resp.sendRedirect("list.jsp");
+				resp.sendRedirect("mylist.jsp");
 			}
 			else {
 				resp.sendError(404);
