@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ncv.beans.VaccineDao;
 import ncv.beans.VaccineDto;
 
-@WebServlet(urlPatterns = "/vaccine/vaccineWrite.txt")
+@WebServlet(urlPatterns = "/admin/vaccine/vaccineWrite.txt")
 public class VaccineWriteServlet extends HttpServlet {
 
 	@Override
@@ -39,7 +39,7 @@ public class VaccineWriteServlet extends HttpServlet {
 			vaccineDto.setVaccineNo(vaccineNo);
 			vaccineDao.vaccineWrite(vaccineDto);
 
-			resp.sendRedirect("admin/vaccine/vaccine_detail.jsp?vaccineNo="+vaccineNo);
+			resp.sendRedirect(req.getContextPath()+"/admin/vaccine/vaccine_detail.jsp?vaccineNo="+vaccineNo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

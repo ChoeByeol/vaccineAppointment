@@ -8,8 +8,9 @@
 	pageEncoding="UTF-8"%>
 
 <%
+int clinicNo = Integer.parseInt(request.getParameter("clinicNo"));
 ClinicDao clinicDao = new ClinicDao();
-List<ClinicDto> list  = clinicDao.list();
+ClinicDto clinicDto = clinicDao.select(clinicNo);
 %>	
 
 <%
@@ -67,16 +68,9 @@ tbody {
 	<form action="stockIn.txt" method="post">
 
 	<div class="row">
-		<label>병원선택</label>
-		<select name="clinicNo" >
-			<option value="" selected="selected" hidden="hidden" class="form-input">병원선택</option>
-				<%for(ClinicDto clinicDto : list){ %>
-				<option value="<%=clinicDto.getClinicNo()%>">
-				<%=clinicDto.getClinicName()+" / "+clinicDto.getClinicAddress()+" / "+clinicDto.getClinicDetailAddress()%>
-				</option>
-				<%} %>
-			</select> 
-		</div>				
+		<label>병원명</label>
+			<input type="hidden" name="clinicNo" value="<%=clinicDto.getClinicNo()%>" readonly><%=clinicDto.getClinicName()%>
+		</div>
 				
 		<div class="row">
 			<label>백신선택</label>

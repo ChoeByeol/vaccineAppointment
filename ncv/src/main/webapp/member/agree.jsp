@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%> 
 <%
 	AgreeDao agreeDao = new AgreeDao();
-	List<AgreeDto> list = agreeDao.list();
+	AgreeDto agreeDto  = agreeDao.get();
 %>    
 
 <jsp:include page="/template/header.jsp"></jsp:include>
@@ -79,11 +79,11 @@
 	</head>
 	
 	<body>
-<%if(list.size() == 0){ %>
+<%if(agreeDto == null){ %>
 <h3>약관 내용이 존재하지 않습니다</h3>
 <%} else{ %>
 <form action="<%=request.getContextPath()%>/member/join.jsp?" id="joinForm">
-	<%for(AgreeDto agreeDto : list){ %>
+	
             <ul class="join_box">
                 <li class="checkBox check01">
                     <ul class="clearfix">
@@ -142,7 +142,7 @@
                     </ul>
                         </li>
                     </ul>
-                   <%} %>
+                   
  
             <ul class="footBtwrap clearfix">
                 <li>

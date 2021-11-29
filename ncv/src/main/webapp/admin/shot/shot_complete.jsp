@@ -65,6 +65,9 @@ ReservationDto reservationDto = reservationDao.editGet(resNo);
 			<input type="hidden" name="resOkNo" value = "<%=reservationDto.getResNo()%>">
 			<input type="hidden" name="vaccineNo" value = "<%=reservationDto.getVaccineNo()%>">
 			<input type="hidden" name="clinicNo" value = "<%=reservationDto.getClinicNo()%>">
+			<input type="hidden" name="shotRrn" value = "<%=reservationDto.getResRrn()%>">
+			<input type="hidden" name="memberId" value = "<%=reservationDto.getMemberId()%>">
+			<input type="hidden" name="memberName" value = "<%=reservationDto.getResName()%>">
 			<table class="table table-border table-hover">
 			
 				<tr>

@@ -57,12 +57,22 @@
 				<td><textarea name="qnaAnswer" rows="10" cols="100" required ><%=qnaDto.getQnaAnswer()%></textarea></td>
 			</tr>
 		</tbody>
-		<tfoot>
+		<tfoot>	
+		<%if(qnaDto.getQnaAnswer().length()==0){%>
 			<tr>
 				<td colspan="2" align="right">
 					<input type="submit" value="답변하기">
+					
 				</td>
 			</tr>
+		<%} else { %>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="수정하기">
+				</td>
+			</tr>
+		<%} %>
 		</tfoot>
 	</table>
+
 </form>

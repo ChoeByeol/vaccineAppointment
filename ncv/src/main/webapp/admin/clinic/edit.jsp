@@ -39,7 +39,7 @@
 		 	</div>
 		 	 <div class="row">
 		 		<label class="label-text">운영시간</label>
-		 		<textarea name="clinicTime" placeholder="병원 운영시간" required class="clinic-text"><%=clinicDto.getClinicNo()%></textarea>
+		 		<textarea name="clinicTime" placeholder="병원 운영시간" required class="clinic-text"><%=clinicDto.getClinicTime()%></textarea>
 		 	</div>
 			<div class="row">
 		 		<label class="label-text">우편번호</label><br>

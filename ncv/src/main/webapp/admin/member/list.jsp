@@ -80,6 +80,14 @@ table > tbody > tr > td{
 	padding:2px;
 }
 </style>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function(){
+		$(".quit-btn").click(function(){
+            return confirm("정말 탈퇴 처리하시겠습니까?");
+        });
+	});
+</script>   
 <div class="container-900 container-center">
 <div class="row center">
 	<h2><%=title%></h2>
@@ -110,7 +118,7 @@ table > tbody > tr > td{
 				<td>
 					<a href="detail.jsp?memberId=<%=memberDto.getMemberId()%>" class="btn button_base">상세</a>
 					<a href="edit.jsp?memberId=<%=memberDto.getMemberId()%>" class="btn button_base">수정</a>
-					<a href="quit.txt?memberId=<%=memberDto.getMemberId()%>" class="btn button_base">탈퇴</a>
+					<a href="quit.txt?memberId=<%=memberDto.getMemberId()%>" class="btn button_base quit-btn">탈퇴</a>
 				</td>	
 			</tr>
 		<%}%>
