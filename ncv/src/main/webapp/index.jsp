@@ -211,16 +211,16 @@ border-spacing:0px;
 	<div class="main-area">
 	<div class="mainSlide">
 <!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/0002.jpg">
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/kid.png">
 <!-- 		</a> -->
 <!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/IU02.png">
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/boostershot.png">
 <!-- 		</a> -->
 <!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/6.jpg">
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/백신.png">
 <!-- 		</a> -->
 <!-- 		<a href="#"> -->
-		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/iui.jpg">
+		<img class="slideImg" src="<%=request.getContextPath()%>/resource/image/대상별부스터.png">
 <!-- 		</a> -->
 	</div>
 </div>
