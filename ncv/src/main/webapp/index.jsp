@@ -34,7 +34,7 @@ pagination.calculate();
 <style>
 .mainContainer {
 	width: 850px;
-	height: 1050px;
+	height: 550px;
 	position: relative;
 	margin: 0 auto;
 }
@@ -397,12 +397,12 @@ a#img-qna:hover{
 				onmouseout="this.src='/ncv/resource/image/img-revCheck-before.png';" alt="">
 				</a>
 
-				<a href="<%=request.getContextPath()%>/shot/shot_myShot.jsp">
+				<a href="<%=request.getContextPath()%>/member/shot_myShot.jsp">
 				<img src="/ncv/resource/image/img-shotCheck-before.png" onmouseover="this.src='/ncv/resource/image/img-shotCheck-after.png';" 
 				onmouseout="this.src='/ncv/resource/image/img-shotCheck-before.png';" alt="">
 				</a>
 				
-				<a href="<%=request.getContextPath()%>/qna/list.jsp">
+				<a href="<%=request.getContextPath()%>/qna/mylist.jsp">
 				<img src="/ncv/resource/image/img-qna-before.png" onmouseover="this.src='/ncv/resource/image/img-qna-after.png';" 
 				onmouseout="this.src='/ncv/resource/image/img-qna-before.png';" alt="">
 				</a>

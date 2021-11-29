@@ -43,7 +43,7 @@ public class ReservationCheckServlet extends HttpServlet {
 			Shot2Dao shotDao = new Shot2Dao();
 			List<Shot3Vo> myShotList = shotDao.myShotList(memberId);
 
-			System.out.println(shot);
+			//System.out.println(shot);
 //			System.out.println(myShotList.size());
 			
 			boolean check = memberId != null && myResList.size() == 0; // 미접종

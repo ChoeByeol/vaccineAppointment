@@ -19,7 +19,7 @@ public class AdminReservationDeleteServlet extends HttpServlet {
 		try {
 
 			int resNo = Integer.parseInt(req.getParameter("resNo"));
-			System.out.println("취소할 예약번호 = " + resNo);
+			//System.out.println("취소할 예약번호 = " + resNo);
 			
 			//예약번호에 대한 접종내역이 이미 존재하면 취소 불가능
 			Shot2Dao shot2Dao = new Shot2Dao();
@@ -28,15 +28,15 @@ public class AdminReservationDeleteServlet extends HttpServlet {
 				ReservationDao reservationDao = new ReservationDao();
 				boolean cancelSuccess = reservationDao.cancel(resNo);
 				if (cancelSuccess) {
-					System.out.println("삭제 성공");
+					//System.out.println("삭제 성공");
 					resp.sendRedirect("reservation_list.jsp");
 				} else {
-					System.out.println("삭제 실패");
+					//System.out.println("삭제 실패");
 					resp.sendError(404);
 				}
 			}
 			else {//접종내역이 있으면(true) 삭제 불가능
-				System.out.println("예약내역 취소 불가능");
+				//System.out.println("예약내역 취소 불가능");
 				
 				resp.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = resp.getWriter();
