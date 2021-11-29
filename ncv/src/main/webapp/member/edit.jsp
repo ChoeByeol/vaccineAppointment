@@ -71,7 +71,7 @@
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">전화번호</label>
-		 		<input type= "tel" class="form-input" name= "memberPhone"	required value="<%=memberDto.getMemberPhone()%>">
+		 		<input type= "tel" class="form-input" name= "memberPhone" required value="<%=memberDto.getMemberPhone()%>">
 		 </div>
 		 <div class="row">
 		 		<label class="label-text">우편번호</label><br>
