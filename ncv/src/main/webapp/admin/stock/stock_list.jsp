@@ -63,10 +63,10 @@
 <%if(stockPgn.isPreviousAvailable()){ %>
 	<%if(stockPgn.isSearch()){ %>
 		<!-- 검색용 링크 -->
-		<a href="list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=stockPgn.getPreviousBlock()%>">&lt;</a>
+		<a href="stock_list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=stockPgn.getPreviousBlock()%>">&lt;</a>
 	<%} else { %>
 		<!-- 목록용 링크 -->
-		<a href="list.jsp?p=<%=stockPgn.getPreviousBlock()%>">&lt;</a>
+		<a href="stock_list.jsp?p=<%=stockPgn.getPreviousBlock()%>">&lt;</a>
 	<%} %>
 <%} else { %>
 	 <a>&lt;</a>
@@ -75,20 +75,20 @@
 <%for(int i = stockPgn.getStartBlock(); i <= stockPgn.getRealLastBlock(); i++){ %>
 	<%if(stockPgn.isSearch()){ %>
 	<!-- 검색용 링크 -->
-	<a href="list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=i%>"><%=i%></a>
+	<a href="stock_list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=i%>"><%=i%></a>
 	<%}else{ %>
 	<!-- 목록용 링크 -->
-	<a href="list.jsp?p=<%=i%>"><%=i%></a>
+	<a href="stock_list.jsp?p=<%=i%>"><%=i%></a>
 	<%} %>
 <%} %>
 
 <%if(stockPgn.isNextAvailable()){ %>
 	<%if(stockPgn.isSearch()){ %>
 		<!-- 검색용 링크 -->
-		<a href="list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=stockPgn.getNextBlock()%>">&gt;</a>
+		<a href="stock_list.jsp?column=<%=stockPgn.getColumn()%>&keyword=<%=stockPgn.getKeyword()%>&p=<%=stockPgn.getNextBlock()%>">&gt;</a>
 	<%} else { %>
 		<!-- 목록용 링크 -->
-		<a href="list.jsp?p=<%=stockPgn.getNextBlock()%>">&gt;</a>
+		<a href="stock_list.jsp?p=<%=stockPgn.getNextBlock()%>">&gt;</a>
 	<%} %> 
 <%} else {%>
 	<a>&gt;</a>
