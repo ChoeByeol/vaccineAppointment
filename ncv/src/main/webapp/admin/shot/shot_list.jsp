@@ -55,7 +55,7 @@ tbody {
 <div class="container-900 container-center">
 
 	<div class="row center">
-		<h2>임시 접종 완료 내역리스트</h2>		
+		<h2>접종 완료 내역리스트</h2>		
 	</div>
 
 	<!-- 데이터 표시 영역 -->

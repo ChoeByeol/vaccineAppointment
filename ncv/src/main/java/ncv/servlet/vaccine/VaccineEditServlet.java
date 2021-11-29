@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import ncv.beans.VaccineDao;
 import ncv.beans.VaccineDto;
 
-@WebServlet(urlPatterns = "/vaccine/vaccineEdit.txt")
+@WebServlet(urlPatterns = "/admin/vaccine/vaccineEdit.txt")
 public class VaccineEditServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

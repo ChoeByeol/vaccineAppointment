@@ -18,7 +18,7 @@ VaccineDto vaccineDto = vaccineDao.get(vaccineNo);
 <jsp:include page="/template/header.jsp"></jsp:include>
 
 
-<form action="vaccineEdit.txt" method="post">
+<form action="<%=request.getContextPath() %>/admin/vaccine/vaccineEdit.txt" method="post">
 <input type="hidden" name="vaccineNo" value="<%=vaccineDto.getVaccineNo()%>">
 
 <div class="container-400 container-center">
