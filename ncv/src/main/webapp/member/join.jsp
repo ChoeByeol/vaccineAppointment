@@ -28,7 +28,7 @@
  				
  				if(regex.test(input)){//정규식 통과하면 중복검사
 				    $.ajax({
-				        url:"http://localhost:8080/ncv/member/ajax_id_check.txt",
+				        url:"${pageContext.request.contextPath}/member/ajax_id_check.txt",
 				        type:"get",//전송방식
 				        data:{
 				            memberId: input

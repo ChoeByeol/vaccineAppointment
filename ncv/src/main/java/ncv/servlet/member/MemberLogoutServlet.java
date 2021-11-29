@@ -19,7 +19,7 @@ public class MemberLogoutServlet extends HttpServlet{
 			req.getSession().removeAttribute("grade");
 //			req.getSession().invalidate();//세션파괴명령
 			
-			resp.sendRedirect("/ncv/index.jsp");
+			resp.sendRedirect(req.getContextPath()+"/index.jsp");
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -152,7 +152,7 @@ $(function(){
 	<tbody>
 			<%for(ClinicDto clinicDto : list){ %>
 		<tr>
-			<td><a href="/ncv/admin/clinic/select.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a></td>
+			<td><a href="<%=request.getContextPath() %>/admin/clinic/select.jsp?clinicNo=<%=clinicDto.getClinicNo() %>"><%=clinicDto.getClinicName() %></a></td>
 			<td><%=clinicDto.getClinicTel() %></td>
 			<td><%="(" + clinicDto.getClinicPostcode() + ") " + clinicDto.getClinicAddress() %></td>
 		<tr>
