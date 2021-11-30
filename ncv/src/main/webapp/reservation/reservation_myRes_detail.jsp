@@ -19,12 +19,14 @@
 <%
 ReservationDao reservationDao = new ReservationDao();
 List<ReservationVo> myResList  = reservationDao.myResList(memberId);
+int myResNo = reservationDao.getMyResNum(memberId);
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 	$(function() {
-		$("#cancel-link").click(function() {
+		$("#cancel-btn").click(function() {
 			return confirm("정말 취소하시겠습니까?");
 		});
 	});
@@ -37,15 +39,14 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 	.flex-item{
 		width:450px;
 	}
-	.quit-btn{
+	.cancel-btn{
 		border:none;
 		padding:0.5rem;
 		text-decoration:none;
 		color:gray;
 		font-family:NotoSans;
-		font-size:12px;
 	}
-	.quit-btn:hover{
+	.cancel-btn:hover{
 		color:red;
 	}
 	.table-title{
@@ -102,7 +103,7 @@ List<ReservationVo> myResList  = reservationDao.myResList(memberId);
 		</div>
 		<a class="link-btn" href="<%=request.getContextPath()%>/index.jsp">메인페이지로</a>
 		<a class="link-btn" href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">이전페이지</a>
-
+		<div class="right"><a class="link-btn cancel-btn" id= "cancel-btn" href="<%=request.getContextPath()%>/reservation/cancel.txt?resNo=<%=myResNo%>">예약취소</a></div>
 	</div>
 
  <jsp:include page="/template/footer.jsp"></jsp:include>
