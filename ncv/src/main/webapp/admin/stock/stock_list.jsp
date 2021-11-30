@@ -16,6 +16,27 @@
 %>
 
 <jsp:include page="/template/header.jsp"></jsp:include>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function() {
+		$("#cancel-btn").click(function() {
+			return confirm("정말 취소하시겠습니까?");
+		});
+	});
+	
+</script>
+<style>
+	.cancel-btn{
+		border:none;
+		padding:0.5rem;
+		text-decoration:none;
+		color:gray;
+		font-family:NotoSans;
+	}
+	.cancel-btn:hover{
+		color:red;
+	}
+</style>
 <div class="container-900 container-center">
 <div class="row center">
 	<h2><%=title%></h2>
@@ -48,7 +69,7 @@
 				<td><%=stock3Vo.getStockOutQty()%></td>
 				<td><%=stock3Vo.getUpdateTime()%></td>
 				<td>
-					<a href="cancel.txt?stockNo=<%=stock3Vo.getStockNo()%>">취소</a>
+					<a id="cancel-btn" class="link-btn cancel-btn" href="cancel.txt?stockNo=<%=stock3Vo.getStockNo()%>">취소</a>
 				</td>	
 			</tr>
 		<%}%>

@@ -36,7 +36,14 @@
 <%-- 출력 --%>
 
 <jsp:include page="/template/header.jsp"></jsp:include>    
-
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function() {
+		$("#cancel-btn").click(function() {
+			return confirm("정말 삭제하시겠습니까?");
+		});
+	});
+</script>
 
 <div class="container-800 container-center" style="border:2px solid rgb(148, 161, 172); width : 100%; padding:20px; ">
 
@@ -100,7 +107,7 @@
                             <%} else { %>
                             <a class="link-btn" href="<%=request.getContextPath()%>/admin/qna/answer.jsp?qnaNo=<%=qnaDto.getQnaNo()%>">수정하기</a>
                             <%} %>
-                            <a class="link-btn" href="<%=request.getContextPath()%>/admin/qna/delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
+                            <a class="link-btn" id="cancel-btn" href="<%=request.getContextPath()%>/admin/qna/delete.txt?qnaNo=<%=qnaDto.getQnaNo()%>">삭제</a>
                     </div>
                     </td>
             </tfoot>

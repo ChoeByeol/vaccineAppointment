@@ -85,7 +85,7 @@ tbody {
 			
 	<div class="row">
 		<label>수량</label>
-		<input type="number" name="stockInQty" class="form-input">
+		<input type="number" name="stockInQty" class="form-input" required min="0">
 	</div>	
 
 		
