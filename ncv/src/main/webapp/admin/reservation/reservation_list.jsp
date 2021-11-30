@@ -121,7 +121,7 @@ List<ReservationVo> reservationList  = reservationDao.list2();
 <div class="container-900 container-center">
 
 	<div class="row center">
-		<h2>임시 예약리스트</h2>		
+		<h2>예약리스트</h2>		
 	<hr>
 	</div>
 

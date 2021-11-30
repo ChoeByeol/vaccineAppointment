@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
         "/member/mypage.jsp","/member/password_success.jsp",
         "/member/password.jsp", "/member/password.txt", 
         "/member/quit.txt", "/reservation/",
-        "/board/","/member/shot_myShot.jsp","/qna/mylist.jsp"
+        "/board/","/member/shot_myShot.jsp","/qna/mylist.jsp","/reservation/check.txt","/reservation/reservation_myRes.jsp"
         })
 public class MemberFilter implements Filter{
 @Override

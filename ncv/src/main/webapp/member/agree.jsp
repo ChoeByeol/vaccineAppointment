@@ -98,7 +98,7 @@
                 </li>
                 <li class="checkBox check02">
                     <ul class="clearfix">
-                        <li>회원정보 수집 항목</li>
+                        <li>수집하는 개인정보</li>
                         <li class="checkBtn">
                            <input type="checkbox" oninput="check();" class="ck1" required>
                         </li>
@@ -108,7 +108,7 @@
                 </li>
                 <li class="checkBox check03">
                     <ul class="clearfix">
-                        <li>개인정보 수집 목적</li>
+                        <li>개인정보 수집 방법</li>
                         <li class="checkBtn">
                             <input type="checkbox" oninput="check();" class="ck2"required>
                         </li>
@@ -118,7 +118,7 @@
                 </li>
                 <li class="checkBox check03">
                     <ul class="clearfix">
-                        <li>개인정보 보유 및 이용 기간</li>
+                        <li>수집한 개인정보의 이용</li>
                         <li class="checkBtn">
                            <input type="checkbox" oninput="check();" class="ck3" required>
                         </li>
@@ -128,7 +128,7 @@
                 </li>
                 <li class="checkBox check03">
                     <ul class="clearfix">
-                        <li>개인정보 제3자 제공동의</li>
+                        <li>개인정보의 제공 및 위탁</li>
                         <li class="checkBtn">
                            <input type="checkbox" oninput="check();" class="ck4" required>
                         </li>
