@@ -379,4 +379,22 @@ public class ReservationDao {
 
             return count;
         }
+        
+      //나의 예약 번호 불러오기
+        public int getMyResNum(String memberId) throws Exception {
+            Connection con = JdbcUtils.connect();
+
+            String sql = "select res_no from reservation where member_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, memberId);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+
+            int resNo = rs.getInt(1);
+
+            con.close();
+
+            return resNo;
+        }
 }

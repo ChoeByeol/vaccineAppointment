@@ -29,7 +29,7 @@ public class ReservationCancelServlet extends HttpServlet {
 				boolean cancelSuccess = reservationDao.cancel(resNo);
 				if (cancelSuccess) {
 					//System.out.println("삭제 성공");
-					resp.sendRedirect("reservation_list.jsp");
+					resp.sendRedirect(req.getContextPath()+"/index.jsp");
 				} else {
 					//System.out.println("삭제 실패");
 					resp.sendError(404);
