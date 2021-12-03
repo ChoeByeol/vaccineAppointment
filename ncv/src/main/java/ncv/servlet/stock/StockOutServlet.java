@@ -31,7 +31,7 @@ public class StockOutServlet extends HttpServlet {
 			stockDao.stockOut(stockDto);		
 			
 			//출력
-			resp.sendRedirect(req.getContextPath() + "/ncv/admin/stock/stock_list.jsp");
+			resp.sendRedirect(req.getContextPath() + "/admin/stock/stock_list.jsp");
 
 		} catch (Exception e) {
 			e.printStackTrace();

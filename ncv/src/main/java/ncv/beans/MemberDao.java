@@ -91,14 +91,13 @@ public class MemberDao {
 	}
 	
 	
-	// 회원 탈퇴 기능
+	// 회원 자격 정지 기능
 	public boolean quit(String memberId, String memberPw) throws Exception {
 		Connection con = JdbcUtils.connect();
 
-		String sql = "delete member where member_id = ? and member_pw = ?";
+		String sql = "update member set member_grade = '정지' where member_id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, memberId);
-		ps.setString(2, memberPw);
 		int result = ps.executeUpdate();
 
 		con.close();
