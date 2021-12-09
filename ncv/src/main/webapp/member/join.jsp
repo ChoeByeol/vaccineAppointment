@@ -134,7 +134,7 @@
  				var regex = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-4][0-9]{6}$/; 				
  				if(regex.test(input)){//정규식 통과하면 중복검사
 				    $.ajax({
-				        url:"http://localhost:8080/ncv/member/ajax_rrn_check.txt",
+				        url:"request.getContextPath()/member/ajax_rrn_check.txt",
 				        type:"get",//전송방식
 				        data:{
 				            memberRrn: input
@@ -172,7 +172,7 @@
  				
  				if(regex.test(input)){//정규식 통과하면 중복검사
 				    $.ajax({
-				        url:"http://localhost:8080/ncv/member/ajax_phone_check.txt",
+				        url:"requetst.getContextPath()/member/ajax_phone_check.txt",
 				        type:"get",//전송방식
 				        data:{
 				            memberPhone: input

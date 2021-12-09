@@ -175,7 +175,7 @@ $(function(){
 			 <%for(ClinicDto clinicDto : list){ %>
 			<tr>
 				<td class="title"><a
-					href="/ncv/reservation/reservation_clinic_detail.jsp?clinicNo=<%=clinicDto.getClinicNo() %>" class= "link-btn"><%=clinicDto.getClinicName() %></a>
+					href="<%=request.getContextPath()%>/reservation/reservation_clinic_detail.jsp?clinicNo=<%=clinicDto.getClinicNo() %>" class= "link-btn"><%=clinicDto.getClinicName() %></a>
 				</td>
 				<td><%=clinicDto.getClinicTel()%></td>
 				<td><%=clinicDto.getClinicAddress()%></td>

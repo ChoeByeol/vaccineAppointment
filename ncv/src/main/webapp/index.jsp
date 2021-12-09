@@ -273,11 +273,11 @@ a#img-rev {
 	display:inline-block;
 	width: 207px;
 	height: 250px;
-  background:url('/ncv/resource/image/img-rev-before.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-rev-before.png') no-repeat;
 }
 
 a#img-rev:hover{
-  background:url('/ncv/resource/image/img-rev-after.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-rev-after.png') no-repeat;
 }
 
 
@@ -285,11 +285,11 @@ a#img-revCheck {
 	display:inline-block;
 	width: 207px;
 	height: 250px;
-  background:url('/ncv/resource/image/img-revCheck-before.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-revCheck-before.png') no-repeat;
 }
 
 a#img-revCheck:hover{
-  background:url('/ncv/resource/image/img-revCheck-after.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-revCheck-after.png') no-repeat;
 }
 
 
@@ -297,11 +297,11 @@ a#img-shotCheck {
 	display:inline-block;
 	width: 207px;
 	height: 250px;
-  background:url('/ncv/resource/image/img-shotCheck-before.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-shotCheck-before.png') no-repeat;
 }
 
 a#img-shotCheck:hover{
-  background:url('/ncv/resource/image/img-shotCheck-after.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-shotCheck-after.png') no-repeat;
 }
 
 
@@ -309,11 +309,11 @@ a#img-qna {
 	display:inline-block;
 	width: 207px;
 	height: 250px;
-  background:url('/ncv/resource/image/img-qna-before.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-qna-before.png') no-repeat;
 }
 
 a#img-qna:hover{
-  background:url('/ncv/resource/image/img-qna-after.png') no-repeat;
+  background:url('<%=request.getContextPath()%>/resource/image/img-qna-after.png') no-repeat;
 }
 
 
@@ -380,23 +380,23 @@ a#img-qna:hover{
 			<div class="box-select">
 
 				<a href="<%=request.getContextPath()%>/reservation/check.txt">
-				<img src="/ncv/resource/image/img-rev-before.png" onmouseover="this.src='/ncv/resource/image/img-rev-after.png';" 
-				onmouseout="this.src='/ncv/resource/image/img-rev-before.png';" alt="">
+				<img src="<%=request.getContextPath()%>/resource/image/img-rev-before.png" onmouseover="this.src='<%=request.getContextPath()%>/resource/image/img-rev-after.png';" 
+				onmouseout="this.src='<%=request.getContextPath()%>/resource/image/img-rev-before.png';" alt="">
 				</a>
 
 				<a href="<%=request.getContextPath()%>/reservation/reservation_myRes.jsp">
-				<img src="/ncv/resource/image/img-revCheck-before.png" onmouseover="this.src='/ncv/resource/image/img-revCheck-after.png';" 
-				onmouseout="this.src='/ncv/resource/image/img-revCheck-before.png';" alt="">
+				<img src="<%=request.getContextPath()%>/resource/image/img-revCheck-before.png" onmouseover="this.src='<%=request.getContextPath()%>/resource/image/img-revCheck-after.png';" 
+				onmouseout="this.src='<%=request.getContextPath()%>/resource/image/img-revCheck-before.png';" alt="">
 				</a>
 
 				<a href="<%=request.getContextPath()%>/member/shot_myShot.jsp">
-				<img src="/ncv/resource/image/img-shotCheck-before.png" onmouseover="this.src='/ncv/resource/image/img-shotCheck-after.png';" 
-				onmouseout="this.src='/ncv/resource/image/img-shotCheck-before.png';" alt="">
+				<img src="<%=request.getContextPath()%>/resource/image/img-shotCheck-before.png" onmouseover="this.src='<%=request.getContextPath()%>/resource/image/img-shotCheck-after.png';" 
+				onmouseout="this.src='<%=request.getContextPath()%>/resource/image/img-shotCheck-before.png';" alt="">
 				</a>
 				
 				<a href="<%=request.getContextPath()%>/qna/mylist.jsp">
-				<img src="/ncv/resource/image/img-qna-before.png" onmouseover="this.src='/ncv/resource/image/img-qna-after.png';" 
-				onmouseout="this.src='/ncv/resource/image/img-qna-before.png';" alt="">
+				<img src="<%=request.getContextPath()%>/resource/image/img-qna-before.png" onmouseover="this.src='<%=request.getContextPath()%>/resource/image/img-qna-after.png';" 
+				onmouseout="this.src='<%=request.getContextPath()%>/resource/image/img-qna-before.png';" alt="">
 				</a>
 
 			</div>

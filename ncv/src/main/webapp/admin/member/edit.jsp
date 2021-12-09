@@ -117,7 +117,7 @@
     </div>
 </form>
 <div class="quit-btn right">
-	<a class="quit-btn" href="<%=request.getContextPath()%>/admin/member/quit.txt?memberId=<%=memberDto.getMemberId()%>">회원 탈퇴</a>
+	<a class="quit-btn" href="<%=request.getContextPath()%>/admin/member/quit.txt?memberId=<%=memberDto.getMemberId()%>">회원 자격정지</a>
 </div>
 
 <jsp:include page="/template/footer.jsp"></jsp:include>
